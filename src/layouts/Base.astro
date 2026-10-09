@@ -9,6 +9,7 @@ const nav = [
   { href: '/writing/', label: 'Writing' },
   { href: '/projects/', label: 'Projects' },
   { href: '/about/', label: 'About' },
+  { href: '/cv/', label: 'CV' },
 ];
 ---
 <!doctype html>
@@ -43,6 +44,7 @@ const nav = [
         <a href="/rss.xml">RSS</a>
         {SITE.github && <a href={SITE.github} rel="me">GitHub</a>}
         {SITE.linkedin && <a href={SITE.linkedin} rel="me">LinkedIn</a>}
+        {SITE.email && <a href={`mailto:${SITE.email}`}>Email</a>}
         <span>No cookies, no trackers.</span>
       </div>
     </footer>

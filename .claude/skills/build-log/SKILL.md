@@ -6,7 +6,7 @@ description: Schreibt den wöchentlichen Build-Log-Entwurf für programmiere.de 
 # Build Log schreiben
 
 Ziel: 200–500 Wörter Englisch, **eine** Geschichte der Woche plus kurze Liste weiterer
-Bewegungen. Nie veröffentlichen (`docs/decisions/0003-publish-gate.md`).
+Bewegungen. Veröffentlicht wird nur über das Gate (`docs/decisions/0008`).
 
 1. **Zeitraum:** Datum des neuesten `type: build-log` in `src/content/posts/` (auch Drafts);
    keiner vorhanden → letzte 7 Tage.
@@ -20,5 +20,10 @@ Bewegungen. Nie veröffentlichen (`docs/decisions/0003-publish-gate.md`).
    `project` (bei mehreren: das der Hauptgeschichte), `draft: true`, `description` ≤ 200.
 5. **Prüfen:** jede Zahl/Version/Datei gegen die Quelle; `<!-- REVIEW -->` an heiklen Stellen
    (0006); `npm run build` grün.
-6. **Ablegen:** Branch `post/build-log-<jjjj>-w<kw>`, committen, **nicht pushen**. Ergebnis
-   in einem Satz melden: Titel, Hauptgeschichte, offene REVIEW-Punkte — Freigabe mit „ja".
+6. **Ablegen und veröffentlichen:** Branch `post/build-log-<jjjj>-w<kw>`, committen.
+   Dann das **Gate**: Agent `publish-reviewer` mit dem Dateipfad aufrufen → bei `VERDICT: FAIL`
+   die Befunde **einmal** einarbeiten, committen, erneut prüfen lassen → bei PASS
+   `npm run publish -- <datei>` (Check, `draft: false`, Build, Merge, Push); scheitert der
+   Check, Befund beheben und noch einmal. Bleibt es bei FAIL: Entwurf liegen lassen, nichts
+   pushen. Ergebnis in **einem** Satz melden (veröffentlicht: Titel + URL, oder: nicht
+   veröffentlicht + Grund). Keine Rückfragen.

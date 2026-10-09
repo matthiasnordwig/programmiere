@@ -7,11 +7,11 @@ description: Entwirft einen Deep-Dive-Beitrag für programmiere.de über ein gek
 
 1.500–3.000 Wörter Englisch. Aufbau (0004): **Problem** und warum es schwer aussah →
 **die Einsicht** → **wie es geknackt wurde** → **was schiefging** → **die Zahlen** →
-**was offen bleibt**. Nie veröffentlichen (0003).
+**was offen bleibt**. Veröffentlicht wird nur über das Gate (0008).
 
-1. **Thema klären:** Ist es vorgegeben, damit arbeiten. Sonst 3 Kandidaten aus
-   `SOURCES.md`-Quellen vorschlagen (je eine Zeile: Problem + Einsicht) und eine Wahl
-   abwarten — das ist eine Richtungsentscheidung.
+1. **Thema wählen:** Ist es vorgegeben, damit arbeiten. Sonst selbst wählen — das stärkste noch
+   nicht behandelte Problem aus den `SOURCES.md`-Quellen (eine echte Einsicht, belegbare
+   Zahlen, ehrlicher Fehler); bereits veröffentlichte Deep Dives nicht wiederholen. Nicht fragen.
 2. **Recherche gezielt:** Handbuch-Index → eine Bereichsdatei → die Commits/Diffs, die die
    Einsicht tragen → ISSUES/Fix-Commits für „what broke". Fakten mit Fundstelle notieren.
 3. **Gliederung zuerst** als Kommentar am Dateianfang, dann ausschreiben.
@@ -19,5 +19,10 @@ description: Entwirft einen Deep-Dive-Beitrag für programmiere.de über ein gek
    Mermaid- oder SVG-Diagramm, wenn es den Mechanismus zeigt.
 5. **Prüfen:** Fakten gegen Fundstellen, Vertraulichkeit (0006) mit `<!-- REVIEW -->`,
    `npm run build`.
-6. **Ablegen:** Datei `src/content/posts/<slug>.md`, `type: deep-dive`, `draft: true`, Branch
-   `post/<slug>`, committen, nicht pushen. Melden: Titel, These in einem Satz, REVIEW-Punkte.
+6. **Ablegen und veröffentlichen:** Datei `src/content/posts/<slug>.md`, `type: deep-dive`,
+   `draft: true`, Branch `post/<slug>`, committen. Dann das **Gate**: Agent `publish-reviewer` mit dem Dateipfad aufrufen → bei `VERDICT: FAIL`
+   die Befunde **einmal** einarbeiten, committen, erneut prüfen lassen → bei PASS
+   `npm run publish -- <datei>` (Check, `draft: false`, Build, Merge, Push); scheitert der
+   Check, Befund beheben und noch einmal. Bleibt es bei FAIL: Entwurf liegen lassen, nichts
+   pushen. Ergebnis in **einem** Satz melden (veröffentlicht: Titel + URL, oder: nicht
+   veröffentlicht + Grund). Keine Rückfragen.

@@ -1,6 +1,6 @@
 # 0003 — Veröffentlichen nur mit Freigabe (Publish-Gate)
 
-**Status:** gilt · 2026-10-10
+**Status:** ersetzt durch 0008 · 2026-10-10
 
 **Kontext.** Veröffentlichen ist nach außen gerichtet und praktisch nicht umkehrbar (Caches,
 Feeds, Crawler). Gleiches Prinzip wie im Maintainer-Loop: das Modell schlägt vor, eine

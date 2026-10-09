@@ -1,0 +1,8 @@
+# Begriffe, die in keinem veröffentlichten Beitrag stehen dürfen (eine Zeile je Begriff,
+# Groß/Klein egal, '#' = Kommentar). Ergänzen, sobald etwas auffällt — der Check ist hart.
+loop/state
+LOOP-FUNDE
+Beipspieldokumente
+matrix.db
+settings_backup
+webspace-verkauf

@@ -7,14 +7,17 @@
     "allow": [
       "Bash(npm run build)",
       "Bash(npm run dev)",
+      "Bash(npm run publish *)",
+      "Bash(npm run publish-check *)",
       "Bash(git log *)",
-      "Bash(git -C * log *)"
-    ],
-    "ask": [
-      "Bash(git push *)",
-      "Bash(git push)",
-      "Bash(gh pr merge *)",
-      "Bash(gh repo *)"
+      "Bash(git -C * log *)",
+      "Bash(git status*)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)",
+      "Bash(git diff*)"
     ],
     "deny": [
       "Edit(~/matrix/**)",
@@ -34,7 +37,11 @@
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "bash .claude/hooks/publish-gate.sh", "timeout": 5 }
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/publish-gate.sh",
+            "timeout": 5
+          }
         ]
       }
     ]

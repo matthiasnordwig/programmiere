@@ -11,5 +11,7 @@ Diff, Review); kein CMS, keine Datenbank, kein Server. Statisch heißt auch: kei
 Angriffsfläche, keine Betriebslast — wichtig, weil Weiterbetreiben nicht meine Stärke ist.
 Getrenntes Repo, weil der Blog andere Regeln hat als die Projekte und sie nur liest.
 
-**Konsequenzen.** `npm run build` ist der Schema- und Gesamttest. Domain-DNS und GitHub-Repo
-richte ich selbst ein (nach außen wirkend).
+**Konsequenzen.** `npm run build` ist der Schema- und Gesamttest. GitHub-Repo, Pages und DNS
+richtet Claude ein (0008: vollautomatisch). Der bisherige Terminal-Lebenslauf von
+programmiere.de (`~/programmiere/terminal-cv`) lebt unter `/cv/` weiter
+(`scripts/sync-cv.sh`).

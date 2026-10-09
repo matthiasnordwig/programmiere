@@ -13,8 +13,9 @@ nicht geklärt** (Arbeitsrecht/§ 69b UrhG — mit einem Anwalt zu prüfen).
 - Jeder Beitrag ist erkennbar persönlich; Fußzeile auf About: keine Veröffentlichung im
   Namen eines Arbeitgebers.
 - **Matrix:** Architektur und Technik ja; Herkunft, Einsatzort und regulatorischer Kontext nur
-  allgemein, bis die Rechtefrage geklärt ist. Projektseite trägt dazu einen REVIEW-Kommentar.
+  allgemein, bis die Rechtefrage geklärt ist (die Projektseite ist entsprechend allgemein
+  gehalten).
 - Plugin/Loop: Nutzer und Sites werden nie genannt; Support-Fälle nur anonymisiert.
 
-**Konsequenzen.** Entwürfe markieren heikle Stellen mit `<!-- REVIEW: … -->`; vor der
-Freigabe gehe ich sie durch.
+**Konsequenzen.** Entwürfe markieren heikle Stellen mit `<!-- REVIEW: … -->`; der Agent
+`publish-reviewer` und `publish-check.mjs` lassen keinen Beitrag mit offenem Marker durch (0008).
