@@ -39,6 +39,14 @@ Bereichsdatei, nie ganze Repos laden.
 | `build-log` | Wöchentlicher Kurzbeitrag aus den Commits seit dem letzten Build Log |
 | `deep-dive` | Langbeitrag: ein geknacktes Problem — Einsicht, Weg, was schiefging, Zahlen |
 | `diy-post` | DIY-Beitrag aus Fotos + Sprachnotiz in `inbox/diy/` |
+| `scheduled-run` | Rahmen eines geplanten, unbeaufsichtigten Laufs (Cloud + verbundener Mac) |
+
+## Automatischer Betrieb
+
+Quelle der Wahrheit ist `github.com/matthiasnordwig/programmiere`; `~/projects/programmiere`
+ist eine lokale Kopie. Geplante Aufgaben (Build Log wöchentlich, Deep Dive monatlich) laufen
+als Cloud-Sitzung mit verbundenem Mac nach Skill `scheduled-run` und melden genau eine Zeile.
+Push auf `main` löst `.github/workflows/deploy.yml` aus (GitHub Pages, `programmiere.de`).
 
 ## Struktur
 
