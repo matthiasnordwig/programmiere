@@ -15,7 +15,8 @@ Die Grundregel „Durchziehen statt Rückfragen" gilt aus `~/.claude/CLAUDE.md`.
   Review durch den Agent `publish-reviewer` → `npm run publish -- <beitrag>`
   (deterministischer Check, `draft: false`, Build, Merge, Push). Direkte Pushes verweigert
   `.claude/hooks/publish-gate.sh`. Neue Beiträge sind `draft: true` (Schema-Default) auf
-  `post/<slug>`. Zurücknehmen nur auf meine Anweisung: `scripts/unpublish.sh`.
+  `post/<slug>`. Änderungen an der Seite selbst: `npm run ship` (verweigert Beitragsänderungen).
+  Zurücknehmen nur auf meine Anweisung: `scripts/unpublish.sh`.
 - **Keine Rückfragen an mich** zu Einzelheiten — entscheiden, im Ergebnis nennen. Ich werde
   nur benachrichtigt, wenn etwas veröffentlicht wurde oder ein Lauf nicht arbeiten konnte.
 - **Vertrauliches** (`0006`): keine internen Arbeitgeber-Details, keine Kunden-/Personendaten,
@@ -58,8 +59,10 @@ Push auf `main` löst `.github/workflows/deploy.yml` aus (GitHub Pages, `program
 - `public/CNAME` (programmiere.de), `.github/workflows/deploy.yml` (Build + Pages bei Push
   auf `main`).
 - `inbox/diy/` — lokales Rohmaterial (gitignored).
-- `public/cv/` — Terminal-Lebenslauf (gebaut aus `~/programmiere/terminal-cv` per
-  `scripts/sync-cv.sh`, nicht von Hand ändern).
+- `src/pages/cv.astro` + `src/data/cv.ts` — Lebenslauf als „Speedrun“ mit Recruiter-Modus
+  (gleiche Daten, druckbar). Fakten nur aus seinem CV; Arbeitgeber-interne Zahlen bleiben draußen.
+- `public/null-device/` — Terminal-Parodie auf Recruiting-Portale (gebaut aus
+  `~/programmiere/terminal-cv` per `scripts/sync-cv.sh`, nicht von Hand ändern).
 - `scripts/publish.sh`, `publish-check.mjs`, `unpublish.sh`, `config/confidential-terms.txt`
   — das Gate.
 

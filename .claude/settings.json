@@ -17,7 +17,8 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git branch *)",
-      "Bash(git diff*)"
+      "Bash(git diff*)",
+      "Bash(npm run ship)"
     ],
     "deny": [
       "Edit(~/matrix/**)",

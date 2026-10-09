@@ -7,11 +7,14 @@
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "publish": "bash scripts/publish.sh",
-    "publish-check": "node scripts/publish-check.mjs"
+    "publish-check": "node scripts/publish-check.mjs",
+    "ship": "bash scripts/ship-site.sh"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "astro": "^7.3.8"
   },
   "engines": {

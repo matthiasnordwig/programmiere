@@ -12,6 +12,6 @@ Angriffsfläche, keine Betriebslast — wichtig, weil Weiterbetreiben nicht mein
 Getrenntes Repo, weil der Blog andere Regeln hat als die Projekte und sie nur liest.
 
 **Konsequenzen.** `npm run build` ist der Schema- und Gesamttest. GitHub-Repo, Pages und DNS
-richtet Claude ein (0008: vollautomatisch). Der bisherige Terminal-Lebenslauf von
-programmiere.de (`~/programmiere/terminal-cv`) lebt unter `/cv/` weiter
-(`scripts/sync-cv.sh`).
+richtet Claude ein (0008: vollautomatisch). Die bisherige Terminal-Seite von
+programmiere.de (`~/programmiere/terminal-cv`, eine Parodie auf Recruiting-Portale) lebt unter
+`/null-device/` weiter (`scripts/sync-cv.sh`); `/cv/` ist der neue Lebenslauf.

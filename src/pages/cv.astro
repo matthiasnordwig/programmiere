@@ -1,0 +1,334 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/jetbrains-mono';
+import { PERSON, RUN, SIDE_QUESTS, LOADOUT, EXTRAS } from '../data/cv';
+
+const MAX_HP = 6000;
+const yrs = (s) => `${(s.to ?? new Date().getFullYear()) - s.from}y`;
+const span = (s) => `${s.from}–${s.to ?? 'now'}`;
+const fmt = (n) => n.toLocaleString('en-US');
+const title = `${PERSON.name} — CV`;
+const desc = 'Fifteen years of turning person-year problems in banking into shipped systems. Now at speedrun pace.';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={desc} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <link rel="canonical" href={new URL('/cv/', Astro.site)} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script is:inline>
+    try { if (location.hash === '#recruiter' || localStorage.getItem('cv-mode') === 'recruiter') document.documentElement.classList.add('recruiter'); } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="bar">
+    <a class="home" href="/">~/programmiere</a>
+    <div class="bar-actions">
+      <button class="print only-recruiter" type="button" onclick="window.print()">Print / save as PDF</button>
+      <button class="mode" type="button" aria-pressed="false">
+        <span class="only-run">Recruiter mode</span><span class="only-recruiter">Back to the run</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ RUN MODE ============ -->
+  <main class="run-view">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Matthias<br />Nordwig</h1>
+        <p class="pitch">Fifteen years of turning person-year problems in banking into shipped systems. Lately at speedrun pace.</p>
+        <p class="role">{PERSON.role}</p>
+        <div class="cta-row">
+          <a class="btn primary" href={`mailto:${PERSON.email}?subject=Next%20segment`}>Email me</a>
+          <a class="btn" href={PERSON.linkedin} rel="me">LinkedIn</a>
+        </div>
+      </div>
+
+      <figure class="splits" aria-label="Career as speedrun splits">
+        <figcaption><span>Career%</span><span class="attempts">attempt 1 · no resets</span></figcaption>
+        <ol>
+          {RUN.map((s) => (
+            <li class="split" data-split>
+              <span class="seg">{s.org}<small>{s.role}</small></span>
+              <span class="t">{s.to ? yrs(s) : 'running'}</span>
+            </li>
+          ))}
+          <li class="split side" data-split>
+            <span class="seg">Matrix<small>side run · offline RAG app</small></span>
+            <span class="t gold">14d</span>
+          </li>
+        </ol>
+        <div class="pb" data-split>
+          <span>Personal best</span>
+          <strong>14d 00:00:00</strong>
+          <span class="pb-note">from 48 h proof of concept to production app</span>
+        </div>
+      </figure>
+    </section>
+
+    <section class="log" aria-labelledby="log-h">
+      <h2 id="log-h">Boss fights</h2>
+      <p class="lede">Every station, the biggest thing it threw at me. Health bars are scope in person-days — the largest was 6,000.</p>
+      {RUN.map((s) => (
+        <article class="segment">
+          <header class="seg-head">
+            <span class="years">{span(s)}</span>
+            <h3>{s.org} <span class="as">{s.role}</span></h3>
+          </header>
+          <ul class="fights">
+            {s.fights.map((f) => (
+              <li class={f.gold ? 'fight gold' : 'fight'}>
+                <p class="boss">{f.boss}{f.gold && <span class="gold-tag">gold split</span>}</p>
+                {f.hp && (
+                  <div class="hp" role="img" aria-label={`${fmt(f.hp)} person-days`}>
+                    <span class="hp-fill" style={`--w:${(f.hp / MAX_HP) * 100}%`}></span>
+                    <span class="hp-label">{fmt(f.hp)} PD</span>
+                  </div>
+                )}
+                <p class="result">{f.result}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section class="quests" aria-labelledby="q-h">
+      <h2 id="q-h">Side quests</h2>
+      <p class="lede">Built after hours, mostly with AI agents I direct and verify.</p>
+      <div class="quest-list">
+        {SIDE_QUESTS.map((q) => (
+          <div class="quest">
+            <p class="quest-pb">{q.pb}</p>
+            <h3>{q.href ? <a href={q.href}>{q.name}</a> : q.name}</h3>
+            <p>{q.what}</p>
+            <p class="quest-note">{q.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="loadout" aria-labelledby="l-h">
+      <h2 id="l-h">Loadout</h2>
+      <dl>
+        {LOADOUT.map((g) => (<><dt>{g.slot}</dt><dd>{g.items.join(', ')}</dd></>))}
+      </dl>
+      <p class="origin">{EXTRAS.origin} {EXTRAS.languages.join(', ')}.</p>
+    </section>
+
+    <section class="portal" aria-labelledby="p-h">
+      <h2 id="p-h">Applied through a portal?</h2>
+      <p>Some recruiting portals ask for your CV and then make you type it in again, field by field.
+      I built a small tribute to that experience. It boots like a mainframe and judges you accordingly.</p>
+      <a class="btn" href="/null-device/">Enter the Null-Device</a>
+    </section>
+
+    <section class="next">
+      <h2>Next segment</h2>
+      <p>Got a problem everyone has scoped in person-years? Send it over.</p>
+      <a class="btn primary" href={`mailto:${PERSON.email}?subject=Next%20segment`}>{PERSON.email}</a>
+    </section>
+  </main>
+
+  <!-- ============ RECRUITER MODE ============ -->
+  <main class="recruiter-view">
+    <header class="r-head">
+      <h1>{PERSON.name}</h1>
+      <p>{PERSON.role}</p>
+      <p class="r-contact"><a href={`mailto:${PERSON.email}`}>{PERSON.email}</a> | <a href={PERSON.linkedin}>LinkedIn</a> | {PERSON.location}</p>
+    </header>
+    <section><h2>Summary</h2><p>{PERSON.summary}</p></section>
+    <section>
+      <h2>Experience</h2>
+      {[...RUN].reverse().map((s) => (
+        <div class="r-job">
+          <p class="r-job-head"><strong>{s.org} — {s.role}</strong><span>{span(s)}, {s.place}</span></p>
+          <ul>{s.fights.map((f) => <li>{f.line}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+    <section>
+      <h2>Selected projects</h2>
+      <ul>{SIDE_QUESTS.map((q) => <li><strong>{q.name}</strong> — {q.what} {q.note}</li>)}</ul>
+    </section>
+    <section>
+      <h2>Skills</h2>
+      <ul>{LOADOUT.map((g) => <li><strong>{g.slot}:</strong> {g.items.join(', ')}</li>)}</ul>
+    </section>
+    <section>
+      <h2>Education, publications, languages</h2>
+      <ul>
+        {EXTRAS.education.map((e) => <li>{e}</li>)}
+        {EXTRAS.publications.map((e) => <li>{e}</li>)}
+        <li>{EXTRAS.languages.join(', ')}</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot"><a href="/">programmiere.de</a> · No cookies, no trackers.</footer>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.querySelector('.mode');
+    const sync = () => btn?.setAttribute('aria-pressed', String(root.classList.contains('recruiter')));
+    sync();
+    btn?.addEventListener('click', () => {
+      root.classList.toggle('recruiter');
+      try { localStorage.setItem('cv-mode', root.classList.contains('recruiter') ? 'recruiter' : 'run'); } catch (e) {}
+      sync();
+      window.scrollTo({ top: 0 });
+    });
+    // One orchestrated moment: the splits fill in, then the personal best lands.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const splits = document.querySelectorAll('[data-split]');
+    if (!reduce) {
+      splits.forEach((el, i) => {
+        el.classList.add('pending');
+        setTimeout(() => el.classList.remove('pending'), 250 + i * 220);
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --night: #10144a;
+    --panel: #1a2066;
+    --rule: #2f3a9e;
+    --ink: #f3f4ff;
+    --muted: #aab0e4;
+    --gold: #ffc83d;
+    --ahead: #3fe39d;
+    --hp: #ff5d79;
+    --paper: #f6f7fb;
+    --paper-ink: #161a44;
+    --cobalt: #2d3bd1;
+    --display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--night); }
+  body { margin: 0; color: var(--ink); background: var(--night); font: 400 1.0625rem/1.6 var(--display); }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem clamp(16px, 4vw, 48px); }
+  .home { font-family: var(--mono); font-size: .9rem; text-decoration: none; color: var(--muted); }
+  .home:hover { color: var(--ink); }
+  .bar-actions { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+  button { font: 600 .9rem var(--display); cursor: pointer; border-radius: 999px; padding: .5rem 1rem; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
+  button:hover { background: var(--ink); color: var(--night); }
+
+  .btn { display: inline-block; font-weight: 700; text-decoration: none; padding: .75rem 1.25rem; border-radius: 999px; border: 2px solid var(--ink); }
+  .btn:hover { background: var(--ink); color: var(--night); }
+  .btn.primary { background: var(--gold); border-color: var(--gold); color: #1a1500; }
+  .btn.primary:hover { background: var(--ink); border-color: var(--ink); }
+
+  main { padding: 0 clamp(16px, 4vw, 48px); max-width: 1180px; margin: 0 auto; }
+  h2 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -.02em; line-height: 1; margin: 0 0 .75rem; font-variation-settings: 'wdth' 75; }
+  .lede { color: var(--muted); max-width: 60ch; margin: 0 0 2rem; }
+  section { padding: clamp(3rem, 8vw, 6rem) 0 0; }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-top: clamp(1.5rem, 5vw, 4rem); }
+  .hero h1 { font-size: clamp(3.5rem, 11vw, 8.5rem); line-height: .86; font-weight: 800; letter-spacing: -.045em; margin: 0 0 1.5rem; font-variation-settings: 'wdth' 75; }
+  .pitch { font-size: clamp(1.2rem, 2.2vw, 1.55rem); line-height: 1.35; max-width: 30ch; margin: 0 0 .75rem; font-weight: 600; }
+  .role { color: var(--muted); margin: 0 0 1.75rem; }
+  .cta-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+  /* LiveSplit-style panel: colour is information (gold = best segment ever) */
+  .splits { margin: 0; background: var(--panel); border: 2px solid var(--rule); border-radius: 14px; padding: 1rem 1.1rem 1.1rem; font-family: var(--mono); box-shadow: 0 0 0 6px rgba(47,58,158,.35); }
+  .splits figcaption { display: flex; justify-content: space-between; font-weight: 700; padding-bottom: .6rem; border-bottom: 1px solid var(--rule); margin-bottom: .3rem; }
+  .attempts { color: var(--muted); font-weight: 400; font-size: .8rem; }
+  .splits ol { list-style: none; margin: 0; padding: 0; }
+  .split { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .5rem 0; border-bottom: 1px dashed var(--rule); transition: opacity .35s ease, transform .35s ease; }
+  .seg { font-weight: 600; font-size: .95rem; }
+  .seg small { display: block; font-weight: 400; font-size: .72rem; color: var(--muted); }
+  .t { font-size: 1.05rem; color: var(--ahead); font-variant-numeric: tabular-nums; }
+  .t.gold, .gold-text { color: var(--gold); }
+  .split.side { border-bottom: 0; }
+  .pb { margin-top: .6rem; padding-top: .8rem; border-top: 2px solid var(--rule); display: grid; gap: .1rem; transition: opacity .5s ease, transform .5s ease; }
+  .pb span:first-child { color: var(--muted); font-size: .8rem; }
+  .pb strong { font-size: clamp(2rem, 5vw, 2.9rem); color: var(--gold); letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1.05; }
+  .pb-note { font-size: .75rem; color: var(--muted); }
+  .pending { opacity: 0; transform: translateY(6px); }
+
+  /* boss fights */
+  .segment { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 1.75rem 0; border-top: 2px solid var(--rule); }
+  .seg-head .years { font-family: var(--mono); color: var(--muted); font-size: .9rem; }
+  .seg-head h3 { margin: .2rem 0 0; font-size: 1.5rem; line-height: 1.1; }
+  .seg-head .as { display: block; font-size: .95rem; font-weight: 400; color: var(--muted); margin-top: .25rem; }
+  @media (min-width: 760px) { .segment { grid-template-columns: 15rem 1fr; } }
+  .fights { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+  .boss { margin: 0; font-weight: 700; font-size: 1.12rem; }
+  .gold-tag { margin-left: .6rem; font: 600 .72rem var(--mono); color: #1a1500; background: var(--gold); padding: .1rem .45rem; border-radius: 4px; vertical-align: middle; }
+  .fight.gold .boss { color: var(--gold); }
+  .result { margin: .2rem 0 0; color: var(--muted); max-width: 62ch; }
+  .hp { position: relative; height: 1.35rem; margin: .45rem 0 .15rem; background: #2a1030; border: 2px solid #4b1a46; border-radius: 4px; max-width: 34rem; overflow: hidden; }
+  .hp-fill { position: absolute; inset: 0 auto 0 0; width: var(--w); background: linear-gradient(180deg, #ff8197, var(--hp) 55%, #d63a5c); }
+  .hp-label { position: relative; font: 700 .75rem/1.25rem var(--mono); padding-left: .5rem; color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,.5); }
+
+  /* side quests */
+  .quest-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem 2.5rem; }
+  .quest { border-left: 4px solid var(--ahead); padding-left: 1.1rem; }
+  .quest:first-child { border-left-color: var(--gold); }
+  .quest-pb { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; line-height: 1; margin: 0; letter-spacing: -.02em; font-variation-settings: 'wdth' 75; }
+  .quest:first-child .quest-pb { color: var(--gold); }
+  .quest h3 { margin: .5rem 0 .3rem; font-size: 1.2rem; }
+  .quest p { margin: 0 0 .4rem; }
+  .quest-note { color: var(--muted); font-size: .95rem; }
+
+  /* loadout */
+  .loadout dl { display: grid; grid-template-columns: 1fr; gap: .25rem 2rem; margin: 0; }
+  @media (min-width: 760px) { .loadout dl { grid-template-columns: 12rem 1fr; } }
+  .loadout dt { font-weight: 700; padding-top: .9rem; }
+  .loadout dd { margin: 0; padding: .9rem 0 .9rem; border-bottom: 1px solid var(--rule); color: var(--muted); }
+  @media (min-width: 760px) { .loadout dt { border-bottom: 1px solid var(--rule); padding-bottom: .9rem; } }
+  .origin { margin-top: 1.5rem; color: var(--muted); }
+
+  /* portal + next */
+  .portal { max-width: 46rem; }
+  .portal p { margin: 0 0 1.5rem; }
+  .next { text-align: left; padding-bottom: 5rem; }
+  .next h2 { font-size: clamp(3rem, 9vw, 6rem); color: var(--gold); }
+  .next p { font-size: 1.3rem; margin: 0 0 1.5rem; }
+  .foot { padding: 2rem clamp(16px, 4vw, 48px); color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); }
+
+  /* mode switching */
+  .recruiter-view, .only-recruiter { display: none; }
+  html.recruiter .run-view, html.recruiter .only-run { display: none; }
+  html.recruiter .recruiter-view { display: block; }
+  html.recruiter .only-recruiter { display: inline; }
+  html.recruiter, html.recruiter body { background: var(--paper); color: var(--paper-ink); color-scheme: light; }
+  html.recruiter .home, html.recruiter .foot { color: #555b8c; border-color: #dfe2ef; }
+  html.recruiter button { border-color: var(--paper-ink); color: var(--paper-ink); }
+  html.recruiter button:hover { background: var(--paper-ink); color: var(--paper); }
+  html.recruiter :focus-visible { outline-color: var(--cobalt); }
+  .recruiter-view { max-width: 50rem; padding-bottom: 4rem; font-size: 1rem; line-height: 1.55; }
+  .recruiter-view a { color: var(--cobalt); }
+  .r-head h1 { font-size: 2.6rem; margin: 1rem 0 .2rem; letter-spacing: -.02em; }
+  .r-head p { margin: 0; }
+  .r-contact { margin-top: .4rem !important; color: #555b8c; }
+  .recruiter-view section { padding: 1.75rem 0 0; }
+  .recruiter-view h2 { font-size: 1.15rem; letter-spacing: 0; font-variation-settings: normal; border-bottom: 2px solid var(--paper-ink); padding-bottom: .3rem; margin-bottom: .8rem; }
+  .r-job { margin-bottom: 1rem; }
+  .r-job-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 .3rem; }
+  .r-job-head span { color: #555b8c; }
+  .recruiter-view ul { margin: 0; padding-left: 1.2rem; }
+
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media print {
+    .run-view, .bar, .foot { display: none !important; }
+    .recruiter-view { display: block !important; padding: 0; max-width: none; }
+    html, body { background: #fff !important; color: #000 !important; }
+    .recruiter-view a { color: #000; text-decoration: none; }
+  }
+</style>

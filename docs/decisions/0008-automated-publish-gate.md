@@ -21,7 +21,9 @@ der **einzige** Weg nach außen: direkte Pushes verweigert `.claude/hooks/publis
 **Akzeptiertes Restrisiko.** Kein Mensch liest vor der Veröffentlichung. Ein Fehler, den
 Schreiber *und* Reviewer übersehen und den der Check nicht kennt, geht online. Gegenmittel:
 gesperrte Quellen (`.claude/settings.json`), strenger Reviewer, die Begriffsliste wächst mit
-jedem Fund. Zurücknehmen: `scripts/unpublish.sh <beitrag> "<grund>"` — nur auf ausdrückliche
+jedem Fund. Änderungen an der Seite selbst (Layout, Lebenslauf, Projektseiten, Doku) gehen über
+`npm run ship` (`scripts/ship-site.sh`), das Beitragsänderungen verweigert.
+Zurücknehmen: `scripts/unpublish.sh <beitrag> "<grund>"` — nur auf ausdrückliche
 Owner-Anweisung.
 
 **Konsequenzen.** Geplante Läufe brauchen keine Rückfrage. Der Owner wird nur benachrichtigt,
