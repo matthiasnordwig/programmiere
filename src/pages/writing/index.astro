@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { publishedPosts } from '../../lib';
+const posts = await publishedPosts();
+---
+<Base title="Writing" description="Deep dives, build logs and DIY projects.">
+  <h1>Writing</h1>
+  <p class="lede">Deep dives on problems I cracked, short build logs from ongoing work, and the
+  occasional DIY project.</p>
+  {posts.length ? <PostList posts={posts} /> : <p>Nothing published yet.</p>}
+</Base>

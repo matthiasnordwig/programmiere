@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { render } from 'astro:content';
+import { publishedPosts, TYPE_LABEL, fmtDate } from '../../lib';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <div class="meta">{fmtDate(post.data.date)} · {TYPE_LABEL[post.data.type]}{post.data.draft && <> · <span class="draft-badge">draft</span></>}</div>
+    <h1>{post.data.title}</h1>
+    <p class="lede">{post.data.description}</p>
+    <Content />
+    {post.data.tags.length > 0 && <p>{post.data.tags.map((t) => <span class="tag">{t}</span>)}</p>}
+  </article>
+</Base>

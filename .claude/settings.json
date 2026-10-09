@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "~/matrix",
+      "~/wp-plugins/gdpr-recaptcha"
+    ],
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(git log *)",
+      "Bash(git -C * log *)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(gh pr merge *)",
+      "Bash(gh repo *)"
+    ],
+    "deny": [
+      "Edit(~/matrix/**)",
+      "Edit(~/wp-plugins/gdpr-recaptcha/**)",
+      "Read(~/wp-plugins/gdpr-recaptcha/loop/state/**)",
+      "Read(~/wp-plugins/gdpr-recaptcha/LOOP-FUNDE.md)",
+      "Read(~/wp-plugins/gdpr-recaptcha/server/**)",
+      "Read(~/matrix/settings_backup*)",
+      "Read(~/matrix/settings_run_cmd_backup.txt)",
+      "Read(~/matrix/matrix.db)",
+      "Read(~/matrix/eval_dbs/**)",
+      "Read(~/matrix/Beipspieldokumente/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/publish-gate.sh", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

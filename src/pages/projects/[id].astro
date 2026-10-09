@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection, render } from 'astro:content';
+import { publishedPosts } from '../../lib';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+const related = (await publishedPosts()).filter((p) => p.data.project === project.id);
+---
+<Base title={project.data.title} description={project.data.summary}>
+  <div class="meta">{project.data.status}</div>
+  <h1>{project.data.title}</h1>
+  <p class="lede">{project.data.summary}</p>
+  <Content />
+  {project.data.links.length > 0 && (
+    <p>{project.data.links.map((l, i) => <>{i > 0 && ' · '}<a href={l.url}>{l.label}</a></>)}</p>
+  )}
+  {related.length > 0 && <><h2>Writing about this</h2><PostList posts={related} /></>}
+</Base>

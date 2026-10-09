@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+# Claude Code: persönliche Freigaben und Agent-Worktrees bleiben lokal
+/.claude/settings.local.json
+/.claude/worktrees/
+# Rohmaterial für DIY-Posts (Fotos, Sprachnotizen) bleibt lokal; ins Repo kommt nur,
+# was ein Post tatsächlich verwendet (dann unter src/assets/ bzw. public/).
+/inbox/diy/*
+!/inbox/diy/README.md

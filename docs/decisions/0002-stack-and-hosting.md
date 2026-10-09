@@ -1,0 +1,15 @@
+# 0002 — Stack und Hosting
+
+**Status:** gilt · 2026-10-10
+
+**Entscheidung.** Astro (statisch, Content Collections mit Schema), Markdown-Beiträge im Repo,
+GitHub Pages mit eigener Domain `programmiere.de` (`public/CNAME`), Build per GitHub Action.
+Eigenes Repo und eigener Ordner (`~/projects/programmiere`), getrennt von den Projekt-Repos.
+
+**Warum.** Beiträge als Dateien sind für Agenten der natürlichste Arbeitsgegenstand (Branch,
+Diff, Review); kein CMS, keine Datenbank, kein Server. Statisch heißt auch: keine
+Angriffsfläche, keine Betriebslast — wichtig, weil Weiterbetreiben nicht meine Stärke ist.
+Getrenntes Repo, weil der Blog andere Regeln hat als die Projekte und sie nur liest.
+
+**Konsequenzen.** `npm run build` ist der Schema- und Gesamttest. Domain-DNS und GitHub-Repo
+richte ich selbst ein (nach außen wirkend).

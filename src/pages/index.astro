@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getCollection } from 'astro:content';
+import { publishedPosts } from '../lib';
+import { SITE } from '../site';
+const posts = (await publishedPosts()).slice(0, 5);
+const featured = (await getCollection('projects', ({ data }) => data.featured)).sort((a, b) => a.data.order - b.data.order);
+---
+<Base>
+  <h1>{SITE.tagline}</h1>
+  <p class="lede">I'm Matthias. I take problems most people file under "too hard", crack them with
+  AI agents and a lot of deduction, and write down how — including what broke on the way.</p>
+
+  <h2>Projects</h2>
+  <ul class="list">
+    {featured.map((p) => (
+      <li>
+        <div class="meta">{p.data.status}</div>
+        <a class="title" href={`/projects/${p.id}/`}>{p.data.title}</a>
+        <p>{p.data.summary}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Latest writing</h2>
+  {posts.length ? <PostList posts={posts} /> : <p class="lede">First posts are on the way.</p>}
+</Base>

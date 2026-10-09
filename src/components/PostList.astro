@@ -1,0 +1,13 @@
+---
+import { TYPE_LABEL, fmtDate } from '../lib';
+const { posts } = Astro.props;
+---
+<ul class="list">
+  {posts.map((p) => (
+    <li>
+      <div class="meta">{fmtDate(p.data.date)} · {TYPE_LABEL[p.data.type]}{p.data.draft && <> · <span class="draft-badge">draft</span></>}</div>
+      <a class="title" href={`/writing/${p.id}/`}>{p.data.title}</a>
+      <p>{p.data.description}</p>
+    </li>
+  ))}
+</ul>
