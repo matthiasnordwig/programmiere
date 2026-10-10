@@ -1,0 +1,38 @@
+---
+// Screenshot that fills the column and opens full size on click (native <dialog>, no JS library).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { src: ImageMetadata; alt: string; caption?: string; id: string; }
+const { src, alt, caption, id } = Astro.props;
+---
+<figure class="zoom">
+  <button type="button" class="zoom-open" data-dialog={id} aria-label={`Open full size: ${alt}`}>
+    <Image src={src} alt={alt} widths={[800, 1400, src.width]} sizes="(min-width: 1180px) 1150px, 100vw" />
+    <span class="zoom-hint">Click to enlarge</span>
+  </button>
+  {caption && <figcaption>{caption}</figcaption>}
+  <dialog id={id} class="zoom-dialog">
+    <form method="dialog"><button class="zoom-close" aria-label="Close">Close</button></form>
+    <img src={src.src} alt={alt} width={src.width} height={src.height} loading="lazy" />
+  </dialog>
+</figure>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.zoom-open').forEach((b) => {
+    b.addEventListener('click', () => (document.getElementById(b.dataset.dialog!) as HTMLDialogElement)?.showModal());
+  });
+  document.querySelectorAll<HTMLDialogElement>('.zoom-dialog').forEach((d) => {
+    d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
+  });
+</script>
+<style>
+  .zoom { margin: 0; }
+  .zoom-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; position: relative; }
+  .zoom-open :global(img) { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 60px -32px rgba(18,20,40,.35); }
+  .zoom-hint { position: absolute; right: 12px; bottom: 12px; background: rgba(18,20,28,.78); color: #fff; font: 600 .8rem var(--sans); padding: .35rem .65rem; border-radius: 999px; }
+  .zoom figcaption { margin-top: .7rem; color: var(--muted); font-size: .95rem; max-width: 52rem; }
+  .zoom-dialog { padding: 0; border: 0; max-width: 98vw; max-height: 96vh; background: transparent; }
+  .zoom-dialog::backdrop { background: rgba(10,12,20,.88); }
+  .zoom-dialog img { display: block; max-width: 98vw; max-height: 92vh; width: auto; height: auto; border-radius: 8px; }
+  .zoom-dialog form { text-align: right; }
+  .zoom-close { font: 700 .9rem var(--sans); color: #fff; background: none; border: 0; padding: .5rem; cursor: pointer; }
+</style>

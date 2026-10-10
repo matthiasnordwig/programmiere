@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import LoopFlow from '../../components/diagrams/LoopFlow.astro';
+import '../../styles/story.css';
+---
+<Base wide title="The maintainer loop — an AI that maintains software and has to ask first" description="An autonomous loop maintains a WordPress plugin: it reads the forums, writes fixes, passes checks no model can argue with — and nothing ships until the owner approves that one action from his phone.">
+<div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in">
+      <p class="kicker">The maintainer loop</p>
+      <h1>My software maintains itself. It still has to ask me.</h1>
+      <p class="big">An AI reads the support forum, writes fixes, drafts replies and prepares releases for
+      <a href="/projects/gdpr-recaptcha/">a WordPress plugin with about 4,000 installs</a>. Then it stops and texts me.
+      One word — "ja" — and exactly that one thing happens. Nothing else.</p>
+      <div class="card shot"><LoopFlow /></div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div><p class="kicker">The question everyone asks</p><h2>How much power do you give an AI agent?</h2></div>
+      <div>
+        <p class="big">Enough to do real work. Never enough to do damage on its own.</p>
+        <p class="muted">The answer here is a strict split: the model is allowed to propose anything. Deciding, executing and
+        anything that can't be undone happens in plain code — and the irreversible steps need a human, every single time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Four roles</p>
+      <h2>A small team, minus the meetings.</h2>
+      <p class="big">The parts talk only through files. No shared memory, nothing hidden.</p>
+      <ol class="steps">
+        <li><div><h3>Scout <span class="who rules">rules</span></h3><p>Polls the plugin's forum and reviews, competitors' changelogs, form-builder forums and its own live spam data. Files anything new into an inbox. No AI involved.</p></div></li>
+        <li><div><h3>Worker <span class="who ai">AI</span></h3><p>A headless coding session that implements one item on its own branch. Then a deterministic verifier — not the AI — decides whether the result is even allowed to be proposed.</p></div></li>
+        <li><div><h3>Concierge <span class="who ai">AI</span> + <span class="who rules" style="margin-left:0">rules</span></h3><p>Talks to me over Signal. The model may phrase things and suggest "go" or "veto" for one existing item — it can never execute anything.</p></div></li>
+        <li><div><h3>Gate <span class="who rules">rules</span></h3><p>The only door to the outside world: release, merge, forum post. One approval per action, tied to my number. An approval never carries over to the next thing.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Paranoid by design</p>
+      <h2>Assume the internet is trying to talk to the AI.</h2>
+      <p class="big">Forum posts are written by strangers. Some of them would love to tell an AI what to do.</p>
+      <div class="grid3">
+        <div><h3>Untrusted text is boxed</h3><p>Anything from the outside reaches the model clearly fenced off as untrusted data — never as instructions.</p></div>
+        <div><h3>The important sentences aren't AI-written</h3><p>What I'm actually approving is rendered by fixed templates. No model and no forum post can change the wording of the question I say "ja" to.</p></div>
+        <div><h3>One question at a time</h3><p>A single, short-lived confirmation slot. If a new notification arrives while a question is open, the old question is cancelled — so a "ja" can't land on the wrong thing.</p></div>
+        <div><h3>Releases need a different word</h3><p>Publishing to WordPress.org can't be confirmed with the word that approves a merge. Different risk, different key.</p></div>
+        <div><h3>No nagging</h3><p>A pending release shows up in the daily digest — but there is no escalating reminder, because the pace of changes is partly driven by text from strangers.</p></div>
+        <div><h3>Fails closed</h3><p>Unreadable state, broken model, missing marker: the safe default wins, every time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in split">
+      <div><p class="kicker">From the phone</p><h2>Shipping a release by text message.</h2></div>
+      <div>
+        <p class="big">I type "release 5.2.0". The loop prepares everything in an isolated copy: version bump,
+        changelog from the commit history, validation. Then it shows me what will go out — and waits.</p>
+        <p class="muted">The changelog gets one optional AI polish for better English. The raw text is shown right next to it,
+        so I judge a difference instead of trusting a rewrite. If the model doesn't answer, the release still goes out with the
+        raw text — a release is never blocked by a model.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Watching the watcher</p>
+      <h2>"Not measured" is not the same as "fine".</h2>
+      <p class="big">Small canary tests check every day that the AI's sandbox still holds and that the model still behaves.
+      When a check can't run, it says exactly that — it never reports "healthy" for something it didn't test.</p>
+      <p class="muted">Lesson learned the honest way: a loop that reports its own failures correctly still needs a second channel
+      to reach its owner. The interesting engineering in agent systems is often not the agent — it's the monitoring around it.</p>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">By the numbers</p>
+      <h2>Not a weekend demo.</h2>
+      <div class="numbers">
+        <div><strong>~30,000</strong><span>lines of loop code across almost 100 modules</span></div>
+        <div><strong>1,889</strong><span>automated tests — the test runner refuses any real model call</span></div>
+        <div><strong>4</strong><span>roles: scout, worker, concierge, gate</span></div>
+        <div><strong>1 word</strong><span>between a prepared change and the outside world</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in read">
+      <p class="kicker">The takeaway</p>
+      <h2>Give agents real work. Keep the keys.</h2>
+      <p class="big">The pattern is general: the model proposes, deterministic code decides what's even possible, and a human
+      holds the one key that can't be taken back. It works for a WordPress plugin — and for anything where an AI should act,
+      but not alone.</p>
+      <a class="go" href="mailto:matthias.nordwig@programmiere.de?subject=Maintainer%20loop">Talk to me about it</a>
+    </div>
+  </section>
+
+</div>
+</Base>

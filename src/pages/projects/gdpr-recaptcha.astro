@@ -1,0 +1,113 @@
+---
+import Base from '../../layouts/Base.astro';
+import PowFlow from '../../components/diagrams/PowFlow.astro';
+import '../../styles/story.css';
+const WPORG = 'https://wordpress.org/plugins/gdpr-compliant-recaptcha-for-all-forms/';
+const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Invisible Anti-Spam & CAPTCHA — reCAPTCHA Alternative for All Forms', applicationCategory: 'SecurityApplication', operatingSystem: 'WordPress', url: WPORG, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, author: { '@type': 'Person', name: 'Matthias Nordwig' } };
+const builders = ['Contact Form 7', 'WPForms', 'Elementor Pro Forms', 'Ninja Forms', 'Fluent Forms', 'Forminator', 'Gravity Forms', 'Formidable', 'Everest Forms', 'WS Form', 'SureForms', 'MetForm', 'JetFormBuilder', 'Otter Blocks', 'Spectra', 'Kadence Blocks', 'Essential Blocks', 'Divi Forms', 'Jetpack Forms', 'WooCommerce', 'wpForo', 'Directorist'];
+---
+<Base wide title="Invisible anti-spam for WordPress — a reCAPTCHA alternative" description="Free WordPress plugin that stops form spam without Google, cookies or puzzles: the visitor's browser silently proves it's real, bots pay in compute. Works with every form." jsonld={jsonld}>
+<div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in split">
+      <div>
+        <p class="kicker">Free WordPress plugin · about 4,000 sites</p>
+        <h1>Spam protection your visitors never see.</h1>
+        <p class="big">No traffic lights to click. No "I'm not a robot". No Google. Your visitors just press
+        Send — and spam bots quietly lose.</p>
+        <a class="go" href={WPORG}>Install free from WordPress.org</a>
+      </div>
+      <div class="card"><PowFlow /></div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div><p class="kicker">The trick</p><h2>Make the device pay, not the human.</h2></div>
+      <div>
+        <p class="big">While someone fills in your form, their browser solves a tiny cryptographic puzzle in a few
+        milliseconds. A real person never notices.</p>
+        <p class="muted">A spam bot sending ten thousand messages has to solve ten thousand puzzles. Either it fails,
+        or spamming your site stops paying off. Under a spam wave the puzzle automatically gets harder for everyone,
+        and relaxes again afterwards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Every form</p>
+      <h2>Not a list of integrations. Every form you actually have.</h2>
+      <p class="big">Most anti-spam tools only protect the form plugins they wrote an integration for. This one
+      recognises a submission by its signature — the fields and actions the request itself carries — so it covers
+      logins, comments, checkouts and practically every builder.</p>
+      <p class="muted" style="margin-bottom:.5rem">Recognised automatically on activation:</p>
+      <p>{builders.join(' · ')} — and dozens more.</p>
+      <div class="grid3">
+        <div><h3>Teach it in a minute</h3><p>Hand-coded form or exotic builder? Switch on analysis mode, submit the form once, click save. No code.</p></div>
+        <div><h3>Updates can't break it</h3><p>No integration code means nothing to break when your form builder updates.</p></div>
+        <div><h3>One honest limit</h3><p>Forms hosted elsewhere and merely embedded (Typeform, Jotform, HubSpot…) never reach WordPress, so no WordPress plugin can check them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Nothing leaves your server</p>
+      <h2>No account. No API key. No cookie banner entry.</h2>
+      <div class="grid3">
+        <div><h3>Nothing external can fail</h3><p>No third-party API whose outage or rate limit silently breaks your forms.</p></div>
+        <div><h3>Nothing external slows you down</h3><p>No remote scripts, no extra DNS lookups. A few kilobytes of JavaScript, no layout shift.</p></div>
+        <div><h3>Privacy by design</h3><p>No cookies, no sessions, no tracking. IP addresses are only stored as hashes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Why not just use…</p>
+      <h2>The usual suspects, honestly compared.</h2>
+      <div class="table-wrap card">
+        <table class="demo">
+          <thead><tr><th></th><th>This plugin</th><th>reCAPTCHA · hCaptcha · Turnstile</th><th>Akismet</th><th>Honeypots</th></tr></thead>
+          <tbody>
+            <tr><td>Visitors have to do something</td><td class="ok">never</td><td>sometimes</td><td>no</td><td>no</td></tr>
+            <tr><td>Account / API key needed</td><td class="ok">no</td><td>yes</td><td>yes</td><td>no</td></tr>
+            <tr><td>Data or scripts from third parties</td><td class="ok">none</td><td>scripts from their servers</td><td>messages sent for analysis</td><td>none</td></tr>
+            <tr><td>Protects forms without a ready integration</td><td class="ok">yes</td><td>usually no</td><td>usually no</td><td>depends</td></tr>
+            <tr><td>Holds up against modern bots</td><td class="ok">yes — attacks the economics</td><td>yes</td><td>yes</td><td class="warn">often skipped</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">More in the box</p>
+      <div class="grid3">
+        <div><h3>Login protection</h3><p>Brute-force protection for logins, with optional Fail2Ban log support.</p></div>
+        <div><h3>Your call per site</h3><p>Block spam, deliver it flagged, or just collect it in a spam inbox and watch.</p></div>
+        <div><h3>Free</h3><p>Everything on this page costs nothing.</p></div>
+      </div>
+      <div class="numbers">
+        <div><strong>~4,000</strong><span>active installations on WordPress.org</span></div>
+        <div><strong>4.8 / 5</strong><span>average rating from 50 reviews</span></div>
+        <div><strong>0</strong><span>requests to third parties for the spam check</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in read">
+      <p class="kicker">Behind the scenes</p>
+      <h2>Maintained by an AI that has to ask first.</h2>
+      <p class="big">Support questions, fixes and releases go through <a href="/projects/maintainer-loop/">an autonomous
+      maintainer loop</a> — and nothing reaches WordPress.org until I approve it with one word from my phone.</p>
+      <a class="go" href={WPORG}>Install free from WordPress.org</a>
+    </div>
+  </section>
+
+</div>
+</Base>

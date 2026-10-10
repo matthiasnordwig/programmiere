@@ -1,0 +1,210 @@
+---
+import Base from '../../layouts/Base.astro';
+import Zoom from '../../components/story/Zoom.astro';
+import MatrixFlow from '../../components/diagrams/MatrixFlow.astro';
+import '../../styles/story.css';
+import graph from '../../assets/projects/matrix-graph.jpg';
+import detail from '../../assets/projects/matrix-graph-detail.jpg';
+import chat from '../../assets/projects/matrix-chat.jpg';
+const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix', applicationCategory: 'BusinessApplication', operatingSystem: 'macOS, iOS, Linux (browser)', description: 'Ask thousands of pages a question, offline. Answers come with the exact sentence that proves them; a knowledge graph backs every link with a quote.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
+---
+<Base wide title="Matrix — ask a thousand pages a question" description="Matrix answers questions about whole document collections with the exact sentence as proof, maps who-relates-to-what as a graph, and runs on a Mac or iPhone without the cloud." jsonld={jsonld}>
+<div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in">
+      <p class="kicker">Matrix</p>
+      <h1>Ask a thousand pages a question. On a phone, offline.</h1>
+      <p class="big">Give it regulations, contracts or annual reports. Ask anything. You get an answer —
+      and the exact sentence it came from, so you can check it in five seconds instead of trusting it.</p>
+      <div class="shot"><Zoom id="z-graph" src={graph} alt="Matrix knowledge graph extracted from one public annual report: thousands of entities connected by labelled relations." caption="One public annual report, turned into 4,385 entities and 1,919 relations. Click to see it full size." /></div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div>
+        <p class="kicker">The problem</p>
+        <h2>AI sounds right. That's the problem.</h2>
+      </div>
+      <div>
+        <p class="big">Chatbots are fluent and confident — and can't tell you where it says that. For anyone
+        whose job is to be right on paper, "sounds plausible" is worth nothing.</p>
+        <p class="muted">Regulations, contracts and reports are thousands of pages of scattered knowledge where every
+        statement needs a source. Matrix is built for exactly that kind of reading.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">The one rule</p>
+      <h2>The AI reads. Everything you could check is plain code.</h2>
+      <p class="big">The language model is only used where language understanding is needed. Splitting
+      documents, following references, verifying quotes, correcting sources and logging every step is
+      done by ordinary rules — reproducible, no AI judgement involved.</p>
+      <p>Throughout this page: <span class="who ai" style="margin:0">AI</span> means the model decides,
+      <span class="who rules" style="margin:0">rules</span> means deterministic code does.</p>
+      <div class="grid3">
+        <div><h3>Every answer shows its sources</h3><p>Down to the verbatim quote in the original. Clickable, checkable.</p></div>
+        <div><h3>Your data stays home</h3><p>Runs with local models on the device or inside your own network. Nothing has to leave.</p></div>
+        <div><h3>Nothing happens in the dark</h3><p>Every search, every hit, every automatic correction is logged and can be replayed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Ask a question</p>
+      <h2>It doesn't guess. It goes looking.</h2>
+      <p class="big">Ask once, and the model researches the documents itself — like a junior analyst
+      with a strict supervisor.</p>
+      <ol class="steps">
+        <li><div><h3>Prepare the documents <span class="who rules">rules</span></h3><p>Split along their real structure — articles, sections. Each piece gets a "meaning fingerprint" so search works on sense, not just words. References like "pursuant to Art. 92(1)" are linked to their target.</p></div></li>
+        <li><div><h3>Search, read, search again <span class="who ai">AI</span></h3><p>The model writes its own search queries, opens passages, follows references and keeps digging with the vocabulary it found — until it has enough evidence or runs out of budget.</p></div></li>
+        <li><div><h3>Guard rails <span class="who rules">rules</span></h3><p>A search budget caps the cost. Watchdogs stop it from going in circles. An answer given without searching at all is thrown away.</p></div></li>
+        <li><div><h3>Answer only from what it found <span class="who ai">AI</span></h3><p>Every statement is tagged with its source number: [1], [2], [3].</p></div></li>
+        <li><div><h3>Check the answer <span class="who rules">rules</span></h3><p>The checks in the next section run on every answer, then everything is shown with clickable sources and a full log.</p></div></li>
+      </ol>
+      <div class="shot"><Zoom id="z-chat" src={chat} alt="Matrix chat: a question about a company's climate targets, a one-sentence answer, and the four source passages it was drawn from." caption="A real question to a public (German) annual report — “Which climate targets has Uniper committed to, and by when?” One sentence of answer, and right underneath the passages it came from, with their relevance scores. (Answered here by a hosted Llama model; local models run the same pipeline.)" /></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in split">
+      <div>
+        <p class="kicker">Built-in fact check</p>
+        <h2>It checks its own homework.</h2>
+        <p class="big">After every answer, a chain of plain-code checks goes over each citation.</p>
+      </div>
+      <div class="card">
+        <ol class="steps" style="margin-top:0">
+          <li><div><h3>Does the source exist?</h3><p>Every [n] is validated against the list of sources actually retrieved.</p></div></li>
+          <li><div><h3>Is the quote really there?</h3><p>Quoted words are searched in the original. Not found → a warning sign on the answer.</p></div></li>
+          <li><div><h3>Does that source actually say it?</h3><p>Two independent signals — shared key terms (legal references count triple) and closeness in meaning.</p></div></li>
+          <li><div><h3>Fix only when both agree</h3><p>Then the marker is pointed to the right source and labelled "→ 3". Otherwise just a hint. The answer text itself is never rewritten.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">The grid</p>
+      <h2>Same question. Five hundred times. As a spreadsheet.</h2>
+      <p class="big">Load hundreds of passages — or upload your own list — and ask every row the same
+      question. Each answer has to fit fields you define: text, number, choice.</p>
+      <div class="table-wrap card">
+        <p class="muted" style="margin:0 0 .25rem">Illustration of the format</p>
+        <table class="demo">
+          <thead><tr><th>Row (source)</th><th>Answer, in your schema</th><th>Check</th></tr></thead>
+          <tbody>
+            <tr><td>Contract A — § 7 Termination</td><td>Notice: 6 months · Special right: yes</td><td class="ok">✓ valid</td></tr>
+            <tr><td>Contract B — § 4 Liability</td><td>Cap: €1m · Exception: intent</td><td class="ok">✓ valid</td></tr>
+            <tr><td>Contract C — § 9 Exit</td><td>Notice: — (not found)</td><td class="warn">⚠ field empty</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid3">
+        <div><h3>Validated, not trusted</h3><p>Missing or wrongly typed fields show up right in the cell.</p></div>
+        <div><h3>Lists fan out</h3><p>Five items in one answer become five rows — each still linked to its source passage.</p></div>
+        <div><h3>Redo just the bad rows</h3><p>Re-run single rows with a stronger model; duplicates are merged; export to Excel.</p></div>
+      </div>
+      <p class="muted" style="margin-top:2rem">Typical uses: a list of every obligation in a regulation with addressee, deadline and evidence ·
+      the same check across hundreds of contracts · first-pass screening of a customer list.</p>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">The knowledge graph</p>
+      <h2>A map of who relates to what — with receipts.</h2>
+      <p class="big">The model reads every passage and pulls out things and relations: who is responsible for what,
+      what mitigates which risk, who owns whom. Every single link carries a verbatim quote from the original.</p>
+      <div class="shot"><Zoom id="z-detail" src={detail} alt="Close-up of the Matrix knowledge graph: entities such as risk analysis, human-rights training and water use, connected by relations like MITIGATES and APPLIES_TO." caption="Zoomed in: entities and typed relations such as MITIGATES, OWNS, APPLIES_TO." /></div>
+      <div class="grid3">
+        <div><h3>Quotes are verified</h3><p>A link whose quote can't be found is repaired first, not silently dropped. If the quote says the opposite ("must not…"), it's flagged.</p></div>
+        <div><h3>Duplicates merged</h3><p>"BaFin" and "Federal Financial Supervisory Authority" become one node — every merge is logged and can be undone by hand.</p></div>
+        <div><h3>Lenses, not rewrites</h3><p>Raw labels stay untouched; a switchable "lens" maps them onto your own vocabulary — no re-extraction needed.</p></div>
+        <div><h3>Topics and summaries</h3><p>The graph is split into clusters, each with a short summary — a table of contents for the whole corpus.</p></div>
+        <div><h3>Nothing disappears quietly</h3><p>Failing passages go to quarantine and are retried; every finding lands in a review queue.</p></div>
+        <div><h3>Honest about quality</h3><p>A local 30B-class model gives a fast first map — orientation, not proof. A frontier model gets close to "audit-ready".</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div>
+        <p class="kicker">Runs everywhere</p>
+        <h2>One engine. Mac, iPhone, browser.</h2>
+        <p class="big">Everything important lives in a single core written in Rust. The apps on top are thin.</p>
+        <div class="grid3" style="grid-template-columns:1fr">
+          <div><h3>Mac</h3><p>Local models on Apple's GPU (Metal) and Neural Engine — fast and power-efficient.</p></div>
+          <div><h3>iPhone and iPad</h3><p>The same app, the same features, down to sharing documents into it.</p></div>
+          <div><h3>Browser</h3><p>A Linux container in your own network. Nothing to install for users.</p></div>
+        </div>
+      </div>
+      <div class="card"><MatrixFlow /></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Any model</p>
+      <h2>Bring your own AI. Or none from outside at all.</h2>
+      <p class="big">One cockpit for every model connection — each assigned to the job it's good at.</p>
+      <div class="grid3">
+        <div><h3>On the device</h3><p>Search and download models from Hugging Face inside the app; run them locally.</p></div>
+        <div><h3>Small specialists</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
+        <div><h3>Company gateway</h3><p>OpenAI-compatible or Azure endpoints behind your own infrastructure.</p></div>
+        <div><h3>Cloud, deliberately</h3><p>Direct providers where allowed — a conscious, per-case choice.</p></div>
+        <div><h3>Per-model limits</h3><p>Requests per minute, token budgets, parallelism — gentle on gateways and budgets.</p></div>
+        <div><h3>Only what it can do</h3><p>Tool use and reasoning are switched on only for models that actually support them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Built for bad days</p>
+      <h2>Tested against real outages, not sunny days.</h2>
+      <div class="grid3">
+        <div><h3>Load balancing</h3><p>Several endpoints as one pool; throttled members are routed around before a fallback model steps in.</p></div>
+        <div><h3>Slow gateway? Stream.</h3><p>When a proxy gets sluggish, the app switches to streaming so the connection doesn't time out.</p></div>
+        <div><h3>Retry with judgement</h3><p>Temporary errors are retried with growing waits; stubborn cases are skipped instead of killing the run.</p></div>
+        <div><h3>Fallback model</h3><p>If a model returns garbage, a backup model takes over — only for that one passage.</p></div>
+        <div><h3>Background jobs</h3><p>Long runs keep going in the background with visible progress; the app stays usable.</p></div>
+        <div><h3>Cool-headed</h3><p>Local models watch the device's temperature and slow down instead of overheating a laptop.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">By the numbers</p>
+      <h2>Measured, not felt.</h2>
+      <div class="numbers">
+        <div><strong>2 weeks</strong><span>from a 48-hour prototype to the working app</span></div>
+        <div><strong>65 → 94%</strong><span>top-5 hit rate on a set of legal-norm questions once re-ranking is switched on</span></div>
+        <div><strong>~2×</strong><span>faster re-ranking with the GGUF model on Apple silicon, at equal or better quality</span></div>
+        <div><strong>4,385</strong><span>entities extracted from a single annual report, each relation backed by a quote</span></div>
+      </div>
+      <p class="muted" style="margin-top:2rem">Retrieval quality is tracked with fixed "golden" question sets and expected source passages — quality is judged on those, not on impressions.</p>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in read">
+      <p class="kicker">Where it stands</p>
+      <h2>Honest status.</h2>
+      <p class="big">Asking and the grid work today, with a local model or a gateway. The knowledge graph is
+      two-tier: local for a fast first map, a strong model where it has to hold up. The checks run either way —
+      they show you where the output can be trusted.</p>
+      <p>Interested in trying it on your own documents, or in how a part of it works?</p>
+      <a class="go" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a>
+    </div>
+  </section>
+
+</div>
+</Base>
