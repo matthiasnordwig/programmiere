@@ -1,28 +1,95 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
-import { getCollection } from 'astro:content';
+import MatrixFlow from '../components/diagrams/MatrixFlow.astro';
+import LoopFlow from '../components/diagrams/LoopFlow.astro';
 import { publishedPosts } from '../lib';
 import { SITE } from '../site';
-const posts = (await publishedPosts()).slice(0, 5);
-const featured = (await getCollection('projects', ({ data }) => data.featured)).sort((a, b) => a.data.order - b.data.order);
+const posts = (await publishedPosts()).slice(0, 4);
 ---
-<Base>
-  <h1>{SITE.tagline}</h1>
-  <p class="lede">I'm Matthias. I take problems most people file under "too hard", crack them with
-  AI agents and a lot of deduction, and write down how — including what broke on the way.</p>
+<Base wide description="Matrix answers questions about thousands of pages offline on a phone. A self-maintaining WordPress plugin asks before it ships. Notes on how both were built.">
+  <section class="show show-matrix">
+    <div class="show-inner">
+      <div class="show-text">
+        <p class="project">Matrix</p>
+        <h1>Ask a thousand pages a question. On a phone, offline.</h1>
+        <p class="sub">Matrix reads document collections, answers with the exact sentence that proves it, and maps
+        who-relates-to-what as a graph where every link carries its quote. It all runs on a Mac or an
+        iPhone — no cloud required.</p>
+        <ul class="facts">
+          <li><strong>2 weeks</strong> from a 48-hour prototype to the working app</li>
+          <li><strong>Rust</strong> core, one codebase for macOS, iPhone and a web server</li>
+          <li><strong>On-device</strong> models on Apple's GPU and Neural Engine</li>
+        </ul>
+        <a class="go" href="/projects/matrix/">How Matrix works</a>
+      </div>
+      <div class="show-visual"><MatrixFlow /></div>
+    </div>
+  </section>
 
-  <h2>Projects</h2>
-  <ul class="list">
-    {featured.map((p) => (
-      <li>
-        <div class="meta">{p.data.status}</div>
-        <a class="title" href={`/projects/${p.id}/`}>{p.data.title}</a>
-        <p>{p.data.summary}</p>
-      </li>
-    ))}
-  </ul>
+  <section class="show show-loop">
+    <div class="show-inner">
+      <div class="show-text">
+        <p class="project">The maintainer loop</p>
+        <h2>My software maintains itself. It still has to ask me.</h2>
+        <p class="sub">An AI reads support forums and reviews, writes the fix on its own branch, and passes checks
+        no model can talk its way through. Then it stops. Every release, merge or forum reply needs one
+        word from my phone — and approving one thing never approves the next.</p>
+        <a class="go" href="/projects/maintainer-loop/">Inside the loop</a>
+      </div>
+      <div class="show-visual"><LoopFlow /></div>
+    </div>
+  </section>
 
-  <h2>Latest writing</h2>
-  {posts.length ? <PostList posts={posts} /> : <p class="lede">First posts are on the way.</p>}
+  <section class="show show-plugin">
+    <div class="show-inner narrow">
+      <p class="project">GDPR Compliant ReCaptcha</p>
+      <h2>Spam protection without Google. On about 4,000 websites.</h2>
+      <p class="sub">A WordPress plugin that stops form spam with a small proof of work in the visitor's browser —
+      no tracking, no cookies, no third-party calls. It is the project the loop above looks after.</p>
+      <a class="go" href={SITE.wporg}>See it on WordPress.org</a>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="show latest">
+      <div class="show-inner narrow">
+        <h2>Latest notes</h2>
+        <PostList posts={posts} />
+        <a class="go" href="/writing/">All writing</a>
+      </div>
+    </section>
+  )}
+
+  <section class="who">
+    <div class="show-inner narrow">
+      <p>Built by {SITE.author}. By day I work on AI and data in financial services; these projects are
+      what I build after hours, mostly by directing and checking AI agents.
+      <a href="/about/">More about me</a> · <a href="/cv/">CV</a></p>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .show { padding: clamp(3.5rem, 9vw, 7rem) 16px; border-bottom: 1px solid var(--line); }
+  .show-matrix { padding-top: clamp(2.5rem, 7vw, 5rem); }
+  .show-inner { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  @media (min-width: 900px) { .show-inner { grid-template-columns: 1.1fr .9fr; gap: 4rem; } .show-loop .show-inner { grid-template-columns: .9fr 1.1fr; } }
+  .show-inner.narrow { display: block; max-width: 46rem; }
+  .project { margin: 0 0 .75rem; font-weight: 700; color: var(--accent); }
+  h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.25rem; font-variation-settings: 'wdth' 78; }
+  h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
+  h2 { font-size: clamp(2.1rem, 5vw, 3.8rem); }
+  .sub { font-size: clamp(1.08rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 38rem; margin: 0 0 1.5rem; }
+  .facts { list-style: none; padding: 0; margin: 0 0 1.75rem; display: grid; gap: .45rem; }
+  .facts li { padding-left: 1.1rem; position: relative; }
+  .facts li::before { content: ''; position: absolute; left: 0; top: .62em; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent); }
+  .facts strong { font-weight: 700; }
+  .go { display: inline-block; font-weight: 700; text-decoration: none; color: var(--on-accent); background: var(--accent); padding: .7rem 1.2rem; border-radius: 999px; }
+  .go:hover { filter: brightness(1.1); }
+  .show-visual { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(1rem, 3vw, 2rem); }
+  .show-plugin h2, .latest h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
+  .who { padding: 3rem 16px 4rem; color: var(--muted); }
+  .who p { margin: 0; font-size: 1rem; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+</style>

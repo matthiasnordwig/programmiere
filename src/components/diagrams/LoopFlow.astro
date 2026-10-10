@@ -1,0 +1,27 @@
+---
+---
+<svg class="diagram loop" viewBox="0 0 640 220" role="img" aria-labelledby="lp-t lp-d">
+  <title id="lp-t">How the maintainer loop works</title>
+  <desc id="lp-d">A scout reads forums and reviews, a worker writes a fix on its own branch, deterministic checks verify it, and nothing is released, merged or posted until the owner approves that single action from his phone.</desc>
+  <g class="l-box"><rect x="10" y="40" width="130" height="78" rx="10" /><text x="75" y="74" text-anchor="middle">Scout</text><text x="75" y="96" text-anchor="middle" class="l-small">reads the forums</text></g>
+  <path class="l-arr" d="M146 79 H170 M164 73 L172 79 L164 85" />
+  <g class="l-box"><rect x="176" y="40" width="130" height="78" rx="10" /><text x="241" y="74" text-anchor="middle">Worker</text><text x="241" y="96" text-anchor="middle" class="l-small">writes the fix</text></g>
+  <path class="l-arr" d="M312 79 H336 M330 73 L338 79 L330 85" />
+  <g class="l-box"><rect x="342" y="40" width="130" height="78" rx="10" /><text x="407" y="74" text-anchor="middle">Checks</text><text x="407" y="96" text-anchor="middle" class="l-small">no model involved</text></g>
+  <path class="l-arr" d="M478 79 H502 M496 73 L504 79 L496 85" />
+  <g class="l-gate"><rect x="508" y="22" width="122" height="114" rx="16" /><text x="569" y="66" text-anchor="middle" class="g-t">Gate</text><rect x="532" y="80" width="74" height="34" rx="17" class="bubble" /><text x="569" y="102" text-anchor="middle" class="b-t">„ja“</text></g>
+  <text x="569" y="168" text-anchor="middle" class="l-small">one word per action,</text>
+  <text x="569" y="186" text-anchor="middle" class="l-small">from my phone</text>
+  <text x="241" y="168" text-anchor="middle" class="l-small">the model only ever proposes —</text>
+  <text x="241" y="186" text-anchor="middle" class="l-small">it never ships anything itself</text>
+</svg>
+<style>
+  .loop text { fill: var(--fg); font-size: 16px; font-weight: 700; font-family: var(--display); }
+  .loop .l-small { fill: var(--muted); font-size: 12.5px; font-weight: 500; }
+  .l-box rect { fill: var(--surface); stroke: var(--line-strong); stroke-width: 2; }
+  .l-arr { stroke: var(--muted); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .l-gate > rect:first-child { fill: var(--accent); }
+  .l-gate .g-t { fill: var(--on-accent); font-size: 18px; }
+  .l-gate .bubble { fill: var(--bg); }
+  .l-gate .b-t { fill: var(--fg); font-size: 15px; }
+</style>

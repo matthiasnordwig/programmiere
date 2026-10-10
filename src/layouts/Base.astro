@@ -1,15 +1,16 @@
 ---
+import '@fontsource-variable/bricolage-grotesque';
 import '../styles/global.css';
 import { SITE } from '../site';
-interface Props { title?: string; description?: string; }
-const { title, description = SITE.tagline } = Astro.props;
+interface Props { title?: string; description?: string; wide?: boolean; }
+const { title, description = SITE.tagline, wide = false } = Astro.props;
 const fullTitle = title ? `${title} · programmiere.de` : 'programmiere.de — Matthias Nordwig';
 const path = Astro.url.pathname;
 const nav = [
+  { href: '/projects/matrix/', label: 'Matrix' },
+  { href: '/projects/maintainer-loop/', label: 'The loop' },
   { href: '/writing/', label: 'Writing' },
-  { href: '/projects/', label: 'Projects' },
   { href: '/about/', label: 'About' },
-  { href: '/cv/', label: 'CV' },
 ];
 ---
 <!doctype html>
@@ -37,10 +38,11 @@ const nav = [
         </nav>
       </div>
     </header>
-    <main><div class="wrap"><slot /></div></main>
+    {wide ? <main class="wide"><slot /></main> : <main><div class="wrap"><slot /></div></main>}
     <footer class="site">
       <div class="wrap">
         <span>© {new Date().getFullYear()} {SITE.author}</span>
+        <a href="/cv/">CV</a>
         <a href="/rss.xml">RSS</a>
         {SITE.github && <a href={SITE.github} rel="me">GitHub</a>}
         {SITE.linkedin && <a href={SITE.linkedin} rel="me">LinkedIn</a>}

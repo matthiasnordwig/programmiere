@@ -22,7 +22,9 @@ const desc = 'Fifteen years of turning person-year problems in banking into ship
   <link rel="canonical" href={new URL('/cv/', Astro.site)} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script is:inline>
-    try { if (location.hash === '#recruiter' || localStorage.getItem('cv-mode') === 'recruiter') document.documentElement.classList.add('recruiter'); } catch (e) {}
+    // Plain CV is the default; the speedrun version is opt-in (#speedrun or a remembered choice).
+    var run = false; try { run = location.hash === '#speedrun' || localStorage.getItem('cv-mode') === 'run'; } catch (e) {}
+    if (!run) document.documentElement.classList.add('recruiter');
   </script>
 </head>
 <body>
@@ -31,7 +33,7 @@ const desc = 'Fifteen years of turning person-year problems in banking into ship
     <div class="bar-actions">
       <button class="print only-recruiter" type="button" onclick="window.print()">Print / save as PDF</button>
       <button class="mode" type="button" aria-pressed="false">
-        <span class="only-run">Recruiter mode</span><span class="only-recruiter">Back to the run</span>
+        <span class="only-run">Plain version</span><span class="only-recruiter">Speedrun version</span>
       </button>
     </div>
   </header>
