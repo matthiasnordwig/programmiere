@@ -11,6 +11,9 @@
 # überschrieben, nie gelöscht.
 # Aufruf: bash scripts/deploy-own-server.sh [--dry-run]
 set -euo pipefail
+# Gesamter Ablauf in main(): bash liest Skripte zeilenweise, und der git merge unten kann
+# genau diese Datei ersetzen — in einer Funktion ist alles schon gelesen, bevor es läuft.
+main() {
 cd "$(dirname "$0")/.."
 DRY=""; [ "${1:-}" = "--dry-run" ] && DRY="--dry-run"
 KEY=".deploy/id_ed25519"; KH=".deploy/known_hosts"
@@ -38,7 +41,7 @@ rsync -az $DRY $PERMS -e "$SSH" --exclude='*/' dist/ "$TARGET:$DOCROOT/"
 # und wird nur gemeldet, nicht gelöscht.
 $SSH "$TARGET" "test -e $DOCROOT/index.html && echo 'deploy: Hinweis — alte index.html im Docroot' || true"
 
-[ -n "$DRY" ] && { echo "deploy: --dry-run, nichts geändert"; exit 0; }
+if [ -n "$DRY" ]; then echo "deploy: --dry-run, nichts geändert"; return 0; fi
 # Docroot selbst muss lesbar bleiben (ein 700 dort nimmt auch Impressum und Feedback-Empfänger vom Netz)
 $SSH "$TARGET" "chmod 755 $DOCROOT"
 bad=""
@@ -48,3 +51,5 @@ for u in / /cv/ /impressum/ /GDPRCompliantRecaptcha/; do
 done
 [ -z "$bad" ] || { echo "deploy: FEHLER — nicht erreichbar:$bad"; exit 1; }
 echo "deploy: ausgeliefert ($(git rev-parse --short HEAD)) — https://programmiere.de/ antwortet 200"
+}
+main "$@"
