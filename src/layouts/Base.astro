@@ -2,12 +2,13 @@
 import '@fontsource-variable/bricolage-grotesque';
 import '../styles/global.css';
 import { SITE } from '../site';
-interface Props { title?: string; description?: string; wide?: boolean; }
-const { title, description = SITE.tagline, wide = false } = Astro.props;
+interface Props { title?: string; description?: string; wide?: boolean; image?: string; jsonld?: object; }
+const { title, description = SITE.tagline, wide = false, image = '/og-matrix.jpg', jsonld } = Astro.props;
 const fullTitle = title ? `${title} · programmiere.de` : 'programmiere.de — Matthias Nordwig';
 const path = Astro.url.pathname;
 const nav = [
   { href: '/projects/matrix/', label: 'Matrix' },
+  { href: '/projects/gdpr-recaptcha/', label: 'Anti-spam' },
   { href: '/projects/maintainer-loop/', label: 'The loop' },
   { href: '/writing/', label: 'Writing' },
   { href: '/about/', label: 'About' },
@@ -26,6 +27,9 @@ const nav = [
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </head>
   <body>
     <header class="site">

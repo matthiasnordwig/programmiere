@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getCollection, render } from 'astro:content';
 import { publishedPosts } from '../../lib';
+import graph from '../../assets/projects/matrix-graph.jpg';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -11,14 +13,31 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const related = (await publishedPosts()).filter((p) => p.data.project === project.id);
+const SOFTWARE = {
+  matrix: { applicationCategory: 'BusinessApplication', operatingSystem: 'macOS, iOS' },
+  'gdpr-recaptcha': { applicationCategory: 'SecurityApplication', operatingSystem: 'WordPress', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, url: 'https://wordpress.org/plugins/gdpr-compliant-recaptcha-for-all-forms/' },
+};
+const jsonld = SOFTWARE[project.id] ? { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: project.data.title, description: project.data.summary, author: { '@type': 'Person', name: 'Matthias Nordwig' }, ...SOFTWARE[project.id] } : undefined;
 ---
-<Base title={project.data.title} description={project.data.summary}>
+<Base title={project.data.title} description={project.data.summary} jsonld={jsonld}>
   <div class="meta">{project.data.status}</div>
   <h1>{project.data.title}</h1>
   <p class="lede">{project.data.summary}</p>
-  <Content />
   {project.data.links.length > 0 && (
-    <p>{project.data.links.map((l, i) => <>{i > 0 && ' · '}<a href={l.url}>{l.label}</a></>)}</p>
+    <p class="cta">{project.data.links.map((l) => <a class="cta-btn" href={l.url}>{l.label}</a>)}</p>
   )}
+  {project.id === 'matrix' && (
+    <figure class="shot"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report." widths={[700, 1400]} sizes="(min-width: 720px) 42rem, 100vw" />
+    <figcaption>One public annual report as a graph: 4,385 entities, 1,919 relations, each backed by a quote.</figcaption></figure>
+  )}
+  <Content />
   {related.length > 0 && <><h2>Writing about this</h2><PostList posts={related} /></>}
 </Base>
+
+<style>
+  .cta { margin: 1.25rem 0 1.5rem; }
+  .cta-btn { display: inline-block; font-weight: 700; text-decoration: none; color: var(--on-accent); background: var(--accent); padding: .65rem 1.15rem; border-radius: 999px; }
+  .shot { margin: 1.5rem 0 2rem; }
+  .shot :global(img) { border: 1px solid var(--line); border-radius: 12px; }
+  .shot figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+</style>

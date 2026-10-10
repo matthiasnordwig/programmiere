@@ -1,95 +1,99 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
-import MatrixFlow from '../components/diagrams/MatrixFlow.astro';
 import LoopFlow from '../components/diagrams/LoopFlow.astro';
+import graph from '../assets/projects/matrix-graph.jpg';
 import { publishedPosts } from '../lib';
 import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
+const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide description="Matrix answers questions about thousands of pages offline on a phone. A self-maintaining WordPress plugin asks before it ships. Notes on how both were built.">
-  <section class="show show-matrix">
-    <div class="show-inner">
-      <div class="show-text">
-        <p class="project">Matrix</p>
-        <h1>Ask a thousand pages a question. On a phone, offline.</h1>
-        <p class="sub">Matrix reads document collections, answers with the exact sentence that proves it, and maps
-        who-relates-to-what as a graph where every link carries its quote. It all runs on a Mac or an
-        iPhone — no cloud required.</p>
-        <ul class="facts">
-          <li><strong>2 weeks</strong> from a 48-hour prototype to the working app</li>
-          <li><strong>Rust</strong> core, one codebase for macOS, iPhone and a web server</li>
-          <li><strong>On-device</strong> models on Apple's GPU and Neural Engine</li>
+<Base wide jsonld={jsonld} description="Matrix: ask thousands of pages a question, offline on a Mac or iPhone, with the exact sentence as proof. Plus a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="project">Matrix</p>
+      <h1>Ask a thousand pages a question. On a phone, offline.</h1>
+      <p class="sub">Matrix reads whole document collections, answers with the exact sentence that proves it,
+      and draws who-relates-to-what as a graph where every link carries its quote. It runs on a Mac or
+      an iPhone — the documents never leave the device.</p>
+      <a class="go" href="/projects/matrix/">See how it works</a>
+    </div>
+    <figure class="shot">
+      <Image src={graph} alt="Matrix knowledge graph: thousands of entities and relations extracted from a company's annual report, each link labelled with its relation type." widths={[800, 1400, 2124]} sizes="(min-width: 1100px) 1100px, 100vw" loading="eager" />
+      <figcaption>A real run: one public annual report became 4,385 entities and 1,919 relations — every link backed by a quote from the text.</figcaption>
+    </figure>
+  </section>
+
+  <section class="more">
+    <div class="more-inner">
+      <article class="door">
+        <p class="for">For people building with AI agents</p>
+        <h2>An AI that maintains my software — and has to ask first.</h2>
+        <p>It reads support forums, writes the fix and passes checks no model can talk its way through.
+        Every release, merge or forum reply then waits for one word from my phone.</p>
+        <div class="mini"><LoopFlow /></div>
+        <a class="go ghost" href="/projects/maintainer-loop/">Inside the loop</a>
+      </article>
+      <article class="door">
+        <p class="for">For WordPress site owners</p>
+        <h2>Form spam protection without Google.</h2>
+        <p>A free plugin that stops spam with a tiny proof of work in the visitor's browser instead of
+        tracking them. No cookies, no third-party calls, no puzzles to click. Runs on about 4,000 sites.</p>
+        <ul class="ticks">
+          <li>Works with the common form builders out of the box</li>
+          <li>Nothing to configure at Google, nothing to disclose in a cookie banner</li>
         </ul>
-        <a class="go" href="/projects/matrix/">How Matrix works</a>
-      </div>
-      <div class="show-visual"><MatrixFlow /></div>
-    </div>
-  </section>
-
-  <section class="show show-loop">
-    <div class="show-inner">
-      <div class="show-text">
-        <p class="project">The maintainer loop</p>
-        <h2>My software maintains itself. It still has to ask me.</h2>
-        <p class="sub">An AI reads support forums and reviews, writes the fix on its own branch, and passes checks
-        no model can talk its way through. Then it stops. Every release, merge or forum reply needs one
-        word from my phone — and approving one thing never approves the next.</p>
-        <a class="go" href="/projects/maintainer-loop/">Inside the loop</a>
-      </div>
-      <div class="show-visual"><LoopFlow /></div>
-    </div>
-  </section>
-
-  <section class="show show-plugin">
-    <div class="show-inner narrow">
-      <p class="project">GDPR Compliant ReCaptcha</p>
-      <h2>Spam protection without Google. On about 4,000 websites.</h2>
-      <p class="sub">A WordPress plugin that stops form spam with a small proof of work in the visitor's browser —
-      no tracking, no cookies, no third-party calls. It is the project the loop above looks after.</p>
-      <a class="go" href={SITE.wporg}>See it on WordPress.org</a>
+        <a class="go ghost" href="/projects/gdpr-recaptcha/">About the plugin</a>
+      </article>
     </div>
   </section>
 
   {posts.length > 0 && (
-    <section class="show latest">
-      <div class="show-inner narrow">
+    <section class="latest">
+      <div class="narrow">
         <h2>Latest notes</h2>
         <PostList posts={posts} />
-        <a class="go" href="/writing/">All writing</a>
+        <a class="go ghost" href="/writing/">All writing</a>
       </div>
     </section>
   )}
 
   <section class="who">
-    <div class="show-inner narrow">
-      <p>Built by {SITE.author}. By day I work on AI and data in financial services; these projects are
-      what I build after hours, mostly by directing and checking AI agents.
-      <a href="/about/">More about me</a> · <a href="/cv/">CV</a></p>
+    <div class="narrow">
+      <p>Built by {SITE.author}, who works on AI and data in financial services and builds these after hours,
+      mostly by directing and checking AI agents. <a href="/about/">About</a> · <a href="/cv/">CV</a></p>
     </div>
   </section>
 </Base>
 
 <style>
-  .show { padding: clamp(3.5rem, 9vw, 7rem) 16px; border-bottom: 1px solid var(--line); }
-  .show-matrix { padding-top: clamp(2.5rem, 7vw, 5rem); }
-  .show-inner { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
-  @media (min-width: 900px) { .show-inner { grid-template-columns: 1.1fr .9fr; gap: 4rem; } .show-loop .show-inner { grid-template-columns: .9fr 1.1fr; } }
-  .show-inner.narrow { display: block; max-width: 46rem; }
+  .hero { max-width: 76rem; margin: 0 auto; padding: clamp(2.5rem, 7vw, 5rem) 16px clamp(2.5rem, 6vw, 4rem); }
+  .hero-text { max-width: 48rem; }
   .project { margin: 0 0 .75rem; font-weight: 700; color: var(--accent); }
-  h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.25rem; font-variation-settings: 'wdth' 78; }
-  h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
-  h2 { font-size: clamp(2.1rem, 5vw, 3.8rem); }
-  .sub { font-size: clamp(1.08rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 38rem; margin: 0 0 1.5rem; }
-  .facts { list-style: none; padding: 0; margin: 0 0 1.75rem; display: grid; gap: .45rem; }
-  .facts li { padding-left: 1.1rem; position: relative; }
-  .facts li::before { content: ''; position: absolute; left: 0; top: .62em; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent); }
-  .facts strong { font-weight: 700; }
-  .go { display: inline-block; font-weight: 700; text-decoration: none; color: var(--on-accent); background: var(--accent); padding: .7rem 1.2rem; border-radius: 999px; }
+  h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); }
+  .sub { font-size: clamp(1.08rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 40rem; margin: 0 0 1.5rem; }
+  .shot { margin: clamp(2rem, 5vw, 3.5rem) 0 0; }
+  .shot :global(img) { width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .35); display: block; }
+  .shot figcaption { margin-top: .8rem; color: var(--muted); font-size: .95rem; max-width: 48rem; }
+  .more { border-top: 1px solid var(--line); background: var(--surface); }
+  .more-inner { max-width: 76rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 16px; display: grid; grid-template-columns: 1fr; gap: 3.5rem 4rem; }
+  @media (min-width: 900px) { .more-inner { grid-template-columns: 1fr 1fr; } }
+  .for { margin: 0 0 .6rem; font-weight: 700; color: var(--accent); }
+  .door h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .door p { color: var(--muted); font-size: 1.08rem; line-height: 1.55; margin: 0 0 1.25rem; max-width: 34rem; }
+  .mini { margin: 0 0 1.5rem; }
+  .ticks { margin: 0 0 1.5rem; padding-left: 1.2rem; color: var(--fg); }
+  .ticks li { margin-bottom: .3rem; }
+  .go { display: inline-block; font-weight: 700; text-decoration: none; color: var(--on-accent); background: var(--accent); padding: .7rem 1.2rem; border-radius: 999px; border: 2px solid var(--accent); }
   .go:hover { filter: brightness(1.1); }
-  .show-visual { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(1rem, 3vw, 2rem); }
-  .show-plugin h2, .latest h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); }
-  .who { padding: 3rem 16px 4rem; color: var(--muted); }
-  .who p { margin: 0; font-size: 1rem; }
+  .go.ghost { background: transparent; color: var(--accent); }
+  .go.ghost:hover { background: var(--accent); color: var(--on-accent); filter: none; }
+  .narrow { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+  .latest { padding: clamp(3rem, 7vw, 5rem) 0; border-top: 1px solid var(--line); }
+  .latest h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .who { padding: 2.5rem 0 4rem; color: var(--muted); border-top: 1px solid var(--line); }
+  .who p { margin: 0; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 </style>

@@ -2,7 +2,7 @@
 title: The maintainer loop
 summary: An autonomous loop that maintains a WordPress plugin — the model only ever proposes, a deterministic gate decides, and I approve each outward step from my phone.
 status: Running
-order: 2
+order: 3
 featured: true
 ---
 
