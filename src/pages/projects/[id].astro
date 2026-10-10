@@ -4,6 +4,7 @@ import PostList from '../../components/PostList.astro';
 import { getCollection, render } from 'astro:content';
 import { publishedPosts } from '../../lib';
 import graph from '../../assets/projects/matrix-graph.jpg';
+import chat from '../../assets/projects/matrix-chat.jpg';
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
@@ -29,6 +30,10 @@ const jsonld = SOFTWARE[project.id] ? { '@context': 'https://schema.org', '@type
   {project.id === 'matrix' && (
     <figure class="shot"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report." widths={[700, 1400]} sizes="(min-width: 720px) 42rem, 100vw" />
     <figcaption>One public annual report as a graph: 4,385 entities, 1,919 relations, each backed by a quote.</figcaption></figure>
+  )}
+  {project.id === 'matrix' && (
+    <figure class="shot"><Image src={chat} alt="Matrix chat: a question about a company's climate targets, the one-sentence answer, and the four retrieved source passages with their relevance scores." widths={[700, 1400]} sizes="(min-width: 720px) 42rem, 100vw" />
+    <figcaption>Asking the same report a question: a one-line answer, and right below it the passages it came from. (Answered here by a hosted model; local models run the same pipeline.)</figcaption></figure>
   )}
   <Content />
   {related.length > 0 && <><h2>Writing about this</h2><PostList posts={related} /></>}
