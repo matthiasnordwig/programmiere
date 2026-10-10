@@ -9,3 +9,6 @@ dist/
 # was ein Post tatsächlich verwendet (dann unter src/assets/ bzw. public/).
 /inbox/diy/*
 !/inbox/diy/README.md
+
+# Deploy-Schlüssel für den eigenen Server — bleibt nur auf dem Mac (0009)
+/.deploy/

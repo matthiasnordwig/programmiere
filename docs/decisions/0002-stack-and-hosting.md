@@ -1,6 +1,6 @@
 # 0002 — Stack und Hosting
 
-**Status:** gilt · 2026-10-10
+**Status:** gilt · 2026-10-10 · Hosting-Teil ersetzt durch 0009 (eigener Server statt GitHub Pages)
 
 **Entscheidung.** Astro (statisch, Content Collections mit Schema), Markdown-Beiträge im Repo,
 GitHub Pages mit eigener Domain `programmiere.de` (`public/CNAME`), Build per GitHub Action.

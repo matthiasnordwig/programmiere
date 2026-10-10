@@ -40,13 +40,15 @@ Dateipfad und die Quellen-Zuordnung aus Schritt 2 mitgegeben werden — nie der 
 Kontext selbst. Veröffentlicht wird ausschließlich mit `npm run publish -- <datei>`; nie
 direkt `git push`.
 
-Danach den Deploy prüfen: `gh run list -R matthiasnordwig/programmiere --limit 1`, bei
-Bedarf warten (`gh run watch <id>`). Fehlgeschlagen → in der Meldung nennen.
+Danach ausliefern: per `device_bash`
+`cd $HOME/mnt/projects/programmiere && bash scripts/deploy-own-server.sh` (holt den eben
+gepushten Stand, baut, lädt auf den eigenen Server). Endet die letzte Zeile nicht mit
+„antwortet 200“ → in der Meldung nennen.
 
-## 4. Lokale Kopie nachziehen
+## 4. Lokale Kopie
 
-`device_bash`: `git -C $HOME/mnt/projects/programmiere pull --ff-only`. Scheitert das
-(lokale Änderungen), nichts erzwingen, nur melden.
+Wird von `deploy-own-server.sh` mit nachgezogen. Scheitert dessen fast-forward (lokale
+Änderungen), nichts erzwingen, nur melden.
 
 ## 5. Meldung
 

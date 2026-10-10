@@ -2,7 +2,7 @@
 
 Persönliche Seite von Matthias Nordwig: Deep Dives zu geknackten Problemen, Build Logs aus
 laufenden Projekten (Matrix, GDPR-ReCaptcha-Plugin, Maintainer-Loop), DIY. Astro, statisch,
-GitHub Pages. **Repo-Doku Deutsch, Seiteninhalt Englisch.**
+gehostet auf dem eigenen Server (whistle-blower.net, `docs/decisions/0009`). **Repo-Doku Deutsch, Seiteninhalt Englisch.**
 
 Diese Datei lädt in jeder Session — sie bleibt kurz. Begründungen stehen in
 `docs/decisions/`, Abläufe in Skills, Schreibregeln in `.claude/rules/writing.md` (lädt mit
@@ -47,7 +47,9 @@ Bereichsdatei, nie ganze Repos laden.
 Quelle der Wahrheit ist `github.com/matthiasnordwig/programmiere`; `~/projects/programmiere`
 ist eine lokale Kopie. Geplante Aufgaben (Build Log wöchentlich, Deep Dive monatlich) laufen
 als Cloud-Sitzung mit verbundenem Mac nach Skill `scheduled-run` und melden genau eine Zeile.
-Push auf `main` löst `.github/workflows/deploy.yml` aus (GitHub Pages, `programmiere.de`).
+GitHub prüft jeden Push (`.github/workflows/build.yml`), liefert aber nicht aus. Ausgeliefert
+wird nach jedem Push vom Mac: `bash scripts/deploy-own-server.sh` (in der Mac-Umgebung, Schlüssel
+in `.deploy/`). Nie `index.html` auf den Server legen — er antwortet darauf 403 (0009).
 
 ## Struktur
 
@@ -56,8 +58,7 @@ Push auf `main` löst `.github/workflows/deploy.yml` aus (GitHub Pages, `program
 - `src/content/projects/*.md` — Projektseiten; `id` = Dateiname = `project`-Wert der Posts.
 - `src/pages/`, `src/layouts/Base.astro`, `src/components/`, `src/styles/global.css`,
   `src/site.ts` (Name, Tagline, Profil-Links).
-- `public/CNAME` (programmiere.de), `.github/workflows/deploy.yml` (Build + Pages bei Push
-  auf `main`).
+- `scripts/deploy-own-server.sh`, `scripts/php-index.mjs` — Auslieferung auf den eigenen Server.
 - `inbox/diy/` — lokales Rohmaterial (gitignored).
 - `src/pages/cv.astro` + `src/data/cv.ts` — Lebenslauf als „Speedrun“ mit Recruiter-Modus
   (gleiche Daten, druckbar). Fakten nur aus seinem CV; Arbeitgeber-interne Zahlen bleiben draußen.
