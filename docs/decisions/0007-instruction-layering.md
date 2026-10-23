@@ -12,6 +12,9 @@ Schichtung nach Ladeverhalten:
 - `.claude/rules/` mit `paths:` — Regeln, die nur bei bestimmten Dateien gelten (Schreibstil).
 - `.claude/settings.json` + Hooks — was hart gelten muss (Publish-Gate, Lesesperren).
 - `SOURCES.md` — Quellenkarte statt Repo-Durchsuchen (Token sparen, wie die Handbuch-Indizes).
+- `HANDBUCH.md` — Architektur-Index (Ordner → Datei → Funktion), wie in Matrix und im Plugin;
+  `BACKLOG.md` (vorwärts) und `ISSUES.md` (rückblickend) als Arbeitslisten (seit 2026-10-23).
+- `docs/POSITIONING.md` — inhaltliche Leitplanke: wofür die Seite steht, für wen, Ton.
 - Claude Codes eigenes Auto-Memory wird nicht nachgebaut.
 
 **Konsequenzen.** Neue Regel → erst fragen, welche Schicht; „muss gelten" gehört in
