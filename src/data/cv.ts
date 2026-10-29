@@ -68,10 +68,10 @@ export const RUN: Segment[] = [
 
 export const SIDE_QUESTS = [
   {
-    name: 'Matrix',
-    pb: '2 weeks',
-    what: 'Production-grade offline RAG app — pure-Rust core, Tauri, runs on macOS and iPhone. On-device ONNX and GGUF inference, layout-aware PDF chunking, GraphRAG ontology extraction.',
-    note: 'Scaled from a 48-hour proof of concept.',
+    name: 'Matrix LLM',
+    pb: 'App Store',
+    what: 'Offline RAG app on the App Store for iPhone, iPad and Mac: pure-Rust core, Tauri, on-device ONNX and GGUF inference, layout-aware PDF chunking, GraphRAG ontology extraction, an assistant that operates the app via MCP tools.',
+    note: 'Interface in 22 languages; free to download.',
     href: '/projects/matrix/',
   },
   {

@@ -5,38 +5,66 @@ import MatrixFlow from '../../components/diagrams/MatrixFlow.astro';
 import '../../styles/story.css';
 import graph from '../../assets/projects/matrix-graph.jpg';
 import detail from '../../assets/projects/matrix-graph-detail.jpg';
-import chat from '../../assets/projects/matrix-chat.jpg';
-const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix', applicationCategory: 'BusinessApplication', operatingSystem: 'macOS, iOS, Linux (browser)', description: 'Ask thousands of pages a question, offline. Answers come with the exact sentence that proves them; a knowledge graph backs every link with a quote.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
+import iphoneAsk from '../../assets/projects/matrix-iphone-ask.png';
+import macAsk from '../../assets/projects/matrix-mac-ask.png';
+import macTables from '../../assets/projects/matrix-mac-tables.png';
+import { Image } from 'astro:assets';
+import { SITE } from '../../site';
+const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix LLM', applicationCategory: 'BusinessApplication', operatingSystem: 'iOS, iPadOS, macOS', url: SITE.matrixApp, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Ask your own documents on iPhone, iPad and Mac, offline. Every answer comes with the exact passage it is based on.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
 ---
-<Base wide title="Matrix — ask a thousand pages a question" description="Matrix answers questions about whole document collections with the exact sentence as proof, maps who-relates-to-what as a graph, and runs on a Mac or iPhone without the cloud." jsonld={jsonld}>
+<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files with the exact passage as proof. Free on the App Store for iPhone, iPad and Mac; the models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
 <div class="story">
 
   <section class="beat" style="border-top:0">
-    <div class="in">
-      <p class="kicker">Matrix</p>
-      <h1>Ask a thousand pages a question. On a phone, offline.</h1>
-      <p class="big">Give it regulations, contracts or annual reports. Ask anything. You get an answer —
-      and the exact sentence it came from, so you can check it in five seconds instead of trusting it.</p>
-      <div class="shot"><Zoom id="z-graph" src={graph} alt="Matrix knowledge graph extracted from one public annual report: thousands of entities connected by labelled relations." caption="One public annual report, turned into 4,385 entities and 1,919 relations. Click to see it full size." /></div>
+    <div class="in hero-split">
+      <div>
+        <p class="kicker">Matrix LLM · iPhone, iPad and Mac</p>
+        <h1>Ask your documents. On your phone, offline.</h1>
+        <p class="big">Add contracts, regulations or reports and ask in plain words. Every answer comes with the exact
+        passage it is based on. The models run on the device, so your documents stay there.</p>
+        <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
+        <p class="muted">Free to download for iPhone, iPad and Mac. Interface in 22 languages.</p>
+      </div>
+      <figure class="phone">
+        <Image src={iphoneAsk} alt="Matrix on an iPhone: a question about a sample contract, answered by Apple's on-device model, with the cited passage underneath." widths={[400, 800]} sizes="(min-width: 920px) 18rem, 80vw" loading="eager" />
+        <figcaption>Apple's model on the iPhone answers from a sample contract and quotes the passage.</figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="beat alt">
-    <div class="in split">
-      <div>
-        <p class="kicker">The problem</p>
-        <h2>AI sounds right. That's the problem.</h2>
-      </div>
-      <div>
-        <p class="big">Chatbots are fluent and confident — and can't tell you where it says that. For anyone
-        whose job is to be right on paper, "sounds plausible" is worth nothing.</p>
-        <p class="muted">Regulations, contracts and reports are thousands of pages of scattered knowledge where every
-        statement needs a source. Matrix is built for exactly that kind of reading.</p>
+    <div class="in">
+      <p class="kicker">The assistant</p>
+      <h2>Tell it what you want. It works the app for you.</h2>
+      <p class="big">You don't need to know what a vector or a knowledge graph is. Ask in plain words: "Create a collection
+      called Contracts", "Check all supplier contracts for notice periods", "Switch to the Paper style". The assistant uses
+      the same tools an AI agent gets, and shows every step.</p>
+      <div class="grid3">
+        <div><h3>Asks before it acts</h3><p>Anything that changes something appears as a card: what it will do and how much work it is, for example "About 40 model requests". It runs only after you tap Run.</p></div>
+        <div><h3>Cannot delete</h3><p>Deleting is not one of its tools. Settings it may change come from a fixed list, never keys or endpoints.</p></div>
+        <div><h3>Opens the right view</h3><p>After a step it shows the result: the collection, the table run, the term in the graph, the document.</p></div>
+        <div><h3>Help built in</h3><p>"How do I add files?" is answered by any model from a built-in guide, with a "Show me" link to the right place.</p></div>
+        <div><h3>Stops when stuck</h3><p>If the same action fails twice, it stops and says what went wrong and what you can do.</p></div>
+        <div><h3>The limit</h3><p>Working the app needs a model that can call tools. Apple's on-device model answers the help questions, not the app tasks.</p></div>
       </div>
     </div>
   </section>
 
   <section class="beat">
+    <div class="in">
+      <p class="kicker">The first five minutes</p>
+      <h2>From download to the first answer with sources.</h2>
+      <ol class="steps">
+        <li><div><h3>Pick a model</h3><p>Apple's model on the device needs no download where the system offers it. Or one tap loads a small model. The search model downloads in the background, then everything works offline.</p></div></li>
+        <li><div><h3>Try a sample collection</h3><p>Three ready-made sets: a German sample contract, the official accident file of the US Airways flight that landed on the Hudson, and Wikipedia articles on the Panama Papers.</p></div></li>
+        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives, photos with text recognition. Or share a file to Matrix from any other app.</p></div></li>
+        <li><div><h3>Ask a file right away</h3><p>Attach it to a question with the paper clip. Afterwards keep it as a collection or discard it.</p></div></li>
+        <li><div><h3>Tap a citation</h3><p>It opens the exact passage, in PDFs with its page.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">The one rule</p>
       <h2>The AI reads. Everything you could check is plain code.</h2>
@@ -53,7 +81,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in">
       <p class="kicker">Ask a question</p>
       <h2>It doesn't guess. It goes looking.</h2>
@@ -66,11 +94,11 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
         <li><div><h3>Answer only from what it found <span class="who ai">AI</span></h3><p>Every statement is tagged with its source number: [1], [2], [3].</p></div></li>
         <li><div><h3>Check the answer <span class="who rules">rules</span></h3><p>The checks in the next section run on every answer, then everything is shown with clickable sources and a full log.</p></div></li>
       </ol>
-      <div class="shot"><Zoom id="z-chat" src={chat} alt="Matrix chat: a question about a company's climate targets, a one-sentence answer, and the four source passages it was drawn from." caption="A real question to a public (German) annual report — “Which climate targets has Uniper committed to, and by when?” One sentence of answer, and right underneath the passages it came from, with their relevance scores. (Answered here by a hosted Llama model; local models run the same pipeline.)" /></div>
+      <div class="shot"><Zoom id="z-chat" src={macAsk} alt="Matrix on a Mac: a question about a sample contract, a two-sentence answer with quotes, and six source passages, the cited one marked." caption="On a Mac, Qwen3.6 35B runs on the device and answers from the sample contract. Six sources, the cited one marked. The Prompt Inspector shows exactly what the model saw." /></div>
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in split">
       <div>
         <p class="kicker">Built-in fact check</p>
@@ -88,34 +116,24 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in">
-      <p class="kicker">The grid</p>
-      <h2>Same question. Five hundred times. As a spreadsheet.</h2>
-      <p class="big">Load hundreds of passages — or upload your own list — and ask every row the same
-      question. Each answer has to fit fields you define: text, number, choice.</p>
-      <div class="table-wrap card">
-        <p class="muted" style="margin:0 0 .25rem">Illustration of the format</p>
-        <table class="demo">
-          <thead><tr><th>Row (source)</th><th>Answer, in your schema</th><th>Check</th></tr></thead>
-          <tbody>
-            <tr><td>Contract A — § 7 Termination</td><td>Notice: 6 months · Special right: yes</td><td class="ok">✓ valid</td></tr>
-            <tr><td>Contract B — § 4 Liability</td><td>Cap: €1m · Exception: intent</td><td class="ok">✓ valid</td></tr>
-            <tr><td>Contract C — § 9 Exit</td><td>Notice: — (not found)</td><td class="warn">⚠ field empty</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="kicker">Tables</p>
+      <h2>Same question. Every row. As a table.</h2>
+      <p class="big">Pick a collection or upload your own list and ask every row the same question. Each answer has to
+      fit columns you define: text, number, date, choice.</p>
+      <div class="shot"><Zoom id="z-tables" src={macTables} alt="Matrix Tables on a Mac: passages of a sample contract in rows, with answer columns Topic, Key point, Applies to and Date filled by the model." caption="Key facts of the sample contract, one row per passage. The tinted columns are the model's answers; the columns were suggested from the prompt." /></div>
       <div class="grid3">
         <div><h3>Validated, not trusted</h3><p>Missing or wrongly typed fields show up right in the cell.</p></div>
         <div><h3>Lists fan out</h3><p>Five items in one answer become five rows — each still linked to its source passage.</p></div>
-        <div><h3>Redo just the bad rows</h3><p>Re-run single rows with a stronger model; duplicates are merged; export to Excel.</p></div>
+        <div><h3>Redo just the bad rows</h3><p>Re-run single rows with a stronger model. Duplicates are merged. Export to Excel.</p></div>
       </div>
       <p class="muted" style="margin-top:2rem">Typical uses: a list of every obligation in a regulation with addressee, deadline and evidence ·
       the same check across hundreds of contracts · first-pass screening of a customer list.</p>
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">The knowledge graph</p>
       <h2>A map of who relates to what — with receipts.</h2>
@@ -126,22 +144,22 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
         <div><h3>Quotes are verified</h3><p>A link whose quote can't be found is repaired first, not silently dropped. If the quote says the opposite ("must not…"), it's flagged.</p></div>
         <div><h3>Duplicates merged</h3><p>"BaFin" and "Federal Financial Supervisory Authority" become one node — every merge is logged and can be undone by hand.</p></div>
         <div><h3>Lenses, not rewrites</h3><p>Raw labels stay untouched; a switchable "lens" maps them onto your own vocabulary — no re-extraction needed.</p></div>
-        <div><h3>Topics and summaries</h3><p>The graph is split into clusters, each with a short summary — a table of contents for the whole corpus.</p></div>
+        <div><h3>Topics and summaries</h3><p>The graph is split into clusters, each with a short summary: a table of contents for the whole corpus. Export to PowerPoint.</p></div>
         <div><h3>Nothing disappears quietly</h3><p>Failing passages go to quarantine and are retried; every finding lands in a review queue.</p></div>
         <div><h3>Honest about quality</h3><p>A local 30B-class model gives a fast first map — orientation, not proof. A frontier model gets close to "audit-ready".</p></div>
       </div>
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in split">
       <div>
         <p class="kicker">Runs everywhere</p>
         <h2>One engine. Mac, iPhone, browser.</h2>
         <p class="big">Everything important lives in a single core written in Rust. The apps on top are thin.</p>
         <div class="grid3" style="grid-template-columns:1fr">
-          <div><h3>Mac</h3><p>Local models on Apple's GPU (Metal) and Neural Engine — fast and power-efficient.</p></div>
-          <div><h3>iPhone and iPad</h3><p>The same app, the same features, down to sharing documents into it.</p></div>
+          <div><h3>iPhone and iPad</h3><p>Fully offline: search runs on the Neural Engine, chat with a local model on the GPU. Files come in through the share menu of any app.</p></div>
+          <div><h3>Mac</h3><p>The same app, plus a door for AI agents: Claude Code and others can use the running app through MCP.</p></div>
           <div><h3>Browser</h3><p>A Linux container in your own network. Nothing to install for users.</p></div>
         </div>
       </div>
@@ -149,13 +167,13 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">Any model</p>
       <h2>Bring your own AI. Or none from outside at all.</h2>
       <p class="big">One cockpit for every model connection — each assigned to the job it's good at.</p>
       <div class="grid3">
-        <div><h3>On the device</h3><p>Search and download models from Hugging Face inside the app; run them locally.</p></div>
+        <div><h3>On the device</h3><p>Apple's built-in model without a download, or models from Hugging Face, searched and loaded inside the app.</p></div>
         <div><h3>Small specialists</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
         <div><h3>Company gateway</h3><p>OpenAI-compatible or Azure endpoints behind your own infrastructure.</p></div>
         <div><h3>Cloud, deliberately</h3><p>Direct providers where allowed — a conscious, per-case choice.</p></div>
@@ -165,7 +183,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in">
       <p class="kicker">Built for bad days</p>
       <h2>Tested against real outages, not sunny days.</h2>
@@ -180,21 +198,21 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">By the numbers</p>
       <h2>Measured, not felt.</h2>
       <div class="numbers">
-        <div><strong>2 weeks</strong><span>from a 48-hour prototype to the working app</span></div>
-        <div><strong>65 → 94%</strong><span>top-5 hit rate on a set of legal-norm questions once re-ranking is switched on</span></div>
-        <div><strong>~2×</strong><span>faster re-ranking with the GGUF model on Apple silicon, at equal or better quality</span></div>
+        <div><strong>27 of 30</strong><span>test questions with the right place among the first five hits, with re-ranking (20 without)</span></div>
+        <div><strong>56 ms</strong><span>for one search over 5,950 passages and 408 chart pages on a Mac</span></div>
         <div><strong>4,385</strong><span>entities extracted from a single annual report, each relation backed by a quote</span></div>
+        <div><strong>22</strong><span>interface languages; questions and documents may be in different ones</span></div>
       </div>
       <p class="muted" style="margin-top:2rem">Retrieval quality is tracked with fixed "golden" question sets and expected source passages — quality is judged on those, not on impressions.</p>
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in split">
       <div><p class="kicker">Also in Claude Code</p><h2>The same engine as a Claude Code plugin.</h2></div>
       <div>
@@ -205,17 +223,27 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in read">
       <p class="kicker">Where it stands</p>
-      <h2>Honest status.</h2>
-      <p class="big">Asking and the grid work today, with a local model or a gateway. The knowledge graph is
-      two-tier: local for a fast first map, a strong model where it has to hold up. The checks run either way —
-      they show you where the output can be trusted.</p>
-      <p>Interested in trying it on your own documents, or in how a part of it works?</p>
-      <a class="go" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a>
+      <h2>Free on the App Store.</h2>
+      <p class="big">For iPhone, iPad and Mac. Asking and tables work with the model on the device. For the knowledge graph,
+      a local model gives a fast first map and a stronger model the one that holds up. The checks run either way and show
+      where the output can be trusted.</p>
+      <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
+      <a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a>
     </div>
   </section>
 
 </div>
 </Base>
+
+<style>
+  .hero-split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  @media (min-width: 920px) { .hero-split { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
+  .hero-split .go { margin-right: .5rem; }
+  .hero-split .muted { margin-top: 1rem; }
+  .phone { margin: 0; max-width: 18rem; justify-self: center; }
+  .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
+  .phone figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
+</style>

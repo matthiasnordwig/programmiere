@@ -2,8 +2,8 @@
 import '@fontsource-variable/bricolage-grotesque';
 import '../styles/global.css';
 import { SITE } from '../site';
-interface Props { title?: string; description?: string; wide?: boolean; image?: string; jsonld?: object; }
-const { title, description = SITE.tagline, wide = false, image = '/og-matrix.jpg', jsonld } = Astro.props;
+interface Props { title?: string; description?: string; wide?: boolean; image?: string; jsonld?: object; appStoreId?: string; }
+const { title, description = SITE.tagline, wide = false, image = '/og-matrix.jpg', jsonld, appStoreId } = Astro.props;
 const fullTitle = title ? `${title} · programmiere.de` : 'programmiere.de — Matthias Nordwig';
 const path = Astro.url.pathname;
 const nav = [
@@ -30,6 +30,7 @@ const nav = [
     <meta property="og:type" content="website" />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
+    {appStoreId && <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />}
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </head>
   <body>

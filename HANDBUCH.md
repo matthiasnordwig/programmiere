@@ -54,13 +54,13 @@ programmiere/
 ## 3. `src/` — die Seite
 
 **Daten & Konfiguration**
-- `site.ts` — `SITE`: Name, Tagline, GitHub, LinkedIn, E-Mail, wp.org-Link. Von `Base.astro`, `index.astro`, `rss.xml.js` genutzt.
+- `site.ts` — `SITE`: Name, Tagline, GitHub, LinkedIn, E-Mail, wp.org-Link, App-Store-ID und -Link von Matrix LLM (`matrixAppId`, `matrixApp`; eine Store-Seite für iPhone, iPad und Mac, Link ohne Länderkennung). Von `Base.astro`, `index.astro`, `rss.xml.js` genutzt.
 - `content.config.ts` — Collections + Schemas: `posts` (`title`, `description` ≤200, `date`, `type` `deep-dive|build-log|diy`, `project`, `tags`, `draft`=**true** per Default) und `projects` (`title`, `summary`, `status`, `order`, `featured`, `links`).
 - `lib.ts` — `publishedPosts()` (Drafts nur in `astro dev`), `TYPE_LABEL`, `fmtDate()`. Genutzt von Startseite, Writing, Projektseiten, RSS.
 - `data/cv.ts` — einzige Quelle des Lebenslaufs: `PERSON`, `RUN` (Stationen mit `fights`: `boss`/`hp`/`result`/`line`), `SIDE_QUESTS`, `LOADOUT`, `EXTRAS`. Fakten nur aus dem eigenen CV; Arbeitgeber-interne Zahlen bleiben draußen.
 
 **Layout & Stil**
-- `layouts/Base.astro` — HTML-Gerüst: Meta/OG/Twitter-Card, optional JSON-LD (`jsonld`), Navigation (Matrix · Anti-spam · The loop · Writing · About), Footer (CV, RSS, GitHub, LinkedIn, E-Mail, Legal notice). Props: `title`, `description`, `wide`, `image`, `jsonld`.
+- `layouts/Base.astro` — HTML-Gerüst: Meta/OG/Twitter-Card, optional JSON-LD (`jsonld`), Navigation (Claude Code plugin · Matrix · Anti-spam · The loop · Writing · About), Footer (CV, RSS, GitHub, LinkedIn, E-Mail, Legal notice). Props: `title`, `description`, `wide`, `image`, `jsonld`, `appStoreId` (setzt das Smart App Banner von Safari, `apple-itunes-app`).
 - `styles/global.css` — Farb-Tokens (hell/dunkel), Grundtypografie; Display-Schrift Bricolage Grotesque (selbst gehostet über `@fontsource-variable`).
 - `styles/story.css` — Bausteine der langen Projektseiten: `.beat`, `.split`, `.grid3`, `.steps` (nummeriert), `.who.ai`/`.who.rules`, `.numbers`, `.card`, `table.demo`, `.go`.
 
@@ -81,7 +81,7 @@ programmiere/
 **Inhalte** (`content/`)
 - `projects/*.md` — Projekt-Stammdaten; Dateiname = `id` = `project`-Wert der Posts. Für Projekte mit eigener Seite dient nur das Frontmatter (Übersicht, Verknüpfung der Posts).
 - `posts/*.md` — Beiträge; Bilder unter `assets/posts/<slug>/`.
-- `assets/projects/` — Screenshots (Matrix: Graph, Graph-Ausschnitt, Chat).
+- `assets/projects/` — Screenshots (Matrix: Graph, Graph-Ausschnitt, alter Chat; aus den App-Store-Aufnahmen 2026-10-28 `matrix-iphone-ask.png`, `matrix-mac-ask.png`, `matrix-mac-tables.png`, Quelle `~/Desktop/AppStoreScreenshots/2026-10-28-ios-1.0.2-mac-0.2.5/`, nur Mustervertrag zu sehen).
 
 ---
 

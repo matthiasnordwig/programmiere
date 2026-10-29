@@ -1,9 +1,12 @@
 ---
-title: Matrix
-summary: Ask a thousand pages a question — on a phone, offline. Answers come with the exact sentence that proves them.
-status: Active
+title: Matrix LLM
+summary: "Ask your own documents on iPhone, iPad and Mac, offline. Every answer comes with the exact passage it is based on. Free on the App Store."
+status: On the App Store
 order: 1
 featured: true
+links:
+  - label: App Store
+    url: https://apps.apple.com/app/id6786311747
 ---
 
 Some work means reading thousands of pages where every statement needs a source: regulations,
@@ -16,7 +19,7 @@ keeps the documents on your own device.
 reads the passages it finds, and answers. Afterwards the system checks every citation against
 the original text — a quote that isn't really there gets flagged.
 
-**Ask a hundred times.** The grid runs the same question over hundreds of rows — passages or a
+**Ask a hundred times.** Tables run the same question over hundreds of rows — passages or a
 list you upload — and every answer has to fit a fixed schema you define, with a live preview of
 exactly what the model will see.
 
@@ -33,6 +36,5 @@ and searched with a mix of vector and full-text search.
 
 ## Honest status
 
-Asking and the grid work today, with a local model or a gateway. The knowledge graph is two-tier:
-a local model gives a fast first map; a graph you can rely on needs a stronger model. Matrix went
-from a 48-hour prototype to this in two weeks.
+Asking and tables work today, with a local model or a gateway. The knowledge graph is two-tier:
+a local model gives a fast first map; a graph you can rely on needs a stronger model.

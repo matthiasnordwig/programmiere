@@ -6,22 +6,11 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Inhalte
 
-- **Matrix als App „Matrix LLM“ für macOS und iOS** (Owner, 2026-10-29): Laut
-  `~/matrix/dist-release/ios-store/STORE_TEXTS.md` schon im App Store (iOS 1.0.1, macOS 0.2.2);
-  das große Update iOS 1.0.2 / macOS 0.2.5 liegt bei Apple bzw. kurz davor. Die Seite erwähnt
-  die App bisher gar nicht. **Nachziehen, wenn Apple das Update freigegeben hat** — Skill
-  `profile-update` (Projektseite, Startseite, CV, About), App-Store-Links und Versionen aus der
-  Quelle, nie aus dem Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App.
-  Bis dahin ist das Claude-Code-Plugin die Hauptgeschichte der Startseite (Owner, 2026-10-29); mit dem
-  Release neu entscheiden, wer den Hero bekommt.
-  Mit hinein: 22 Sprachen, MCP-Zugang für Agenten (nur Mac, `~/matrix/handbuch/mcp.md`).
-  Kandidat für die Kernbotschaft der Seite: **der Assistent im Chat bedient die App selbst**
-  (über dieselben Werkzeuge wie der MCP-Zugang) — Sammlung anlegen, Tabelle füllen, Graph bauen,
-  Einstellungen; Fragen zur App beantwortet jedes Modell aus der eingebauten Hilfe („Show me“).
-  Damit braucht niemand Vektoren oder Wissensgraphen zu verstehen. Quelle: `~/matrix/FEATURES.md`
-  („Assistent, der die App bedient“, „Hilfe im Chat“), Messung `handbuch/chat-messungen.md`
-  („längere Ketten“). Ehrlich mitnehmen: Alles Ändernde läuft erst nach Bestätigung (Run/Cancel),
-  Löschen kann er nicht; braucht ein Modell mit Tool calling (Apples Gerätemodell kann nur die Hilfe).
+- **Matrix LLM: Seite veröffentlichen, sobald macOS 0.2.5 freigegeben ist** (Owner, 2026-10-29). iOS 1.0.2 ist seit
+  2026-10-29 im App Store. Der fertige Entwurf liegt auf Branch `draft/matrix-app` (Matrix-Seite mit Store-Link und
+  Smart App Banner, Assistent, erste fünf Minuten, neue Screenshots, Messwerte aus `DEMO.md`; Projekteintrag, CV,
+  Startseiten-Tür). Dann: `git switch main && git merge draft/matrix-app`, `npm run ship`, Deploy. Vorher
+  entscheiden, wer den Hero der Startseite bekommt (bis dahin das Claude-Code-Plugin) — Entscheidung des Owners.
 - **Matrix für Claude Code: Aufnahme in Anthropics Plugin-Liste** (eingereicht, Owner
   2026-10-29). Sobald aufgenommen: auf `projects/matrix-claude-code.astro` und im
   Installationsabschnitt nennen (ggf. Installation aus der offiziellen Liste statt eigenem
