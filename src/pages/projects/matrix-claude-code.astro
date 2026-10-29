@@ -30,6 +30,21 @@ import '../../styles/story.css';
 
   <section class="beat">
     <div class="in">
+      <p class="kicker">What it does</p>
+      <h2>Ask your documents. Get the page.</h2>
+      <div class="grid3">
+        <div><h3>Answers with sources</h3><p>Every answer names file, page and passage. The citations are checked against the original text.</p></div>
+        <div><h3>Tables across documents</h3><p>One question for every document or passage, returned as a table with a source in each cell.</p></div>
+        <div><h3>Other words, other language</h3><p>Search works on meaning. An English question finds the German provision.</p></div>
+        <div><h3>Scans and charts</h3><p>Scanned pages are searchable. A value that exists only in a chart is found on its page.</p></div>
+        <div><h3>Cross-references</h3><p>"Pursuant to Article 26" leads to Article 26. Claude can read the whole article, not just a snippet.</p></div>
+        <div><h3>Stays current</h3><p>New and changed files in the folder are indexed again on their own. Deleted files are left out of the search.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
       <p class="kicker">The measurement</p>
       <h2>Same answers in a third of the time.</h2>
       <p class="big">Claude Code alone against Claude Code with the plugin, on public EU regulations and reports.
@@ -56,7 +71,7 @@ import '../../styles/story.css';
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in">
       <p class="kicker">The limits</p>
       <h2>It saves effort. It doesn't make Claude smarter.</h2>
@@ -72,35 +87,17 @@ import '../../styles/story.css';
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">How it works</p>
       <h2>Code finds the passages. Claude reads them.</h2>
       <ol class="steps">
         <li><div><h3>Split along the real structure <span class="who rules">rules</span></h3><p>By PDF layout, headings, articles and tables. No language model decides where a section ends. Scans and charts are indexed too.</p></div></li>
-        <li><div><h3>Search by meaning and by keyword <span class="who rules">rules</span></h3><p>A question in other words or another language still finds the provision. Cross-references between provisions are followed. More on this below.</p></div></li>
+        <li><div><h3>Search by meaning and by keyword <span class="who rules">rules</span></h3><p>Vectors from a multilingual embedding model plus full-text search, merged by rank. The vector database is built in, on SQLite: nothing to install, no server. An optional second model re-sorts the top hits.</p></div></li>
         <li><div><h3>Short hits <span class="who rules">rules</span></h3><p>About 1,160 tokens per search instead of 5,500. Each hit is an excerpt with file, pages and the path document › chapter › article.</p></div></li>
         <li><div><h3>Read before citing <span class="who ai">AI</span></h3><p>Claude Code opens the passage or the article it wants to quote. Then it answers with file, page and passage.</p></div></li>
         <li><div><h3>Check the citations <span class="who rules">rules</span></h3><p>Each citation is checked against the original text.</p></div></li>
       </ol>
-    </div>
-  </section>
-
-  <section class="beat alt">
-    <div class="in">
-      <p class="kicker">Vector search</p>
-      <h2>The vector database comes with it.</h2>
-      <p class="big">Every passage gets a vector from a multilingual embedding model (EmbeddingGemma 2), computed on the
-      Mac. Matrix stores the vectors in SQLite, in the same file as the text. Nothing to install, no server to run.
-      The app and the plugin both work this way.</p>
-      <div class="grid3">
-        <div><h3>A full scan is enough</h3><p>Matrix compares the question with every vector (cosine similarity). On 5,950 passages and 408 chart pages a search takes 56 ms. No index to tune.</p></div>
-        <div><h3>Three lists, one ranking</h3><p>Vector hits, keyword hits (SQLite full-text search, BM25) and hits on chart pages are merged by rank (reciprocal rank fusion). Keywords find article numbers, vectors find paraphrases.</p></div>
-        <div><h3>A second model re-sorts</h3><p>An optional re-ranking model (bge-reranker-v2-m3) orders the top candidates. The right place was in the first five for 27 of 30 test questions instead of 20.</p></div>
-        <div><h3>One vector space per collection</h3><p>Vectors from different models are never compared. Two models can produce vectors of the same length, so Matrix stores which model wrote each one.</p></div>
-        <div><h3>Charts get vectors too</h3><p>Pages with graphics are embedded as images with the same model. A value that exists only in a chart is found on its page.</p></div>
-        <div><h3>Fixed test questions</h3><p>30 questions with the right places written down in advance. Every change to the search is measured against them.</p></div>
-      </div>
     </div>
   </section>
 
