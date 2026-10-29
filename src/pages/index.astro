@@ -9,30 +9,40 @@ import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix: ask thousands of pages a question, offline on a Mac or iPhone, with the exact sentence as proof. Plus a Claude Code plugin for large document folders, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that answered questions on 442 pages of PDFs in a third of the time with half the tokens. Plus Matrix, the offline document app for Mac and iPhone, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
-      <p class="project">Matrix</p>
-      <h1>Ask a thousand pages a question. On a phone, offline.</h1>
-      <p class="sub">Matrix reads whole document collections, answers with the exact sentence that proves it,
-      and draws who-relates-to-what as a graph where every link carries its quote. It runs on a Mac or
-      an iPhone — the documents never leave the device.</p>
-      <a class="go" href="/projects/matrix/">See how it works</a>
+      <p class="project">Matrix for Claude Code</p>
+      <h1>A third of the time. Half the tokens.</h1>
+      <p class="sub">A free plugin gives Claude Code a local index of your PDFs, scans and charts. On 442 pages of
+      EU regulations it answered the same questions in 42 instead of 126 seconds, with file, page and passage for
+      every answer.</p>
+      <a class="go" href="/projects/matrix-claude-code/">See the measurement</a>
     </div>
-    <figure class="shot">
-      <Image src={graph} alt="Matrix knowledge graph: thousands of entities and relations extracted from a company's annual report, each link labelled with its relation type." widths={[800, 1400, 2124]} sizes="(min-width: 1100px) 1100px, 100vw" loading="eager" />
-      <figcaption>A real run: one public annual report became 4,385 entities and 1,919 relations — every link backed by a quote from the text.</figcaption>
+    <figure class="bars" aria-label="Average per question on 442 pages: 126 seconds and 651k input tokens without the plugin, 42 seconds and 303k input tokens with it.">
+      <div class="metric">
+        <p class="label">Seconds per question</p>
+        <div class="row"><span class="lab">Claude Code alone</span><span class="bar" style="--v:100%"></span><span class="num">126</span></div>
+        <div class="row"><span class="lab">With the plugin</span><span class="bar on" style="--v:33.3%"></span><span class="num">42</span></div>
+      </div>
+      <div class="metric">
+        <p class="label">Input tokens per question</p>
+        <div class="row"><span class="lab">Claude Code alone</span><span class="bar" style="--v:100%"></span><span class="num">651k</span></div>
+        <div class="row"><span class="lab">With the plugin</span><span class="bar on" style="--v:46.5%"></span><span class="num">303k</span></div>
+      </div>
+      <figcaption>Average of 4 questions, 2 runs each, Claude Code with Sonnet, October 2026. The answers were correct with and without the plugin.</figcaption>
     </figure>
   </section>
 
   <section class="more">
     <div class="more-inner">
       <article class="door">
-        <p class="for">For people who use Claude Code</p>
-        <h2>Big document folders, a third of the time.</h2>
-        <p>A free plugin that gives Claude Code a local index of your PDFs, scans and charts. On 442 pages of EU
-        regulations: 42 instead of 126 seconds per question, with file, page and passage for every answer.</p>
-        <a class="go ghost" href="/projects/matrix-claude-code/">About the plugin</a>
+        <p class="for">For your own documents</p>
+        <h2>Ask a thousand pages a question. On a phone, offline.</h2>
+        <p>Matrix is the app behind the plugin, for Mac and iPhone. It answers with the exact sentence that proves it
+        and draws a knowledge graph where every link carries its quote.</p>
+        <div class="mini"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report." widths={[600, 1200]} sizes="(min-width: 1000px) 24rem, 100vw" /></div>
+        <a class="go ghost" href="/projects/matrix/">See how it works</a>
       </article>
       <article class="door">
         <p class="for">For people building with AI agents</p>
@@ -81,9 +91,16 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
   h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); }
   .sub { font-size: clamp(1.08rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 40rem; margin: 0 0 1.5rem; }
-  .shot { margin: clamp(2rem, 5vw, 3.5rem) 0 0; }
-  .shot :global(img) { width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .35); display: block; }
-  .shot figcaption { margin-top: .8rem; color: var(--muted); font-size: .95rem; max-width: 48rem; }
+  .bars { margin: clamp(2rem, 5vw, 3.5rem) 0 0; display: grid; grid-template-columns: 1fr; gap: 2rem 4rem; }
+  @media (min-width: 900px) { .bars { grid-template-columns: 1fr 1fr; } }
+  .metric .label { margin: 0 0 .8rem; font-weight: 700; }
+  .row { display: grid; grid-template-columns: 9.5rem 1fr 3.5rem; gap: .8rem; align-items: center; margin-bottom: .6rem; }
+  .row .lab { color: var(--muted); font-size: .95rem; }
+  .bar { height: 1.6rem; border-radius: 6px; background: linear-gradient(to right, var(--line) var(--v), transparent var(--v)); }
+  .bar.on { background: linear-gradient(to right, var(--accent) var(--v), transparent var(--v)); }
+  .row .num { font: 800 1.25rem/1 var(--display); text-align: right; }
+  .bars figcaption { grid-column: 1 / -1; color: var(--muted); font-size: .95rem; max-width: 48rem; }
+  .mini :global(img) { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
   .more { border-top: 1px solid var(--line); background: var(--surface); }
   .more-inner { max-width: 76rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 16px; display: grid; grid-template-columns: 1fr; gap: 3.5rem 4rem; }
   @media (min-width: 1000px) { .more-inner { grid-template-columns: repeat(3, 1fr); } }

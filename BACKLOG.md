@@ -12,6 +12,8 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
   die App bisher gar nicht. **Nachziehen, wenn Apple das Update freigegeben hat** — Skill
   `profile-update` (Projektseite, Startseite, CV, About), App-Store-Links und Versionen aus der
   Quelle, nie aus dem Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App.
+  Bis dahin ist das Claude-Code-Plugin die Hauptgeschichte der Startseite (Owner, 2026-10-29); mit dem
+  Release neu entscheiden, wer den Hero bekommt.
   Mit hinein: 22 Sprachen, MCP-Zugang für Agenten (nur Mac, `~/matrix/handbuch/mcp.md`).
   Kandidat für die Kernbotschaft der Seite: **der Assistent im Chat bedient die App selbst**
   (über dieselben Werkzeuge wie der MCP-Zugang) — Sammlung anlegen, Tabelle füllen, Graph bauen,

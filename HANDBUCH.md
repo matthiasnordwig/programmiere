@@ -65,7 +65,7 @@ programmiere/
 - `styles/story.css` — Bausteine der langen Projektseiten: `.beat`, `.split`, `.grid3`, `.steps` (nummeriert), `.who.ai`/`.who.rules`, `.numbers`, `.card`, `table.demo`, `.go`.
 
 **Seiten** (`pages/`)
-- `index.astro` — Startseite: Matrix als Hero mit echter Aufnahme, darunter zwei „Türen“ je Publikum (Loop für Agent-Bauer, Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
+- `index.astro` — Startseite: Matrix for Claude Code als Hero mit Balken aus der Messung (Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`), darunter drei „Türen“ je Publikum (Matrix-App mit Graph-Aufnahme, Loop für Agent-Bauer, Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
 - `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
 - `projects/index.astro` — Übersicht aller Projekte (`order`).
