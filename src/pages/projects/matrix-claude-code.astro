@@ -89,11 +89,12 @@ import '../../styles/story.css';
   <section class="beat alt">
     <div class="in">
       <p class="kicker">Vector search</p>
-      <h2>Vector search without a vector database.</h2>
+      <h2>The vector database comes with it.</h2>
       <p class="big">Every passage gets a vector from a multilingual embedding model (EmbeddingGemma 2), computed on the
-      Mac. The vectors are stored in the same SQLite file as the text.</p>
+      Mac. Matrix stores the vectors in SQLite, in the same file as the text. Nothing to install, no server to run.
+      The app and the plugin both work this way.</p>
       <div class="grid3">
-        <div><h3>A full scan is enough</h3><p>Matrix compares the question with every vector (cosine similarity). On 5,950 passages and 408 chart pages a search takes 56 ms. No index to tune, no extra server.</p></div>
+        <div><h3>A full scan is enough</h3><p>Matrix compares the question with every vector (cosine similarity). On 5,950 passages and 408 chart pages a search takes 56 ms. No index to tune.</p></div>
         <div><h3>Three lists, one ranking</h3><p>Vector hits, keyword hits (SQLite full-text search, BM25) and hits on chart pages are merged by rank (reciprocal rank fusion). Keywords find article numbers, vectors find paraphrases.</p></div>
         <div><h3>A second model re-sorts</h3><p>An optional re-ranking model (bge-reranker-v2-m3) orders the top candidates. The right place was in the first five for 27 of 30 test questions instead of 20.</p></div>
         <div><h3>One vector space per collection</h3><p>Vectors from different models are never compared. Two models can produce vectors of the same length, so Matrix stores which model wrote each one.</p></div>
