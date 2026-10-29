@@ -6,11 +6,12 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Inhalte
 
-- **Matrix als App für macOS und iOS** (Owner, 2026-10-29): Matrix ist stark weiterentwickelt
-  und erscheint demnächst als App im App Store. **Erst nachziehen, wenn Apple die Releases
-  freigegeben hat** — dann Skill `profile-update` (Projektseite, Startseite, CV, About), mit
-  App-Store-Links und Versionen aus der Quelle (`~/matrix`, App-Store-Eintrag), nie aus dem
-  Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App-Fassung.
+- **Matrix als App „Matrix LLM“ für macOS und iOS** (Owner, 2026-10-29): Laut
+  `~/matrix/dist-release/ios-store/STORE_TEXTS.md` schon im App Store (iOS 1.0.1, macOS 0.2.2);
+  das große Update iOS 1.0.2 / macOS 0.2.5 liegt bei Apple bzw. kurz davor. Die Seite erwähnt
+  die App bisher gar nicht. **Nachziehen, wenn Apple das Update freigegeben hat** — Skill
+  `profile-update` (Projektseite, Startseite, CV, About), App-Store-Links und Versionen aus der
+  Quelle, nie aus dem Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App.
 
 - **TIL-Notizen** („today I learned“): kurze Beiträge aus einzelnen Commits/Einsichten der
   Projekt-Repos, Vorbild simonwillison.net. Braucht eine neue Beitragsart `til` in
