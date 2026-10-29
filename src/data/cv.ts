@@ -75,6 +75,13 @@ export const SIDE_QUESTS = [
     href: '/projects/matrix/',
   },
   {
+    name: 'Matrix for Claude Code',
+    pb: '3× faster',
+    what: 'Free Claude Code plugin: local semantic index over document folders, citations to file, page and passage, tables across documents.',
+    note: 'Measured on 442 pages: 42 instead of 126 s per question, less than half the input tokens.',
+    href: '/projects/matrix-claude-code/',
+  },
+  {
     name: 'GDPR Compliant ReCaptcha',
     pb: '~4,000 installs',
     what: 'WordPress spam protection without Google: proof of work in the browser instead of tracking.',

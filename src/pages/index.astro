@@ -9,7 +9,7 @@ import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix: ask thousands of pages a question, offline on a Mac or iPhone, with the exact sentence as proof. Plus a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix: ask thousands of pages a question, offline on a Mac or iPhone, with the exact sentence as proof. Plus a Claude Code plugin for large document folders, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
       <p class="project">Matrix</p>
@@ -27,6 +27,13 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
 
   <section class="more">
     <div class="more-inner">
+      <article class="door">
+        <p class="for">For people who use Claude Code</p>
+        <h2>Big document folders, a third of the time.</h2>
+        <p>A free plugin that gives Claude Code a local index of your PDFs, scans and charts. On 442 pages of EU
+        regulations: 42 instead of 126 seconds per question, with file, page and passage for every answer.</p>
+        <a class="go ghost" href="/projects/matrix-claude-code/">About the plugin</a>
+      </article>
       <article class="door">
         <p class="for">For people building with AI agents</p>
         <h2>An AI that maintains my software — and has to ask first.</h2>
@@ -79,7 +86,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   .shot figcaption { margin-top: .8rem; color: var(--muted); font-size: .95rem; max-width: 48rem; }
   .more { border-top: 1px solid var(--line); background: var(--surface); }
   .more-inner { max-width: 76rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 16px; display: grid; grid-template-columns: 1fr; gap: 3.5rem 4rem; }
-  @media (min-width: 900px) { .more-inner { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .more-inner { grid-template-columns: repeat(3, 1fr); } }
   .for { margin: 0 0 .6rem; font-weight: 700; color: var(--accent); }
   .door h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
   .door p { color: var(--muted); font-size: 1.08rem; line-height: 1.55; margin: 0 0 1.25rem; max-width: 34rem; }

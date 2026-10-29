@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/story.css';
+---
+<Base wide title="Matrix for Claude Code: a local index for your documents" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 42 instead of 126 seconds per question, less than half the input tokens.">
+<div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in">
+      <p class="kicker">Matrix for Claude Code</p>
+      <h1>Index your documents once. Then ask Claude Code.</h1>
+      <p class="big">A free plugin that lets Claude Code search your PDFs, Word files, scans and charts by meaning.
+      Answers come with file, page and passage. The index lives on your Mac. Claude Code is the language model,
+      so you need no extra model and no API key.</p>
+      <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div><p class="kicker">The problem</p><h2>Without an index, every question starts from zero.</h2></div>
+      <div>
+        <p class="big">Claude Code converts the PDFs to text, greps, opens pages, greps again. That works. On a few
+        hundred pages it takes 20 or more tool calls per question.</p>
+        <p class="muted">Matrix reads the documents once. It splits them by their structure, indexes them and gives
+        Claude Code short hits instead of whole pages.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">The measurement</p>
+      <h2>Same answers in a third of the time.</h2>
+      <p class="big">Claude Code alone against Claude Code with the plugin, on public EU regulations and reports.
+      Same questions, same prompt. The right answers were written down before the first run.</p>
+      <div class="numbers">
+        <div><strong>42 s</strong><span>average time per question on 442 pages, instead of 126 s without the plugin</span></div>
+        <div><strong>303k</strong><span>input tokens per question, instead of 651k</span></div>
+        <div><strong>9.5</strong><span>tool calls per question, instead of 21</span></div>
+        <div><strong>−34 %</strong><span>input tokens on 1,592 pages in 14 documents and four languages; 35 % less time</span></div>
+      </div>
+      <div class="table-wrap">
+        <table class="demo">
+          <thead><tr><th>Question (442 pages)</th><th>Alone</th><th>With Matrix</th></tr></thead>
+          <tbody>
+            <tr><td>English question, German legal text</td><td>86 s · 381k tokens</td><td class="ok">26 s · 187k tokens</td></tr>
+            <tr><td>A number that exists only in a chart</td><td>109 s · 585k tokens</td><td class="ok">51 s · 407k tokens</td></tr>
+            <tr><td>One answer spread over three regulations</td><td>245 s · 1,279k tokens</td><td class="ok">62 s · 428k tokens</td></tr>
+            <tr><td>Paraphrased question, single regulation</td><td>64 s · 357k tokens</td><td class="ok">27 s · 191k tokens</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:1.5rem">Averages per run, Claude Code with Sonnet, October 2026. Questions, right answers
+      and the script to rerun it are in <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">The limits</p>
+      <h2>It saves effort. It doesn't make Claude smarter.</h2>
+      <p class="big">Claude Code alone answered every question correctly too.</p>
+      <div class="grid3">
+        <div><h3>More documents, more gain</h3><p>The gain is largest when the question uses other words or another language than the text. For one short document it is small.</p></div>
+        <div><h3>Spread-out questions gain less</h3><p>On the larger set, a question across three acts saved almost nothing: Claude still searches once per act.</p></div>
+        <div><h3>Indexing costs minutes</h3><p>Once per folder: 16 minutes for 1,592 pages, no Claude tokens. Worth it if you ask more than once.</p></div>
+        <div><h3>Page numbers slipped</h3><p>In the measured version, two citations were one page off where a passage crosses a page break. File, article and passage were right in every answer.</p></div>
+        <div><h3>One miss, then fixed</h3><p>One answer was wrong because a chart label was too small to read. After a fix in the skill, 4 of 4 were right.</p></div>
+        <div><h3>Small samples</h3><p>Two runs per question in the first test, one in the second. Run-to-run differences of 10–20 % are normal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">How it works</p>
+      <h2>Code finds the passages. Claude reads them.</h2>
+      <ol class="steps">
+        <li><div><h3>Split along the real structure <span class="who rules">rules</span></h3><p>By PDF layout, headings, articles and tables. No language model decides where a section ends. Scans and charts are indexed too.</p></div></li>
+        <li><div><h3>Search by meaning and by keyword <span class="who rules">rules</span></h3><p>A question in other words or another language still finds the provision. Cross-references between provisions are followed. An optional small model puts the best passages first.</p></div></li>
+        <li><div><h3>Short hits <span class="who rules">rules</span></h3><p>About 1,160 tokens per search instead of 5,500. Each hit is an excerpt with file, pages and the path document › chapter › article.</p></div></li>
+        <li><div><h3>Read before citing <span class="who ai">AI</span></h3><p>Claude Code opens the passage or the article it wants to quote. Then it answers with file, page and passage.</p></div></li>
+        <li><div><h3>Check the citations <span class="who rules">rules</span></h3><p>Each citation is checked against the original text.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div><p class="kicker">Two lines</p><h2>Install it, then just ask.</h2></div>
+      <div>
+        <div class="card"><pre><code>claude plugin marketplace add matthiasnordwig/matrix-mcp
+claude plugin install matrix@matrix-mcp</code></pre></div>
+        <p class="muted">Start Claude Code in the folder with your documents and ask. The first time, it walks you
+        through the setup. Needs a Mac with Apple silicon and Node.js 18 or later.</p>
+        <p class="muted">Matrix reads the folder you started in and asks before touching any other. It never changes or
+        deletes your files. The only text that leaves your Mac is what Claude Code reads anyway.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in read">
+      <p class="kicker">Where it comes from</p>
+      <h2>It started as an app.</h2>
+      <p class="big">The plugin runs on the same Rust core as <a href="/projects/matrix/">Matrix</a>, my document app for Mac
+      and iPhone. In the app a local model does the reading; here Claude Code does.</p>
+      <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
+      <a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">Write to me</a>
+    </div>
+  </section>
+
+</div>
+</Base>

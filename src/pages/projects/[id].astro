@@ -9,7 +9,7 @@ import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   // Projects with their own hand-built page are excluded here.
-  const OWN = ['matrix', 'gdpr-recaptcha', 'maintainer-loop'];
+  const OWN = ['matrix', 'matrix-claude-code', 'gdpr-recaptcha', 'maintainer-loop'];
   const projects = (await getCollection('projects')).filter((p) => !OWN.includes(p.id));
   return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
 }

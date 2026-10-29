@@ -66,7 +66,7 @@ programmiere/
 
 **Seiten** (`pages/`)
 - `index.astro` — Startseite: Matrix als Hero mit echter Aufnahme, darunter zwei „Türen“ je Publikum (Loop für Agent-Bauer, Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
-- `projects/matrix.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
+- `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
 - `projects/index.astro` — Übersicht aller Projekte (`order`).
 - `writing/index.astro`, `writing/[...id].astro` — Beitragsliste und Beitragsseite.
