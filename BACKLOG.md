@@ -59,7 +59,7 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Technik
 
-- **OG-Bilder je Seite** statt überall `og-matrix.jpg` (Plugin, Loop, CV eigene Vorschaubilder).
+- **OG-Bilder je Seite** statt überall `og-matrix.jpg` (WordPress-Plugin, Loop, CV eigene Vorschaubilder; Startseite und Claude-Code-Plugin haben schon `og-matrix-claude-code.png`, gerendert aus HTML mit Chrome headless).
 - **404 auf dem Server:** Astro erzeugt `404.html`, der Server nutzt sie nicht. Lösung über
   `ErrorDocument` in der `.htaccess` des Docroots — die Datei gehört dem Owner/Server, nur mit
   Freigabe ändern.

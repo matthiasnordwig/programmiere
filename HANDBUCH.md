@@ -43,7 +43,7 @@ programmiere/
 ├── inbox/diy/                lokales Rohmaterial für DIY-Posts (gitignored außer README)
 ├── .deploy/                  Deploy-Schlüssel + gepinnter Host-Key — nur auf dem Mac, gitignored
 ├── .github/workflows/build.yml  Build-Prüfung bei jedem Push (keine Auslieferung)
-├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau), null-device/
+├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard), og-matrix-claude-code.png (Vorschau Startseite + Plugin-Seite), null-device/
 ├── scripts/                  s. §1 und §4
 ├── terminal-cv/              Quelle der Terminal-Parodie (Vite + TS, eigenes package.json); gebaut nach public/null-device/
 └── src/                      s. §3

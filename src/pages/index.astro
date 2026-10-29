@@ -9,7 +9,7 @@ import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that answered questions on 442 pages of PDFs in a third of the time with half the tokens. Plus Matrix, the offline document app for Mac and iPhone, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide image="/og-matrix-claude-code.png" jsonld={jsonld} description="Matrix for Claude Code: a free plugin that answered questions on 442 pages of PDFs in a third of the time with half the tokens. Plus Matrix, the offline document app for Mac and iPhone, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
       <p class="project">Matrix for Claude Code</p>
