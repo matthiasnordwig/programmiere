@@ -12,7 +12,13 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
   die App bisher gar nicht. **Nachziehen, wenn Apple das Update freigegeben hat** — Skill
   `profile-update` (Projektseite, Startseite, CV, About), App-Store-Links und Versionen aus der
   Quelle, nie aus dem Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App.
-
+  Mit hinein: 22 Sprachen, MCP-Zugang für Agenten (nur Mac, `~/matrix/handbuch/mcp.md`).
+- **Matrix für Claude Code** (Plugin, öffentlich: `github.com/matthiasnordwig/matrix-mcp`,
+  Quelle `~/matrix/app/claude-plugin/`): Anthropic prüft die Aufnahme in die offizielle
+  Plugin-Liste (Owner, 2026-10-29). Vorschlag: eigene Projektseite plus Abschnitt mit Link auf
+  der Matrix-Seite. Belege stehen in `DEMO.md` (Messung mit und ohne Plugin, 442 und 1.592
+  Seiten). Ehrlich mitnehmen: Der Gewinn ist Aufwand, nicht Richtigkeit, und bei kleinen
+  Sammlungen bringt das Plugin wenig. Nach der Aufnahme durch Anthropic auf der Seite nennen.
 - **TIL-Notizen** („today I learned“): kurze Beiträge aus einzelnen Commits/Einsichten der
   Projekt-Repos, Vorbild simonwillison.net. Braucht eine neue Beitragsart `til` in
   `src/content.config.ts` + `docs/decisions/0004-content-types.md` + Skill. Owner hat die Idee
