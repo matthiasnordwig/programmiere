@@ -13,6 +13,13 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
   `profile-update` (Projektseite, Startseite, CV, About), App-Store-Links und Versionen aus der
   Quelle, nie aus dem Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App.
   Mit hinein: 22 Sprachen, MCP-Zugang für Agenten (nur Mac, `~/matrix/handbuch/mcp.md`).
+  Kandidat für die Kernbotschaft der Seite: **der Assistent im Chat bedient die App selbst**
+  (über dieselben Werkzeuge wie der MCP-Zugang) — Sammlung anlegen, Tabelle füllen, Graph bauen,
+  Einstellungen; Fragen zur App beantwortet jedes Modell aus der eingebauten Hilfe („Show me“).
+  Damit braucht niemand Vektoren oder Wissensgraphen zu verstehen. Quelle: `~/matrix/FEATURES.md`
+  („Assistent, der die App bedient“, „Hilfe im Chat“), Messung `handbuch/chat-messungen.md`
+  („längere Ketten“). Ehrlich mitnehmen: Alles Ändernde läuft erst nach Bestätigung (Run/Cancel),
+  Löschen kann er nicht; braucht ein Modell mit Tool calling (Apples Gerätemodell kann nur die Hilfe).
 - **Matrix für Claude Code** (Plugin, öffentlich: `github.com/matthiasnordwig/matrix-mcp`,
   Quelle `~/matrix/app/claude-plugin/`): Anthropic prüft die Aufnahme in die offizielle
   Plugin-Liste (Owner, 2026-10-29). Vorschlag: eigene Projektseite plus Abschnitt mit Link auf
