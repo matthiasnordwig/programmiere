@@ -1,10 +1,10 @@
 #!/bin/bash
-# Baut die Terminal-Parodie (~/programmiere/terminal-cv) mit Basis /null-device/ und legt das
+# Baut die Terminal-Parodie (terminal-cv/ in diesem Repo) mit Basis /null-device/ und legt das
 # Ergebnis unter public/null-device/ ab. Nur nötig, wenn sich terminal-cv geändert hat.
 # Aufruf: bash scripts/sync-cv.sh [pfad-zu-terminal-cv]
 set -euo pipefail
-SRC="${1:-$HOME/programmiere/terminal-cv}"
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
+SRC="${1:-$HERE/terminal-cv}"
 TMP="$(mktemp -d)"
 rsync -a --exclude node_modules --exclude dist --exclude .DS_Store "$SRC/" "$TMP/"
 (cd "$TMP" && npm ci --no-fund --no-audit >/dev/null && npx tsc && npx vite build --base=/null-device/ >/dev/null)

@@ -19,7 +19,7 @@ Server** (whistle-blower.net, User `web412`, Docroot `~/html/programmiere/`). Gi
 | Änderung an der Seite selbst (Layout, Seiten, CV, Projekte, Doku) | Commit auf `main` → Push (verweigert Post-Änderungen) | `npm run ship` (`scripts/ship-site.sh`) |
 | Auslieferung auf den Server | auf dem Mac: holen, bauen, `index.html`→`index.php`, rsync, Erreichbarkeit prüfen | `bash scripts/deploy-own-server.sh` |
 | Beitrag zurücknehmen | nur auf Anweisung des Owners | `scripts/unpublish.sh <datei> "<grund>"` |
-| Terminal-Parodie neu bauen | aus `~/programmiere/terminal-cv` nach `public/null-device/` | `scripts/sync-cv.sh` |
+| Terminal-Parodie neu bauen | aus `terminal-cv/` nach `public/null-device/` | `scripts/sync-cv.sh` |
 
 Direkte `git push`/`gh pr merge` verweigert `.claude/hooks/publish-gate.sh`. **Nach jedem Push
 folgt der Deploy** — erst dann ist etwas online.
@@ -45,6 +45,7 @@ programmiere/
 ├── .github/workflows/build.yml  Build-Prüfung bei jedem Push (keine Auslieferung)
 ├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau), null-device/
 ├── scripts/                  s. §1 und §4
+├── terminal-cv/              Quelle der Terminal-Parodie (Vite + TS, eigenes package.json); gebaut nach public/null-device/
 └── src/                      s. §3
 ```
 

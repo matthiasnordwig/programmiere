@@ -6,6 +6,12 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Inhalte
 
+- **Matrix als App für macOS und iOS** (Owner, 2026-10-29): Matrix ist stark weiterentwickelt
+  und erscheint demnächst als App im App Store. **Erst nachziehen, wenn Apple die Releases
+  freigegeben hat** — dann Skill `profile-update` (Projektseite, Startseite, CV, About), mit
+  App-Store-Links und Versionen aus der Quelle (`~/matrix`, App-Store-Eintrag), nie aus dem
+  Gedächtnis. Die Bild- und Video-Vorhaben unten passen dann auf die App-Fassung.
+
 - **TIL-Notizen** („today I learned“): kurze Beiträge aus einzelnen Commits/Einsichten der
   Projekt-Repos, Vorbild simonwillison.net. Braucht eine neue Beitragsart `til` in
   `src/content.config.ts` + `docs/decisions/0004-content-types.md` + Skill. Owner hat die Idee
