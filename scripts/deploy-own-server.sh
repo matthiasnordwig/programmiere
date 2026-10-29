@@ -20,23 +20,24 @@ KEY=".deploy/id_ed25519"; KH=".deploy/known_hosts"
 [ -f "$KEY" ] || { echo "deploy: kein Schlüssel in .deploy/"; exit 1; }
 TARGET="web412@whistle-blower.net"
 DOCROOT="html/programmiere"
-# Rechte explizit setzen: die Arbeitskopie auf dem Mac hat 600/700 — rsync -a würde das
-# übernehmen und der Webserver antwortete 403 (so passiert beim ersten Deploy 2026-10-10).
-PERMS="--chmod=D755,F644"
 SSH="ssh -i $KEY -o UserKnownHostsFile=$KH -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -o BatchMode=yes"
 
 git fetch -q origin main && git merge -q --ff-only origin/main
 npm ci --no-fund --no-audit >/dev/null
 npm run build >/dev/null
 node scripts/php-index.mjs dist
+# Rechte explizit setzen: die Arbeitskopie auf dem Mac hat 600/700 — rsync -a würde das
+# übernehmen und der Webserver antwortete 403 (so passiert beim ersten Deploy 2026-10-10).
+# Lokal statt per rsync --chmod: das openrsync von macOS kennt --chmod nicht.
+chmod -R u=rwX,go=rX dist
 
 # Seiten-eigene Verzeichnisse: exakt spiegeln (inkl. Löschen entfernter Beiträge)
 for d in _astro writing projects cv null-device about; do
   [ -d "dist/$d" ] || continue
-  rsync -az $DRY $PERMS --delete -e "$SSH" "dist/$d/" "$TARGET:$DOCROOT/$d/"
+  rsync -az $DRY --delete -e "$SSH" "dist/$d/" "$TARGET:$DOCROOT/$d/"
 done
 # Wurzel: nur Dateien, nichts löschen, fremde Verzeichnisse nicht berühren
-rsync -az $DRY $PERMS -e "$SSH" --exclude='*/' dist/ "$TARGET:$DOCROOT/"
+rsync -az $DRY -e "$SSH" --exclude='*/' dist/ "$TARGET:$DOCROOT/"
 # Eine alte index.html im Docroot würde neben index.php stehen — sie stammt nicht von hier
 # und wird nur gemeldet, nicht gelöscht.
 $SSH "$TARGET" "test -e $DOCROOT/index.html && echo 'deploy: Hinweis — alte index.html im Docroot' || true"

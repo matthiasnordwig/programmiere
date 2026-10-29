@@ -90,7 +90,7 @@ programmiere/
 - `scripts/publish-check.mjs` — deterministischer Check eines Posts: Pflichtfelder, Mindestlänge je Art, keine REVIEW-Marker/Platzhalter, keine Zugangsdaten, lokalen Pfade, privaten IPs, fremden E-Mails, gesperrten Begriffe.
 - `scripts/publish.sh` — nur von `post/<slug>`: Check → `draft: false` → Build → Merge nach `main` → Push.
 - `scripts/ship-site.sh` — Push von `main`, bricht ab, wenn Posts betroffen sind (Vergleich gegen `FETCH_HEAD`).
-- `scripts/deploy-own-server.sh` — läuft auf dem Mac (`main()`-gekapselt): fast-forward, `npm ci`, Build, `php-index.mjs`, rsync mit `--chmod=D755,F644`; `--delete` nur in `_astro writing projects cv null-device about`; prüft am Ende `/`, `/cv/`, `/impressum/`, `/GDPRCompliantRecaptcha/` auf 200.
+- `scripts/deploy-own-server.sh` — läuft auf dem Mac (`main()`-gekapselt): fast-forward, `npm ci`, Build, `php-index.mjs`, Rechte lokal per `chmod -R u=rwX,go=rX dist` (macOS-openrsync kennt kein `--chmod`), rsync; `--delete` nur in `_astro writing projects cv null-device about`; prüft am Ende `/`, `/cv/`, `/impressum/`, `/GDPRCompliantRecaptcha/` auf 200.
 - `scripts/php-index.mjs` — jede `index.html` → `index.php` (Server kennt nur `index.php`, sonst 403); Abbruch bei `<?` im HTML.
 - **Nicht von hier verwaltet**, liegt aber im selben Docroot: `impressum/` (zweisprachig) und `GDPRCompliantRecaptcha/` (Feedback-Empfänger) — beide gepflegt im Plugin-Repo unter `server/programmiere.de/`.
 
