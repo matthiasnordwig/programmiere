@@ -43,7 +43,7 @@ programmiere/
 ├── inbox/diy/                lokales Rohmaterial für DIY-Posts (gitignored außer README)
 ├── .deploy/                  Deploy-Schlüssel + gepinnter Host-Key — nur auf dem Mac, gitignored
 ├── .github/workflows/build.yml  Build-Prüfung bei jedem Push (keine Auslieferung)
-├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard), og-matrix-claude-code.png (Vorschau Startseite + Plugin-Seite), null-device/
+├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard, auch Startseite), og-matrix-claude-code.png (Vorschau Plugin-Seite), null-device/
 ├── scripts/                  s. §1 und §4
 ├── terminal-cv/              Quelle der Terminal-Parodie (Vite + TS, eigenes package.json); gebaut nach public/null-device/
 └── src/                      s. §3
@@ -65,7 +65,7 @@ programmiere/
 - `styles/story.css` — Bausteine der langen Projektseiten: `.beat`, `.split`, `.grid3`, `.steps` (nummeriert), `.who.ai`/`.who.rules`, `.numbers`, `.card`, `table.demo`, `.go`.
 
 **Seiten** (`pages/`)
-- `index.astro` — Startseite: Matrix for Claude Code als Hero mit Balken aus der Messung (Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`), darunter drei „Türen“ je Publikum (Matrix-App mit Graph-Aufnahme, Loop für Agent-Bauer, Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
+- `index.astro` — Startseite: Matrix LLM als Hero mit Wissensgraph und iPhone, darunter drei „Türen“ je Publikum (Claude-Code-Plugin mit Balken aus der Messung, Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`; Loop für Agent-Bauer; Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
 - `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
 - `projects/index.astro` — Übersicht aller Projekte (`order`).

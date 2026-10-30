@@ -6,12 +6,6 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Inhalte
 
-- **Matrix LLM: Seite veröffentlichen, sobald macOS 0.2.5 freigegeben ist** (Owner, 2026-10-29). iOS 1.0.2 ist seit
-  2026-10-29 im App Store. Der fertige Entwurf liegt auf Branch `draft/matrix-app` (Matrix-Seite mit Store-Link und
-  Smart App Banner, Assistent, erste fünf Minuten, neue Screenshots, Messwerte aus `DEMO.md`; Projekteintrag, CV,
-  Startseiten-Tür). Dann: `git switch main && git merge draft/matrix-app`, `npm run ship`, Deploy; die Vorschau-Kopie
-  `~/projects/programmiere-draft` (git worktree) mit `git worktree remove ../programmiere-draft` entfernen. Hero der
-  Startseite: die App, mit Wissensgraph und iPhone (Owner, 2026-10-30).
 - **Matrix für Claude Code: Aufnahme in Anthropics Plugin-Liste** (eingereicht, Owner
   2026-10-29). Sobald aufgenommen: auf `projects/matrix-claude-code.astro` und im
   Installationsabschnitt nennen (ggf. Installation aus der offiziellen Liste statt eigenem
