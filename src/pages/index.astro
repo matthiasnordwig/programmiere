@@ -4,45 +4,53 @@ import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import LoopFlow from '../components/diagrams/LoopFlow.astro';
 import graph from '../assets/projects/matrix-graph.jpg';
+import iphoneAsk from '../assets/projects/matrix-iphone-ask.png';
 import { publishedPosts } from '../lib';
 import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide image="/og-matrix-claude-code.png" jsonld={jsonld} description="Matrix for Claude Code: a free plugin that answered questions on 442 pages of PDFs in a third of the time with half the tokens. Plus Matrix, the offline document app for Mac and iPhone, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix LLM: ask your own documents on iPhone, iPad and Mac, offline, with the exact passage as proof and a knowledge graph where every link carries a quote. Free on the App Store. Plus Matrix for Claude Code, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
-      <p class="project">Matrix for Claude Code</p>
-      <h1>A third of the time. Half the tokens.</h1>
-      <p class="sub">A free plugin gives Claude Code a local index of your PDFs, scans and charts. On 442 pages of
-      EU regulations it answered the same questions in 42 instead of 126 seconds on average, with file, page and passage for
-      every answer.</p>
-      <a class="go" href="/projects/matrix-claude-code/">See the measurement</a>
+      <p class="project">Matrix LLM · iPhone, iPad and Mac</p>
+      <h1>Ask your documents. On your phone, offline.</h1>
+      <p class="sub">Every answer comes with the exact passage it is based on. And Matrix maps who relates to what into a
+      knowledge graph, with a quote behind every link. The models can run entirely on your device.</p>
+      <div class="actions">
+        <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
+        <a class="go ghost" href="/projects/matrix/">See how it works</a>
+      </div>
+      <p class="free">Free to download.</p>
     </div>
-    <figure class="bars" aria-label="Average per question on 442 pages: 126 seconds and 651k input tokens without the plugin, 42 seconds and 303k input tokens with it.">
-      <div class="metric">
-        <p class="label">Seconds per question</p>
-        <div class="row"><span class="lab">Claude Code alone</span><span class="bar" style="--v:100%"></span><span class="num">126</span></div>
-        <div class="row"><span class="lab">With the plugin</span><span class="bar on" style="--v:33.3%"></span><span class="num">42</span></div>
-      </div>
-      <div class="metric">
-        <p class="label">Input tokens per question</p>
-        <div class="row"><span class="lab">Claude Code alone</span><span class="bar" style="--v:100%"></span><span class="num">651k</span></div>
-        <div class="row"><span class="lab">With the plugin</span><span class="bar on" style="--v:46.5%"></span><span class="num">303k</span></div>
-      </div>
-      <figcaption>Average of 4 questions, 2 runs each, Claude Code with Sonnet, October 2026. The answers were correct with and without the plugin.</figcaption>
+    <figure class="stage">
+      <div class="graph"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report: hundreds of entities linked by typed relations." widths={[800, 1400]} sizes="(min-width: 960px) 44rem, 100vw" loading="eager" /></div>
+      <div class="phone"><Image src={iphoneAsk} alt="Matrix on an iPhone: a question about a sample contract, answered by Apple's on-device model, with the cited passage underneath." widths={[300, 600]} sizes="(min-width: 960px) 15rem, 38vw" loading="eager" /></div>
+      <figcaption>Behind: a knowledge graph from one public annual report. In front: Apple's model answers on the iPhone, with the passage it used.</figcaption>
     </figure>
   </section>
 
   <section class="more">
     <div class="more-inner">
       <article class="door">
-        <p class="for">For your own documents</p>
-        <h2>Ask a thousand pages a question. On a phone, offline.</h2>
-        <p>Matrix LLM is the app behind the plugin, free on the App Store for iPhone, iPad and Mac. It answers with the
-        exact passage that proves it, and an assistant works the app for you.</p>
-        <div class="mini"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report." widths={[600, 1200]} sizes="(min-width: 1000px) 24rem, 100vw" /></div>
-        <a class="go ghost" href="/projects/matrix/">See how it works</a>
+        <p class="for">For people using Claude Code</p>
+        <h2>A third of the time. Half the tokens.</h2>
+        <p>A free plugin gives Claude Code a local index of your PDFs, scans and charts, with file, page and passage for
+        every answer. The same engine as the app.</p>
+        <figure class="bars" aria-label="Average per question on 442 pages: 126 seconds and 651k input tokens without the plugin, 42 seconds and 303k input tokens with it.">
+          <div class="metric">
+            <p class="label">Seconds per question</p>
+            <div class="row"><span class="lab">Alone</span><span class="bar" style="--v:100%"></span><span class="num">126</span></div>
+            <div class="row"><span class="lab">Plugin</span><span class="bar on" style="--v:33.3%"></span><span class="num">42</span></div>
+          </div>
+          <div class="metric">
+            <p class="label">Input tokens per question</p>
+            <div class="row"><span class="lab">Alone</span><span class="bar" style="--v:100%"></span><span class="num">651k</span></div>
+            <div class="row"><span class="lab">Plugin</span><span class="bar on" style="--v:46.5%"></span><span class="num">303k</span></div>
+          </div>
+          <figcaption>442 pages of EU regulations. Average of 4 questions, 2 runs each.</figcaption>
+        </figure>
+        <a class="go ghost" href="/projects/matrix-claude-code/">See the measurement</a>
       </article>
       <article class="door">
         <p class="for">For people building with AI agents</p>
@@ -85,21 +93,30 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
 </Base>
 
 <style>
-  .hero { max-width: 76rem; margin: 0 auto; padding: clamp(2.5rem, 7vw, 5rem) 16px clamp(2.5rem, 6vw, 4rem); }
-  .hero-text { max-width: 48rem; }
+  .hero { max-width: 76rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) 16px clamp(2.5rem, 6vw, 4rem); display: grid; gap: 2.5rem 3.5rem; align-items: center; }
+  @media (min-width: 960px) { .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); } }
   .project { margin: 0 0 .75rem; font-weight: 700; color: var(--accent); }
   h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
-  h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); }
-  .sub { font-size: clamp(1.08rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 40rem; margin: 0 0 1.5rem; }
-  .bars { margin: clamp(2rem, 5vw, 3.5rem) 0 0; display: grid; grid-template-columns: 1fr; gap: 2rem 4rem; }
-  @media (min-width: 900px) { .bars { grid-template-columns: 1fr 1fr; } }
-  .metric .label { margin: 0 0 .8rem; font-weight: 700; }
-  .row { display: grid; grid-template-columns: 9.5rem 1fr 3.5rem; gap: .8rem; align-items: center; margin-bottom: .6rem; }
-  .row .lab { color: var(--muted); font-size: .95rem; }
-  .bar { height: 1.6rem; border-radius: 6px; background: linear-gradient(to right, var(--line) var(--v), transparent var(--v)); }
+  h1 { font-size: clamp(2.5rem, 5.2vw, 4.4rem); }
+  .sub { font-size: clamp(1.08rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--muted); max-width: 36rem; margin: 0 0 1.5rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .stage { margin: 0; position: relative; }
+  .graph { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; aspect-ratio: 1 / 1; background: #fff; box-shadow: 0 30px 60px -32px rgba(18,20,40,.35); }
+  .graph :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 20% 55%; display: block; }
+  .phone { position: absolute; left: 12px; top: 5%; width: 40%; }
+  .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 1.4rem; box-shadow: 0 24px 48px -16px rgba(18,20,40,.55); }
+  .stage figcaption { color: var(--muted); font-size: .9rem; line-height: 1.4; margin-top: .8rem; }
+  @media (min-width: 960px) { .graph { aspect-ratio: 5 / 4; } .graph :global(img) { object-position: 45% 55%; } .phone { left: -1.5rem; width: 33%; } }
+  .bars { margin: 0 0 1.5rem; display: grid; gap: 1.25rem; }
+  .metric .label { margin: 0 0 .5rem; font-weight: 700; color: var(--fg); font-size: 1rem; }
+  .row { display: grid; grid-template-columns: 3.4rem 1fr 3rem; gap: .6rem; align-items: center; margin-bottom: .4rem; }
+  .door .metric p { margin-bottom: .5rem; }
+  .row .lab { color: var(--muted); font-size: .9rem; }
+  .bar { height: 1.2rem; border-radius: 5px; background: linear-gradient(to right, var(--line) var(--v), transparent var(--v)); }
   .bar.on { background: linear-gradient(to right, var(--accent) var(--v), transparent var(--v)); }
-  .row .num { font: 800 1.25rem/1 var(--display); text-align: right; }
-  .bars figcaption { grid-column: 1 / -1; color: var(--muted); font-size: .95rem; max-width: 48rem; }
+  .row .num { font: 800 1.05rem/1 var(--display); text-align: right; }
+  .bars figcaption { color: var(--muted); font-size: .9rem; }
   .mini :global(img) { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
   .more { border-top: 1px solid var(--line); background: var(--surface); }
   .more-inner { max-width: 76rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 16px; display: grid; grid-template-columns: 1fr; gap: 3.5rem 4rem; }
