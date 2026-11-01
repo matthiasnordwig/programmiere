@@ -22,5 +22,5 @@ Clicks on controls, focusable or draggable elements and scrollbars, carets in te
 What else moved:
 
 - **Matrix search across languages:** the keyword channel of a collection no longer counts when the question's language differs from most of its vector hits. Measured mean reciprocal rank (how high the right passage ranks): 0.539 → 0.612 without reranking, 0.666 → 0.682 with it.
-- **Matrix share menu:** version 0.2.5 adds a share extension for iOS and macOS, so files can be sent into the app from other apps, and files can be attached directly to a chat. Not in the App Store yet; on macOS the extension may still need to be switched on once under Edit Extensions — that is an open issue.
+- **Matrix share menu:** version 0.2.5 adds a share extension for iOS and macOS, so files can be sent into the app from other apps, and files can be attached directly to a chat. On macOS it may need to be switched on once under Edit Extensions; whether the store build does that by itself is still open.
 - **[Invisible Anti-Spam for WordPress](/projects/gdpr-recaptcha/) 6.3.0** (released 2026-10-29): the "Fieldname:prefix" setting for flagging spam shows up in the form's e-mail again — it had been lost since 4.1 — and now also for fields sent as JSON (e.g. Ninja Forms, REST requests).
