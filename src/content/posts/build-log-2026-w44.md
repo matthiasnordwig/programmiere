@@ -5,7 +5,7 @@ date: 2026-11-01
 type: build-log
 project: matrix
 tags: [matrix, webkit, accessibility, performance, wordpress]
-draft: true
+draft: false
 ---
 
 Matrix LLM lets you ask your own documents on iPhone, iPad and Mac, offline; its interface runs in a WebKit view. A week earlier, a user had reported that the Mac app hung on clicks in Tables, its spreadsheet-like view. I could not reproduce it. Testing the web build in headless Chrome ruled out the obvious suspects — the click sent no call to the backend at all — but the cause stayed open. So this week I set up a headless macOS 27 guest (a virtual machine without a window on my own screen) to test the real app. There the hang finally showed up and I could sample it: clicking empty space next to the table froze the whole UI for 7–12 seconds — with a table of 1 372 rows, on every such click.
