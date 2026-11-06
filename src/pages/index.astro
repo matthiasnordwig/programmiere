@@ -10,24 +10,24 @@ import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix LLM: ask your own documents on iPhone, iPad and Mac, offline, with the exact passage as proof and a knowledge graph where every link carries a quote. Free on the App Store. Plus Matrix for Claude Code, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix LLM answers questions from your own documents on iPhone, iPad and Mac, offline. It shows the exact passage for each answer and builds a knowledge graph with a quote behind every link. Free on the App Store. Also: Matrix for Claude Code, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
       <p class="project">Matrix LLM · iPhone, iPad and Mac</p>
-      <h1>Ask your documents. On your Mac or iPhone, offline.</h1>
-      <p class="sub">Every answer comes with the exact passage it is based on. And Matrix maps who relates to what into a
-      knowledge graph, with a quote behind every link. The models can run entirely on your device: compact ones on the
-      iPhone, large ones on the Mac.</p>
+      <h1>Ask questions about your documents, offline on Mac or iPhone.</h1>
+      <p class="sub">Every answer shows the exact passage it is based on. Matrix also builds a knowledge graph of who
+      relates to what, and every link in it has a quote from the source. The models can run entirely on your device:
+      small ones on the iPhone, large ones on the Mac.</p>
       <div class="actions">
-        <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
-        <a class="go ghost" href="/projects/matrix/">See how it works</a>
+        <a class="go" href={SITE.matrixApp}>Download from the App Store</a>
+        <a class="go ghost" href="/projects/matrix/">How it works</a>
       </div>
       <p class="free">Free to download.</p>
     </div>
     <figure class="stage">
       <div class="graph"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report: hundreds of entities linked by typed relations." widths={[800, 1400]} sizes="(min-width: 960px) 44rem, 100vw" loading="eager" /></div>
       <div class="phone"><Image src={iphoneAsk} alt="Matrix on an iPhone: a question about a sample contract, answered by Apple's on-device model, with the cited passage underneath." widths={[300, 600]} sizes="(min-width: 960px) 15rem, 38vw" loading="eager" /></div>
-      <figcaption>Behind: a knowledge graph from one public annual report. In front: Apple's model answers on the iPhone, with the passage it used.</figcaption>
+      <figcaption>Back: a knowledge graph built from one public annual report. Front: Apple's model answers a question on the iPhone and shows the passage it used.</figcaption>
     </figure>
   </section>
 
@@ -35,9 +35,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
     <div class="more-inner">
       <article class="door">
         <p class="for">For people using Claude Code</p>
-        <h2>A third of the time. Half the tokens.</h2>
-        <p>A free plugin gives Claude Code a local index of your PDFs, scans and charts, with file, page and passage for
-        every answer. The same engine as the app.</p>
+        <h2>42 seconds per question instead of 126.</h2>
+        <p>A free plugin that gives Claude Code a local index of your PDFs, scans and charts. Every answer comes with
+        file, page and passage, and it needs less than half the input tokens. It uses the same engine as the app.</p>
         <figure class="bars" aria-label="Average per question on 442 pages: 126 seconds and 651k input tokens without the plugin, 42 seconds and 303k input tokens with it.">
           <div class="metric">
             <p class="label">Seconds per question</p>
@@ -55,20 +55,21 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
       </article>
       <article class="door">
         <p class="for">For people building with AI agents</p>
-        <h2>An AI that maintains my software — and has to ask first.</h2>
-        <p>It reads support forums, writes the fix and passes checks no model can talk its way through.
-        Every release, merge or forum reply then waits for one word from my phone.</p>
+        <h2>An AI maintains my software. It asks me first.</h2>
+        <p>It reads the support forums, writes the fix and has to pass checks that are plain code, so no model
+        can argue its way past them. Every release, merge or forum reply then waits for a one-word OK from my phone.</p>
         <div class="mini"><LoopFlow /></div>
-        <a class="go ghost" href="/projects/maintainer-loop/">Inside the loop</a>
+        <a class="go ghost" href="/projects/maintainer-loop/">How the loop works</a>
       </article>
       <article class="door">
         <p class="for">For WordPress site owners</p>
         <h2>Form spam protection without Google.</h2>
-        <p>A free plugin that stops spam with a tiny proof of work in the visitor's browser instead of
-        tracking them. No cookies, no third-party calls, no puzzles to click. Runs on about 4,000 sites.</p>
+        <p>A free plugin that stops form spam without tracking anyone. The visitor's browser solves a small
+        computing task (a proof of work) instead. No cookies, no third-party calls, no puzzles to click. It runs
+        on about 4,000 sites.</p>
         <ul class="ticks">
-          <li>Works with the common form builders out of the box</li>
-          <li>Nothing to configure at Google, nothing to disclose in a cookie banner</li>
+          <li>Works with the common form builders without setup</li>
+          <li>No Google account to set up, nothing to add to the cookie banner</li>
         </ul>
         <a class="go ghost" href="/projects/gdpr-recaptcha/">About the plugin</a>
       </article>
@@ -87,7 +88,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
 
   <section class="who">
     <div class="narrow">
-      <p>Built by {SITE.author}, who works on AI and data in financial services and builds these after hours,
+      <p>I'm {SITE.author}. I work on AI and data in financial services and build these projects after hours,
       mostly by directing and checking AI agents. <a href="/about/">About</a> · <a href="/cv/">CV</a></p>
     </div>
   </section>

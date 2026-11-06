@@ -1,13 +1,14 @@
 ---
 title: The maintainer loop
-summary: An autonomous loop that maintains a WordPress plugin — the model only ever proposes, a deterministic gate decides, and I approve each outward step from my phone.
+summary: A loop that maintains a WordPress plugin largely on its own. The model only makes proposals, a gate of plain code (no model) decides, and I approve every step that goes outside from my phone.
 status: Running
 order: 3
 featured: true
 ---
 
-Four roles share state through files: a **scout** polls forums, reviews and competitors without
-any model; a **worker** implements one item in a headless Claude Code session on its own branch,
-checked by a deterministic rails verifier; a **concierge** talks to me over Signal; and a
-**gate** is the only path across an irreversible boundary — release, merge, forum post — one
-approval per action, never generalised.
+Four roles share their state through files. A **scout** checks forums, reviews and competitors; it
+uses no model. A **worker** implements one item at a time in a headless Claude Code session (one
+without a user at the keyboard) on its own branch, and a rule-based checker, the rails verifier,
+tests the result. A **concierge** talks to me over Signal. The **gate** is the only way past a step
+that can't be undone, such as a release, a merge or a forum post: one approval per action, never
+one approval for several.

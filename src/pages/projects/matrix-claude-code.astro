@@ -8,11 +8,11 @@ import '../../styles/story.css';
   <section class="beat" style="border-top:0">
     <div class="in">
       <p class="kicker">Matrix for Claude Code</p>
-      <h1>A third of the time. Half the tokens.</h1>
-      <p class="big">That is what this free plugin saved Claude Code on 442 pages of EU regulations: on average 42 instead
-      of 126 seconds per question, 303k instead of 651k input tokens. The answers stayed the same.</p>
-      <p class="muted">The plugin gives Claude Code a local index of your PDFs, Word files, scans and charts, with file,
-      page and passage for every answer. Claude Code is the language model, so you need no extra model and no API key.</p>
+      <h1>Claude Code needed a third of the time and half the tokens.</h1>
+      <p class="big">I measured Claude Code with and without this free plugin on 442 pages of EU regulations. With it, a
+      question took 42 instead of 126 seconds on average and 303k instead of 651k input tokens. The answers stayed the same.</p>
+      <p class="muted">The plugin gives Claude Code a local index of your PDFs, Word files, scans and charts. Every answer
+      comes with file, page and passage. Claude Code is the language model, so you need no extra model and no API key.</p>
       <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
     </div>
   </section>
@@ -21,7 +21,7 @@ import '../../styles/story.css';
     <div class="in split">
       <div><p class="kicker">The problem</p><h2>Without an index, every question starts from zero.</h2></div>
       <div>
-        <p class="big">Claude Code converts the PDFs to text, greps, opens pages, greps again. That works. On a few
+        <p class="big">Claude Code converts the PDFs to text, greps, opens pages and greps again. That works, but on a few
         hundred pages it takes 20 or more tool calls per question.</p>
         <p class="muted">Matrix reads the documents once. It splits them by their structure, indexes them and gives
         Claude Code short hits instead of whole pages.</p>
@@ -32,14 +32,14 @@ import '../../styles/story.css';
   <section class="beat">
     <div class="in">
       <p class="kicker">What it does</p>
-      <h2>Ask your documents. Get the page.</h2>
+      <h2>It finds the passage and the page.</h2>
       <div class="grid3">
         <div><h3>Answers with sources</h3><p>Every answer names file, page and passage. The citations are checked against the original text.</p></div>
         <div><h3>Tables across documents</h3><p>One question for every document or passage, returned as a table with a source in each cell.</p></div>
-        <div><h3>Other words, other language</h3><p>Search works on meaning. An English question finds the German provision.</p></div>
+        <div><h3>Other words, other languages</h3><p>Search works on meaning, so an English question finds the German provision.</p></div>
         <div><h3>Scans and charts</h3><p>Scanned pages are searchable. A value that exists only in a chart is found on its page.</p></div>
-        <div><h3>Cross-references</h3><p>"Pursuant to Article 26" leads to Article 26. Claude can read the whole article, not just a snippet.</p></div>
-        <div><h3>Stays current</h3><p>New and changed files in the folder are indexed again on their own. Deleted files are left out of the search.</p></div>
+        <div><h3>Cross-references</h3><p>"Pursuant to Article 26" leads to Article 26, and Claude can read the whole article, not just a snippet.</p></div>
+        <div><h3>Stays current</h3><p>New and changed files in the folder are indexed again automatically. Deleted files drop out of the search.</p></div>
       </div>
     </div>
   </section>
@@ -47,9 +47,9 @@ import '../../styles/story.css';
   <section class="beat alt">
     <div class="in">
       <p class="kicker">The measurement</p>
-      <h2>Two test sets. Everything public.</h2>
+      <h2>Two test sets, all public.</h2>
       <p class="big">Claude Code alone against Claude Code with the plugin, on public EU regulations and reports.
-      Same questions, same prompt. The right answers were written down before the first run.</p>
+      Same questions, same prompt. I wrote down the right answers before the first run.</p>
       <div class="numbers">
         <div><strong>42 s</strong><span>average time per question on 442 pages, instead of 126 s without the plugin</span></div>
         <div><strong>303k</strong><span>average input tokens per question, instead of 651k</span></div>
@@ -67,23 +67,23 @@ import '../../styles/story.css';
           </tbody>
         </table>
       </div>
-      <p class="muted" style="margin-top:1.5rem">Averages per run, Claude Code with Sonnet, October 2026. Questions, right answers
-      and the script to rerun it are in <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
+      <p class="muted" style="margin-top:1.5rem">Averages per run, Claude Code with Sonnet, October 2026. The questions, the right answers
+      and the script to run it again are in <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
     </div>
   </section>
 
   <section class="beat">
     <div class="in">
       <p class="kicker">The limits</p>
-      <h2>It saves effort. It doesn't make Claude smarter.</h2>
+      <h2>It saves time and tokens. The answers did not get better.</h2>
       <p class="big">Claude Code alone answered every question correctly too.</p>
       <div class="grid3">
-        <div><h3>More documents, more gain</h3><p>The gain is largest when the question uses other words or another language than the text. For one short document it is small.</p></div>
-        <div><h3>Spread-out questions gain less</h3><p>On the larger set, a question across three acts saved almost nothing: Claude still searches once per act.</p></div>
-        <div><h3>Indexing costs minutes</h3><p>Once per folder: 16 minutes for 1,592 pages, no Claude tokens. Worth it if you ask more than once.</p></div>
+        <div><h3>More documents, more gain</h3><p>The gain is largest when the question uses different words or another language than the text. For one short document it is small.</p></div>
+        <div><h3>Spread-out questions gain less</h3><p>On the larger set, a question across three acts saved almost nothing, because Claude still searches once per act.</p></div>
+        <div><h3>Indexing takes minutes</h3><p>Once per folder: 16 minutes for 1,592 pages, with no Claude tokens. It pays off if you ask more than once.</p></div>
         <div><h3>Page numbers slipped</h3><p>In the measured version, two citations were one page off where a passage crosses a page break. File, article and passage were right in every answer.</p></div>
         <div><h3>One miss, then fixed</h3><p>One answer was wrong because a chart label was too small to read. After a fix in the skill, 4 of 4 were right.</p></div>
-        <div><h3>Small samples</h3><p>Two runs per question in the first test, one in the second. Run-to-run differences of 10–20 % are normal.</p></div>
+        <div><h3>Small samples</h3><p>Two runs per question in the first test, one in the second. Differences of 10–20 % between runs are normal.</p></div>
       </div>
     </div>
   </section>
@@ -94,7 +94,7 @@ import '../../styles/story.css';
       <h2>Code finds the passages. Claude reads them.</h2>
       <ol class="steps">
         <li><div><h3>Split along the real structure <span class="who rules">rules</span></h3><p>By PDF layout, headings, articles and tables. No language model decides where a section ends. Scans and charts are indexed too.</p></div></li>
-        <li><div><h3>Search by meaning and by keyword <span class="who rules">rules</span></h3><p>Vectors from a multilingual embedding model plus full-text search, merged by rank. The vector database is built in, on SQLite: nothing to install, no server. An optional second model re-sorts the top hits.</p></div></li>
+        <li><div><h3>Search by meaning and by keyword <span class="who rules">rules</span></h3><p>Vectors from a multilingual embedding model plus full-text search, merged by rank. The vector database is built in and runs on SQLite: nothing to install, no server. An optional second model re-sorts the top hits.</p></div></li>
         <li><div><h3>Short hits <span class="who rules">rules</span></h3><p>About 1,160 tokens per search instead of 5,500. Each hit is an excerpt with file, pages and the path document › chapter › article.</p></div></li>
         <li><div><h3>Read before citing <span class="who ai">AI</span></h3><p>Claude Code opens the passage or the article it wants to quote. Then it answers with file, page and passage.</p></div></li>
         <li><div><h3>Check the citations <span class="who rules">rules</span></h3><p>Each citation is checked against the original text.</p></div></li>
@@ -104,14 +104,14 @@ import '../../styles/story.css';
 
   <section class="beat">
     <div class="in split">
-      <div><p class="kicker">Two lines</p><h2>Install it, then just ask.</h2></div>
+      <div><p class="kicker">Installation</p><h2>Two commands, then ask.</h2></div>
       <div>
         <div class="card"><pre><code>claude plugin marketplace add matthiasnordwig/matrix-mcp
 claude plugin install matrix@matrix-mcp</code></pre></div>
         <p class="muted">Start Claude Code in the folder with your documents and ask. The first time, it walks you
-        through the setup. Needs a Mac with Apple silicon and Node.js 18 or later for now. The engine is portable Rust and
-        also builds for Linux and Windows. Want it on your platform? <a href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">Tell me.</a></p>
-        <p class="muted">Matrix reads the folder you started in and asks before touching any other. It never changes or
+        through the setup. For now it needs a Mac with Apple silicon and Node.js 18 or later. The engine is portable Rust and
+        also builds for Linux and Windows. If you want it on your platform, <a href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">tell me</a>.</p>
+        <p class="muted">Matrix reads the folder you started in and asks before it opens any other. It never changes or
         deletes your files. The only text that leaves your Mac is what Claude Code reads anyway.</p>
       </div>
     </div>
@@ -122,7 +122,7 @@ claude plugin install matrix@matrix-mcp</code></pre></div>
       <p class="kicker">Where it comes from</p>
       <h2>It started as an app.</h2>
       <p class="big">The plugin runs on the same Rust core as <a href="/projects/matrix/">Matrix</a>, my document app for Mac
-      and iPhone. In the app a local model does the reading; here Claude Code does.</p>
+      and iPhone. In the app a local model does the reading; here Claude Code does it.</p>
       <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
       <a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">Write to me</a>
     </div>

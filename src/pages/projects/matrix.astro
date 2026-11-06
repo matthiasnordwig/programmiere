@@ -12,22 +12,22 @@ import { Image } from 'astro:assets';
 import { SITE } from '../../site';
 const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix LLM', applicationCategory: 'BusinessApplication', operatingSystem: 'iOS, iPadOS, macOS', url: SITE.matrixApp, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Ask your own documents on iPhone, iPad and Mac, offline. Every answer comes with the exact passage it is based on.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
 ---
-<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files with the exact passage as proof. Free on the App Store for iPhone, iPad and Mac; the models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
+<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files and shows the passage each answer is based on. Free on the App Store for iPhone, iPad and Mac. The models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
 <div class="story">
 
   <section class="beat" style="border-top:0">
     <div class="in hero-split">
       <div>
         <p class="kicker">Matrix LLM · iPhone, iPad and Mac</p>
-        <h1>Ask your documents. On your Mac or iPhone, offline.</h1>
-        <p class="big">Add contracts, regulations or reports and ask in plain words. Every answer comes with the exact
+        <h1>Ask your documents on your Mac or iPhone, offline.</h1>
+        <p class="big">Add contracts, regulations or reports and ask in plain words. Every answer shows the exact
         passage it is based on. The models run on the device, so your documents stay there.</p>
         <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
-        <p class="muted">Free to download for iPhone, iPad and Mac. Interface in 22 languages.</p>
+        <p class="muted">Free to download for iPhone, iPad and Mac. The interface is in 22 languages.</p>
       </div>
       <figure class="phone">
         <Image src={iphoneAsk} alt="Matrix on an iPhone: a question about a sample contract, answered by Apple's on-device model, with the cited passage underneath." widths={[400, 800]} sizes="(min-width: 920px) 18rem, 80vw" loading="eager" />
-        <figcaption>Apple's model on the iPhone answers from a sample contract and quotes the passage.</figcaption>
+        <figcaption>On the iPhone, Apple's model answers from a sample contract and quotes the passage.</figcaption>
       </figure>
     </div>
   </section>
@@ -35,16 +35,16 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat alt">
     <div class="in">
       <p class="kicker">The assistant</p>
-      <h2>Tell it what you want. It works the app for you.</h2>
+      <h2>You can ask it to operate the app.</h2>
       <p class="big">You don't need to know what a vector or a knowledge graph is. Ask in plain words: "Create a collection
       called Contracts", "Check all supplier contracts for notice periods", "Switch to the Paper style". The assistant uses
-      the same tools an AI agent gets, and shows every step.</p>
+      the same tools an AI agent gets and shows every step.</p>
       <div class="grid3">
-        <div><h3>Asks before it acts</h3><p>Anything that changes something appears as a card: what it will do and how much work it is, for example "About 40 model requests". It runs only after you tap Run.</p></div>
-        <div><h3>Cannot delete</h3><p>Deleting is not one of its tools. Settings it may change come from a fixed list, never keys or endpoints.</p></div>
-        <div><h3>Opens the right view</h3><p>After a step it shows the result: the collection, the table run, the term in the graph, the document.</p></div>
-        <div><h3>Help built in</h3><p>"How do I add files?" is answered by any model from a built-in guide, with a "Show me" link to the right place.</p></div>
-        <div><h3>Stops when stuck</h3><p>If the same action fails twice, it stops and says what went wrong and what you can do.</p></div>
+        <div><h3>Asks before it acts</h3><p>Anything that changes something first appears as a card: what it will do and how much work it is, for example "About 40 model requests". It runs only after you tap Run.</p></div>
+        <div><h3>Cannot delete</h3><p>Deleting is not one of its tools. The settings it may change come from a fixed list, never keys or endpoints.</p></div>
+        <div><h3>Shows the result</h3><p>After a step it opens the result: the collection, the table run, the term in the graph, the document.</p></div>
+        <div><h3>Built-in help</h3><p>"How do I add files?" is answered by any model from a built-in guide, with a "Show me" link to the right place.</p></div>
+        <div><h3>Stops after two failures</h3><p>If the same action fails twice, it stops and says what went wrong and what you can do.</p></div>
         <div><h3>The limit</h3><p>Working the app needs a model that can call tools. Apple's on-device model answers the help questions, not the app tasks.</p></div>
       </div>
     </div>
@@ -55,28 +55,28 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <p class="kicker">The first five minutes</p>
       <h2>From download to the first answer with sources.</h2>
       <ol class="steps">
-        <li><div><h3>Pick a model</h3><p>Apple's model on the device needs no download where the system offers it. Or one tap loads a small model. The search model downloads in the background, then everything works offline.</p></div></li>
+        <li><div><h3>Pick a model</h3><p>Where the system offers it, Apple's model on the device needs no download. Otherwise one tap loads a small model. The search model downloads in the background; after that everything works offline.</p></div></li>
         <li><div><h3>Try a sample collection</h3><p>Three ready-made sets: a German sample contract, the official accident file of the US Airways flight that landed on the Hudson, and Wikipedia articles on the Panama Papers.</p></div></li>
-        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives, photos with text recognition. Or share a file to Matrix from any other app.</p></div></li>
-        <li><div><h3>Ask a file right away</h3><p>Attach it to a question with the paper clip. Afterwards keep it as a collection or discard it.</p></div></li>
-        <li><div><h3>Tap a citation</h3><p>It opens the exact passage, in PDFs with its page.</p></div></li>
+        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives and photos (with text recognition). You can also share a file to Matrix from any other app.</p></div></li>
+        <li><div><h3>Ask about a file right away</h3><p>Attach it to a question with the paper clip. Afterwards keep it as a collection or discard it.</p></div></li>
+        <li><div><h3>Tap a citation</h3><p>It opens the exact passage; in PDFs, on its page.</p></div></li>
       </ol>
     </div>
   </section>
 
   <section class="beat alt">
     <div class="in">
-      <p class="kicker">The one rule</p>
-      <h2>The AI reads. Everything you could check is plain code.</h2>
-      <p class="big">The language model is only used where language understanding is needed. Splitting
+      <p class="kicker">The principle</p>
+      <h2>The model reads. Everything that can be checked is plain code.</h2>
+      <p class="big">The language model is used only where language has to be understood. Splitting
       documents, following references, verifying quotes, correcting sources and logging every step is
-      done by ordinary rules — reproducible, no AI judgement involved.</p>
-      <p>Throughout this page: <span class="who ai" style="margin:0">AI</span> means the model decides,
+      done by ordinary code. It is reproducible, and no AI judgement is involved.</p>
+      <p>On this page, <span class="who ai" style="margin:0">AI</span> means the model decides,
       <span class="who rules" style="margin:0">rules</span> means deterministic code does.</p>
       <div class="grid3">
-        <div><h3>Every answer shows its sources</h3><p>Down to the verbatim quote in the original. Clickable, checkable.</p></div>
-        <div><h3>Your data stays home</h3><p>Runs with local models on the device or inside your own network. Nothing has to leave.</p></div>
-        <div><h3>Nothing happens in the dark</h3><p>Every search, every hit, every automatic correction is logged and can be replayed.</p></div>
+        <div><h3>Every answer shows its sources</h3><p>Down to the verbatim quote in the original. You can click it and check it.</p></div>
+        <div><h3>Your data stays local</h3><p>It runs with local models on the device or inside your own network. Nothing has to leave.</p></div>
+        <div><h3>Everything is logged</h3><p>Every search, every hit and every automatic correction is logged and can be replayed.</p></div>
       </div>
     </div>
   </section>
@@ -84,33 +84,33 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat">
     <div class="in">
       <p class="kicker">Ask a question</p>
-      <h2>It doesn't guess. It goes looking.</h2>
-      <p class="big">Ask once, and the model researches the documents itself — like a junior analyst
-      with a strict supervisor.</p>
+      <h2>It searches before it answers.</h2>
+      <p class="big">You ask once, and the model searches the documents itself. Plain code sets its limits
+      and checks the result.</p>
       <ol class="steps">
-        <li><div><h3>Prepare the documents <span class="who rules">rules</span></h3><p>Split along their real structure — articles, sections. Each piece gets a "meaning fingerprint" so search works on sense, not just words. References like "pursuant to Art. 92(1)" are linked to their target.</p></div></li>
-        <li><div><h3>Search, read, search again <span class="who ai">AI</span></h3><p>The model writes its own search queries, opens passages, follows references and keeps digging with the vocabulary it found — until it has enough evidence or runs out of budget.</p></div></li>
-        <li><div><h3>Guard rails <span class="who rules">rules</span></h3><p>A search budget caps the cost. Watchdogs stop it from going in circles. An answer given without searching at all is thrown away.</p></div></li>
+        <li><div><h3>Prepare the documents <span class="who rules">rules</span></h3><p>They are split along their real structure: articles, sections. Each piece gets an embedding, a vector that stands for its meaning, so search works on meaning and not only on words. References such as "pursuant to Art. 92(1)" are linked to their target.</p></div></li>
+        <li><div><h3>Search, read, search again <span class="who ai">AI</span></h3><p>The model writes its own search queries, opens passages, follows references and searches again with the terms it found, until it has enough evidence or its budget is used up.</p></div></li>
+        <li><div><h3>Guard rails <span class="who rules">rules</span></h3><p>A search budget caps the cost. Watchdogs stop it from going in circles. An answer given without any search is thrown away.</p></div></li>
         <li><div><h3>Answer only from what it found <span class="who ai">AI</span></h3><p>Every statement is tagged with its source number: [1], [2], [3].</p></div></li>
-        <li><div><h3>Check the answer <span class="who rules">rules</span></h3><p>The checks in the next section run on every answer, then everything is shown with clickable sources and a full log.</p></div></li>
+        <li><div><h3>Check the answer <span class="who rules">rules</span></h3><p>The checks in the next section run on every answer. Then everything is shown with clickable sources and a full log.</p></div></li>
       </ol>
-      <div class="shot"><Zoom id="z-chat" src={macAsk} alt="Matrix on a Mac: a question about a sample contract, a two-sentence answer with quotes, and six source passages, the cited one marked." caption="On a Mac, Qwen3.6 35B runs on the device and answers from the sample contract. Six sources, the cited one marked. The Prompt Inspector shows exactly what the model saw." /></div>
+      <div class="shot"><Zoom id="z-chat" src={macAsk} alt="Matrix on a Mac: a question about a sample contract, a two-sentence answer with quotes, and six source passages, the cited one marked." caption="On a Mac, Qwen3.6 35B runs on the device and answers from the sample contract: six sources, the cited one marked. The Prompt Inspector shows exactly what the model saw." /></div>
     </div>
   </section>
 
   <section class="beat alt">
     <div class="in split">
       <div>
-        <p class="kicker">Built-in fact check</p>
-        <h2>It checks its own homework.</h2>
-        <p class="big">After every answer, a chain of plain-code checks goes over each citation.</p>
+        <p class="kicker">Citation checks</p>
+        <h2>It checks every citation.</h2>
+        <p class="big">After every answer, a series of plain-code checks goes over each citation.</p>
       </div>
       <div class="card">
         <ol class="steps" style="margin-top:0">
-          <li><div><h3>Does the source exist?</h3><p>Every [n] is validated against the list of sources actually retrieved.</p></div></li>
-          <li><div><h3>Is the quote really there?</h3><p>Quoted words are searched in the original. Not found → a warning sign on the answer.</p></div></li>
-          <li><div><h3>Does that source actually say it?</h3><p>Two independent signals — shared key terms (legal references count triple) and closeness in meaning.</p></div></li>
-          <li><div><h3>Fix only when both agree</h3><p>Then the marker is pointed to the right source and labelled "→ 3". Otherwise just a hint. The answer text itself is never rewritten.</p></div></li>
+          <li><div><h3>Does the source exist?</h3><p>Every [n] is checked against the list of sources that were actually retrieved.</p></div></li>
+          <li><div><h3>Is the quote really there?</h3><p>Quoted words are searched for in the original. If they are not found, the answer gets a warning sign.</p></div></li>
+          <li><div><h3>Does that source say it?</h3><p>Two independent signals: shared key terms (legal references count three times) and closeness in meaning.</p></div></li>
+          <li><div><h3>Fix only when both agree</h3><p>Only then is the marker moved to the right source and labelled "→ 3". Otherwise there is just a hint. The answer text itself is never rewritten.</p></div></li>
         </ol>
       </div>
     </div>
@@ -119,34 +119,34 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat">
     <div class="in">
       <p class="kicker">Tables</p>
-      <h2>Same question. Every row. As a table.</h2>
-      <p class="big">Pick a collection or upload your own list and ask every row the same question. Each answer has to
-      fit columns you define: text, number, date, choice.</p>
+      <h2>The same question for every row, as a table.</h2>
+      <p class="big">Pick a collection or upload your own list and ask the same question for every row. Each answer has to
+      fit the columns you define: text, number, date or choice.</p>
       <div class="shot"><Zoom id="z-tables" src={macTables} alt="Matrix Tables on a Mac: passages of a sample contract in rows, with answer columns Topic, Key point, Applies to and Date filled by the model." caption="Key facts of the sample contract, one row per passage. The tinted columns are the model's answers; the columns were suggested from the prompt." /></div>
       <div class="grid3">
-        <div><h3>Validated, not trusted</h3><p>Missing or wrongly typed fields show up right in the cell.</p></div>
-        <div><h3>Lists fan out</h3><p>Five items in one answer become five rows — each still linked to its source passage.</p></div>
-        <div><h3>Redo just the bad rows</h3><p>Re-run single rows with a stronger model. Duplicates are merged. Export to Excel.</p></div>
+        <div><h3>Answers are validated</h3><p>Missing or wrongly typed fields are shown in the cell.</p></div>
+        <div><h3>Lists become rows</h3><p>Five items in one answer become five rows, each still linked to its source passage.</p></div>
+        <div><h3>Redo single rows</h3><p>Run single rows again with a stronger model. Duplicates are merged. Export to Excel.</p></div>
       </div>
       <p class="muted" style="margin-top:2rem">Typical uses: a list of every obligation in a regulation with addressee, deadline and evidence ·
-      the same check across hundreds of contracts · first-pass screening of a customer list.</p>
+      the same check across hundreds of contracts · a first screening of a customer list.</p>
     </div>
   </section>
 
   <section class="beat alt">
     <div class="in">
       <p class="kicker">The knowledge graph</p>
-      <h2>A map of who relates to what — with receipts.</h2>
-      <p class="big">The model reads every passage and pulls out things and relations: who is responsible for what,
-      what mitigates which risk, who owns whom. Every single link carries a verbatim quote from the original.</p>
+      <h2>Who relates to what, with a quote for every link.</h2>
+      <p class="big">The model reads every passage and extracts things and their relations: who is responsible for what,
+      what mitigates which risk, who owns whom. Every link carries a verbatim quote from the original.</p>
       <div class="shot"><Zoom id="z-detail" src={detail} alt="Close-up of the Matrix knowledge graph: entities such as risk analysis, human-rights training and water use, connected by relations like MITIGATES and APPLIES_TO." caption="Zoomed in: entities and typed relations such as MITIGATES, OWNS, APPLIES_TO." /></div>
       <div class="grid3">
-        <div><h3>Quotes are verified</h3><p>A link whose quote can't be found is repaired first, not silently dropped. If the quote says the opposite ("must not…"), it's flagged.</p></div>
-        <div><h3>Duplicates merged</h3><p>"BaFin" and "Federal Financial Supervisory Authority" become one node — every merge is logged and can be undone by hand.</p></div>
-        <div><h3>Lenses, not rewrites</h3><p>Raw labels stay untouched; a switchable "lens" maps them onto your own vocabulary — no re-extraction needed.</p></div>
-        <div><h3>Topics and summaries</h3><p>The graph is split into clusters, each with a short summary: a table of contents for the whole corpus. Export to PowerPoint.</p></div>
-        <div><h3>Nothing disappears quietly</h3><p>Failing passages go to quarantine and are retried; every finding lands in a review queue.</p></div>
-        <div><h3>Honest about quality</h3><p>A local 30B-class model gives a fast first map — orientation, not proof. A frontier model gets close to "audit-ready".</p></div>
+        <div><h3>Quotes are verified</h3><p>A link whose quote can't be found is repaired first, not silently dropped. If the quote says the opposite ("must not…"), the link is flagged.</p></div>
+        <div><h3>Duplicates merged</h3><p>"BaFin" and "Federal Financial Supervisory Authority" become one node. Every merge is logged and can be undone by hand.</p></div>
+        <div><h3>Your own vocabulary</h3><p>The raw labels stay as they are. A switchable "lens" maps them onto your own vocabulary, without extracting again.</p></div>
+        <div><h3>Topics and summaries</h3><p>The graph is split into clusters, each with a short summary, which works as a table of contents for the whole collection. Export to PowerPoint.</p></div>
+        <div><h3>Failures are retried</h3><p>Passages that fail go to quarantine and are retried. Every finding goes to a review queue.</p></div>
+        <div><h3>Quality depends on the model</h3><p>A local 30B-class model gives a fast first map, good for orientation but not proof. A frontier model gets close to "audit-ready".</p></div>
       </div>
     </div>
   </section>
@@ -154,13 +154,13 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat">
     <div class="in split">
       <div>
-        <p class="kicker">Runs everywhere</p>
-        <h2>One engine. Mac, iPhone, browser.</h2>
-        <p class="big">Everything important lives in a single core written in Rust. The apps on top are thin.</p>
+        <p class="kicker">Platforms</p>
+        <h2>One core for Mac, iPhone and browser.</h2>
+        <p class="big">Everything important is in a single core written in Rust. The apps on top are thin.</p>
         <div class="grid3" style="grid-template-columns:1fr">
-          <div><h3>iPhone and iPad</h3><p>Fully offline: search runs on the Neural Engine, chat with a local model on the GPU. Files come in through the share menu of any app.</p></div>
-          <div><h3>Mac</h3><p>The same app, plus a door for AI agents: Claude Code and others can use the running app through MCP.</p></div>
-          <div><h3>Browser</h3><p>A Linux container in your own network. Nothing to install for users.</p></div>
+          <div><h3>iPhone and iPad</h3><p>Fully offline: search runs on the Neural Engine, chat runs with a local model on the GPU. Files come in through the share menu of any app.</p></div>
+          <div><h3>Mac</h3><p>The same app. In addition, Claude Code and other AI agents can use the running app through MCP (Model Context Protocol, the standard way for agents to call tools).</p></div>
+          <div><h3>Browser</h3><p>A Linux container in your own network. Users install nothing.</p></div>
         </div>
       </div>
       <div class="card"><MatrixFlow /></div>
@@ -170,30 +170,30 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat alt">
     <div class="in">
       <p class="kicker">Any model</p>
-      <h2>Bring your own AI. Or none from outside at all.</h2>
-      <p class="big">One cockpit for every model connection — each assigned to the job it's good at.</p>
+      <h2>Use any model, or only local ones.</h2>
+      <p class="big">All model connections are managed in one place, and each is assigned to the task it does well.</p>
       <div class="grid3">
         <div><h3>On the device</h3><p>Apple's built-in model without a download, or models from Hugging Face, searched and loaded inside the app.</p></div>
-        <div><h3>Small specialists</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
+        <div><h3>Search models</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
         <div><h3>Company gateway</h3><p>OpenAI-compatible or Azure endpoints behind your own infrastructure.</p></div>
-        <div><h3>Cloud, deliberately</h3><p>Direct providers where allowed — a conscious, per-case choice.</p></div>
-        <div><h3>Per-model limits</h3><p>Requests per minute, token budgets, parallelism — gentle on gateways and budgets.</p></div>
-        <div><h3>Only what it can do</h3><p>Tool use and reasoning are switched on only for models that actually support them.</p></div>
+        <div><h3>Cloud providers</h3><p>Direct providers where that is allowed, chosen deliberately, case by case.</p></div>
+        <div><h3>Limits per model</h3><p>Requests per minute, token budgets, parallel requests, so gateways and budgets are not overloaded.</p></div>
+        <div><h3>Only what the model supports</h3><p>Tool use and reasoning are switched on only for models that support them.</p></div>
       </div>
     </div>
   </section>
 
   <section class="beat">
     <div class="in">
-      <p class="kicker">Built for bad days</p>
-      <h2>Tested against real outages, not sunny days.</h2>
+      <p class="kicker">When things fail</p>
+      <h2>Tested against real outages.</h2>
       <div class="grid3">
-        <div><h3>Load balancing</h3><p>Several endpoints as one pool; throttled members are routed around before a fallback model steps in.</p></div>
-        <div><h3>Slow gateway? Stream.</h3><p>When a proxy gets sluggish, the app switches to streaming so the connection doesn't time out.</p></div>
-        <div><h3>Retry with judgement</h3><p>Temporary errors are retried with growing waits; stubborn cases are skipped instead of killing the run.</p></div>
-        <div><h3>Fallback model</h3><p>If a model returns garbage, a backup model takes over — only for that one passage.</p></div>
-        <div><h3>Background jobs</h3><p>Long runs keep going in the background with visible progress; the app stays usable.</p></div>
-        <div><h3>Cool-headed</h3><p>Local models watch the device's temperature and slow down instead of overheating a laptop.</p></div>
+        <div><h3>Load balancing</h3><p>Several endpoints work as one pool. Throttled ones are routed around before a fallback model takes over.</p></div>
+        <div><h3>Streaming on slow gateways</h3><p>When a proxy gets slow, the app switches to streaming so the connection doesn't time out.</p></div>
+        <div><h3>Retries</h3><p>Temporary errors are retried with growing waits. Cases that keep failing are skipped instead of stopping the run.</p></div>
+        <div><h3>Fallback model</h3><p>If a model returns unusable output, a backup model takes over, only for that one passage.</p></div>
+        <div><h3>Background jobs</h3><p>Long runs continue in the background with visible progress, and the app stays usable.</p></div>
+        <div><h3>Temperature</h3><p>Local models watch the device's temperature and slow down instead of overheating a laptop.</p></div>
       </div>
     </div>
   </section>
@@ -201,14 +201,14 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat alt">
     <div class="in">
       <p class="kicker">By the numbers</p>
-      <h2>Measured, not felt.</h2>
+      <h2>What I measured.</h2>
       <div class="numbers">
-        <div><strong>25 of 30</strong><span>test questions with the right place among the first five hits, 1,592 pages in four languages (14 as the very first hit)</span></div>
+        <div><strong>25 of 30</strong><span>test questions with the right passage among the first five hits, on 1,592 pages in four languages (14 as the very first hit)</span></div>
         <div><strong>56 ms</strong><span>for one search over 5,950 passages and 408 chart pages on a Mac</span></div>
         <div><strong>4,385</strong><span>entities extracted from a single annual report, each relation backed by a quote</span></div>
-        <div><strong>22</strong><span>interface languages; questions and documents may be in different ones</span></div>
+        <div><strong>22</strong><span>interface languages; questions and documents can be in different languages</span></div>
       </div>
-      <p class="muted" style="margin-top:2rem">Retrieval quality is tracked with fixed "golden" question sets and expected source passages — quality is judged on those, not on impressions.</p>
+      <p class="muted" style="margin-top:2rem">I track search quality with fixed sets of test questions and the passages each one should find. Quality is judged on those, not by impression.</p>
     </div>
   </section>
 
@@ -216,8 +216,8 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     <div class="in split">
       <div><p class="kicker">Also in Claude Code</p><h2>The same engine as a Claude Code plugin.</h2></div>
       <div>
-        <p class="big">Claude Code can use Matrix as a tool. On 442 pages of EU regulations it answered on average in 42 instead of
-        126 seconds per question, with less than half the input tokens.</p>
+        <p class="big">Claude Code can use Matrix as a tool. On 442 pages of EU regulations it answered in 42 instead of
+        126 seconds per question on average, with less than half the input tokens.</p>
         <a class="go ghost" href="/projects/matrix-claude-code/">About the plugin</a>
       </div>
     </div>
@@ -228,7 +228,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <p class="kicker">Where it stands</p>
       <h2>Free on the App Store.</h2>
       <p class="big">For iPhone, iPad and Mac. Asking and tables work with the model on the device. For the knowledge graph,
-      a local model gives a fast first map and a stronger model the one that holds up. The checks run either way and show
+      a local model gives a quick first map and a stronger model a more reliable one. The checks run either way and show
       where the output can be trusted.</p>
       <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
       <a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a>

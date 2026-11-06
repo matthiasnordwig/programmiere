@@ -1,6 +1,6 @@
 ---
 title: Matrix LLM
-summary: "Ask your own documents on iPhone, iPad and Mac, offline. Every answer comes with the exact passage it is based on. Free on the App Store."
+summary: "Ask questions about your own documents on iPhone, iPad and Mac, offline. Every answer shows the exact passage it is based on. Free on the App Store."
 status: On the App Store
 order: 1
 featured: true
@@ -10,31 +10,31 @@ links:
 ---
 
 Some work means reading thousands of pages where every statement needs a source: regulations,
-circulars, contracts. "Sounds right" is not good enough. Matrix is built for exactly that, and it
-keeps the documents on your own device.
+circulars, contracts. An answer that only sounds right is no use there. I built Matrix for that
+kind of work, and it keeps the documents on your own device.
 
-## Three ways in
+## Three ways to use it
 
-**Ask.** Put one question to the whole collection. The model searches the documents itself,
-reads the passages it finds, and answers. Afterwards the system checks every citation against
-the original text — a quote that isn't really there gets flagged.
+**Ask.** You put one question to the whole collection. The model searches the documents itself,
+reads the passages it finds and answers. Then Matrix checks every quote against the original text
+and flags any quote that isn't actually there.
 
-**Ask a hundred times.** Tables run the same question over hundreds of rows — passages or a
-list you upload — and every answer has to fit a fixed schema you define, with a live preview of
-exactly what the model will see.
+**Tables.** A table runs the same question over hundreds of rows, either passages or a list you
+upload. Every answer has to fit a fixed schema that you define, and a live preview shows exactly
+what the model will see.
 
-**See the whole picture.** A knowledge graph of who relates to what. Every link carries a verbatim
-quote from the source, and anything doubtful lands in a review queue instead of silently
-disappearing.
+**Knowledge graph.** It shows who relates to what. Every link carries a word-for-word quote from
+the source, and anything doubtful goes into a review queue instead of being dropped silently.
 
-## Under the hood
+## How it's built
 
-One core in Rust, thin adapters on top: a macOS app, an iPhone app and a web server share the same
-engine. Local models run on Apple's GPU and Neural Engine; cloud models plug in through the same
-cockpit when the task needs them. Documents are split along their actual structure, embedded,
-and searched with a mix of vector and full-text search.
+One core in Rust with thin layers on top: a macOS app, an iPhone app and a web server use the same
+engine. Local models run on Apple's GPU and Neural Engine. When a task needs more, cloud models can
+be connected through the same interface. Documents are split along their actual structure, turned
+into vectors (embedded) and searched with a mix of vector and full-text search.
 
-## Honest status
+## Current status
 
-Asking and tables work today, with a local model or a gateway. The knowledge graph is two-tier:
-a local model gives a fast first map; a graph you can rely on needs a stronger model.
+Asking and tables work today, with a local model or through a gateway. The knowledge graph works
+in two stages: a local model gives a quick first map, but a graph you can rely on needs a stronger
+model.

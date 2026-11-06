@@ -9,6 +9,6 @@ links:
     url: https://github.com/matthiasnordwig/matrix-mcp
 ---
 
-Claude Code reads documents the hard way: convert to text, grep, read, repeat. For every question.
-Matrix indexes a folder once on your own Mac, and from then on every question starts with a search
-by meaning, with file, page and passage for every hit.
+On its own, Claude Code reads documents the slow way: convert to text, grep, read, repeat, and all
+of that again for every question. Matrix indexes a folder once on your own Mac. After that, every
+question starts with a search by meaning, and every hit comes with file, page and passage.
