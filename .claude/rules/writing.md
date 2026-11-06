@@ -8,6 +8,10 @@ paths:
 # Schreibregeln (Seiteninhalt)
 
 - **Englisch**, erste Person, direkt. Kurze Absätze; Überschriften nur in Deep Dives.
+- **Klingt nach Matthias, nicht nach KI** (seine Vorgabe 2026-11-06, gilt für alles unter seinem
+  Namen): schlicht, gesprochen, wie er selbst erzählt — keine Politur, keine Slogans, keine
+  Floskeln. Eigene Erfahrung beiläufig nennen, nicht trommeln. Nur, was er wirklich gemacht oder
+  gelesen hat. Keine absichtlichen Fehler, aber lieber ein schlichter Satz als ein glatter.
 - **Zeigen statt behaupten:** eine Zahl, ein Diff, ein Log schlägt jedes Adjektiv. Keine
   Superlative, kein Hype („revolutionary", „game-changing"), keine Selbstbeweihräucherung.
 - **Fehler gehören rein.** Was schiefging und wie es auffiel, ist oft der wertvollste Teil.
