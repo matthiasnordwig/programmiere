@@ -12,6 +12,10 @@ paths:
   Namen): schlicht, gesprochen, wie er selbst erzählt — keine Politur, keine Slogans, keine
   Floskeln. Eigene Erfahrung beiläufig nennen, nicht trommeln. Nur, was er wirklich gemacht oder
   gelesen hat. Keine absichtlichen Fehler, aber lieber ein schlichter Satz als ein glatter.
+- **Englisch fehlerfrei, Ton trotzdem seiner:** Rechtschreibung, Grammatik und schiefe
+  Germanismen korrigieren (sein Englisch ist nicht gut, das darf poliert sein). Bleiben soll:
+  erste Person, Fakten und Zahlen zuerst, kurze schlichte Sätze, zurückhaltend statt werbend.
+  Keine Marketing-Phrasen („thrilled to announce", „game-changer"). Eine Schreibweise je Text.
 - **Zeigen statt behaupten:** eine Zahl, ein Diff, ein Log schlägt jedes Adjektiv. Keine
   Superlative, kein Hype („revolutionary", „game-changing"), keine Selbstbeweihräucherung.
 - **Fehler gehören rein.** Was schiefging und wie es auffiel, ist oft der wertvollste Teil.
