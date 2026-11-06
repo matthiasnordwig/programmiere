@@ -67,6 +67,7 @@ programmiere/
 **Seiten** (`pages/`)
 - `index.astro` — Startseite: Matrix LLM als Hero mit Wissensgraph und iPhone, darunter drei „Türen“ je Publikum (Claude-Code-Plugin mit Balken aus der Messung, Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`; Loop für Agent-Bauer; Plugin für WordPress-Betreiber), neueste Notizen, kurz „wer“.
 - `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
+- `projects/matrix/privacy.astro` — Datenschutzerklärung der App Matrix LLM (alle Plattformen), URL `/projects/matrix/privacy/` steht in den Store-Einträgen: **nie verschieben**; Aussagen am Code in `~/matrix/app` geprüft, bei Änderung neu prüfen und Datum setzen. Verlinkt von `projects/matrix.astro`.
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
 - `projects/index.astro` — Übersicht aller Projekte (`order`).
 - `writing/index.astro`, `writing/[...id].astro` — Beitragsliste und Beitragsseite.
