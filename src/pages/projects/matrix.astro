@@ -45,7 +45,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
         <div><h3>Shows the result</h3><p>After a step it opens the result: the collection, the table run, the term in the graph, the document.</p></div>
         <div><h3>Built-in help</h3><p>"How do I add files?" is answered by any model from a built-in guide, with a "Show me" link to the right place.</p></div>
         <div><h3>Stops after two failures</h3><p>If the same action fails twice, it stops and says what went wrong and what you can do.</p></div>
-        <div><h3>The limit</h3><p>Working the app needs a model that can call tools. Apple's on-device model answers the help questions, not the app tasks.</p></div>
+        <div><h3>The limit</h3><p>Working the app needs a model that can call tools. On Apple devices, Apple's on-device model answers the help questions, not the app tasks.</p></div>
       </div>
     </div>
   </section>
@@ -55,9 +55,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <p class="kicker">The first five minutes</p>
       <h2>From download to the first answer with sources.</h2>
       <ol class="steps">
-        <li><div><h3>Pick a model</h3><p>Where the system offers it, Apple's model on the device needs no download. Otherwise one tap loads a small model. The search model downloads in the background; after that everything works offline. On Windows, the search model and, if you want one, a language model come from Hugging Face once, after you agree.</p></div></li>
+        <li><div><h3>Pick a model</h3><p>On Apple devices that offer it, Apple's model needs no download. Otherwise, and on Windows, one tap loads a small local model. The search model downloads in the background; after that everything works offline. On Windows, the search model and, if you want one, a language model come from Hugging Face once, after you agree.</p></div></li>
         <li><div><h3>Try a sample collection</h3><p>Three ready-made sets: a German sample contract, the official accident file of the US Airways flight that landed on the Hudson, and Wikipedia articles on the Panama Papers.</p></div></li>
-        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives and photos (with text recognition). On Apple devices you can also share a file to Matrix from any other app; on Windows, drop files onto the window.</p></div></li>
+        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives, photos and scans (with text recognition: Apple's built-in on Apple devices, a model that downloads on first use on Windows). On Apple devices you can also share a file to Matrix from any other app; on Windows, drop files onto the window.</p></div></li>
         <li><div><h3>Ask about a file right away</h3><p>Attach it to a question with the paper clip. Afterwards keep it as a collection or discard it.</p></div></li>
         <li><div><h3>Tap a citation</h3><p>It opens the exact passage; in PDFs, on its page.</p></div></li>
       </ol>
@@ -174,7 +174,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <h2>Use any model, or only local ones.</h2>
       <p class="big">All model connections are managed in one place, and each is assigned to the task it does well.</p>
       <div class="grid3">
-        <div><h3>On the device</h3><p>On Apple devices, Apple's built-in model without a download. Or models from Hugging Face, searched and loaded inside the app.</p></div>
+        <div><h3>On the device</h3><p>Models from Hugging Face, searched and loaded inside the app, on every platform. On Apple devices also Apple's built-in model, without a download.</p></div>
         <div><h3>Search models</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
         <div><h3>Company gateway</h3><p>OpenAI-compatible or Azure endpoints behind your own infrastructure.</p></div>
         <div><h3>Cloud providers</h3><p>Direct providers where that is allowed, chosen deliberately, case by case.</p></div>

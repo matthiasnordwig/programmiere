@@ -31,7 +31,7 @@ the source, and anything doubtful goes into a review queue instead of being drop
 ## How it's built
 
 One core in Rust with thin layers on top: a macOS app, a Windows app, an iPhone app and a web server use the same
-engine. Local models run on Apple's GPU and Neural Engine, and on Windows on the graphics card through Vulkan. When a task needs more, cloud models can
+engine. Local models run on the graphics card: through Metal on Apple devices, through Vulkan on Windows. When a task needs more, cloud models can
 be connected through the same interface. Documents are split along their actual structure, turned
 into vectors (embedded) and searched with a mix of vector and full-text search.
 
