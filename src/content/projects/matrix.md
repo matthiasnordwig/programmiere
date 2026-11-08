@@ -1,12 +1,14 @@
 ---
 title: Matrix LLM
-summary: "Ask questions about your own documents on iPhone, iPad and Mac, offline. Every answer shows the exact passage it is based on. Free on the App Store."
-status: On the App Store
+summary: "Ask questions about your own documents on iPhone, iPad, Mac and Windows, offline. Every answer shows the exact passage it is based on. Free on the App Store and in the Microsoft Store."
+status: On the App Store and Microsoft Store
 order: 1
 featured: true
 links:
   - label: App Store
     url: https://apps.apple.com/app/id6786311747
+  - label: Microsoft Store
+    url: https://apps.microsoft.com/detail/9PGLD9C1DQJW
 ---
 
 Some work means reading thousands of pages where every statement needs a source: regulations,
@@ -28,8 +30,8 @@ the source, and anything doubtful goes into a review queue instead of being drop
 
 ## How it's built
 
-One core in Rust with thin layers on top: a macOS app, an iPhone app and a web server use the same
-engine. Local models run on Apple's GPU and Neural Engine. When a task needs more, cloud models can
+One core in Rust with thin layers on top: a macOS app, a Windows app, an iPhone app and a web server use the same
+engine. Local models run on Apple's GPU and Neural Engine, and on Windows on the graphics card through Vulkan. When a task needs more, cloud models can
 be connected through the same interface. Documents are split along their actual structure, turned
 into vectors (embedded) and searched with a mix of vector and full-text search.
 

@@ -43,7 +43,7 @@ programmiere/
 ├── inbox/diy/                lokales Rohmaterial für DIY-Posts (gitignored außer README)
 ├── .deploy/                  Deploy-Schlüssel + gepinnter Host-Key — nur auf dem Mac, gitignored
 ├── .github/workflows/build.yml  Build-Prüfung bei jedem Push (keine Auslieferung)
-├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard, auch Startseite), og-matrix-claude-code.png (Vorschau Plugin-Seite), null-device/
+├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard, auch Startseite), og-matrix-claude-code.png (Vorschau Plugin-Seite), badges/get-it-from-microsoft.svg (offizielles Microsoft-Abzeichen, unverändert von get.microsoft.com, Nutzung nur als Link zum Store), null-device/
 ├── scripts/                  s. §1 und §4
 ├── terminal-cv/              Quelle der Terminal-Parodie (Vite + TS, eigenes package.json); gebaut nach public/null-device/
 └── src/                      s. §3
@@ -54,7 +54,7 @@ programmiere/
 ## 3. `src/` — die Seite
 
 **Daten & Konfiguration**
-- `site.ts` — `SITE`: Name, Tagline, GitHub, LinkedIn, E-Mail, wp.org-Link, App-Store-ID und -Link von Matrix LLM (`matrixAppId`, `matrixApp`; eine Store-Seite für iPhone, iPad und Mac, Link ohne Länderkennung). Von `Base.astro`, `index.astro`, `rss.xml.js` genutzt.
+- `site.ts` — `SITE`: Name, Tagline, GitHub, LinkedIn, E-Mail, wp.org-Link, App-Store-ID und -Link von Matrix LLM (`matrixAppId`, `matrixApp`; eine Store-Seite für iPhone, iPad und Mac, Link ohne Länderkennung) und Microsoft-Store-ID und -Link für Windows (`matrixWinId`, `matrixWin`). Von `Base.astro`, `index.astro`, `rss.xml.js` genutzt.
 - `content.config.ts` — Collections + Schemas: `posts` (`title`, `description` ≤200, `date`, `type` `deep-dive|build-log|diy`, `project`, `tags`, `draft`=**true** per Default) und `projects` (`title`, `summary`, `status`, `order`, `featured`, `links`).
 - `lib.ts` — `publishedPosts()` (Drafts nur in `astro dev`), `TYPE_LABEL`, `fmtDate()`. Genutzt von Startseite, Writing, Projektseiten, RSS.
 - `data/cv.ts` — einzige Quelle des Lebenslaufs: `PERSON`, `RUN` (Stationen mit `fights`: `boss`/`hp`/`result`/`line`), `SIDE_QUESTS`, `LOADOUT`, `EXTRAS`. Fakten nur aus dem eigenen CV; Arbeitgeber-interne Zahlen bleiben draußen.

@@ -10,20 +10,20 @@ import macAsk from '../../assets/projects/matrix-mac-ask.png';
 import macTables from '../../assets/projects/matrix-mac-tables.png';
 import { Image } from 'astro:assets';
 import { SITE } from '../../site';
-const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix LLM', applicationCategory: 'BusinessApplication', operatingSystem: 'iOS, iPadOS, macOS', url: SITE.matrixApp, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Ask your own documents on iPhone, iPad and Mac, offline. Every answer comes with the exact passage it is based on.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
+const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix LLM', applicationCategory: 'BusinessApplication', operatingSystem: 'iOS, iPadOS, macOS, Windows 10, Windows 11', url: SITE.matrixApp, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Ask your own documents on iPhone, iPad, Mac and Windows, offline. Every answer comes with the exact passage it is based on.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
 ---
-<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files and shows the passage each answer is based on. Free on the App Store for iPhone, iPad and Mac. The models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
+<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files and shows the passage each answer is based on. Free on the App Store for iPhone, iPad and Mac, and in the Microsoft Store for Windows. The models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
 <div class="story">
 
   <section class="beat" style="border-top:0">
     <div class="in hero-split">
       <div>
-        <p class="kicker">Matrix LLM · iPhone, iPad and Mac</p>
-        <h1>Ask your documents on your Mac or iPhone, offline.</h1>
+        <p class="kicker">Matrix LLM · iPhone, iPad, Mac and Windows</p>
+        <h1>Ask your documents on your Mac, PC or iPhone, offline.</h1>
         <p class="big">Add contracts, regulations or reports and ask in plain words. Every answer shows the exact
         passage it is based on. The models run on the device, so your documents stay there.</p>
-        <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
-        <p class="muted">Free to download for iPhone, iPad and Mac. The interface is in 22 languages.</p>
+        <div class="get"><a class="go" href={SITE.matrixApp}>Get it on the App Store</a><a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a></div>
+        <p class="muted">Free to download for iPhone, iPad, Mac and Windows. The interface is in 22 languages.</p>
       </div>
       <figure class="phone">
         <Image src={iphoneAsk} alt="Matrix on an iPhone: a question about a sample contract, answered by Apple's on-device model, with the cited passage underneath." widths={[400, 800]} sizes="(min-width: 920px) 18rem, 80vw" loading="eager" />
@@ -55,9 +55,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <p class="kicker">The first five minutes</p>
       <h2>From download to the first answer with sources.</h2>
       <ol class="steps">
-        <li><div><h3>Pick a model</h3><p>Where the system offers it, Apple's model on the device needs no download. Otherwise one tap loads a small model. The search model downloads in the background; after that everything works offline.</p></div></li>
+        <li><div><h3>Pick a model</h3><p>Where the system offers it, Apple's model on the device needs no download. Otherwise one tap loads a small model. The search model downloads in the background; after that everything works offline. On Windows, the search model and, if you want one, a language model come from Hugging Face once, after you agree.</p></div></li>
         <li><div><h3>Try a sample collection</h3><p>Three ready-made sets: a German sample contract, the official accident file of the US Airways flight that landed on the Hudson, and Wikipedia articles on the Panama Papers.</p></div></li>
-        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives and photos (with text recognition). You can also share a file to Matrix from any other app.</p></div></li>
+        <li><div><h3>Add your own files</h3><p>PDF, Word, Excel, PowerPoint, e-mails, e-books, ZIP archives and photos (with text recognition). On Apple devices you can also share a file to Matrix from any other app; on Windows, drop files onto the window.</p></div></li>
         <li><div><h3>Ask about a file right away</h3><p>Attach it to a question with the paper clip. Afterwards keep it as a collection or discard it.</p></div></li>
         <li><div><h3>Tap a citation</h3><p>It opens the exact passage; in PDFs, on its page.</p></div></li>
       </ol>
@@ -155,11 +155,12 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     <div class="in split">
       <div>
         <p class="kicker">Platforms</p>
-        <h2>One core for Mac, iPhone and browser.</h2>
+        <h2>One core for Mac, Windows, iPhone and browser.</h2>
         <p class="big">Everything important is in a single core written in Rust. The apps on top are thin.</p>
         <div class="grid3" style="grid-template-columns:1fr">
           <div><h3>iPhone and iPad</h3><p>Fully offline: search runs on the Neural Engine, chat runs with a local model on the GPU. Files come in through the share menu of any app.</p></div>
           <div><h3>Mac</h3><p>The same app. In addition, Claude Code and other AI agents can use the running app through MCP (Model Context Protocol, the standard way for agents to call tools).</p></div>
+          <div><h3>Windows</h3><p>The same app for 64-bit PCs. Local models run on the graphics card through Vulkan (AMD, NVIDIA, Intel), otherwise on the CPU. The MCP access for agents is there as well, off by default. It needs 8 GB of memory, 16 GB are recommended.</p></div>
           <div><h3>Browser</h3><p>A Linux container in your own network. Users install nothing.</p></div>
         </div>
       </div>
@@ -173,7 +174,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <h2>Use any model, or only local ones.</h2>
       <p class="big">All model connections are managed in one place, and each is assigned to the task it does well.</p>
       <div class="grid3">
-        <div><h3>On the device</h3><p>Apple's built-in model without a download, or models from Hugging Face, searched and loaded inside the app.</p></div>
+        <div><h3>On the device</h3><p>On Apple devices, Apple's built-in model without a download. Or models from Hugging Face, searched and loaded inside the app.</p></div>
         <div><h3>Search models</h3><p>Embedding and re-ranking models for search, also offline.</p></div>
         <div><h3>Company gateway</h3><p>OpenAI-compatible or Azure endpoints behind your own infrastructure.</p></div>
         <div><h3>Cloud providers</h3><p>Direct providers where that is allowed, chosen deliberately, case by case.</p></div>
@@ -193,7 +194,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
         <div><h3>Retries</h3><p>Temporary errors are retried with growing waits. Cases that keep failing are skipped instead of stopping the run.</p></div>
         <div><h3>Fallback model</h3><p>If a model returns unusable output, a backup model takes over, only for that one passage.</p></div>
         <div><h3>Background jobs</h3><p>Long runs continue in the background with visible progress, and the app stays usable.</p></div>
-        <div><h3>Temperature</h3><p>Local models watch the device's temperature and slow down instead of overheating a laptop.</p></div>
+        <div><h3>Temperature</h3><p>On iPhone and Mac, local models watch the device's temperature and slow down instead of overheating.</p></div>
       </div>
     </div>
   </section>
@@ -226,12 +227,12 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat alt">
     <div class="in read">
       <p class="kicker">Where it stands</p>
-      <h2>Free on the App Store.</h2>
-      <p class="big">For iPhone, iPad and Mac. Asking and tables work with the model on the device. For the knowledge graph,
+      <h2>Free on the App Store and in the Microsoft Store.</h2>
+      <p class="big">For iPhone, iPad, Mac and Windows. Asking and tables work with the model on the device. For the knowledge graph,
       a local model gives a quick first map and a stronger model a more reliable one. The checks run either way and show
       where the output can be trusted.</p>
-      <a class="go" href={SITE.matrixApp}>Get it on the App Store</a>
-      <a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a>
+      <div class="get"><a class="go" href={SITE.matrixApp}>Get it on the App Store</a><a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a><a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a></div>
+      <p class="muted" style="margin-top:1rem">On Windows 10 (version 1809) or later: <code>winget install {SITE.matrixWinId}</code>.</p>
       <p class="muted" style="margin-top:1.5rem">What the app stores and when anything leaves your device: <a href="/projects/matrix/privacy/">privacy policy</a>.</p>
     </div>
   </section>
@@ -242,7 +243,10 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
 <style>
   .hero-split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
   @media (min-width: 920px) { .hero-split { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
-  .hero-split .go { margin-right: .5rem; }
+  .get { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .5rem; }
+  .get .go { margin-top: 0; }
+  .get .ms { display: inline-flex; line-height: 0; }
+  .get .ms img { height: 44px; width: auto; display: block; }
   .hero-split .muted { margin-top: 1rem; }
   .phone { margin: 0; max-width: 18rem; justify-self: center; }
   .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }

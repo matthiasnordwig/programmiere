@@ -10,19 +10,20 @@ import { SITE } from '../site';
 const posts = (await publishedPosts()).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix LLM answers questions from your own documents on iPhone, iPad and Mac, offline. It shows the exact passage for each answer and builds a knowledge graph with a quote behind every link. Free on the App Store. Also: Matrix for Claude Code, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix LLM answers questions from your own documents on iPhone, iPad, Mac and Windows, offline. It shows the exact passage for each answer and builds a knowledge graph with a quote behind every link. Free on the App Store and in the Microsoft Store. Also: Matrix for Claude Code, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="hero-text">
-      <p class="project">Matrix LLM · iPhone, iPad and Mac</p>
-      <h1>Ask questions about your documents, offline on Mac or iPhone.</h1>
+      <p class="project">Matrix LLM · iPhone, iPad, Mac and Windows</p>
+      <h1>Ask questions about your documents, offline on Mac, PC or iPhone.</h1>
       <p class="sub">Every answer shows the exact passage it is based on. Matrix also builds a knowledge graph of who
       relates to what, and every link in it has a quote from the source. The models can run entirely on your device:
-      small ones on the iPhone, large ones on the Mac.</p>
+      small ones on the iPhone, large ones on a Mac or PC.</p>
       <div class="actions">
         <a class="go" href={SITE.matrixApp}>Download from the App Store</a>
+        <a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a>
         <a class="go ghost" href="/projects/matrix/">How it works</a>
       </div>
-      <p class="free">Free to download.</p>
+      <p class="free">Free to download for iPhone, iPad, Mac and Windows.</p>
     </div>
     <figure class="stage">
       <div class="graph"><Image src={graph} alt="Matrix knowledge graph extracted from a public annual report: hundreds of entities linked by typed relations." widths={[800, 1400]} sizes="(min-width: 960px) 44rem, 100vw" loading="eager" /></div>
@@ -101,7 +102,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
   h1 { font-size: clamp(2.5rem, 5.2vw, 4.4rem); }
   .sub { font-size: clamp(1.08rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--muted); max-width: 36rem; margin: 0 0 1.5rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+  .actions .ms { display: inline-flex; line-height: 0; }
+  .actions .ms img { height: 44px; width: auto; display: block; }
   .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
   .stage { margin: 0; position: relative; }
   .graph { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; aspect-ratio: 1 / 1; background: #fff; box-shadow: 0 30px 60px -32px rgba(18,20,40,.35); }
