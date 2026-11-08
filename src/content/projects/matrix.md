@@ -1,11 +1,11 @@
 ---
 title: Matrix LLM
-summary: "Ask questions about your own documents on iPhone, iPad, Mac and Windows, offline. Every answer shows the exact passage it is based on. Free on the App Store and in the Microsoft Store."
-status: On the App Store and Microsoft Store
+summary: "Ask questions about your own documents on iPhone, iPad, Mac and Windows, offline. Every answer shows the exact passage it is based on. Free on the Apple App Store and in the Microsoft Store."
+status: On the Apple App Store and Microsoft Store
 order: 1
 featured: true
 links:
-  - label: App Store
+  - label: Apple App Store
     url: https://apps.apple.com/app/id6786311747
   - label: Microsoft Store
     url: https://apps.microsoft.com/detail/9PGLD9C1DQJW

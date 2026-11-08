@@ -70,7 +70,7 @@ export const SIDE_QUESTS = [
   {
     name: 'Matrix LLM',
     pb: 'Mac, PC, iPhone',
-    what: 'Offline RAG app on the App Store and in the Microsoft Store, for iPhone, iPad, Mac and Windows: pure-Rust core, Tauri, on-device ONNX and GGUF inference, layout-aware PDF chunking, GraphRAG ontology extraction, an assistant that operates the app via MCP tools.',
+    what: 'Offline RAG app on the Apple App Store and in the Microsoft Store, for iPhone, iPad, Mac and Windows: pure-Rust core, Tauri, on-device ONNX and GGUF inference, layout-aware PDF chunking, GraphRAG ontology extraction, an assistant that operates the app via MCP tools.',
     note: 'Interface in 22 languages; free to download.',
     href: '/projects/matrix/',
   },

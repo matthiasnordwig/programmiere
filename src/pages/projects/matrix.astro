@@ -12,7 +12,7 @@ import { Image } from 'astro:assets';
 import { SITE } from '../../site';
 const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matrix LLM', applicationCategory: 'BusinessApplication', operatingSystem: 'iOS, iPadOS, macOS, Windows 10, Windows 11', url: SITE.matrixApp, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Ask your own documents on iPhone, iPad, Mac and Windows, offline. Every answer comes with the exact passage it is based on.', author: { '@type': 'Person', name: 'Matthias Nordwig' } };
 ---
-<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files and shows the passage each answer is based on. Free on the App Store for iPhone, iPad and Mac, and in the Microsoft Store for Windows. The models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
+<Base wide title="Matrix LLM: ask your documents, offline" description="Matrix LLM answers questions about your own PDFs, Word and Excel files and shows the passage each answer is based on. Free on the Apple App Store for iPhone, iPad and Mac, and in the Microsoft Store for Windows. The models run on the device." jsonld={jsonld} appStoreId={SITE.matrixAppId}>
 <div class="story">
 
   <section class="beat" style="border-top:0">
@@ -227,7 +227,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   <section class="beat alt">
     <div class="in read">
       <p class="kicker">Where it stands</p>
-      <h2>Free on the App Store and in the Microsoft Store.</h2>
+      <h2>Free on the Apple App Store and in the Microsoft Store.</h2>
       <p class="big">For iPhone, iPad, Mac and Windows. Asking and tables work with the model on the device. For the knowledge graph,
       a local model gives a quick first map and a stronger model a more reliable one. The checks run either way and show
       where the output can be trusted.</p>
