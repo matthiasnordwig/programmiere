@@ -244,9 +244,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   .hero-split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
   @media (min-width: 920px) { .hero-split { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
   .get { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .5rem; }
-  .get .go { margin-top: 0; }
+  .get .go { margin-top: 0; box-sizing: border-box; height: 52px; display: inline-flex; align-items: center; }
   .get .ms { display: inline-flex; line-height: 0; }
-  .get .ms img { height: 44px; width: auto; display: block; }
+  .get .ms img { height: 52px; width: auto; display: block; }
   .hero-split .muted { margin-top: 1rem; }
   .phone { margin: 0; max-width: 18rem; justify-self: center; }
   .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
