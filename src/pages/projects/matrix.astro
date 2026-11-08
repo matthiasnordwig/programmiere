@@ -22,7 +22,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
         <h1>Ask your documents on your Mac, PC or iPhone, offline.</h1>
         <p class="big">Add contracts, regulations or reports and ask in plain words. Every answer shows the exact
         passage it is based on. The models run on the device, so your documents stay there.</p>
-        <div class="get"><a class="go" href={SITE.matrixApp}>Get it on the App Store</a><a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a></div>
+        <div class="get"><a class="badge" href={SITE.matrixApp}><img src="/badges/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" /></a><a class="badge" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a></div>
         <p class="muted">Free to download for iPhone, iPad, Mac and Windows. The interface is in 22 languages.</p>
       </div>
       <figure class="phone">
@@ -231,7 +231,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
       <p class="big">For iPhone, iPad, Mac and Windows. Asking and tables work with the model on the device. For the knowledge graph,
       a local model gives a quick first map and a stronger model a more reliable one. The checks run either way and show
       where the output can be trusted.</p>
-      <div class="get"><a class="go" href={SITE.matrixApp}>Get it on the App Store</a><a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a><a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a></div>
+      <div class="get"><a class="badge" href={SITE.matrixApp}><img src="/badges/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" /></a><a class="badge" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a><a class="go ghost" href="mailto:matthias.nordwig@programmiere.de?subject=Matrix">Write to me</a></div>
       <p class="muted" style="margin-top:1rem">On Windows 10 (version 1809) or later: <code>winget install {SITE.matrixWinId}</code>.</p>
       <p class="muted" style="margin-top:1.5rem">What the app stores and when anything leaves your device: <a href="/projects/matrix/privacy/">privacy policy</a>.</p>
     </div>
@@ -243,10 +243,10 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
 <style>
   .hero-split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
   @media (min-width: 920px) { .hero-split { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
-  .get { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .5rem; }
+  .get { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; margin-top: .5rem; }
   .get .go { margin-top: 0; box-sizing: border-box; height: 52px; display: inline-flex; align-items: center; }
-  .get .ms { display: inline-flex; line-height: 0; }
-  .get .ms img { height: 52px; width: auto; display: block; }
+  .get .badge { display: inline-flex; line-height: 0; }
+  .get .badge img { height: 52px; width: auto; display: block; }
   .hero-split .muted { margin-top: 1rem; }
   .phone { margin: 0; max-width: 18rem; justify-self: center; }
   .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }

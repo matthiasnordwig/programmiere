@@ -19,8 +19,8 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
       relates to what, and every link in it has a quote from the source. The models can run entirely on your device:
       small ones on the iPhone, large ones on a Mac or PC.</p>
       <div class="actions">
-        <a class="go" href={SITE.matrixApp}>Download from the App Store</a>
-        <a class="ms" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a>
+        <a class="badge" href={SITE.matrixApp}><img src="/badges/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" /></a>
+        <a class="badge" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a>
         <a class="go ghost" href="/projects/matrix/">How it works</a>
       </div>
       <p class="free">Free to download for iPhone, iPad, Mac and Windows.</p>
@@ -102,9 +102,9 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
   h1 { font-size: clamp(2.5rem, 5.2vw, 4.4rem); }
   .sub { font-size: clamp(1.08rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--muted); max-width: 36rem; margin: 0 0 1.5rem; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
-  .actions .ms { display: inline-flex; line-height: 0; }
-  .actions .ms img { height: 52px; width: auto; display: block; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; }
+  .actions .badge { display: inline-flex; line-height: 0; }
+  .actions .badge img { height: 52px; width: auto; display: block; }
   .actions .go { box-sizing: border-box; height: 52px; display: inline-flex; align-items: center; }
   .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
   .stage { margin: 0; position: relative; }
