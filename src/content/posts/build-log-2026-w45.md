@@ -5,7 +5,7 @@ date: 2026-11-08
 type: build-log
 project: matrix
 tags: [matrix, llama.cpp, memory, windows, wordpress]
-draft: true
+draft: false
 ---
 
 [Matrix LLM](/projects/matrix/) can answer from a model that runs on your own device. Until now the context window of such a model — how much text it can hold at once — was a fixed setting. This week I changed that: on every load, Matrix takes the smaller of two numbers, what the model supports and what still fits into free memory. No more guessing a value per device. It's in the code, not yet in a store release.
