@@ -12,6 +12,5 @@ runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app
 runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N29,3,2,0,not_refused,incorrect,1,-,17966,68.52,model_done,159744,10
 runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N31,6,2,2,,,4,20;10;10;10,34544,168.527,model_done,159744,10
 runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N33,8,8,8,,,2,40;40,24806,58.664,model_done,159744,10
-runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N35,10,10,10,,,2,20;20,22110,63.645,model_done,159744,10
 runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N37,5,0,0,,,7,-;-;-;-;-;-;-,59356,220.252,model_done,159744,10
 runs10/K-d27-Nodd-top10-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 2c5e0869 / core ae48c23,N39,5,3,3,not_refused,correct,2,-;-,25121,100.798,model_done,159744,10

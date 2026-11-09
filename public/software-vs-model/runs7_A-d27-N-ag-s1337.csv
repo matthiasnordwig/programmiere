@@ -27,7 +27,6 @@ runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N31,6,2,3,,,2,10;15,26410,92.139,model_done,159744,
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N32,10,1,1,,,2,-;-,17247,64.699,watchdog,159744,
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N33,8,8,8,,,2,10;10,24415,108.23,model_done,159744,
-runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N35,10,9,10,,,3,-;-;-,21748,101.455,model_done,159744,
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N36,3,2,2,not_refused,correct,1,-,13429,26.175,model_done,159744,
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N37,5,1,1,,,8,10;10;10;10;10;10;10;10,65224,242.458,watchdog,159744,
 runs7/A-d27-N-ag-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N39,5,0,0,not_refused,incorrect,2,-;-,18979,82.572,model_done,159744,
