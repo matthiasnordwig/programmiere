@@ -61,7 +61,7 @@ Small settings count too. A single default of the app, the number of hits per se
 
 On the 12 questions where neither model got full marks in any seed, the MoE found 47 % and the 27B 50 %. On Challenger they found 447 and 446 of 522 facts. An old rule of thumb from r/LocalLLaMA (2024) puts a MoE near a dense model with √(total × active) parameters, about 10B here. Qwen's model card puts the 35B-A3B close to their older dense Qwen3.5-27B on coding and agent benchmarks. A MoE at the level of the 27B does not behave like a 10B. The real difference is speed. The MoE reads the prompt about three times as fast and writes 131 against 44 tokens per second. Agentic search rereads a growing prompt in every round, so that speed adds up.
 
-Dense models are far from gone. On Hugging Face, the most downloaded model of this class right now is a dense 27B (Qwen3.8), (Hugging Face, last 30 days, 9 November 2026). For RAG on your own documents, I would still test the MoE with good search software first.
+Dense models are far from gone. On Hugging Face, the most downloaded of the 20–40B models right now is a dense 27B (Qwen3.8; Hugging Face, last 30 days, 9 November 2026). For RAG on your own documents, I would still test the MoE with good search software first.
 
 ## 4. Three attempts to give the dense model a better chance, and one check
 
@@ -109,7 +109,7 @@ There is no dense Qwen3.6 below 27B, so the 9B and 4B come from Qwen3.5, with a 
 
 ### A.2 Hardware
 
-The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan), AMD Ryzen 7 7800X3D, 95.1 GiB RAM, Windows 11 Pro (build 26200), graphics driver 32.0.32015.7029. The Mac mini M4 Pro with 24 GB I used for the hosted reference runs, building the index, the second review, a spot check of the app and the measurements of how much context the app picks (appendix C). All scored model comparisons ran on the PC; on the Mac only the spot check in appendix C ran (five questions, scored automatically).
+The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan), AMD Ryzen 7 7800X3D, 95.1 GiB RAM, Windows 11 Pro (build 26200), graphics driver 32.0.32015.7029. The Mac mini M4 Pro with 24 GB I used for the hosted reference runs, building the index, the second review, a spot check of the app and the measurements of how much context the app picks (appendix C). All scored model comparisons ran on the PC; of the local model runs, only the spot check in appendix C ran on the Mac (five questions, scored automatically).
 
 ### A.3 Settings
 
@@ -214,7 +214,7 @@ The second review has its own limits. With one reviewer per answer, the spread b
 
 The reranker is bge-reranker-v2-m3. Agentic search has none, so if anything the comparison favours one-shot retrieval.
 
-| Unknown reports | One-shot retrieval | Agentic |
+| Unknown reports | One-shot retrieval | Agentic search |
 |---|---|---|
 | Qwen3.6-35B-A3B | 48 % | 77 % |
 | Qwen3.5-9B | 40 % | 65 % |
@@ -222,7 +222,7 @@ The reranker is bge-reranker-v2-m3. Agentic search has none, so if anything the 
 
 ### B.3 Agentic search per model
 
-| Agentic, original search setting, mean over 2 seeds (9B: one) | Facts | Range over seeds | Time per question | Generation (Challenger runs) |
+| Agentic search, original search setting, mean over 2 seeds (9B: one) | Facts | Range over seeds | Time per question | Generation (Challenger runs) |
 |---|---|---|---|---|
 | Qwen3.6-35B-A3B | 77 % | 76–77 % | 22 s | 131–132 tok/s |
 | Qwen3.6-27B | 78 % | 77–79 % | 65 s | 44 tok/s |
@@ -723,6 +723,8 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set N - Reports 2026 (39 questions)
 
+*Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.*
+
 **Purpose:** Hard set over the 14 official reports of October-November 2026 (published after the training cut-off of the compared models). N1-N29 first; N30-N39 appended later and harder (enumerations and sums over five to ten reports). Traps (N25–N29, N36, N39) are false-premise questions. German questions for German reports, English for English ones.
 
 ##### N1 (de, single)
@@ -955,6 +957,8 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set D - Reports 2026, reasoning / fairness test (11 questions)
 
+*Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.*
+
 **Purpose:** Reasoning set over the same 14 reports, used as the fairness test for the claim that a dense model beats an MoE model where several reasoning steps are needed on easily found text. reason-1: one step; reason-2: two to three steps in one report; reason-3: many steps across several reports.
 
 ##### D1 (de, reason-1)
@@ -1021,9 +1025,11 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 All files are under `/software-vs-model/`. The CSV files have one row per question with the facts found (automatic and from the second review), searches, `top_k` per search, the largest prompt, time, stop reason and context.
 
+Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.
+
 | File | Content | Traces |
 |---|---|---|
-| [questions.json](/software-vs-model/questions.json) | all 109 questions (sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
+| [questions.json](/software-vs-model/questions.json) | 107 of the 109 questions (D7 and N13 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
 | [berichte26.csv](/software-vs-model/berichte26.csv), [challenger.csv](/software-vs-model/challenger.csv) | documents: title, publisher, date, original URL, licence, SHA256 of the text | – |
 | [runs7_A-moe-N-ag-s1337.csv](/software-vs-model/runs7_A-moe-N-ag-s1337.csv), [runs7_A-moe-N-ag-s2.csv](/software-vs-model/runs7_A-moe-N-ag-s2.csv) | unknown reports, agentic, MoE, per seed | on request |
 | [runs7_A-d27-N-ag-s1337.csv](/software-vs-model/runs7_A-d27-N-ag-s1337.csv), [runs7_A-d27-N-ag-s2.csv](/software-vs-model/runs7_A-d27-N-ag-s2.csv) | unknown reports, agentic, 27B, per seed | on request |
