@@ -1,0 +1,11 @@
+lauf,modell,bestand,betriebsart,seed,app_stand,frage_id,fakten_gesamt,fakten_automatisch,fakten_gegengelesen,falle_automatisch,falle_gegengelesen,suchaufrufe,top_k_je_suche,hoechster_prompt_tokens,zeit_s,stop_reason,kontext_tokens,feste_trefferzahl
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N5,4,4,4,,,1,-,10465,26.876,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N15,7,5,4,,,2,-;-,16026,57.656,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N16,6,0,0,,,3,10;10;10,27217,99.218,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N17,6,5,5,,,3,-;-;-,20935,153.355,length,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N19,8,8,8,,,1,5,7436,17.27,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N26,3,3,3,nicht_abgelehnt,richtig,1,5,7220,13.171,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N31,6,2,1,,,5,10;5;5;5;10,27097,90.593,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N32,10,5,5,,,5,-;-;-;-;-,38752,142.091,context,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N36,3,3,3,nicht_abgelehnt,richtig,1,-,9709,32.043,model_done,40960,
+runs10/M-d27-N-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,berichte26,agentisch,1337,app 2c5e0869 / core ae48c23,N37,5,1,1,,,5,-;-;-;-;-,33855,122.998,context,40960,

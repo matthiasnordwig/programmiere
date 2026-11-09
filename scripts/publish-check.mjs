@@ -31,7 +31,8 @@ const rules = [
   [/<!--\s*REVIEW/i, 'offener REVIEW-Marker'],
   [/\b(TODO|FIXME|TBD|XXX)\b/, 'Platzhalter (TODO/FIXME/TBD/XXX)'],
   [/(sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|xox[abprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY)/, 'sieht nach Zugangsdaten aus'],
-  [/(\/Users\/[A-Za-z]|\/home\/[a-z]|C:\\Users\\)/, 'lokaler Benutzerpfad'],
+  // Lookbehind: /home/ und /Users/ zählen nur als Pfadanfang, nicht mitten in URLs (…/rh/home/home/…).
+  [/((?<![\w.-])\/Users\/[A-Za-z]|(?<![\w.-])\/home\/[a-z]|C:\\Users\\)/, 'lokaler Benutzerpfad'],
   [/\b(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})\b/, 'private IP-Adresse'],
 ];
 for (const [re, why] of rules) if (re.test(text)) problems.push(why);

@@ -1,0 +1,4734 @@
+{
+ "description": "Public question sets of the MoE vs dense measurement: R (20) and H (29) and F (10) over the Rogers Commission report on the Challenger accident (Volume 1 and Volume 2 Appendix F), N (39) and D (11) over 14 official reports published 2026-10-02 to 2026-11-06. 'sample' is the corpus key (challenger, berichte26). 'kind': single, number, multi, trap, reason-1..3. 'facts': every inner list is one key fact, satisfied when the answer contains any of its spellings (lower-case, whitespace-insensitive substring); trap rows without facts: the right answer says the information is not in the documents; trap rows with facts: the right answer names the error and gives these facts. Personal names are replaced by roles (except the author of Appendix F).",
+ "format_hint": "Formatting: short paragraphs; a list for steps; a Markdown table when comparing several items across several attributes.",
+ "questions": [
+  {
+   "id": "R1",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "What was the air temperature at the launch of Challenger, and how much colder was that than at any previous launch?",
+   "facts": [
+    [
+     "36 degrees",
+     "36°",
+     "36 °",
+     "36 f",
+     "36-degree",
+     "36 fahrenheit"
+    ],
+    [
+     "15 degrees",
+     "15°",
+     "15 °",
+     "15 f",
+     "15-degree",
+     "15 fahrenheit"
+    ]
+   ]
+  },
+  {
+   "id": "R2",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "How many seconds after liftoff did the flight end, and how many seconds after launch did the range safety officer destroy the boosters?",
+   "facts": [
+    [
+     "73 seconds",
+     "73 s"
+    ],
+    [
+     "110 seconds",
+     "110 s"
+    ]
+   ]
+  },
+  {
+   "id": "R3",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "At what point in the flight (in seconds) did the first flame appear on the right Solid Rocket Booster, and at about how many degrees around the booster circumference?",
+   "facts": [
+    [
+     "58.788",
+     "58.8"
+    ],
+    [
+     "305"
+    ]
+   ]
+  },
+  {
+   "id": "R4",
+   "sample": "challenger",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Mit welcher Machzahl und in welcher Höhe flog die Challenger, als sie vom Feuerball eingehüllt wurde?",
+   "facts": [
+    [
+     "1.92",
+     "1,92"
+    ],
+    [
+     "46,000",
+     "46.000",
+     "46,o00",
+     "46.o00",
+     "46000",
+     "46 000",
+     "46 o00"
+    ]
+   ]
+  },
+  {
+   "id": "R5",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "How many times was the launch of mission 51-L postponed and how many times was it scrubbed, counted from which planned launch date in January 1986?",
+   "facts": [
+    [
+     "postponed three times",
+     "three times",
+     "3 times",
+     "three postponements",
+     "3 postponements",
+     "postponed 3 times"
+    ],
+    [
+     "scrubbed once",
+     "scrubbed one",
+     "once scrubbed",
+     "one scrub",
+     "scrubbed 1",
+     "one time"
+    ],
+    [
+     "january 22, 1986",
+     "january 22",
+     "22 january",
+     "22nd of january"
+    ]
+   ]
+  },
+  {
+   "id": "R6",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Who were the two payload specialists added to the 51-L crew (describe each by occupation), and which company did one of them represent?",
+   "facts": [
+    [
+     "teacher",
+     "school teacher",
+     "schoolteacher"
+    ],
+    [
+     "hughes"
+    ]
+   ]
+  },
+  {
+   "id": "R7",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "How many rubber O-rings seal each field joint, and what diameter do they have?",
+   "facts": [
+    [
+     "two rubber o-rings",
+     "two o-rings",
+     "2 o-rings",
+     "two redundant",
+     "two primary and secondary",
+     "two rubber seals"
+    ],
+    [
+     "0.280",
+     ".280"
+    ]
+   ]
+  },
+  {
+   "id": "R8",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Below what O-ring temperature did Thiokol (its Vice President, Engineering) recommend not to fly STS 51-L, and how did that temperature compare with previous flights?",
+   "facts": [
+    [
+     "53 degrees",
+     "53°",
+     "53 f"
+    ],
+    [
+     "lowest"
+    ]
+   ]
+  },
+  {
+   "id": "R9",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Which Thiokol official was asked by Thiokol's Senior Vice President for Wasatch Operations to take off his engineering hat and put on his management hat during the Thiokol caucus? Give his position.",
+   "facts": [
+    [
+     "vice president, engineering",
+     "vice president of engineering",
+     "vice president for engineering",
+     "vice-president, engineering",
+     "engineering vice president",
+     "vp engineering",
+     "vice president engineering"
+    ]
+   ]
+  },
+  {
+   "id": "R10",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "According to Feynman, which group gave the very low estimate of the Shuttle failure probability, about 1 in 100,000?",
+   "facts": [
+    [
+     "management"
+    ]
+   ]
+  },
+  {
+   "id": "R11",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "If the failure probability were really 1 in 100,000, how long could one launch a Shuttle every day before expecting to lose one, according to Feynman?",
+   "facts": [
+    [
+     "300 years",
+     "300-year",
+     "three hundred years",
+     "three centuries"
+    ]
+   ]
+  },
+  {
+   "id": "R12",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Out of how many rocket flights did how many fail according to the range safety officer's study cited by Feynman, and which safety panel did that officer chair?",
+   "facts": [
+    [
+     "2,900",
+     "2900"
+    ],
+    [
+     "121"
+    ],
+    [
+     "launch abort safety panel",
+     "lasp",
+     "launch abort"
+    ]
+   ]
+  },
+  {
+   "id": "R13",
+   "sample": "challenger",
+   "lang": "de",
+   "kind": "multi",
+   "format": null,
+   "question": "Wie viele Sekunden Betriebszeit hatten die Haupttriebwerke laut Feynman insgesamt, und wie oft sind sie in dieser Zeit ernsthaft ausgefallen?",
+   "facts": [
+    [
+     "250,000",
+     "250.000",
+     "250000",
+     "250 000"
+    ],
+    [
+     "16 times",
+     "16 mal",
+     "16-mal",
+     "16x",
+     "sechzehn",
+     "16 ausf",
+     "16 schwere",
+     "16 ernst",
+     "16 failures"
+    ]
+   ]
+  },
+  {
+   "id": "R14",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "What must take precedence over public relations according to the closing sentence of Feynman's appendix, and why?",
+   "facts": [
+    [
+     "reality"
+    ],
+    [
+     "nature cannot be fooled",
+     "nature can't be fooled",
+     "nature cannot be tricked",
+     "nature cannot be deceived"
+    ]
+   ]
+  },
+  {
+   "id": "R15",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "Which civilian crew member does Feynman name at the end of his appendix as a person of great courage? Give her role on the mission.",
+   "facts": [
+    [
+     "teacher"
+    ]
+   ]
+  },
+  {
+   "id": "R16",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "By how many million dollars was the Orbiter logistics (spare parts) funding cut in 1985, and what was the funding requirement it was cut from?",
+   "facts": [
+    [
+     "83.3"
+    ],
+    [
+     "285.3"
+    ]
+   ]
+  },
+  {
+   "id": "R17",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "How much did the Challenger orbiter cost to build?",
+   "facts": []
+  },
+  {
+   "id": "R18",
+   "sample": "challenger",
+   "lang": "de",
+   "kind": "trap",
+   "format": null,
+   "question": "Wie viele Menschen verfolgten den Start der Challenger im Fernsehen?",
+   "facts": []
+  },
+  {
+   "id": "R19",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "What did Feynman demonstrate with a piece of O-ring rubber and a glass of ice water at the hearing?",
+   "facts": []
+  },
+  {
+   "id": "R20",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "What was the price of the TDRS-B satellite that was lost on Challenger?",
+   "facts": []
+  },
+  {
+   "id": "H1",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "In October 1985, what was the logistics funding requirement for the Orbiter program, by how much was it cut, and how much did that leave? And when the spare-parts stockage for 12 flights a year should have been complete, how many of the required items had actually been delivered?",
+   "facts": [
+    [
+     "285.3"
+    ],
+    [
+     "83.3"
+    ],
+    [
+     "202.0",
+     "202 million",
+     "$202",
+     "202 m"
+    ],
+    [
+     "32,000",
+     "32000",
+     "32 000",
+     "32.000"
+    ]
+   ]
+  },
+  {
+   "id": "H2",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "Compare the service-life figures for the Space Shuttle Main Engine turbopumps given in Chapter IX of the Commission report with those in Feynman's Appendix F. Give the limits Chapter IX states for the low-pressure fuel and oxidizer pumps, the high-pressure oxidizer pump and the equivalent life of most engine components, and Feynman's replacement intervals for the two high-pressure turbopumps together with the original design lifetime he cites.",
+   "facts": [
+    [
+     "28 flight",
+     "28-flight",
+     "28 mission",
+     "28 equivalent",
+     "equivalent of 28",
+     "28 and 22"
+    ],
+    [
+     "22 flight",
+     "22-flight",
+     "22 mission",
+     "22 equivalent",
+     "28 and 22"
+    ],
+    [
+     "less than six",
+     "fewer than six",
+     "less than 6",
+     "fewer than 6",
+     "<6",
+     "< 6",
+     "under six"
+    ],
+    [
+     "40-flight",
+     "40 flight",
+     "40 mission",
+     "40-mission"
+    ],
+    [
+     "three or four",
+     "3 or 4",
+     "3-4",
+     "3–4",
+     "three to four",
+     "3 to 4"
+    ],
+    [
+     "five or six",
+     "5 or 6",
+     "5-6",
+     "5–6",
+     "five to six",
+     "5 to 6"
+    ],
+    [
+     "55 mission",
+     "55-mission",
+     "27,000",
+     "27000",
+     "27 000",
+     "55 flight",
+     "55 equivalent"
+    ]
+   ]
+  },
+  {
+   "id": "H3",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "In the 1971 Rockwell data on ejection systems quoted in Chapter IX, which system was heavier than the open ejection seat but cheaper to develop? Give the weights and development costs of both, the weight of the separable crew compartment, and the more recent estimate of how much an escape module could add to the Orbiter's weight.",
+   "facts": [
+    [
+     "b-70",
+     "b70",
+     "b 70",
+     "encapsulated"
+    ],
+    [
+     "5,200",
+     "5200",
+     "5 200"
+    ],
+    [
+     "7,000,000",
+     "$7 million",
+     "7 million",
+     "$7m",
+     "$7.0 million",
+     "7.0 million"
+    ],
+    [
+     "1,760",
+     "1760",
+     "1 760"
+    ],
+    [
+     "14,000",
+     "14000",
+     "14 000"
+    ],
+    [
+     "30,000",
+     "30000",
+     "30 000"
+    ]
+   ]
+  },
+  {
+   "id": "H4",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Challenger flew nine missions before 51-L. According to the O-ring anomaly table in Chapter VI (Figure 2), how many and which of those nine Challenger flights showed no O-ring anomaly at all?",
+   "facts": [
+    [
+     "STS-7",
+     "STS 7",
+     "STS7"
+    ],
+    [
+     "STS-8",
+     "STS 8",
+     "STS8"
+    ],
+    [
+     "41-G",
+     "41 G",
+     "41G",
+     "41 -G"
+    ],
+    [
+     "three flights",
+     "3 flights",
+     "three missions",
+     "3 missions",
+     "three of the nine",
+     "3 of the 9",
+     "three of nine",
+     "3 of 9",
+     "only three",
+     "three challenger",
+     "3 challenger"
+    ]
+   ]
+  },
+  {
+   "id": "H5",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "According to the Chapter IX table of landing-site changes, which missions scheduled to land at Kennedy had to land at Edwards instead, how many wave-offs did each have, which mission in that table was not a Kennedy diversion and where did it land, and how many flights had been launched with plans to land in Florida?",
+   "facts": [
+    [
+     "STS-7",
+     "STS 7",
+     "STS7"
+    ],
+    [
+     "41-C",
+     "41 C",
+     "41C",
+     "41 -C"
+    ],
+    [
+     "61-C",
+     "61 C",
+     "61C",
+     "61 -C"
+    ],
+    [
+     "northrup",
+     "white sands",
+     "new mexico"
+    ],
+    [
+     "eight flights",
+     "8 flights",
+     "eight missions",
+     "8 missions",
+     "eight were",
+     "of eight",
+     "of 8"
+    ]
+   ]
+  },
+  {
+   "id": "H6",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Appendix C lists the earlier field joints on which the circumferential alignment tool had been used before 51-L. How many and which of those joints did not experience O-ring damage?",
+   "facts": [
+    [
+     "51-B",
+     "51 B",
+     "51B",
+     "51 -B"
+    ],
+    [
+     "51-F",
+     "51 F",
+     "51F",
+     "51 -F"
+    ],
+    [
+     "61-B",
+     "61 B",
+     "61B",
+     "61 -B"
+    ],
+    [
+     "right aft"
+    ],
+    [
+     "four of the five",
+     "4 of the 5",
+     "four of five",
+     "4 of 5",
+     "four joints",
+     "4 joints",
+     "four field joints",
+     "4 field joints",
+     "four did not",
+     "four had no",
+     "four showed no",
+     "four with no"
+    ]
+   ]
+  },
+  {
+   "id": "H7",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "In the Chapter VI table of O-ring anomalies (Figure 2), how many and which Shuttle flights launched with a joint temperature of 75°F or higher showed no O-ring anomaly, and for which flight in that temperature range can the table not say?",
+   "facts": [
+    [
+     "STS-3",
+     "STS 3",
+     "STS3"
+    ],
+    [
+     "51-J",
+     "51 J",
+     "51J",
+     "51 -J"
+    ],
+    [
+     "lost at sea",
+     "sts-4",
+     "sts 4",
+     "sts4"
+    ],
+    [
+     "two flights",
+     "2 flights",
+     "two missions",
+     "2 missions",
+     "only two",
+     "two shuttle flights"
+    ]
+   ]
+  },
+  {
+   "id": "H8",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Put these events in chronological order and date each: the field joint's classification as Criticality 1R, the Thiokol engineer's 'simplex' retention rationale, the revised Critical Items List entry reclassifying the joint as Criticality 1, the Level I approval of the Criticality 1 waiver, and the launch of STS-6.",
+   "facts": [
+    [
+     "november 24, 1980",
+     "november 24 1980",
+     "nov. 24, 1980",
+     "nov 24, 1980",
+     "24 november 1980",
+     "24 nov. 1980",
+     "24 nov 1980",
+     "24. november 1980",
+     "1980-11-24",
+     "11/24/1980",
+     "11/24/80",
+     "november 24th, 1980",
+     "november 24th 1980"
+    ],
+    [
+     "december 1, 1982",
+     "december 1 1982",
+     "dec. 1, 1982",
+     "dec 1, 1982",
+     "1 december 1982",
+     "1 dec. 1982",
+     "1 dec 1982",
+     "1. december 1982",
+     "1982-12-01",
+     "12/1/1982",
+     "12/1/82",
+     "december 1st, 1982",
+     "december 1st 1982"
+    ],
+    [
+     "december 17, 1982",
+     "december 17 1982",
+     "dec. 17, 1982",
+     "dec 17, 1982",
+     "17 december 1982",
+     "17 dec. 1982",
+     "17 dec 1982",
+     "17. december 1982",
+     "1982-12-17",
+     "12/17/1982",
+     "12/17/82",
+     "december 17th, 1982",
+     "december 17th 1982"
+    ],
+    [
+     "march 28, 1983",
+     "march 28 1983",
+     "mar. 28, 1983",
+     "mar 28, 1983",
+     "28 march 1983",
+     "28 mar. 1983",
+     "28 mar 1983",
+     "28. march 1983",
+     "1983-03-28",
+     "3/28/1983",
+     "3/28/83",
+     "march 28th, 1983",
+     "march 28th 1983"
+    ],
+    [
+     "april 4, 1983",
+     "april 4 1983",
+     "apr. 4, 1983",
+     "apr 4, 1983",
+     "4 april 1983",
+     "4 apr. 1983",
+     "4 apr 1983",
+     "4. april 1983",
+     "1983-04-04",
+     "4/4/1983",
+     "4/4/83",
+     "april 4th, 1983",
+     "april 4th 1983",
+     "04/04/83",
+     "04/04/1983"
+    ]
+   ]
+  },
+  {
+   "id": "H9",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Reconstruct the times (EST) of the evening of January 27, 1986: when did the first Thiokol/NASA teleconference begin, for when was the second one planned and when did it actually begin, when was it recessed for the Thiokol caucus and how long did the caucus last, when was the teleconference terminated, and when was the NASA Space Transportation System Program Manager at Johnson called?",
+   "facts": [
+    [
+     "5:45"
+    ],
+    [
+     "8:15"
+    ],
+    [
+     "8:45"
+    ],
+    [
+     "10:30"
+    ],
+    [
+     "30 minutes",
+     "30 min",
+     "thirty minutes",
+     "half an hour",
+     "30-minute",
+     "30–35",
+     "30-35",
+     "30 to 35",
+     "30, 35"
+    ],
+    [
+     "11:15"
+    ],
+    [
+     "11:30"
+    ]
+   ]
+  },
+  {
+   "id": "H10",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Three different 'margins' for O-ring erosion are quoted in the report: the one in Thiokol's final management agreement on the night of January 27, the one the Solid Rocket Booster project manager at Marshall gave the Commission based on STS-2, and the one the Commission's executive director derived from the Flight Readiness Review figures. Give each margin and the erosion depths it rests on.",
+   "facts": [
+    [
+     "factor of three",
+     "factor of 3",
+     "three times the previous",
+     "3 times the previous",
+     "safety factor of three",
+     "threefold",
+     "3x",
+     "3×"
+    ],
+    [
+     "two and a half",
+     "2.5",
+     "2½",
+     "2 1/2"
+    ],
+    [
+     "53 thousandths",
+     ".053",
+     "53 mils",
+     "53/1000",
+     "53 thousandth"
+    ],
+    [
+     "125 thousandths",
+     ".125",
+     "125 mils",
+     "125/1000",
+     "125 thousandth"
+    ],
+    [
+     "five percent",
+     "5 percent",
+     "5%",
+     "5 %",
+     "five and a half",
+     "5.5",
+     "5.6%",
+     "5.6 percent"
+    ],
+    [
+     "95 thousandths",
+     ".095",
+     "95 mils",
+     "90 to 95",
+     "90 vs. 95",
+     "90 vs 95",
+     "90 and 95",
+     "90 versus 95"
+    ]
+   ]
+  },
+  {
+   "id": "H11",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "The report states the link between temperature and O-ring thermal distress twice, once in the Chapter IV findings and once in Chapter VI. Give both versions: which temperature is meant, the thresholds, and the counts of flights with and without distress.",
+   "facts": [
+    [
+     "21 launches",
+     "21 flights",
+     "twenty-one",
+     "of 21",
+     "4/21",
+     "4 / 21"
+    ],
+    [
+     "61°",
+     "61 °",
+     "61 degrees",
+     "61 f",
+     "61f"
+    ],
+    [
+     "ambient"
+    ],
+    [
+     "twenty flights",
+     "20 flights",
+     "of 20",
+     "of twenty",
+     "out of 20",
+     "out of twenty",
+     "3/20",
+     "3 / 20"
+    ],
+    [
+     "66°",
+     "66 °",
+     "66 degrees",
+     "66 f",
+     "66f"
+    ],
+    [
+     "63°",
+     "63 °",
+     "63 degrees",
+     "63 f",
+     "63f"
+    ]
+   ]
+  },
+  {
+   "id": "H12",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "How much rain fell on 51-L while it stood on the launch pad, and how much would have been normal? The report gives two different figures for how many days 51-L was exposed on the pad: give both. How much water had been found in an STS-9 clevis well after less rain?",
+   "facts": [
+    [
+     "seven inches",
+     "7 inches",
+     "7 in.",
+     "7 in ",
+     "7\""
+    ],
+    [
+     "2.5 inch",
+     "2.5 in",
+     "2½ inch",
+     "two and a half inch",
+     "2.5\""
+    ],
+    [
+     "35 days",
+     "35-day"
+    ],
+    [
+     "38 days",
+     "38-day"
+    ],
+    [
+     "0.5 inch",
+     "0.5 in",
+     ".5 inch",
+     "half an inch",
+     "half inch",
+     "1/2 inch",
+     "0.5\"",
+     ".5\""
+    ]
+   ]
+  },
+  {
+   "id": "H13",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "For the left nozzle joint of STS 51-B, how deep did the primary and the secondary O-ring erode, what maximum erosion had been predicted (for the primary in the former and the revised model, and for the secondary), and what erosion would a field joint have suffered at the same ratio of actual to projected erosion?",
+   "facts": [
+    [
+     ".171"
+    ],
+    [
+     ".032"
+    ],
+    [
+     ".090",
+     ".09 in",
+     ".09\"",
+     "90 thousandths",
+     "90 mils",
+     ".09-inch"
+    ],
+    [
+     ".070",
+     ".07 in",
+     ".07\"",
+     "70 thousandths",
+     "70 mils",
+     ".07-inch"
+    ],
+    [
+     ".004",
+     "4 thousandths",
+     "4 mils"
+    ],
+    [
+     ".225"
+    ]
+   ]
+  },
+  {
+   "id": "H14",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "What share of the External Tank, of the Orbiter and of the TDRS/IUS payload package was recovered after the accident, and in about how much water were the main engines and the crew module found?",
+   "facts": [
+    [
+     "20 percent",
+     "20%",
+     "20 %",
+     "20-percent",
+     "20 per cent",
+     "twenty percent",
+     "twenty per cent"
+    ],
+    [
+     "30 percent",
+     "30%",
+     "30 %",
+     "30-percent",
+     "30 per cent",
+     "thirty percent",
+     "thirty per cent"
+    ],
+    [
+     "five percent",
+     "5 percent",
+     "5%",
+     "5 %",
+     "5-percent"
+    ],
+    [
+     "85 feet",
+     "85 ft",
+     "85-foot",
+     "85 foot"
+    ],
+    [
+     "90 feet",
+     "90 ft",
+     "90-foot",
+     "90 foot"
+    ]
+   ]
+  },
+  {
+   "id": "H15",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Two problems from mission 61-C did not reach the 51-L Flight Readiness Review. Give the dates of that review, of 61-C's landing (and where it landed), of the completion of the 61-C booster inspection, and of when the Johnson brake subsystem manager first received the brake information and when he learned its extent. At what brake energy did the 61-C damage occur, compared with the energy available before the first stator fails under normal braking?",
+   "facts": [
+    [
+     "january 15",
+     "jan. 15",
+     "jan 15",
+     "15 january",
+     "15 jan.",
+     "15. january",
+     "1/15/"
+    ],
+    [
+     "january 19,",
+     "january 19.",
+     "january 19 1986",
+     "january 19th",
+     "january 19:",
+     "january 19 |",
+     "january 19)",
+     "january 19;",
+     "january 19 (",
+     "january 19 -",
+     "january 19 –",
+     "january 19 and",
+     "jan. 19,",
+     "jan 19,",
+     "jan. 19.",
+     "jan 19.",
+     "19 january",
+     "19 jan.",
+     "19. january",
+     "1/19/",
+     "1986-01-19"
+    ],
+    [
+     "edwards"
+    ],
+    [
+     "january 27",
+     "jan. 27",
+     "jan 27",
+     "27 january",
+     "27 jan.",
+     "27. january",
+     "1/27/"
+    ],
+    [
+     "january 30",
+     "jan. 30",
+     "jan 30",
+     "30 january",
+     "30 jan.",
+     "30. january",
+     "1/30/"
+    ],
+    [
+     "34 million",
+     "34m ft",
+     "34 mio"
+    ],
+    [
+     "40 million",
+     "40m ft",
+     "40 mio"
+    ]
+   ]
+  },
+  {
+   "id": "H16",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Why did a Marshall engineer sign the January 1978 and January 1979 memoranda to his superior that called the Thiokol joint design unacceptable?",
+   "facts": [
+    [
+     "branch chief",
+     "chief of the solid rocket motor branch",
+     "chief of the srm branch",
+     "head of the solid rocket motor branch",
+     "chief of the solid rocket motor",
+     "solid rocket motor branch"
+    ],
+    [
+     "authored",
+     "the author",
+     "actual author",
+     "as author",
+     "authorship",
+     "wrote the memo",
+     "wrote them",
+     "wrote both",
+     "drafted",
+     "ghostwr",
+     "ghost-wr"
+    ],
+    [
+     "january 9, 1978",
+     "january 9 1978",
+     "jan. 9, 1978",
+     "jan 9, 1978",
+     "9 january 1978",
+     "9 jan. 1978",
+     "9 jan 1978",
+     "9. january 1978",
+     "1978-01-09",
+     "1/9/1978",
+     "1/9/78",
+     "january 9th, 1978",
+     "january 9th 1978"
+    ],
+    [
+     "january 19, 1979",
+     "january 19 1979",
+     "jan. 19, 1979",
+     "jan 19, 1979",
+     "19 january 1979",
+     "19 jan. 1979",
+     "19 jan 1979",
+     "19. january 1979",
+     "1979-01-19",
+     "1/19/1979",
+     "1/19/79",
+     "january 19th, 1979",
+     "january 19th 1979"
+    ]
+   ]
+  },
+  {
+   "id": "H17",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Thiokol's June 1985 O-ring resiliency bench test showed that at 50°F the O-ring lost contact with the metal for 2.4 seconds. What did the same test show at 75°F and at 100°F?",
+   "facts": [
+    [
+     "ten minutes",
+     "10 minutes",
+     "10 min"
+    ],
+    [
+     "maintained contact",
+     "maintain contact",
+     "kept contact",
+     "remained in contact",
+     "stayed in contact",
+     "maintains contact"
+    ],
+    [
+     "75°f the o-ring lost contact",
+     "75°f, the o-ring lost contact",
+     "75 °f the o-ring lost contact",
+     "75 °f, the o-ring lost contact",
+     "75 degrees the o-ring lost contact",
+     "75°f it lost contact",
+     "75 °f it lost contact",
+     "2.4 seconds at 75",
+     "2.4 s at 75",
+     "2.4-second loss of contact occurred at 75",
+     "occurred at 75",
+     "was at 75",
+     "at 75°f, not",
+     "at 75 °f, not",
+     "75°f, not 50",
+     "75 °f, not 50",
+     "75°f (not 50",
+     "75°f rather than 50",
+     "not at 50"
+    ]
+   ]
+  },
+  {
+   "id": "H18",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Why did the president of Rockwell's Space Transportation Systems Division tell the 9:00 a.m. Mission Management Team meeting at Kennedy on January 28 that Rockwell would not approve the launch?",
+   "facts": [
+    [
+     "downey",
+     "california"
+    ],
+    [
+     "orbiter project manager",
+     "vice president, orbiter",
+     "orbiter vice president",
+     "two vice presidents"
+    ],
+    [
+     "cannot assure",
+     "can't assure",
+     "could not assure"
+    ],
+    [
+     "ambiguous",
+     "ambiguity"
+    ]
+   ]
+  },
+  {
+   "id": "H19",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "After the cold-weather flight 51-C in January 1985, the Solid Rocket Booster project manager at Marshall placed a launch constraint on the Solid Rocket Booster. Which flights flew under waivers of that constraint before 51-L, and how many were there?",
+   "facts": [
+    [
+     "51-B",
+     "51 B",
+     "51B",
+     "51 -B"
+    ],
+    [
+     "six consecutive",
+     "six waivers",
+     "six flights",
+     "6 flights",
+     "6 waivers",
+     "six times",
+     "six launch",
+     "six missions",
+     "6 missions",
+     "six prior",
+     "six such",
+     "total of six",
+     "total of 6",
+     "there were six",
+     "there were 6",
+     "six ("
+    ],
+    [
+     "51-F",
+     "51 F",
+     "51F",
+     "51 -F"
+    ],
+    [
+     "51-I",
+     "51 I",
+     "51I",
+     "51 -I"
+    ],
+    [
+     "51-J",
+     "51 J",
+     "51J",
+     "51 -J"
+    ],
+    [
+     "61-A",
+     "61 A",
+     "61A",
+     "61 -A"
+    ],
+    [
+     "61-B",
+     "61 B",
+     "61B",
+     "61 -B"
+    ],
+    [
+     "61-C",
+     "61 C",
+     "61C",
+     "61 -C"
+    ]
+   ]
+  },
+  {
+   "id": "H20",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "How many people in total took part in NASA's own investigation of the accident (NASA employees, other government agencies and contractors together), and how many pages of transcript did the Commission's work generate in total (interviews and panel sessions plus hearings)? What were the two computer data bases the Commission built and what did each contain, and what page counts do Appendices A and B give for the document collection?",
+   "facts": [
+    [
+     "6,000",
+     "6000",
+     "6 000",
+     "6.000"
+    ],
+    [
+     "14,800",
+     "14800",
+     "14 800",
+     "14.800"
+    ],
+    [
+     "inquire"
+    ],
+    [
+     "juris"
+    ],
+    [
+     "100,000 pages",
+     "100000 pages",
+     "100 000 pages",
+     "100,000 page"
+    ],
+    [
+     "122,000",
+     "122000",
+     "122 000",
+     "122.000"
+    ]
+   ]
+  },
+  {
+   "id": "H21",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "Chapter III's narrative of the 51-L ascent mentions only part of the main-engine throttling. Give every main-engine throttle command with its mission elapsed time to the millisecond as listed in the Chapter III table of major events, compute how long the engines stayed throttled back from the first throttle-down command until they were commanded back up to their highest setting, and state the (different) times that Chapter II's flight timeline gives for the two throttle-down steps.",
+   "facts": [
+    [
+     "4.339"
+    ],
+    [
+     "19.859"
+    ],
+    [
+     "35.379"
+    ],
+    [
+     "65%",
+     "65 percent",
+     "65 %",
+     "65-percent"
+    ],
+    [
+     "51.86"
+    ],
+    [
+     "32.001",
+     "32.0 s",
+     "32.0 sec",
+     "about 32 seconds",
+     "roughly 32 seconds",
+     "~32 s",
+     "32 seconds"
+    ],
+    [
+     "+24",
+     "+ 24",
+     "24 sec",
+     "t+24",
+     "t + 24",
+     "24 seconds"
+    ],
+    [
+     "+42",
+     "+ 42",
+     "42 sec",
+     "t+42",
+     "t + 42",
+     "42 seconds"
+    ]
+   ]
+  },
+  {
+   "id": "H22",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Which live television transmissions from orbit were planned for 51-L: how many, on which flight days and during which activities? How many of the teacher's lessons were to be telecast live, and which NASA scheduling practice contradicts the rumor of a planned live hookup with the crew during the President's State of the Union Message?",
+   "facts": [
+    [
+     "three live telecasts",
+     "three telecasts",
+     "three live",
+     "3 live",
+     "three transmissions",
+     "three television",
+     "three tv"
+    ],
+    [
+     "day 4",
+     "day four",
+     "fourth day"
+    ],
+    [
+     "phase partitioning",
+     "phase-partitioning",
+     "partitioning experiment"
+    ],
+    [
+     "day 6",
+     "day six",
+     "sixth day"
+    ],
+    [
+     "two lessons",
+     "two live lessons",
+     "2 lessons",
+     "two classroom lessons",
+     "two telecast lessons",
+     "two televised lessons",
+     "two of her lessons"
+    ],
+    [
+     "48 hours",
+     "48 h",
+     "forty-eight hours"
+    ]
+   ]
+  },
+  {
+   "id": "H23",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Which members of the 51-L crew had flown on the Space Shuttle before, and on which missions? How many were they, and which of them had already flown aboard the Orbiter Challenger itself?",
+   "facts": [
+    [
+     "41-C",
+     "41 C",
+     "41C",
+     "41 -C"
+    ],
+    [
+     "51-C",
+     "51 C",
+     "51C",
+     "51 -C"
+    ],
+    [
+     "41-D",
+     "41 D",
+     "41D",
+     "41 -D"
+    ],
+    [
+     "41-B",
+     "41 B",
+     "41B",
+     "41 -B"
+    ],
+    [
+     "four of the seven",
+     "four had flown",
+     "four crew members",
+     "four of them"
+    ],
+    [
+     "the commander",
+     "commander and",
+     "commander,",
+     "commander (",
+     "commander"
+    ]
+   ]
+  },
+  {
+   "id": "H24",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "The Hughes payload specialist joined the 51-L crew late. On what date, from which flight was he moved, and whose late addition to that flight made the move necessary? What did 51-L lose in exchange? One of 51-L's primary payloads and a satellite slot removed from 51-L were part of a single reshuffle caused by one customer: from which flight did that payload come, which satellite slot was removed, what had the customer asked for, and how many flights did the reshuffle affect?",
+   "facts": [
+    [
+     "october 25",
+     "oct. 25",
+     "oct 25",
+     "25 october",
+     "october 25th",
+     "10/25/85",
+     "10/25/1985",
+     "25 oct",
+     "25th of october"
+    ],
+    [
+     "61-C",
+     "61 C",
+     "61C",
+     "61 -C"
+    ],
+    [
+     "representative",
+     "congressman",
+     "member of congress",
+     "florida"
+    ],
+    [
+     "two middeck",
+     "2 middeck",
+     "two mid-deck"
+    ],
+    [
+     "61-D",
+     "61 D",
+     "61D",
+     "61 -D"
+    ],
+    [
+     "hs-376",
+     "hs 376",
+     "hs376"
+    ],
+    [
+     "westar"
+    ],
+    [
+     "four flights",
+     "4 flights",
+     "four missions",
+     "4 missions"
+    ]
+   ]
+  },
+  {
+   "id": "H25",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "Several departures from maintenance requirements during Challenger's preparation for 51-L are documented in different parts of the report. How many required Orbiter structural inspections were waived and out of how many, how many of these were repeat waivers, and how many of the required inspections were not waived? How many parts were taken from other Orbiters for Challenger, out of roughly how many required? How many further requirements did the 51-L audit find unmet and not formally waived, how many 'designated verifiers' did the Shuttle Processing Contractor use, and which recommendation of the Commission (number and title) addresses both the waived inspections and the parts removal?",
+   "facts": [
+    [
+     "60 of 146",
+     "60 of the 146",
+     "60 out of 146",
+     "60 of its 146"
+    ],
+    [
+     "seven second",
+     "7 second",
+     "seven of these",
+     "seven of them",
+     "7 of them",
+     "seven were",
+     "seven had",
+     "seven repeat",
+     "7 repeat",
+     "7 were"
+    ],
+    [
+     "86 of",
+     "86 were",
+     "86 inspections",
+     "86 not",
+     "86 required",
+     "remaining 86",
+     "other 86",
+     "86 (146",
+     "= 86",
+     "=86"
+    ],
+    [
+     "forty-five",
+     "forty five",
+     "45 of",
+     "45 out of",
+     "45 parts",
+     "45 required",
+     "45 components"
+    ],
+    [
+     "approximately 300",
+     "about 300",
+     "roughly 300",
+     "some 300",
+     "~300",
+     "300 required",
+     "300 parts",
+     "out of 300",
+     "of 300"
+    ],
+    [
+     "six further",
+     "six missed",
+     "six areas",
+     "six requirements",
+     "six items",
+     "six additional",
+     "6 missed",
+     "6 areas",
+     "six such",
+     "six cases",
+     "six unwaived",
+     "six instances",
+     "six more",
+     "6 further",
+     "6 additional",
+     "6 requirements",
+     "6 items"
+    ],
+    [
+     "770"
+    ],
+    [
+     "recommendation ix",
+     "maintenance safeguards",
+     "recommendation 9",
+     "ix (maintenance",
+     "ix: maintenance",
+     "ix. maintenance"
+    ]
+   ]
+  },
+  {
+   "id": "H26",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "The report discusses NASA safety panels in Chapter VII and in its Recommendations. For the Aerospace Safety Advisory Panel: after which event (give its date) was it established, and how many members may it have, how many of them from NASA? For the Space Shuttle Crew Safety Panel: how many members did it have in total, how often did it meet, what happened to it when its original chairman retired, and when did it end (the report gives two different years)? And which new panel devoted to the operational safety of Shuttle flights does the Commission recommend, reporting to whom?",
+   "facts": [
+    [
+     "january 27, 1967",
+     "27 january 1967",
+     "jan. 27, 1967",
+     "january 27th, 1967"
+    ],
+    [
+     "nine members",
+     "9 members",
+     "no more than nine",
+     "up to nine"
+    ],
+    [
+     "four may come from nasa",
+     "four from nasa",
+     "4 from nasa",
+     "up to four"
+    ],
+    [
+     "14 members",
+     "fourteen members",
+     "14 representatives",
+     "total of 14"
+    ],
+    [
+     "24 times",
+     "24 meetings",
+     "twenty-four times",
+     "24 sessions"
+    ],
+    [
+     "merged",
+     "subpanel",
+     "sub-panel"
+    ],
+    [
+     "1980"
+    ],
+    [
+     "1981"
+    ],
+    [
+     "sts safety advisory panel",
+     "shuttle safety advisory panel",
+     "sts program manager",
+     "shuttle safety panel"
+    ]
+   ]
+  },
+  {
+   "id": "H27",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "On January 28, 1986, which sites did 51-L have for a transatlantic abort landing and for an abort once around? One transatlantic site was declared unavailable that morning: at what time and why, and why had the earlier afternoon launch window already ruled it out? Within what period after liftoff can a Shuttle that loses one main engine return to the launch site, what happens if two or three main engines fail early in ascent, and what concern had the Aerospace Safety Advisory Panel voiced about the primary transatlantic site?",
+   "facts": [
+    [
+     "dakar"
+    ],
+    [
+     "edwards"
+    ],
+    [
+     "07:30",
+     "7:30"
+    ],
+    [
+     "low ceiling",
+     "rain and low"
+    ],
+    [
+     "night landing",
+     "landing at night",
+     "land at night",
+     "night-time landing",
+     "nighttime landing"
+    ],
+    [
+     "four minutes",
+     "4 minutes",
+     "4 min"
+    ],
+    [
+     "five to six minutes",
+     "5 to 6 minutes",
+     "5-6 minutes",
+     "five or six minutes",
+     "5–6 minutes"
+    ],
+    [
+     "overrun"
+    ]
+   ]
+  },
+  {
+   "id": "H28",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "A Commission member who was an astronaut chaired the Rogers Commission's Accident Analysis Panel and had herself flown two Shuttle missions aboard Discovery. Which missions were they, which panel did she actually chair, and what were the Commission's other investigative panels?",
+   "facts": [
+    [
+     "major general",
+     "maj. gen",
+     "maj gen",
+     "air force general"
+    ],
+    [
+     "mission planning"
+    ],
+    [
+     "sts-7",
+     "sts 7",
+     "sts7"
+    ],
+    [
+     "41-G",
+     "41 G",
+     "41G",
+     "41 -G"
+    ],
+    [
+     "development and production"
+    ],
+    [
+     "pre-launch activities",
+     "prelaunch activities",
+     "pre-launch"
+    ],
+    [
+     "not discovery",
+     "not on discovery",
+     "not aboard discovery",
+     "not the discovery"
+    ]
+   ]
+  },
+  {
+   "id": "H29",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "The range safety officer who sent the destruct commands on January 28, 1986, had also supplied the historical estimate of solid-rocket reliability that Feynman cites in Appendix F. What did that estimate find, and what failure rates does Feynman consider reasonable or attainable for mature solid rockets, and what follows for the Shuttle's pair of boosters?",
+   "facts": [
+    [
+     "launch abort safety panel",
+     "lasp",
+     "different range safety officer",
+     "another range safety officer",
+     "not the same officer",
+     "different officer"
+    ],
+    [
+     "121 failed",
+     "121 of",
+     "121 out of",
+     "121 failures"
+    ],
+    [
+     "2,900",
+     "2900",
+     "2 900",
+     "2.900"
+    ],
+    [
+     "1 in 25",
+     "one in 25",
+     "one in twenty-five",
+     "1/25"
+    ],
+    [
+     "1 in 50",
+     "one in 50",
+     "one in fifty",
+     "1/50"
+    ],
+    [
+     "1 in 1,000",
+     "1 in 1000",
+     "one in 1,000",
+     "one in a thousand"
+    ],
+    [
+     "doubled",
+     "double the",
+     "be double"
+    ]
+   ]
+  },
+  {
+   "id": "F1",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "What was the age of the teacher on the Challenger crew on the day of the Challenger accident?",
+   "facts": []
+  },
+  {
+   "id": "F2",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "How many reporters and journalists were accredited at the Kennedy Space Center for the STS-51-L launch?",
+   "facts": []
+  },
+  {
+   "id": "F3",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "At what temperature does the Viton rubber used in the Shuttle's O-rings undergo its glass transition?",
+   "facts": []
+  },
+  {
+   "id": "F4",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "What was the name of the NASA flight surgeon assigned to the STS-51-L crew?",
+   "facts": []
+  },
+  {
+   "id": "F5",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Who was the NASA public affairs commentator who said 'obviously a major malfunction' after the explosion?",
+   "facts": []
+  },
+  {
+   "id": "F6",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "What was the relative humidity at the launch pad at the time of the STS-51-L liftoff?",
+   "facts": []
+  },
+  {
+   "id": "F7",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "How many square miles of ocean did the search for Challenger debris cover?",
+   "facts": []
+  },
+  {
+   "id": "F8",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Which professional award did a Thiokol engineer who objected to the launch receive for his testimony to the Commission?",
+   "facts": []
+  },
+  {
+   "id": "F9",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Who was the backup candidate for the Teacher in Space program who trained alongside the teacher on the crew?",
+   "facts": []
+  },
+  {
+   "id": "F10",
+   "sample": "challenger",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "How many pounds did the Challenger crew compartment weigh?",
+   "facts": []
+  },
+  {
+   "id": "N1",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "single",
+   "format": null,
+   "question": "Wie lange werden gelöschte Objekte in Microsoft 365 der Bundesverwaltung im benutzerseitigen und im Administrator-Papierkorb vorgehalten, und wo wird die Administrationskonsole der Backup-Lösung gehostet?",
+   "facts": [
+    [
+     "30 tage",
+     "30 days"
+    ],
+    [
+     "60 tage",
+     "60 days"
+    ],
+    [
+     "in den usa",
+     "in the usa",
+     "(usa)",
+     "usa gehostet",
+     "vereinigten staaten",
+     "united states",
+     ": usa",
+     "(usa",
+     "usa.",
+     "usa,"
+    ]
+   ]
+  },
+  {
+   "id": "N2",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "On what date and at about what time did the unintended locomotive movement at Sheffield Park on the Bluebell Railway occur, which two locomotives were involved, and how far did they move?",
+   "facts": [
+    [
+     "9 august 2025",
+     "august 9, 2025",
+     "august 9 2025",
+     "9th august 2025",
+     "2025-08-09",
+     "09/08/2025",
+     "9 aug 2025"
+    ],
+    [
+     "15:00",
+     "1500",
+     "3 pm",
+     "3pm",
+     "3:00 pm",
+     "3.00 pm"
+    ],
+    [
+     "fenchurch"
+    ],
+    [
+     "stepney"
+    ],
+    [
+     "3 metres",
+     "3 meters",
+     "10 feet",
+     "10 ft",
+     "three metres",
+     "ten feet",
+     "3 m (",
+     "3m"
+    ]
+   ]
+  },
+  {
+   "id": "N3",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "single",
+   "format": null,
+   "question": "Welche jährlichen Beiträge leistete der Bund der Wiener Zeitung GmbH laut WZEVI-Gesetz für ihre drei neuen gesetzlichen Aufgaben, und welche Summe ergab das?",
+   "facts": [
+    [
+     "3,00",
+     "3.00",
+     "3,0 mio",
+     "3.0 million",
+     "3 millionen"
+    ],
+    [
+     "7,50",
+     "7.50",
+     "7,5 mio",
+     "7.5 million",
+     "7,5 millionen"
+    ],
+    [
+     "6,00",
+     "6.00",
+     "6,0 mio",
+     "6.0 million",
+     "6 millionen"
+    ],
+    [
+     "16,50",
+     "16.50",
+     "16,5 mio",
+     "16.5 million",
+     "16,5 millionen"
+    ]
+   ]
+  },
+  {
+   "id": "N4",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "Under the InnovFin financial instruments of Horizon 2020, what share of final recipients were SMEs, what share of all InnovFin financing did they receive (also in absolute terms), and which design feature excluded many smaller firms?",
+   "facts": [
+    [
+     "47 %",
+     "47%",
+     "47 prozent",
+     "47 percent",
+     "47 per cent"
+    ],
+    [
+     "14 %",
+     "14%",
+     "14 prozent",
+     "14 percent",
+     "14 per cent"
+    ],
+    [
+     "1.42 billion",
+     "€1.42",
+     "1.42 bn",
+     "1,42 mrd",
+     "1.42bn"
+    ],
+    [
+     "10.5 billion",
+     "€10.5",
+     "10.5 bn",
+     "10,5 mrd",
+     "10.5bn"
+    ],
+    [
+     "minimum loan",
+     "loan threshold",
+     "minimum threshold",
+     "minimum ticket",
+     "minimum financing"
+    ]
+   ]
+  },
+  {
+   "id": "N5",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "single",
+   "format": null,
+   "question": "What propulsion and fuel arrangement did migrant boat 512 have: engine power, size of the connected fuel tank, fuel consumption, and spare fuel carried?",
+   "facts": [
+    [
+     "9.9",
+     "9,9"
+    ],
+    [
+     "12-litre",
+     "12 litre",
+     "12-liter",
+     "12 liter"
+    ],
+    [
+     "3.5 litres",
+     "3.5 liters",
+     "3.5 l",
+     "3,5 l"
+    ],
+    [
+     "10-litre",
+     "10 litre",
+     "10-liter",
+     "10 liter",
+     "2 x 10",
+     "2 × 10",
+     "20 litres",
+     "20 liters",
+     "10 l jerry",
+     "10l jerry"
+    ]
+   ]
+  },
+  {
+   "id": "N6",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "single",
+   "format": null,
+   "question": "Wie viele Lehrstellen schrieb das Verteidigungsministerium in den Jahren 2020 bis 2025 aus, wie viele davon wurden besetzt, und welche Übernahmequote nach Abschluss der Lehre erreichten die überprüften Instandsetzungseinrichtungen im Vergleich zum Ziel?",
+   "facts": [
+    [
+     "847"
+    ],
+    [
+     "570"
+    ],
+    [
+     "87 %",
+     "87%",
+     "87 prozent",
+     "87 percent",
+     "87 per cent"
+    ],
+    [
+     "74 %",
+     "74%",
+     "74 prozent",
+     "74 percent",
+     "74 per cent"
+    ]
+   ]
+  },
+  {
+   "id": "N7",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Vergleiche für die Influenza-Saisonen 2023/24 und 2024/25 die Zahl der im Öffentlichen Impfprogramm gekauften und der ausgelieferten Impfdosen. In welcher Saison wurden mehr Dosen ausgeliefert als gekauft und warum, und worauf ging die Differenz in der anderen Saison zurück?",
+   "facts": [
+    [
+     "1.019.785",
+     "1,019,785",
+     "1019785",
+     "1 019 785"
+    ],
+    [
+     "1.015.053",
+     "1,015,053",
+     "1015053",
+     "1 015 053"
+    ],
+    [
+     "1.244.681",
+     "1,244,681",
+     "1244681",
+     "1 244 681"
+    ],
+    [
+     "1.244.703",
+     "1,244,703",
+     "1244703",
+     "1 244 703"
+    ],
+    [
+     "packungsgröße",
+     "packungsgrösse",
+     "packungsgroesse",
+     "package size",
+     "pack size",
+     "größere packung",
+     "größeren packung"
+    ],
+    [
+     "knapp 5.000",
+     "knapp 5000",
+     "fast 5.000",
+     "rund 5.000",
+     "rd. 5.000",
+     "4.732",
+     "4732",
+     "4,732",
+     "4 732",
+     "nearly 5,000",
+     "almost 5,000"
+    ]
+   ]
+  },
+  {
+   "id": "N8",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Wie hoch war die Überkompensation der beiden DAWI-Betrauungen der Wiener Zeitung GmbH (Medium und Media Hub) in den Jahren 2023 und 2024? Nenne für beide die Jahreswerte, die kumulierten Beträge mit ihrem Anteil an der Ausgleichsleistung und die Summe beider DAWI.",
+   "facts": [
+    [
+     "2.060.744",
+     "2,060,744",
+     "2060744",
+     "2 060 744"
+    ],
+    [
+     "514.678",
+     "514,678",
+     "514678",
+     "514 678"
+    ],
+    [
+     "622.827",
+     "622,827",
+     "622827",
+     "622 827"
+    ],
+    [
+     "957.760",
+     "957,760",
+     "957760",
+     "957 760"
+    ],
+    [
+     "17,2 %",
+     "17,2%",
+     "17,2 prozent",
+     "17,2 percent",
+     "17,2 per cent",
+     "17.2 %",
+     "17.2%",
+     "17.2 prozent",
+     "17.2 percent",
+     "17.2 per cent"
+    ],
+    [
+     "13,2 %",
+     "13,2%",
+     "13,2 prozent",
+     "13,2 percent",
+     "13,2 per cent",
+     "13.2 %",
+     "13.2%",
+     "13.2 prozent",
+     "13.2 percent",
+     "13.2 per cent"
+    ],
+    [
+     "4,16",
+     "4.16",
+     "4.156.009",
+     "4156009",
+     "4,156,009",
+     "mehr als 4 mio",
+     "über 4 mio",
+     "more than 4 million",
+     "more than €4 million"
+    ]
+   ]
+  },
+  {
+   "id": "N9",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Wie entwickelten sich die geplanten Investitionskosten des Aufbauplans 2032+ über die drei Kalkulationsstände, für welchen Zeitraum galt der jüngste Stand, und um wie viel Prozent stiegen sie laut RH? Wie viel des ersten Werts war als Reserve vorgesehen, und welche Summe ergeben die drei Kernbereiche dieses ersten Werts ohne Reserve?",
+   "facts": [
+    [
+     "16,582",
+     "16.582"
+    ],
+    [
+     "20,966",
+     "20.966"
+    ],
+    [
+     "49,210",
+     "49.210"
+    ],
+    [
+     "2025 bis 2036",
+     "2025–2036",
+     "2025-2036",
+     "2025 – 2036",
+     "2025 to 2036"
+    ],
+    [
+     "197 %",
+     "197%",
+     "197 prozent",
+     "197 percent",
+     "197 per cent"
+    ],
+    [
+     "247 mio",
+     "247 millionen",
+     "247 million",
+     "0,247",
+     "0.247"
+    ],
+    [
+     "16,335",
+     "16.335"
+    ]
+   ]
+  },
+  {
+   "id": "N10",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "In welchen Jahren seit 2019 wies der Ausgleichstaxfonds laut Tabelle 6 einen negativen Saldo aus, in welcher Höhe jeweils? Auf welchen Wert würde sein Vermögen Ende 2025 sinken, und wie viel an Sonderdotierungen des Bundes plante das Sozialministerium für 2026 bis 2029 insgesamt?",
+   "facts": [
+    [
+     "16,20",
+     "16.20",
+     "16,2 mio",
+     "16.2 million"
+    ],
+    [
+     "16,14",
+     "16.14",
+     "16,1 mio",
+     "16.1 million"
+    ],
+    [
+     "100,03",
+     "100.03"
+    ],
+    [
+     "37,88",
+     "37.88"
+    ],
+    [
+     "150 mio",
+     "150 millionen",
+     "150 million",
+     "150,00"
+    ]
+   ]
+  },
+  {
+   "id": "N11",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "In welchem Jahr war der Abstand zwischen der Beschäftigungsquote der begünstigten Behinderten und der Vergleichsgruppe am größten, und wie groß war er? In welchen Jahren lag die Arbeitslosenquote der begünstigten Behinderten unter jener der Vergleichsgruppe? Und wie viele arbeitslose begünstigte Behinderte zählten Statistik Austria und Arbeitsmarktservice im Jahr 2022? Um wie viel Prozent höher gibt der Bericht die eine Zahl an, und um wie viel Prozent liegt sie nach deiner eigenen Rechnung aus den beiden Zahlen darüber?",
+   "facts": [
+    [
+     "17,8",
+     "17.8"
+    ],
+    [
+     "2020, 2021 und 2024",
+     "2020, 2021 and 2024",
+     "2020, 2021, 2024",
+     "2020 und 2021 sowie 2024",
+     "2020, 2021 sowie 2024",
+     "2020 bis 2021 und 2024",
+     "2020/2021 und 2024"
+    ],
+    [
+     "7.354",
+     "7,354",
+     "7354",
+     "7 354"
+    ],
+    [
+     "4.331",
+     "4,331",
+     "4331",
+     "4 331"
+    ],
+    [
+     "70 %",
+     "70%",
+     "70 prozent",
+     "70 percent",
+     "70 per cent",
+     "rund 70",
+     "rd. 70",
+     "etwa 70",
+     "knapp 70",
+     "69,8",
+     "69.8",
+     "1,70",
+     "1.70"
+    ],
+    [
+     "60 %",
+     "60%",
+     "60 prozent",
+     "60 percent",
+     "60 per cent"
+    ]
+   ]
+  },
+  {
+   "id": "N12",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "multi",
+   "format": null,
+   "question": "Wie viele Gebarungsfälle mit welchem Volumen überprüfte der RH in seiner risikoorientierten Auswahl, wie viele davon waren ausreichend dokumentiert, und wie teilen sich die übrigen mangelhaften Fälle auf (im Bericht detailliert dargestellt bzw. nur zusammengefasst, mit Volumen)?",
+   "facts": [
+    [
+     "43 gebarungsfälle",
+     "43 fälle",
+     "43 geprüfte",
+     "43 überprüfte",
+     "43 cases"
+    ],
+    [
+     "2,68",
+     "2.68"
+    ],
+    [
+     "elf gebarungsfälle",
+     "11 gebarungsfälle",
+     "elf fälle",
+     "11 fälle",
+     "lediglich elf",
+     "nur elf",
+     "elf der 43",
+     "11 der 43",
+     "elf von 43",
+     "11 von 43",
+     "elf waren",
+     "11 waren"
+    ],
+    [
+     "32 mangelhaft",
+     "32 gebarungsfälle",
+     "32 fälle",
+     "32 der 43",
+     "32 von 43",
+     "übrigen 32",
+     "restlichen 32",
+     "32 waren",
+     "weiteren 32"
+    ],
+    [
+     "15 der 32",
+     "15 davon",
+     "15 fälle",
+     "15 gebarungsfälle",
+     "15 mangelhafte",
+     "15 von 32",
+     "15 detailliert"
+    ],
+    [
+     "17 der 32",
+     "17 fälle",
+     "17 gebarungsfälle",
+     "17 weitere",
+     "17 übrige",
+     "übrigen 17",
+     "17 mangelhafte",
+     "17 von 32",
+     "restlichen 17"
+    ],
+    [
+     "730.000",
+     "730,000",
+     "730000",
+     "730 000",
+     "0,73 mio",
+     "0.73 million"
+    ]
+   ]
+  },
+  {
+   "id": "N13",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "multi",
+   "format": null,
+   "question": "Ein ehemaliger Vorsitzender einer politischen Partei erbrachte Beratungsleistungen für Bundesministerien. Wie viel erhielt er insgesamt, auf welchen Betrag (inkl. USt) stiegen die Aufwendungen des Bildungsministeriums, welchen Tagsatz verrechnete er gegenüber dem Satz, den das Bildungsministerium selbst als üblich nannte, und was hatte eine parlamentarische Anfragebeantwortung zu Zahl und Volumen der Aufträge angegeben?",
+   "facts": [
+    [
+     "211.607",
+     "211,607",
+     "211607",
+     "211 607"
+    ],
+    [
+     "164.862",
+     "164,862",
+     "164862",
+     "164 862"
+    ],
+    [
+     "5.280",
+     "5,280",
+     "5280",
+     "5 280"
+    ],
+    [
+     "1.840",
+     "1,840",
+     "1840",
+     "1 840"
+    ],
+    [
+     "120.000",
+     "120,000",
+     "120000",
+     "120 000"
+    ],
+    [
+     "zwei aufträge",
+     "2 aufträge",
+     "zwei aufträgen",
+     "2 aufträgen",
+     "two contracts",
+     "two orders"
+    ]
+   ]
+  },
+  {
+   "id": "N14",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Wie hoch war der Verpflichtungskredit für das Programm Erneuerung ZEMIS, wie viel betrug die zweite Tranche und – rechnerisch – die erste? Um wie viel kürzte der Bundesrat die Mittel im Entwicklungsrahmen 2027–2028 und an welchem Tag? Wie hoch sind die Reserven in der Kostenplanung von 2024, und welcher Mehrbedarf eines einzelnen Projekts stand ihnen zum Prüfungszeitpunkt gegenüber?",
+   "facts": [
+    [
+     "50,66",
+     "50.66"
+    ],
+    [
+     "28,66",
+     "28.66"
+    ],
+    [
+     "22,00",
+     "22.00",
+     "22,0 mio",
+     "22.0 million",
+     "22 mio",
+     "22 millionen",
+     "22 million"
+    ],
+    [
+     "17,9",
+     "17.9"
+    ],
+    [
+     "28. januar 2026",
+     "28. jänner 2026",
+     "28 january 2026",
+     "january 28, 2026",
+     "28.01.2026",
+     "28.1.2026",
+     "28. januar"
+    ],
+    [
+     "15,5",
+     "15.5"
+    ],
+    [
+     "digital@aig"
+    ],
+    [
+     "6,2",
+     "6.2"
+    ]
+   ]
+  },
+  {
+   "id": "N15",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "multi",
+   "format": null,
+   "question": "Vergleiche die beiden EFK-Prüfungen zu Microsoft 365 und zur Erneuerung ZEMIS: In welchem Zeitraum fand jeweils die Prüfung statt, wann die Schlussbesprechung, und wie viele neue Empfehlungen mit welcher Priorität sprach die EFK jeweils aus?",
+   "facts": [
+    [
+     "23. februar bis 3. april",
+     "23. februar 2026 bis 3. april",
+     "23 february to 3 april",
+     "23.02. bis 03.04.",
+     "23.02.2026 bis 03.04.2026",
+     "23. feb",
+     "23. februar",
+     "23.2.",
+     "23.02."
+    ],
+    [
+     "16. juli 2026",
+     "16 july 2026",
+     "16.07.2026",
+     "16.7.2026",
+     "16. juli"
+    ],
+    [
+     "3. märz bis 9. april",
+     "3. märz 2026 bis 9. april",
+     "3 march to 9 april",
+     "03.03. bis 09.04.",
+     "03.03.2026 bis 09.04.2026",
+     "9. april",
+     "3.3.–9.4.",
+     "3.3.-9.4.",
+     "9.4.2026",
+     "09.04.2026"
+    ],
+    [
+     "10. juni 2026",
+     "10 june 2026",
+     "10.06.2026",
+     "10.6.2026",
+     "10. juni"
+    ],
+    [
+     "fünf empfehlungen",
+     "5 empfehlungen",
+     "fünf neue",
+     "5 neue",
+     "fünf eigene",
+     "five recommendations",
+     "empfehlungen 1–5",
+     "empfehlungen 1-5",
+     "empfehlungen 1 bis 5"
+    ],
+    [
+     "vier mit priorität 1",
+     "4 mit priorität 1",
+     "vier davon mit priorität 1",
+     "empfehlungen 1–4",
+     "empfehlungen 1-4",
+     "empfehlungen 1 bis 4",
+     "eine mit priorität 2",
+     "1 mit priorität 2",
+     "nur empfehlung 5",
+     "empfehlung 5 mit priorität 2",
+     "empfehlung 5 (priorität 2"
+    ],
+    [
+     "zwei neue",
+     "2 neue",
+     "zwei empfehlungen",
+     "beide mit priorität 1",
+     "beide priorität 1",
+     "two new"
+    ]
+   ]
+  },
+  {
+   "id": "N16",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Wie viele Schlussempfehlungen enthält jeder der fünf Berichte des Rechnungshofs Österreich im Bestand? Welcher Bericht enthält die meisten, welcher die wenigsten, und wie viele sind es zusammen?",
+   "facts": [
+    [
+     "45 schlussempfehlungen",
+     "45 empfehlungen",
+     "45 recommendations",
+     "45)",
+     "45:",
+     ": 45"
+    ],
+    [
+     "10 schlussempfehlungen",
+     "zehn schlussempfehlungen",
+     "10 empfehlungen",
+     "zehn empfehlungen",
+     "10 recommendations",
+     ": 10",
+     "10)"
+    ],
+    [
+     "41 schlussempfehlungen",
+     "41 empfehlungen",
+     "41 recommendations",
+     ": 41",
+     "41)"
+    ],
+    [
+     "34 schlussempfehlungen",
+     "34 empfehlungen",
+     "34 recommendations",
+     ": 34",
+     "34)"
+    ],
+    [
+     "28 schlussempfehlungen",
+     "28 empfehlungen",
+     "28 recommendations",
+     ": 28",
+     "28)"
+    ],
+    [
+     "158"
+    ]
+   ]
+  },
+  {
+   "id": "N17",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "For the three ECA special reports in the collection (24/2026 on innovation and competitiveness, 25/2026 on marine protected areas, 29/2026 on RRF support for public administration): on what date was each adopted, which chamber (give its number) adopted each, which two were adopted by the same chamber, and how many numbered recommendations do the three reports contain in total?",
+   "facts": [
+    [
+     "16 september 2026",
+     "september 16, 2026",
+     "16th september 2026",
+     "16/09/2026",
+     "16.09.2026",
+     "16. september 2026",
+     "16 sep",
+     "sep 16",
+     "september 16"
+    ],
+    [
+     "22 september 2026",
+     "september 22, 2026",
+     "22nd september 2026",
+     "22/09/2026",
+     "22.09.2026",
+     "22. september 2026",
+     "22 sep",
+     "sep 22",
+     "september 22"
+    ],
+    [
+     "30 september 2026",
+     "september 30, 2026",
+     "30th september 2026",
+     "30/09/2026",
+     "30.09.2026",
+     "30. september 2026",
+     "30 sep",
+     "sep 30",
+     "september 30"
+    ],
+    [
+     "chamber iv",
+     "chamber 4"
+    ],
+    [
+     "chamber i,",
+     "chamber i.",
+     "chamber i)",
+     "chamber i;",
+     "chamber i and",
+     "chamber i (",
+     "chamber i:",
+     "chamber 1",
+     "chamber one"
+    ],
+    [
+     "13 recommendations",
+     "thirteen recommendations",
+     "13 in total",
+     "total of 13",
+     "13 numbered",
+     "= 13",
+     "13 overall",
+     "13 recommendation"
+    ]
+   ]
+  },
+  {
+   "id": "N18",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "How many marine special areas of conservation (Habitats Directive) and special protection areas (Birds Directive) are there, with their areas, and by how many sites and how many km² does their simple sum exceed the number and area of the marine Natura 2000 network?",
+   "facts": [
+    [
+     "2 875",
+     "2,875",
+     "2875",
+     "2.875"
+    ],
+    [
+     "415 932",
+     "415,932",
+     "415932",
+     "415.932"
+    ],
+    [
+     "1 203",
+     "1,203",
+     "1203",
+     "1.203"
+    ],
+    [
+     "325 261",
+     "325,261",
+     "325261",
+     "325.261"
+    ],
+    [
+     "430 sites",
+     "430 more",
+     "by 430",
+     "430 site",
+     "430 areas",
+     "430 of",
+     "430 (",
+     "430,",
+     "430 marine",
+     "of 430",
+     "difference of 430"
+    ],
+    [
+     "215 340",
+     "215,340",
+     "215340",
+     "215.340"
+    ]
+   ]
+  },
+  {
+   "id": "N19",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "Which four EU funding sources does the ECA identify as earmarked for marine biodiversity in the 2021-2027 period, with what amounts, and what is their exact sum (the report rounds it)? Within the EMFAF allocation for specific objective 1.6, how much goes to type 6 and type 1 interventions, and how much more has been allocated to type 6 under other objectives?",
+   "facts": [
+    [
+     "€150 million",
+     "150 million",
+     "150 m",
+     "€150m",
+     "150m"
+    ],
+    [
+     "62.4"
+    ],
+    [
+     "€377",
+     "377 million",
+     "377 m"
+    ],
+    [
+     "18.2"
+    ],
+    [
+     "607.6",
+     "607,6"
+    ],
+    [
+     "€108",
+     "108 million",
+     "108 m"
+    ],
+    [
+     "€255",
+     "255 million",
+     "255 m"
+    ],
+    [
+     "€10 million",
+     "10 million",
+     "€10m"
+    ]
+   ]
+  },
+  {
+   "id": "N20",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "How many of the 2019-2020 public administration sub-CSRs did the Commission consider addressed by RRF measures, and how did the ECA's own assessment differ: how many sub-CSRs did the ECA assess and why not all, how many did it find addressed and to what degree, and for which member state did it conclude, at member-state level, that the sub-CSRs were not addressed at all?",
+   "facts": [
+    [
+     "36 of the 38",
+     "36 of 38",
+     "36 out of 38",
+     "36 out of the 38",
+     "36/38"
+    ],
+    [
+     "31 of the 38",
+     "31 of 38",
+     "31 out of 38",
+     "only 31",
+     "31 of these",
+     "assessed 31",
+     "considered 31",
+     "assessed only 31",
+     "analysed 31",
+     "analyzed 31",
+     "examined 31",
+     "evaluated 31"
+    ],
+    [
+     "sectoral"
+    ],
+    [
+     "29 of these 31",
+     "29 of 31",
+     "29 of the 31",
+     "29 out of 31",
+     "29 out of the 31",
+     "29/31"
+    ],
+    [
+     "18 of 31",
+     "18 of the 31",
+     "18 out of 31",
+     "18 out of the 31",
+     "18/31",
+     "18 (58",
+     "18 sub-csrs"
+    ],
+    [
+     "11 out of 31",
+     "11 of 31",
+     "11 of the 31",
+     "11 out of the 31",
+     "11/31",
+     "11 (35",
+     "11 sub-csrs"
+    ],
+    [
+     "none of the sub-csrs are fully",
+     "none are fully",
+     "none is fully",
+     "none was fully",
+     "none were fully",
+     "none fully",
+     "not a single",
+     "no sub-csr is fully",
+     "no sub-csr was fully",
+     "none of them is fully",
+     "none of them are fully",
+     "none of them were fully",
+     "none of them was fully",
+     "none was considered fully",
+     "none were considered fully",
+     "none is considered fully",
+     "none are considered fully",
+     "no sub-csrs are fully",
+     "no sub-csrs were fully",
+     "zero fully",
+     "0 fully"
+    ],
+    [
+     "belgium"
+    ]
+   ]
+  },
+  {
+   "id": "N21",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "In the NTSB report on the collision on Lake Erie, at what time did the collision occur, when did the USV pilot first learn of it and how many minutes later was that, when was sunset that day, and what were the damage estimates for each vessel and in total?",
+   "facts": [
+    [
+     "1912",
+     "19:12",
+     "7:12 p"
+    ],
+    [
+     "1946",
+     "19:46",
+     "7:46 p"
+    ],
+    [
+     "34 min",
+     "34-min",
+     "thirty-four min"
+    ],
+    [
+     "2039",
+     "20:39",
+     "8:39 p"
+    ],
+    [
+     "186,000",
+     "186.000",
+     "186000",
+     "186 000",
+     "186k"
+    ],
+    [
+     "100,000",
+     "100.000",
+     "100000",
+     "100 000",
+     "100k"
+    ],
+    [
+     "286,000",
+     "286.000",
+     "286000",
+     "286 000",
+     "286k"
+    ]
+   ]
+  },
+  {
+   "id": "N22",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "On Arvia during the night of 25 to 26 October 2025: when was the second permit to work for troubleshooting lift PL14 authorised, when did the transport team start work, and how long was the gap? At what time did the lift begin to move with the electro-technician in the shaft, when was he pronounced deceased and how many minutes later was that? What change was made to ship's time that night, and at what time?",
+   "facts": [
+    [
+     "1855",
+     "18:55"
+    ],
+    [
+     "2220",
+     "22:20"
+    ],
+    [
+     "3 hours 25",
+     "3 hours and 25",
+     "3 h 25",
+     "3h 25",
+     "3h25",
+     "three hours and 25",
+     "three hours 25",
+     "205 min",
+     "3:25",
+     "3 hours, 25"
+    ],
+    [
+     "0552",
+     "05:52",
+     "5:52"
+    ],
+    [
+     "0607",
+     "06:07",
+     "6:07"
+    ],
+    [
+     "15 min",
+     "fifteen min",
+     "15-min"
+    ],
+    [
+     "retarded",
+     "set back",
+     "put back",
+     "turned back",
+     "moved back",
+     "back one hour",
+     "back by one hour",
+     "back by an hour",
+     "back an hour",
+     "clocks went back",
+     "back 1 hour",
+     "one hour back",
+     "from utc+1 to utc",
+     "bst to utc",
+     "summer time to utc"
+    ],
+    [
+     "0200",
+     "02:00",
+     "2:00 a",
+     "2 am"
+    ]
+   ]
+  },
+  {
+   "id": "N23",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Give the timeline of the recovery of the casualty from migrant boat 512: when the first line was passed to the boat, when the casualty was spotted face down in the boat, when the rescue helicopter and the inshore lifeboat arrived on scene, how long she had been submerged at each of those two arrivals, how long after submersion CPR began, and when life extinct was recognised.",
+   "facts": [
+    [
+     "1108",
+     "11:08"
+    ],
+    [
+     "1119",
+     "11:19"
+    ],
+    [
+     "1137",
+     "11:37"
+    ],
+    [
+     "1145",
+     "11:45"
+    ],
+    [
+     "26 min",
+     "26-min",
+     "twenty-six min"
+    ],
+    [
+     "35 min",
+     "35-min",
+     "thirty-five min",
+     "34 min",
+     "34-min",
+     "thirty-four min"
+    ],
+    [
+     "39 min",
+     "39-min",
+     "thirty-nine min"
+    ],
+    [
+     "1253",
+     "12:53"
+    ]
+   ]
+  },
+  {
+   "id": "N24",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Across the four accident investigation reports in the collection (the NTSB report on Lake Erie, the two MAIB reports and the RAIB report), how many new safety recommendations are made in total, and to which organisations are they addressed, with how many each?",
+   "facts": [
+    [
+     "10 recommendations",
+     "ten recommendations",
+     "10 safety",
+     "ten safety",
+     "10 new",
+     "ten new",
+     "total of 10",
+     "total of ten",
+     "10 in total",
+     "ten in total",
+     "= 10",
+     "10 overall",
+     "ten overall"
+    ],
+    [
+     "coast guard"
+    ],
+    [
+     "noaa",
+     "national oceanic"
+    ],
+    [
+     "seatrac"
+    ],
+    [
+     "carnival uk"
+    ],
+    [
+     "border security command"
+    ]
+   ]
+  },
+  {
+   "id": "N25",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "trap",
+   "format": null,
+   "question": "Warum ordnete der Chef des Generalstabs den Aufbauplan 2032+ bereits im August 2021 an?",
+   "facts": [
+    [
+     "jänner 2023",
+     "januar 2023",
+     "january 2023",
+     "01/2023",
+     "1/2023",
+     "anfang 2023",
+     "jan. 2023",
+     "jan 2023"
+    ],
+    [
+     "unser heer"
+    ]
+   ]
+  },
+  {
+   "id": "N26",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "trap",
+   "format": null,
+   "question": "Das Landwirtschaftsministerium ließ das Magazin „Landreport“ wie im Werkvertrag vorgesehen in acht Ausgaben mit je 20.000 Stück Auflage herstellen. Wie viel zahlte es dafür insgesamt?",
+   "facts": [
+    [
+     "neun ausgaben",
+     "9 ausgaben",
+     "neun statt acht",
+     "9 statt 8",
+     "neun hefte",
+     "nine issues",
+     "neunte ausgabe"
+    ],
+    [
+     "1.000 stück",
+     "1000 stück",
+     "1.000 exemplar",
+     "1000 exemplar",
+     "je 1.000",
+     "jeweils 1.000",
+     "1.000 statt",
+     "1,000 copies",
+     "nur 1.000",
+     "auflage von 1.000",
+     "auflage von jeweils 1.000",
+     "auflage von nur 1.000",
+     "1.000 stk"
+    ],
+    [
+     "599.360",
+     "599,360",
+     "599360",
+     "599 360"
+    ]
+   ]
+  },
+  {
+   "id": "N27",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Why did the third electro-technical officer hold the lift doors open on deck 11 while the electro-technician entered the lift shaft from deck 13?",
+   "facts": [
+    [
+     "seto",
+     "staff electro-technical officer",
+     "staff electro technical officer",
+     "staff eto"
+    ],
+    [
+     "no deck 13",
+     "not a deck 13",
+     "no 13th deck",
+     "deck 13 did not exist",
+     "deck 13 does not exist",
+     "there is no deck 13",
+     "there was no deck 13",
+     "had no deck 13",
+     "has no deck 13",
+     "deck 13 doesn't exist",
+     "deck 13 didn't exist",
+     "without a deck 13"
+    ],
+    [
+     "deck 14"
+    ]
+   ]
+  },
+  {
+   "id": "N28",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Of the four member states the ECA visited on the spot for its special report on RRF support in public administration – Czechia, Germany, Greece and Italy – which achieved significant results for the largest share of its audited measures, and how many?",
+   "facts": [
+    [
+     "not italy",
+     "instead of italy",
+     "rather than italy",
+     "italy was not",
+     "italy is not",
+     "italy wasn't",
+     "italy isn't",
+     "did not visit italy",
+     "didn't visit italy",
+     "not visit italy",
+     "spain instead"
+    ],
+    [
+     "3 of 4",
+     "3 of the 4",
+     "three of four",
+     "three of the four",
+     "3 out of 4",
+     "three out of four",
+     "75 %",
+     "75%",
+     "3 of its 4",
+     "three of its four"
+    ],
+    [
+     "5 of the 14",
+     "five of the 14",
+     "5 of 14",
+     "five of 14",
+     "five out of 14",
+     "5 out of 14",
+     "36 %",
+     "36%"
+    ]
+   ]
+  },
+  {
+   "id": "N29",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "trap",
+   "format": null,
+   "question": "Warum waren die Kontingente des Impfstoffs gegen Pneumokokken im Gratis-Impfprogramm bis Ende März 2026 jeweils innerhalb von ein bis elf Tagen ausgeschöpft?",
+   "facts": [
+    [
+     "gürtelrose",
+     "guertelrose",
+     "herpes zoster",
+     "shingles"
+    ],
+    [
+     "durchgehend",
+     "durchgängig",
+     "laufend bestellbar",
+     "ständig bestellbar",
+     "continuously"
+    ],
+    [
+     "mitte dezember",
+     "ab dezember 2025",
+     "seit dezember 2025",
+     "ab 12. dezember",
+     "seit 12. dezember",
+     "ab dem 12. dezember",
+     "seit dem 12. dezember",
+     "mid-december",
+     "since december 2025",
+     "from 12 december",
+     "since 12 december"
+    ]
+   ]
+  },
+  {
+   "id": "N30",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "multi",
+   "format": null,
+   "question": "Die EFK hat in ihrer Prüfung zur Erneuerung ZEMIS auch frühere Empfehlungen nachgeprüft. Wie viele waren es, wie viele davon beurteilte sie als umgesetzt (mit Nummer) und wie viele als noch nicht umgesetzt? Welches ist die späteste Frist oder Nachfrist unter den nachgeprüften Empfehlungen? In welcher früheren Empfehlung will das SEM laut seiner Stellungnahme die neue Empfehlung 2 bearbeiten, welche Nachfrist galt für diese, und wie beurteilte die EFK ihren Stand?",
+   "facts": [
+    [
+     "10 nachgeprüft",
+     "zehn nachgeprüft",
+     "10 frühere",
+     "zehn frühere",
+     "10 empfehlungen",
+     "zehn empfehlungen",
+     "10 offene",
+     "zehn offene",
+     "10 ältere",
+     "zehn ältere",
+     "10 empfehlungen nachgeprüft",
+     "insgesamt 10",
+     "insgesamt zehn",
+     "10 recommendations",
+     "ten recommendations"
+    ],
+    [
+     "drei umgesetzt",
+     "3 umgesetzt",
+     "drei als umgesetzt",
+     "3 als umgesetzt",
+     "drei sind umgesetzt",
+     "3 sind umgesetzt",
+     "drei davon umgesetzt",
+     "davon drei",
+     "davon 3",
+     "umgesetzt: 3",
+     "umgesetzt: drei",
+     "umgesetzt (3)",
+     "umgesetzt (drei",
+     "drei empfehlungen umgesetzt",
+     "drei wurden",
+     "3 wurden umgesetzt",
+     "three implemented",
+     "3 wurden als umgesetzt",
+     "drei von zehn",
+     "3 von 10",
+     "drei der zehn",
+     "3 der 10"
+    ],
+    [
+     "22207.008"
+    ],
+    [
+     "22207.010"
+    ],
+    [
+     "24253.001"
+    ],
+    [
+     "sieben noch nicht",
+     "sieben nicht",
+     "nicht umgesetzt: 7",
+     "nicht umgesetzt: sieben",
+     "sieben als noch",
+     "übrigen sieben",
+     "übrigen 7",
+     "restlichen sieben",
+     "restlichen 7",
+     "sieben sind noch",
+     "sieben offen",
+     "seven not",
+     "7 empfehlungen sind noch",
+     "7 empfehlungen noch",
+     "sieben empfehlungen",
+     "sieben von zehn",
+     "7 von 10",
+     "sieben der zehn",
+     "7 der 10",
+     "nicht umgesetzt (7)",
+     "nicht umgesetzt (sieben",
+     "weitere sieben",
+     "7 weitere"
+    ],
+    [
+     "31.12.2027",
+     "31. dezember 2027",
+     "31.12.27",
+     "ende 2027",
+     "31 december 2027"
+    ],
+    [
+     "22207.001"
+    ],
+    [
+     "30.06.2026",
+     "30. juni 2026",
+     "30.6.2026",
+     "30 june 2026"
+    ]
+   ]
+  },
+  {
+   "id": "N31",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "For the three ECA special reports in the collection (24/2026, 25/2026 and 29/2026), what target implementation date did the ECA set for each recommendation? How many recommendations have their whole target date in 2027 (not counting split dates), which recommendation has a split target date and what are its parts, which date is the only one given to the quarter, and which recommendation has the latest target date and what does it ask the Commission to do?",
+   "facts": [
+    [
+     "four recommendations have a target date in 2027",
+     "four have a target date in 2027",
+     "four recommendations have a 2027",
+     "four have a 2027",
+     "4 have a 2027",
+     "four due in 2027",
+     "4 due in 2027",
+     "four in 2027",
+     "4 in 2027",
+     "2027: four",
+     "2027: 4",
+     "four of the 13",
+     "4 of the 13",
+     "four of 13",
+     "4 of 13",
+     "four are due in 2027",
+     "four are due by the end of 2027",
+     "four recommendations are due in 2027",
+     "four recommendations due in 2027",
+     "four recommendations in 2027",
+     "4 recommendations in 2027"
+    ],
+    [
+     "end of 2029",
+     "end-2029",
+     "by 2029",
+     "end 2029"
+    ],
+    [
+     "2031"
+    ],
+    [
+     "evaluate the impacts",
+     "evaluate the impact",
+     "evaluating the impact",
+     "methods to assess the impact",
+     "impact assessment method",
+     "develop its methods"
+    ],
+    [
+     "(c) by the end of 2027",
+     "(c) by end of 2027",
+     "(c) in 2027",
+     "(c) end of 2027",
+     "(c): by the end of 2027",
+     "(c) by end-2027",
+     "part (c)",
+     "point (c)",
+     "(c) 2027",
+     "(c): 2027",
+     "(c): end of 2027"
+    ],
+    [
+     "q1 2028",
+     "first quarter of 2028",
+     "1st quarter of 2028",
+     "q1/2028"
+    ]
+   ]
+  },
+  {
+   "id": "N32",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Der RH gibt in jedem seiner fünf Berichte im Bestand an, von wann bis wann er die Gebarungsüberprüfung durchführte (gemeint ist nicht der überprüfte Zeitraum). Nenne diesen Zeitraum für jeden der fünf Berichte. Wie viele Monate dauerte die längste dieser Überprüfungen, und wie viele Monate ergeben alle fünf zusammen, wenn Anfangs- und Endmonat jeweils mitgezählt werden? Welche der Berichte nennen ausdrücklich ein Nachhaltigkeitsziel der Vereinten Nationen, und welches?",
+   "facts": [
+    [
+     "juni 2024 bis juli 2025",
+     "juni 2024 – juli 2025",
+     "juni 2024–juli 2025",
+     "juni 2024 - juli 2025",
+     "juni 2024-juli 2025"
+    ],
+    [
+     "april bis oktober 2025",
+     "april – oktober 2025",
+     "april–oktober 2025",
+     "april - oktober 2025",
+     "april-oktober 2025",
+     "april 2025 bis oktober 2025",
+     "april 2025 – oktober 2025",
+     "april 2025–oktober 2025",
+     "april 2025 - oktober 2025",
+     "april 2025-oktober 2025"
+    ],
+    [
+     "märz bis juni 2026",
+     "märz – juni 2026",
+     "märz–juni 2026",
+     "märz - juni 2026",
+     "märz-juni 2026",
+     "maerz bis juni 2026",
+     "maerz – juni 2026",
+     "maerz–juni 2026",
+     "maerz - juni 2026",
+     "maerz-juni 2026",
+     "märz 2026 bis juni 2026",
+     "märz 2026 – juni 2026",
+     "märz 2026–juni 2026",
+     "märz 2026 - juni 2026",
+     "märz 2026-juni 2026"
+    ],
+    [
+     "april 2025 bis september 2025",
+     "april 2025 – september 2025",
+     "april 2025–september 2025",
+     "april 2025 - september 2025",
+     "april 2025-september 2025",
+     "april bis september 2025",
+     "april – september 2025",
+     "april–september 2025",
+     "april - september 2025",
+     "april-september 2025"
+    ],
+    [
+     "mai 2025 bis jänner 2026",
+     "mai 2025 – jänner 2026",
+     "mai 2025–jänner 2026",
+     "mai 2025 - jänner 2026",
+     "mai 2025-jänner 2026",
+     "mai 2025 bis januar 2026",
+     "mai 2025 – januar 2026",
+     "mai 2025–januar 2026",
+     "mai 2025 - januar 2026",
+     "mai 2025-januar 2026"
+    ],
+    [
+     "14 monate",
+     "14 monaten",
+     "vierzehn monate",
+     "14 months"
+    ],
+    [
+     "40 monate",
+     "40 monaten",
+     "vierzig monate",
+     "40 months"
+    ],
+    [
+     "ziel 8",
+     "sdg 8",
+     "goal 8"
+    ],
+    [
+     "ziel 3",
+     "sdg 3",
+     "goal 3"
+    ],
+    [
+     "ziel 16",
+     "sdg 16",
+     "goal 16"
+    ]
+   ]
+  },
+  {
+   "id": "N33",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Für die Jahre 2025 und 2026 wich die Finanzierung der Wiener Zeitung GmbH durch den Bund von den Beträgen des WZEVI-Gesetzes ab. Wie viel leistete der Bund in diesen beiden Jahren jährlich für das Medium Wiener Zeitung, für den Media Hub und für die elektronische Verlautbarungs- und Informationsplattform, welche Jahressumme ergibt das, und wie viel weniger erhält die Gesellschaft dadurch über beide Jahre zusammen? Woraus ist die Differenz auszugleichen, wie hoch waren die freien Gewinnrücklagen der Mediengruppe insgesamt, und welche Gesamtsumme der Bundesbeiträge hatte ein interner Gesetzesentwurf vom Sommer 2022 vorgesehen?",
+   "facts": [
+    [
+     "statt 7,50",
+     "statt 7,5",
+     "5 mio. eur für das medium",
+     "5 mio. eur für die wiener zeitung",
+     "medium: 5",
+     "medium 5 mio",
+     "medium) 5",
+     "medium) jährlich 5",
+     "medium jährlich 5",
+     "wiener zeitung jährlich 5",
+     "medium: jährlich 5",
+     "instead of 7.50",
+     "medium 5,00",
+     "medium: 5,00",
+     "medium): 5",
+     "medium): jährlich 5",
+     "medium 5,0",
+     "von 7,50 auf 5",
+     "7,50 auf 5",
+     "7,50 → 5",
+     "7,50 | 5"
+    ],
+    [
+     "3,50 mio",
+     "3,5 mio",
+     "3.50 mio",
+     "3.5 mio",
+     "3,50 millionen",
+     "3.5 million",
+     "3,50 eur",
+     "6,00 auf 3,5",
+     "6,00 → 3,5",
+     "6,00 | 3,5"
+    ],
+    [
+     "3,00 mio",
+     "evi: 3",
+     "evi) 3",
+     "evi 3",
+     "evi unverändert",
+     "evi bleibt",
+     "evi blieb",
+     "3 mio. eur für die evi",
+     "3.00 mio",
+     "3.0 mio"
+    ],
+    [
+     "11,50",
+     "11,5 mio",
+     "11.50",
+     "11.5 mio",
+     "11,5 millionen",
+     "11.5 million"
+    ],
+    [
+     "in summe 10 mio",
+     "insgesamt 10 mio",
+     "zusammen 10 mio",
+     "10 mio. eur weniger",
+     "10 mio. eur in diesen zwei",
+     "10 mio. eur über",
+     "um 10 mio",
+     "10 mio. eur in den beiden",
+     "10 mio. eur für beide",
+     "10 million"
+    ],
+    [
+     "gesellschaftsvermögen",
+     "vermögen der gesellschaft",
+     "aufzulösen",
+     "auflösung",
+     "aufgelöst",
+     "company's assets",
+     "company assets"
+    ],
+    [
+     "28,86",
+     "28.86"
+    ],
+    [
+     "14,50",
+     "14,5 mio",
+     "14.50",
+     "14.5 mio",
+     "14,5 millionen"
+    ]
+   ]
+  },
+  {
+   "id": "N34",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "Across the three marine casualty reports in the collection (the NTSB report on the Lake Erie collision, the MAIB report on Arvia and the MAIB report on migrant boat 512), how many persons were on board each vessel involved in the casualty according to the reports' casualty data, with Arvia split into passengers and crew? What is the total? By how many passengers was Arvia below the number of passengers she was authorised to carry? How many fatalities and injuries do the three reports record altogether?",
+   "facts": [
+    [
+     "6,980",
+     "6980",
+     "6 980",
+     "6.980"
+    ],
+    [
+     "5,299",
+     "5299",
+     "5 299",
+     "5.299"
+    ],
+    [
+     "1,681",
+     "1681",
+     "1 681",
+     "1.681"
+    ],
+    [
+     "74 people",
+     "74 persons",
+     "74 migrants",
+     "74 on board",
+     ": 74",
+     "74 occupants",
+     "(74",
+     "74 individuals"
+    ],
+    [
+     "2 (recreational",
+     "nephew",
+     "two on board",
+     "2 on board",
+     "two aboard",
+     "2 aboard",
+     "two people on board",
+     "2 people on board",
+     "two persons on board",
+     "2 persons on board",
+     "two people aboard",
+     "2 people aboard",
+     "two persons aboard",
+     "2 persons aboard",
+     "recreational vessel: 2",
+     "recreational vessel: two",
+     "recreational vessel had 2",
+     "recreational vessel had two",
+     "two occupants",
+     "2 occupants"
+    ],
+    [
+     "7,056",
+     "7056",
+     "7 056",
+     "7.056"
+    ],
+    [
+     "6,600",
+     "6600",
+     "6 600",
+     "6.600"
+    ],
+    [
+     "1,301",
+     "1301",
+     "1 301",
+     "1.301"
+    ],
+    [
+     "two fatalities",
+     "2 fatalities",
+     "two deaths",
+     "2 deaths",
+     "two people died",
+     "two dead",
+     "two fatal",
+     "2 fatal",
+     "fatalities: 2",
+     "fatalities: two",
+     "two persons died"
+    ],
+    [
+     "one minor injury",
+     "1 minor",
+     "one minor",
+     "a minor injury",
+     "minor injury"
+    ]
+   ]
+  },
+  {
+   "id": "N35",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "multi",
+   "format": null,
+   "question": "Which earlier accidents do the MAIB report on Arvia, the MAIB report on migrant boat 512 and the RAIB report on Sheffield Park each describe in their sections on previous or similar accidents (vessel or location, and year)? How many such earlier accidents are described across the three reports in total, and how many people died in them altogether, taking 'at least' figures as given?",
+   "facts": [
+    [
+     "british mallard"
+    ],
+    [
+     "msc colombia"
+    ],
+    [
+     "carnival ecstasy"
+    ],
+    [
+     "at least 27",
+     "27 fatalities",
+     "27 lives",
+     "27 deaths",
+     "27 people",
+     "27 dead",
+     "27 died"
+    ],
+    [
+     "at least eight",
+     "at least 8",
+     "eight fatalities",
+     "8 fatalities",
+     "eight lives",
+     "8 lives",
+     "eight deaths",
+     "8 deaths",
+     "eight people",
+     "8 people",
+     "eight dead",
+     "8 dead"
+    ],
+    [
+     "loughborough"
+    ],
+    [
+     "bronwydd",
+     "gwili"
+    ],
+    [
+     "grosmont",
+     "north yorkshire moors"
+    ],
+    [
+     "eight earlier",
+     "8 earlier",
+     "eight previous",
+     "8 previous",
+     "eight accidents",
+     "8 accidents",
+     "eight cited",
+     "8 cited",
+     "eight in total",
+     "8 in total",
+     "total of eight",
+     "total of 8",
+     "eight occurrences",
+     "8 occurrences",
+     "eight prior",
+     "8 prior",
+     "eight such",
+     "8 such",
+     "eight in all",
+     "8 in all",
+     "total: 8",
+     "total: eight"
+    ],
+    [
+     "at least 40",
+     "40 deaths",
+     "40 fatalities",
+     "40 lives",
+     "40 people",
+     "40 dead",
+     "40 died",
+     "40 in total",
+     "total: 40",
+     "total of 40",
+     "≥ 40",
+     "≥40"
+    ]
+   ]
+  },
+  {
+   "id": "N36",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "trap",
+   "format": null,
+   "question": "Why did the MAIB address its safety recommendation on the Arvia accident to Carnival UK Ltd, a different company from Arvia's registered owner and manager, Carnival plc?",
+   "facts": [
+    [
+     "changed its name",
+     "renamed",
+     "name change",
+     "same company",
+     "not a different company",
+     "new name",
+     "formerly carnival plc",
+     "previously carnival plc",
+     "former name",
+     "same entity",
+     "now called",
+     "changed name",
+     "same firm",
+     "same legal entity",
+     "one and the same",
+     "not a separate"
+    ],
+    [
+     "21 may 2026",
+     "21st may 2026",
+     "may 21, 2026",
+     "21 may, 2026",
+     "2026-05-21",
+     "21.05.2026",
+     "may 21 2026"
+    ],
+    [
+     "self-resetting",
+     "self resetting"
+    ]
+   ]
+  },
+  {
+   "id": "N37",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "number",
+   "format": null,
+   "question": "Wie viele neue Empfehlungen sprechen die zehn Prüfberichte der drei Rechnungshöfe im Bestand aus – die fünf des österreichischen Rechnungshofs, die zwei der Eidgenössischen Finanzkontrolle und die drei Sonderberichte des Europäischen Rechnungshofs? Nenne die Zahl je Institution und die Gesamtzahl; bei der EFK zählen nur neue Empfehlungen, nicht nachgeprüfte frühere. Wie haben die geprüften Stellen in der Schweiz auf die neuen EFK-Empfehlungen reagiert?",
+   "facts": [
+    [
+     "158"
+    ],
+    [
+     "7 neue",
+     "sieben neue",
+     "efk: 7",
+     "efk 7",
+     "efk (7",
+     "efk: sieben",
+     "7 empfehlungen der efk",
+     "sieben empfehlungen der efk",
+     "efk insgesamt 7",
+     "efk insgesamt sieben",
+     "efk zusammen 7",
+     "efk zusammen sieben",
+     "5 + 2",
+     "5 und 2 ="
+    ],
+    [
+     "13 empfehlungen",
+     "13 recommendations",
+     "dreizehn",
+     ": 13",
+     "13 (sr",
+     "13)",
+     "eurh: 13",
+     "eca: 13",
+     "eurh 13",
+     "eca 13",
+     "4 + 4 + 5"
+    ],
+    [
+     "178"
+    ],
+    [
+     "alle sieben",
+     "alle akzeptiert",
+     "alle 7",
+     "jeweils akzeptiert",
+     "alle angenommen",
+     "akzeptierten alle",
+     "akzeptierte alle",
+     "durchweg akzeptiert",
+     "ausnahmslos",
+     "alle wurden akzeptiert",
+     "empfehlung ist akzeptiert",
+     "sämtliche empfehlungen",
+     "sämtliche sieben",
+     "sämtliche neuen",
+     "sämtliche efk"
+    ]
+   ]
+  },
+  {
+   "id": "N38",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "number",
+   "format": null,
+   "question": "The three marine casualty reports state their times in different time standards. For the NTSB report on the Lake Erie collision, the MAIB report on Arvia and the MAIB report on migrant boat 512: which time standard does each report use, and what was the time of the casualty in UTC (for Arvia: when the lift began to move with the electro-technician in the shaft)? On Arvia, what was the authorisation time of the second permit to work on lift PL14 in UTC, and how much real time elapsed between that authorisation and the lift beginning to move?",
+   "facts": [
+    [
+     "2312 utc",
+     "23:12 utc",
+     "2312 (utc",
+     "23:12 (utc",
+     "2312 coordinated",
+     "23:12 coordinated",
+     "2312z",
+     "23:12z"
+    ],
+    [
+     "coordinated universal time –4",
+     "utc –4",
+     "utc-4",
+     "utc −4",
+     "utc -4",
+     "utc–4",
+     "utc−4",
+     "utc - 4",
+     "utc − 4",
+     "utc – 4",
+     "minus 4 hours",
+     "minus four hours",
+     "4 hours behind",
+     "four hours behind",
+     "gmt-4",
+     "gmt −4",
+     "gmt –4",
+     "utc minus 4",
+     "utc minus four",
+     "utc-04",
+     "utc−04"
+    ],
+    [
+     "0552 utc",
+     "05:52 utc",
+     "0552 (utc)",
+     "05:52 (utc)",
+     "0552z",
+     "05:52z"
+    ],
+    [
+     "1110 utc",
+     "11:10 utc",
+     "1110 (utc",
+     "11:10 (utc",
+     "1110z",
+     "11:10z"
+    ],
+    [
+     "1755 utc",
+     "17:55 utc",
+     "1755 (utc",
+     "17:55 (utc",
+     "1755z",
+     "17:55z"
+    ],
+    [
+     "11 hours 57",
+     "11 hours and 57",
+     "11 h 57",
+     "11h 57",
+     "11h57",
+     "11:57",
+     "717 min",
+     "eleven hours and 57",
+     "eleven hours 57",
+     "11 hrs 57",
+     "11 hours, 57",
+     "11 hr 57"
+    ]
+   ]
+  },
+  {
+   "id": "N39",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "trap",
+   "format": null,
+   "question": "Warum prüfte der Rechnungshof für seine Berichte zum Ausgleichstaxfonds und zum Gratis-Impfprogramm zwei verschiedene Bundesministerien, das Sozialministerium und das Gesundheitsministerium, und in welchem Monat nahm jedes der beiden Ministerien zum jeweiligen Prüfungsergebnis Stellung?",
+   "facts": [
+    [
+     "dasselbe ministerium",
+     "dasselbe bundesministerium",
+     "ein und dasselbe",
+     "gleiche ministerium",
+     "gleichen ministerium",
+     "gleiche bundesministerium",
+     "gleichen bundesministerium",
+     "same ministry",
+     "nicht zwei verschiedene",
+     "keine zwei",
+     "selbe ministerium",
+     "selben ministerium",
+     "selbe bundesministerium",
+     "selben bundesministerium",
+     "dasselbe ressort",
+     "dieselbe stelle",
+     "dieselbe geprüfte stelle",
+     "dieselbe behörde",
+     "sind identisch",
+     "ist identisch",
+     "identische ministerium",
+     "identischen ministerium",
+     "unterschiedliche kurzbezeichnung",
+     "zwei kurzbezeichnungen",
+     "zwei bezeichnungen für",
+     "zwei namen für"
+    ],
+    [
+     "arbeit, soziales, gesundheit, pflege und konsumentenschutz",
+     "bmasgpk"
+    ],
+    [
+     "31. märz 2025",
+     "für soziales, gesundheit",
+     "1. april 2025",
+     "bis märz 2025",
+     "seit april 2025",
+     "ab april 2025",
+     "31 march 2025"
+    ],
+    [
+     "mai 2026",
+     "may 2026"
+    ],
+    [
+     "september 2026"
+    ]
+   ]
+  },
+  {
+   "id": "D1",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "reason-1",
+   "format": null,
+   "question": "Laut RH-Bericht zur Umsetzbarkeit des Aufbauplans 2032+ erlaubt das Wehrgesetz, Wehrpflichtige auch ohne freiwillige Meldung zu Milizübungen zu verpflichten. Angenommen, in einem Kalenderjahr hätten sich 10 von Hundert der Wehrpflichtigen, die den Grundwehrdienst geleistet haben, freiwillig zu Milizübungen gemeldet: Wie viele von Hundert dieses Jahrgangs dürfte das Verteidigungsministerium dann höchstens noch zusätzlich verpflichten, und warum? Nutzte das Ministerium diese Möglichkeit?",
+   "facts": [
+    [
+     "12 von hundert",
+     "12 %",
+     "12%",
+     "12 prozent",
+     "zwölf prozent",
+     "zwölf von hundert"
+    ],
+    [
+     "höchstens 2 %",
+     "höchstens 2 von",
+     "höchstens noch 2",
+     "maximal 2 %",
+     "maximal 2 von",
+     "maximal noch 2",
+     "nur noch 2",
+     "noch 2 %",
+     "noch 2 von",
+     "zusätzlich 2 %",
+     "zusätzlich 2 von",
+     "weitere 2 %",
+     "weitere 2 von",
+     "12 − 10 = 2",
+     "12 - 10 = 2",
+     "12 – 10 = 2",
+     "= 2 %",
+     "= 2 von",
+     "(2 %)",
+     "zwei von hundert",
+     "zwei prozent",
+     "höchstens 2 prozent",
+     "maximal 2 prozent",
+     "noch 2 prozent",
+     "nur 2 von",
+     "nur 2 %",
+     "nur 2 prozent",
+     "lediglich 2 von",
+     "lediglich 2 %",
+     "lediglich 2 prozent",
+     "bis zu 2 von",
+     "bis zu 2 %"
+    ],
+    [
+     "keinen gebrauch",
+     "nicht gebrauch",
+     "kein gebrauch",
+     "nutzte sie nicht",
+     "nutzte es nicht",
+     "nicht genutzt",
+     "nicht genützt",
+     "verzichtete",
+     "nutzte diese möglichkeit nicht",
+     "nutzte die möglichkeit nicht",
+     "nutzte das nicht"
+    ]
+   ]
+  },
+  {
+   "id": "D2",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "reason-1",
+   "format": null,
+   "question": "Nach dem RH-Bericht zur Neuausrichtung der Wiener Zeitung GmbH hätte deren Tochtergesellschaft Aufträge nur dann vergaberechtsfrei als Inhouse-Vergabe erhalten können, wenn sie das Wesentlichkeitskriterium erfüllt. Welche Schwelle gilt dafür? In welchem Jahr von 2020 bis 2024 kam die Tochtergesellschaft dieser Schwelle mit ihrem Umsatzanteil aus Leistungen für die Wiener Zeitung GmbH am nächsten, mit welchem Anteil, und um wie viele Prozentpunkte lag sie selbst dann darunter?",
+   "facts": [
+    [
+     "80 %",
+     "80%",
+     "80 prozent",
+     "achtzig prozent"
+    ],
+    [
+     "69,4",
+     "69.4"
+    ],
+    [
+     "10,6",
+     "10.6"
+    ]
+   ]
+  },
+  {
+   "id": "D3",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-1",
+   "format": null,
+   "question": "Rule 33 of the Inland Navigation Rules exempts some vessels from carrying a whistle. In the NTSB report on the Lake Erie collision, did that exemption apply to the GLERL uncrewed surface vessel, judging by its overall length in metres? What did Rule 33 require of it instead, and did it comply? Would the Prestige 450 Flybridge have fallen under the same exemption?",
+   "facts": [
+    [
+     "4.8 m",
+     "4.8m",
+     "4,8 m",
+     "4.8 metre",
+     "4.8 meter",
+     "4.8-m",
+     "4.8-metre"
+    ],
+    [
+     "13.7 m",
+     "13.7m",
+     "13,7 m",
+     "13.7 metre",
+     "13.7 meter"
+    ],
+    [
+     "other means",
+     "efficient sound"
+    ],
+    [
+     "did not have any other",
+     "not have any other",
+     "no other sound",
+     "had no other",
+     "no other means",
+     "lacked any",
+     "lacked other",
+     "lacked such",
+     "had no such",
+     "did not have such",
+     "without any other",
+     "not comply",
+     "non-compliant",
+     "noncompliant",
+     "failed to comply"
+    ],
+    [
+     "longer than 12",
+     "more than 12 m",
+     "over 12 m",
+     "above 12 m",
+     "exceeds 12",
+     "exceeding 12",
+     "greater than 12",
+     "would not be exempt",
+     "would not have been exempt",
+     "would not fall under",
+     "would not have fallen under",
+     "not have fallen under",
+     "would not qualify",
+     "not have qualified",
+     "would not be covered",
+     "would not have been covered",
+     "no exemption for the prestige",
+     "prestige is not exempt",
+     "prestige was not exempt",
+     "flybridge is not exempt",
+     "flybridge was not exempt",
+     "exceeds the 12",
+     "above the 12",
+     "over the 12",
+     "not less than 12",
+     "not under 12",
+     "not below 12"
+    ]
+   ]
+  },
+  {
+   "id": "D4",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-1",
+   "format": null,
+   "question": "In the RAIB report on Sheffield Park, the Bluebell Railway's October 2022 risk assessment for operating Fenchurch scored the hazard of staff being crushed or scalded. What score did it give before controls, and from which likelihood and severity scores? Under the railway's instruction GI028, did that score call for additional measures if it remained after existing controls, and by how many points did it exceed the relevant threshold? What residual risk did the assessment record after its control measure?",
+   "facts": [
+    [
+     "as 12",
+     "of 12",
+     "was 12",
+     "score 12",
+     "scored 12",
+     "12 (3",
+     "12 (likelihood",
+     "= 12",
+     "3 x 4",
+     "3 × 4",
+     "3×4",
+     "3x4"
+    ],
+    [
+     "above 6",
+     "exceeds 6",
+     "exceeded 6",
+     "greater than 6",
+     "more than 6",
+     "higher than 6",
+     "over 6",
+     "> 6",
+     "above six",
+     "more than six"
+    ],
+    [
+     "by 6",
+     "6 points",
+     "six points",
+     "twice the",
+     "double the",
+     "6 above",
+     "6 higher",
+     "by six"
+    ],
+    [
+     "not recorded",
+     "none was recorded",
+     "no assessment of the effectiveness",
+     "did not record",
+     "was not assessed",
+     "no residual risk was recorded",
+     "no residual risk recorded",
+     "no residual risk level",
+     "no residual risk score",
+     "no level of residual",
+     "residual risk was not",
+     "none recorded"
+    ]
+   ]
+  },
+  {
+   "id": "D5",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-2",
+   "format": null,
+   "question": "After the Arvia accident, Carnival UK introduced an interim requirement on lift safety training for personnel involved in lift maintenance. Measured on the day of the accident, which members of Arvia's electro-technical team named in the MAIB report would demonstrably have met it, judging by the training dates the report gives? How many days old was the relevant training of the AET and of the ET (the electro-technician who died), and how old was the SETO's? What about the 3ETO?",
+   "facts": [
+    [
+     "only the aet",
+     "only aet",
+     "aet only",
+     "the aet alone",
+     "just the aet",
+     "aet was the only",
+     "aet is the only",
+     "aet would be the only",
+     "only one: the aet",
+     "only the assistant"
+    ],
+    [
+     "84 days",
+     "84-day",
+     "2 months and 23",
+     "2 months 23",
+     "two months and 23",
+     "eighty-four days"
+    ],
+    [
+     "197 days",
+     "197-day",
+     "6 months and 14",
+     "6 months 14",
+     "six months and 14",
+     "six months and two weeks"
+    ],
+    [
+     "2 years",
+     "two years",
+     "735 days",
+     "24 months"
+    ],
+    [
+     "had not completed any",
+     "not completed any",
+     "no lift safety training",
+     "never completed",
+     "no training",
+     "had no lift",
+     "without any lift"
+    ]
+   ]
+  },
+  {
+   "id": "D6",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "reason-2",
+   "format": null,
+   "question": "Im RH-Bericht zur Umsetzbarkeit des Aufbauplans 2032+ ermittelte die Direktion 4 Logistik zusätzlichen Lagerraumbedarf an Palettenplätzen. Wie viele Palettenplätze Zusatzbedarf ergeben ihre beiden Angaben zusammen, wie viele davon blieben selbst nach Inbetriebnahme des Lagerprojekts mit dem frühesten geplanten Fertigstellungstermin offen, und wie viele Palettenplätze fehlten danach noch bis zu der Gesamtkapazität, die die Direktion 4 Logistik für die Verdoppelung der Lagerkapazität nannte? Wann sollten laut dem Zeitplan vom Jänner 2023 die Einlagerungen beginnen, und wann war die Inbetriebnahme dieses Projekts vorgesehen?",
+   "facts": [
+    [
+     "40.500",
+     "40,500",
+     "40500",
+     "40 500"
+    ],
+    [
+     "14.500",
+     "14,500",
+     "14500",
+     "14 500"
+    ],
+    [
+     "82.313",
+     "82,313",
+     "82313",
+     "82 313"
+    ],
+    [
+     "zweites halbjahr 2026",
+     "zweiten halbjahr 2026",
+     "2. halbjahr 2026",
+     "second half of 2026",
+     "h2 2026",
+     "2. hj 2026"
+    ],
+    [
+     "inbetriebnahme 2027",
+     "inbetriebnahme für 2027",
+     "inbetriebnahme im jahr 2027",
+     "2027 vorgesehen",
+     "erst 2027",
+     "2027 geplant",
+     "im jahr 2027",
+     "(2027)",
+     "bis 2027",
+     "ab 2027",
+     "in 2027"
+    ]
+   ]
+  },
+  {
+   "id": "D7",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "reason-2",
+   "format": null,
+   "question": "Der RH schreibt, die Leitung des Projekts „Jailshop“ des Justizministeriums habe ein Mitglied des Bundesrats (DIE GRÜNEN) innegehabt; das Justizministerium hält in seiner Stellungnahme entgegen, zum Zeitpunkt der Beauftragung sei der Projektleiter kein Mitglied des Bundesrates gewesen. Wie lassen sich beide Aussagen vereinbaren? Wann endete sein Bundesratsmandat vor der Beauftragung, seit welchem Tag war er wieder Mitglied des Bundesrats, und seit welchem Tag war er Projektleiter und zugleich Bundesrat für DIE GRÜNEN?",
+   "facts": [
+    [
+     "23. oktober 2019",
+     "23.10.2019",
+     "23. okt. 2019",
+     "23 october 2019"
+    ],
+    [
+     "20. dezember 2019",
+     "20.12.2019",
+     "20. dez. 2019",
+     "20 december 2019"
+    ],
+    [
+     "23. november 2015",
+     "23.11.2015",
+     "23. nov. 2015",
+     "23 november 2015"
+    ]
+   ]
+  },
+  {
+   "id": "D8",
+   "sample": "berichte26",
+   "lang": "de",
+   "kind": "reason-2",
+   "format": null,
+   "question": "Laut RH-Bericht zum Ausgleichstaxfonds legte das Sozialministerium die Höhe des jährlichen Mobilitätszuschusses für Menschen mit Behinderungen jedes Jahr neu fest. Wie hoch war der Zuschuss im Jahr 2022, rechnerisch aus den Angaben des Berichts hergeleitet? Um wie viel EUR und um wie viel Prozent wurde er im Juli 2025 gegenüber 2024 gekürzt, und um wie viel EUR lag er danach unter dem Betrag von 2022?",
+   "facts": [
+    [
+     "580 eur",
+     "580 €",
+     "580 euro",
+     "€ 580",
+     "€580",
+     "= 580",
+     "rd. 580",
+     "rund 580",
+     "580,–",
+     "580,-",
+     "580,00",
+     "580.00",
+     "ca. 580",
+     "etwa 580",
+     "eur 580"
+    ],
+    [
+     "362 eur",
+     "362 €",
+     "362 euro",
+     "€ 362",
+     "= 362",
+     "um 362",
+     "362,00",
+     "362.00",
+     "eur 362"
+    ],
+    [
+     "51,9",
+     "51.9",
+     "rd. 52 %",
+     "rund 52 %",
+     "etwa 52 %",
+     "knapp 52 %",
+     "52 %"
+    ],
+    [
+     "245 eur",
+     "245 €",
+     "245 euro",
+     "€ 245",
+     "= 245",
+     "um 245",
+     "245,00",
+     "245.00",
+     "eur 245"
+    ]
+   ]
+  },
+  {
+   "id": "D9",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-3",
+   "format": null,
+   "question": "Of the four accident investigation reports in the collection (the NTSB report on the Lake Erie collision, the two MAIB reports and the RAIB report on Sheffield Park), which accidents resulted in a death? For each person who died, give their role or circumstances (not the name) and their age. How many days lay between the two fatal accidents, and how many days between the two accidents without a fatality?",
+   "facts": [
+    [
+     "47 days",
+     "47-day",
+     "forty-seven days",
+     "6 weeks and 5 days",
+     "six weeks and five days"
+    ],
+    [
+     "364 days",
+     "364-day",
+     "one day short of a year",
+     "a day short of a year",
+     "one day less than a year",
+     "1 day short of a year"
+    ],
+    [
+     "35-year-old",
+     "35-year old",
+     "35 years old",
+     "aged 35",
+     "age 35",
+     "(35)",
+     "35, filipino"
+    ],
+    [
+     "36-year-old",
+     "36-year old",
+     "36 years old",
+     "aged 36",
+     "age 36",
+     "(36)",
+     "36, indian"
+    ]
+   ]
+  },
+  {
+   "id": "D10",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-3",
+   "format": null,
+   "question": "In which member states did the ECA carry out visits or close examinations for each of its three special reports in the collection (24/2026 on innovation and competitiveness, 25/2026 on marine protected areas, 29/2026 on RRF support for public administration)? Which member state appears for more than one of these reports, how many member-state visits are there in total, and how many different member states were visited?",
+   "facts": [
+    [
+     "12 visits",
+     "twelve visits",
+     "12 member-state visits",
+     "12 country visits",
+     "5 + 3 + 4 = 12",
+     "5+3+4=12",
+     "12 in total",
+     "total of 12",
+     "twelve in total",
+     "total: 12"
+    ],
+    [
+     "11 different",
+     "11 distinct",
+     "eleven different",
+     "eleven distinct",
+     "11 member states",
+     "eleven member states",
+     "11 countries",
+     "eleven countries",
+     "11 unique"
+    ],
+    [
+     "spain was visited for both",
+     "spain was visited for two",
+     "spain was visited twice",
+     "spain is the only",
+     "only spain",
+     "spain appears in both",
+     "spain appears twice",
+     "spain appears for",
+     "spain twice",
+     "spain (24/2026 and 29/2026)",
+     "spain (sr 24",
+     "spain (24",
+     "visited spain for both",
+     "spain features in both",
+     "spain is the one",
+     "spain (both",
+     "spain: 24/2026 and 29/2026",
+     "spain appears in two",
+     "spain appears in more than one",
+     "spain was visited in both",
+     "spain is common",
+     "spain, which appears",
+     "spain (sr 24 and sr 29",
+     "spain (24/2026 and 29/2026"
+    ]
+   ]
+  },
+  {
+   "id": "D11",
+   "sample": "berichte26",
+   "lang": "en",
+   "kind": "reason-3",
+   "format": null,
+   "question": "Which of the four accident investigation reports in the collection (the NTSB report on the Lake Erie collision, the MAIB report on Arvia, the MAIB report on migrant boat 512 and the RAIB report on Sheffield Park) state the air temperature at the time of the accident? Converted to degrees Celsius, which accident had the warmest air, and by how much was it warmer than the second warmest? How many degrees Celsius separate the warmest and the coolest of the stated air temperatures?",
+   "facts": [
+    [
+     "22.2 °c",
+     "22.2°c",
+     "22,2 °c",
+     "22,2°c",
+     "22.2 c",
+     "22.2 degrees",
+     "22.22",
+     "about 22.2"
+    ],
+    [
+     "0.2 °c",
+     "0.2°c",
+     "0,2 °c",
+     "0,2°c",
+     "0.2 c",
+     "0.2 degrees",
+     "0.22",
+     "by 0.2"
+    ],
+    [
+     "7.2 °c",
+     "7.2°c",
+     "7,2 °c",
+     "7,2°c",
+     "7.2 c",
+     "7.2 degrees",
+     "7.22",
+     "by 7.2"
+    ],
+    [
+     "no air temperature",
+     "not give an air temperature",
+     "not give the air temperature",
+     "not state an air temperature",
+     "not state the air temperature",
+     "doesn't state",
+     "not stated",
+     "no temperature",
+     "without an air temperature",
+     "not mention an air temperature",
+     "not mention the air temperature",
+     "no air-temperature",
+     "not report an air temperature",
+     "not report the air temperature",
+     "not give a temperature",
+     "not give any temperature",
+     "not include an air temperature",
+     "not include the air temperature",
+     "not include a temperature",
+     "not provide an air temperature",
+     "not provide the air temperature",
+     "not provide a temperature",
+     "no air temp"
+    ]
+   ]
+  }
+ ]
+}
