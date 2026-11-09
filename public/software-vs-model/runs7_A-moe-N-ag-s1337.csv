@@ -20,7 +20,6 @@ runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N20,8,8,8,,,1,10,16743,13.389,model_done,159744,
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N21,7,5,5,,,3,10;-;-;-,24471,18.067,model_done,159744,
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N22,8,6,6,,,1,10,16505,24.339,model_done,159744,
-runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N23,8,8,8,,,1,10,16379,21.761,model_done,159744,
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N24,6,6,6,,,4,20;10;5;5,35541,30.92,model_done,159744,
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N25,2,2,2,not_refused,correct,1,10,17470,24.521,model_done,159744,
 runs7/A-moe-N-ag-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,agentic,1337,app 9c065f9d / core 3475bae,N26,3,2,2,not_refused,correct,1,10,16506,9.84,model_done,159744,

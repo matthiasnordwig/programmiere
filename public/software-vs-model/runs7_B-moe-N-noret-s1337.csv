@@ -20,7 +20,6 @@ runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,a
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N20,8,0,0,,,0,,,7.308,,159744,
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N21,7,0,0,,,0,,,2.991,,159744,
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N22,8,0,0,,,0,,,2.775,,159744,
-runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N23,8,0,0,,,0,,,5.765,,159744,
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N24,6,1,0,,,0,,,5.986,,159744,
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N25,2,0,0,not_refused,incorrect,0,,,5.755,,159744,
 runs7/B-moe-N-noret-s1337,Qwen3.6-35B-A3B-UD-IQ3_XXS,berichte26,no_search,1337,app 9c065f9d / core 3475bae,N26,3,0,0,refused,incorrect,0,,,2.995,,159744,

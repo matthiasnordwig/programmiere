@@ -10,7 +10,7 @@ draft: true
 
 Everyone compares models. For questions on your own documents, my gut tells me the software around the model matters at least as much. The engine may be strong, but what reaches the road also depends on the gearbox. So how much of an agent's performance comes from the model, and how much from the software around it? I sat down and measured my gut feeling.
 
-I asked questions about 14 official reports. The reports are newer than the models; none of the models could know them. I let each model answer in two ways. In one-shot retrieval (one search up front), the app searches once and hands the model the hits. In the other mode, the model searches itself, in a loop: it writes a search query, reads the hits, searches specifically for what is still missing, and only answers once it has enough. This is called agentic search. A second question came along: same size, mixture-of-experts (MoE) vs dense, what would you still pick the dense model for today? In many company RAG setups I come across, a dense model of around 30B still does the work.
+I asked questions about 14 official reports. The reports are newer than the models; none of the models could know them. I let each model answer in two ways. In one-shot retrieval (one search up front), the app searches once and hands the model the hits. In the other mode, the model searches itself, in a loop: it writes a search query, reads the hits, searches specifically for what is still missing, and only answers once it has enough. This is called agentic search. A second question came along: same size, mixture-of-experts (MoE) vs dense, what would you still pick the dense model for today? In many company RAG setups I come across (RAG: questions answered from retrieved document passages), a dense model of around 30B still does the work, one that uses all its parameters for every token.
 
 **Short version.** Without search, no model found more than 5 of 233 facts (2 %). The software mattered most, not the model. One model, the MoE Qwen3.6-35B-A3B, uses about 3B of its 35B parameters per token. With one-shot retrieval it found 48 % of the facts; with agentic search it found 77 %. A dense 9B with agentic search found 65 % (one run) and beat the MoE with one-shot retrieval. With one-shot retrieval, the 4B, 9B and MoE were only 11 points apart. My second finding follows from that: with good search software, a MoE with 3B active parameters is enough. With agentic search, the MoE is level with the dense Qwen3.6-27B, a model of similar size (27B against 35B) that also used agentic search: 77 % against 78 %. The MoE is about 3 times as fast. Three attempts to favour the dense model, plus a check with the 9B, left the two level.
 
@@ -25,7 +25,7 @@ I asked questions about 14 official reports. The reports are newer than the mode
 
 ## What I measured, and what not
 
-Disclosure: I build Matrix, the app I measured in. I did not ask which model is cleverer. In my experience, people mostly use models of this size locally for RAG (retrieval-augmented generation: the model answers from passages a search hands it). Many organisations cannot send their documents to a cloud model.
+Disclosure: I build Matrix, the app I measured in. I did not ask which model is cleverer. In my experience, people mostly use models of this size locally for RAG. Many organisations cannot send their documents to a cloud model.
 
 I measured in [Matrix](/projects/matrix/), my app for asking questions about your own documents. Matrix offers both modes, one-shot retrieval and agentic search. The app does the fixed part (splitting, hybrid search, checking every quote against its source) and keeps a full trace of every answer. Matrix runs on macOS, iOS and Windows. The obvious objection is that it all comes down to my app. But both modes ran in the same app. So the finding is agentic search against one-shot retrieval, not my app against others; it can be rebuilt with any agent framework, and appendix A describes agentic search step by step.
 
@@ -46,7 +46,7 @@ Everything below refers to the unknown reports. Where I give Challenger numbers,
 
 **Agentic search adds 29 points for the MoE over one-shot retrieval, more than the gap between any two models that search the same way.**
 
-One-shot retrieval is the classic setup: hybrid search, a reranker, the top 5 passages, one answer. With one-shot retrieval the MoE found 48 %, the 9B 40 % and the 4B 37 %. With the same software, a 4B and a 35B were 11 points apart. With agentic search, even the dense 9B found 65 % (one run). On Challenger the 9B with agentic search found 68 %, the MoE with one-shot retrieval 45 %. On Challenger the MoE itself rose from 45 % with one-shot retrieval to 86 % with agentic search.
+One-shot retrieval is the classic setup: hybrid search, a reranker (a second model that re-sorts the hits by relevance), the top 5 passages, one answer. With one-shot retrieval the MoE found 48 %, the 9B 40 % and the 4B 37 %. With the same software, a 4B and a 35B were 11 points apart. With agentic search, even the dense 9B found 65 % (one run). On Challenger the 9B with agentic search found 68 %, the MoE with one-shot retrieval 45 %. On Challenger the MoE itself rose from 45 % with one-shot retrieval to 86 % with agentic search.
 
 > **Example.** How high were the commitment credit for the programme renewal ZEMIS and its two tranches, by how much and when did the Federal Council cut the funds, and how high are the reserves against one project's extra need?
 > Correct answer: CHF 50.66 million; second tranche 28.66 million, first 22.00 million; cut of CHF 17.9 million on 28 January 2026; reserves 15.5 million against an extra need of 6.2 million.
@@ -67,7 +67,7 @@ Dense models are far from gone. On Hugging Face, the most downloaded of the 20�
 
 **Three times I tried to give the dense model a better chance; in total the two stay level, apart from a slight reading edge for the dense model.**
 
-**1. Questions that need reasoning.** I built 11 new questions around the hypothesis that the dense model reasons better. The MoE found 81 % and the 27B 83 %, and the dense model's lead did not grow with the number of reasoning steps (2 seeds; levels in appendix B.4). With 11 questions this rules out a large gap, not a small one.
+**1. Questions that need reasoning.** I had Claude Opus 5.5 write 11 new questions around the hypothesis that the dense model reasons better. The MoE found 81 % and the 27B 83 %, and the dense model's lead did not grow with the number of reasoning steps (2 seeds; levels in appendix B.4). With 11 questions this rules out a large gap, not a small one.
 
 **2. A wider search for the 27B.** The 27B took the default of 6 hits, so it got all passages needed for fewer facts than the MoE (77 % against 88 %, seed 1337). So I made the default follow the context window. Now the 27B got all passages for 89 % of the facts instead of 77 % (same seed). The scores barely moved: the MoE went from 179 to 190, the 27B from 180 to 189 of 233 (one seed, within the noise; that build also changed the stop hint and the hit headers). For the 27B the wider default doubled the run time and raised the answers with invented details from 4 to 16. In a control run I gave both models exactly 10 hits on 20 questions. The MoE found 91 and the 27B 93 of 114 facts. So 10 hits are enough, and with the same search the two are level.
 
@@ -115,8 +115,9 @@ The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan)
 
 | Setting | Value |
 |---|---|
-| Context window | 159,744 tokens, fixed for all scored agentic runs except the Mac replay (appendix C); the largest with which both models fit on the card. In the `auto` runs in appendix E the app chose the context window itself |
+| Context window | 159,744 tokens, fixed for all scored local agentic runs except the Mac replay (appendix C); the largest with which both models fit on the card. In the `auto` runs in appendix E the app chose the context window itself |
 | Reserve for the answer | 2,048 tokens |
+| Reference line (hosted) | window 32,768, reserve 4,000 |
 | KV cache | f16, flash attention on |
 | Sampling | temperature 0.7, top_p 0.9, top_k 40, repetition penalty 1.1 over the last 64 tokens; thinking off |
 | Seeds | Challenger: 1337, 2 and 3 for MoE and 27B with agentic search and without search, 1337 for all other Challenger runs. Unknown reports: 1337 and 2 for MoE and 27B with agentic search, 1337 for without search, one-shot retrieval and the `auto` runs. Reasoning questions: 1337 and 2. 1337 only for the 9B with agentic search, the re-run, the control run and the Mac replay |
@@ -185,7 +186,7 @@ One question is still an anecdote. Over all 39 questions the 27B finds slightly 
 
 Claude Opus 5.5 wrote the questions and gold facts from the documents. A separate check compared them with the documents again, and I froze them before the first local run. Part of the hosted reference ran on the checked but not yet committed sets; the number of facts per question in those runs matches the commit, so nothing that affects the scoring changed afterwards. Every gold fact carries a verbatim quote, and a script found all of them in the documents. I scored each answer per fact twice. First a script matched each fact with its spelling variants. Then model agents read all 1,439 different answers in a blind second review: one agent per bundle of answers, 18 bundles, so each answer had one reviewer. Each reviewer saw the question, the gold facts with their quotes and the answers, but not the model or the run. All scores in this post are from the second review, except the five questions on the busy Mac in appendix C, which only the script scored. With search, the two scores differed little for MoE and 27B (on Challenger by at most 11 facts per run); for the 9B on Challenger the automatic check counted 14 facts more (13 key facts); without search the automatic check counted far too many (54 against 18 for the MoE on Challenger), because right numbers turned up in the wrong context.
 
-The second review has its own limits. With one reviewer per answer, the spread between reviewers is not measured. It was not completely blind either: local answers often show traces of reasoning and the hosted ones an evidence list, which gives away the style, if not the model. And the reviewer checked against the gold and its quotes, not against the whole document; wherever an answer contradicted the gold, I checked the gold against the source text, and the gold was right in every case.
+The second review has its own limits. With one reviewer per answer, the spread between reviewers is not measured. It was not completely blind either: local answers often show traces of reasoning and the hosted ones an evidence list, which gives away the style, if not the model. And the reviewer checked against the gold and its quotes, not against the whole document; wherever an answer contradicted the gold, I had the gold rechecked against the source text during the evaluation; the notes found no errors in the gold.
 
 ### A.7 App version per number
 
@@ -367,7 +368,7 @@ Note: RH 2026/34 is stored on the server as `2026_24_Aufbauplan-2032.pdf`. Open 
 
 ### D.2 Questions
 
-All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions, and German also for the English questions D3, D4, D5, D9, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Two questions (D7, N13) are withheld from the downloads because their details point to identifiable individuals. For publication, personal names were replaced by roles in 23 questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
+All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions of sets N and D, and German also for the English questions D3, D4, D5, D9, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Four questions (D7, D9, N13 and N23) are withheld from the downloads and from this list because their details point to identifiable individuals or to victims of accidents. For publication, personal names were replaced by roles in 23 questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
 
 #### Set R - Challenger, first set (20 questions)
 
@@ -723,7 +724,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set N - Reports 2026 (39 questions)
 
-*Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.*
 
 **Purpose:** Hard set over the 14 official reports of October-November 2026 (published after the training cut-off of the compared models). N1-N29 first; N30-N39 appended later and harder (enumerations and sums over five to ten reports). Traps (N25–N29, N36, N39) are false-premise questions. German questions for German reports, English for English ones.
 
@@ -853,12 +854,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (8):** 1855 | 2220 | 3 hours 25 | 0552 | 0607 | 15 min | retarded | 0200
 **Location:** MAIB 20/2026 (line 574, 575, 627, 635, 582)
 
-##### N23 (en, multi)
-**Question:** Give the timeline of the recovery of the casualty from migrant boat 512: when the first line was passed to the boat, when the casualty was spotted face down in the boat, when the rescue helicopter and the inshore lifeboat arrived on scene, how long she had been submerged at each of those two arrivals, how long after submersion CPR began, and when life extinct was recognised.
-**Gold:** BF Volunteer passed a line at 1108. At 1119 the deck team noticed a person face down and partially submerged (about 8 minutes after she became submerged, 11 minutes after the line). Helicopter R363 arrived at 1137 (submerged 26 minutes); Walmer ILB arrived at 1145 (35 minutes). CPR started 39 minutes after submersion, after she was recovered onto the ILB; she was winched onto R363 at 1201 and recognition of life extinct was declared at 1253.
-**Key facts (8):** 1108 | 1119 | 1137 | 1145 | 26 min | 35 min | 39 min | 1253
-**Location:** MAIB 21/2026 (line 652, 706, 723, 724, 1403, 1405, 733)
-
 ##### N24 (en, multi)
 **Question:** Across the four accident investigation reports in the collection (the NTSB report on Lake Erie, the two MAIB reports and the RAIB report), how many new safety recommendations are made in total, and to which organisations are they addressed, with how many each?
 **Gold:** Ten in total. NTSB: six – two to the US Coast Guard (M-26-03, M-26-04), three to NOAA (M-26-05 to M-26-07) and one to SeaTrac Systems, Inc. (M-26-08). MAIB 20/2026 (Arvia): one to Carnival UK Ltd (2026/159). MAIB 21/2026: two to Border Security Command (2026/160, 2026/161). RAIB 11/2026: one to the Bluebell Railway.
@@ -957,7 +952,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set D - Reports 2026, reasoning / fairness test (11 questions)
 
-*Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.*
 
 **Purpose:** Reasoning set over the same 14 reports, used as the fairness test for the claim that a dense model beats an MoE model where several reasoning steps are needed on easily found text. reason-1: one step; reason-2: two to three steps in one report; reason-3: many steps across several reports.
 
@@ -1003,12 +998,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (4):** 580 eur | 362 eur | 51,9 | 245 eur
 **Location:** RH 2026/32 line 5266 (eine Stelle, mehrere Rechenschritte)
 
-##### D9 (en, reason-3)
-**Question:** Of the four accident investigation reports in the collection (the NTSB report on the Lake Erie collision, the two MAIB reports and the RAIB report on Sheffield Park), which accidents resulted in a death? For each person who died, give their role or circumstances (not the name) and their age. How many days lay between the two fatal accidents, and how many days between the two accidents without a fatality?
-**Gold:** tödlich: boat 512 (9.9.2025, a migrant, 36) und Arvia (26.10.2025, the electro-technician ET, 35); ohne Tote: Lake Erie (10.8.2024, eine leichte Verletzung) und Sheffield Park (9.8.2025, unverletzt). 21 + 26 = 47 Tage; 10.8.2024 → 9.8.2025 = 364 Tage.
-**Key facts (4):** 47 days | 364 days | 35-year-old | 36-year-old
-**Location:** MAIB 21/2026 line 374; MAIB 20/2026 line 445, 709; NTSB MIR-26/32 line 261, 631; RAIB 11/2026 line 185, 188
-
 ##### D10 (en, reason-3)
 **Question:** In which member states did the ECA carry out visits or close examinations for each of its three special reports in the collection (24/2026 on innovation and competitiveness, 25/2026 on marine protected areas, 29/2026 on RRF support for public administration)? Which member state appears for more than one of these reports, how many member-state visits are there in total, and how many different member states were visited?
 **Gold:** SR 24 Finnland, Ungarn, Italien, Niederlande, Spanien; SR 25 Irland, Frankreich, Schweden; SR 29 Tschechien, Deutschland, Griechenland, Spanien. Nur Spanien doppelt; 5 + 3 + 4 = 12 Besuche, 11 verschiedene Staaten.
@@ -1025,11 +1014,11 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 All files are under `/software-vs-model/`. The CSV files have one row per question with the facts found (automatic and from the second review), searches, `top_k` per search, the largest prompt, time, stop reason and context.
 
-Scores in this post include all questions; the downloads omit D7/N13, so sums from the CSVs differ slightly.
+Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.
 
 | File | Content | Traces |
 |---|---|---|
-| [questions.json](/software-vs-model/questions.json) | 107 of the 109 questions (D7 and N13 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
+| [questions.json](/software-vs-model/questions.json) | 105 of the 109 questions (D7, D9, N13 and N23 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
 | [berichte26.csv](/software-vs-model/berichte26.csv), [challenger.csv](/software-vs-model/challenger.csv) | documents: title, publisher, date, original URL, licence, SHA256 of the text | – |
 | [runs7_A-moe-N-ag-s1337.csv](/software-vs-model/runs7_A-moe-N-ag-s1337.csv), [runs7_A-moe-N-ag-s2.csv](/software-vs-model/runs7_A-moe-N-ag-s2.csv) | unknown reports, agentic, MoE, per seed | on request |
 | [runs7_A-d27-N-ag-s1337.csv](/software-vs-model/runs7_A-d27-N-ag-s1337.csv), [runs7_A-d27-N-ag-s2.csv](/software-vs-model/runs7_A-d27-N-ag-s2.csv) | unknown reports, agentic, 27B, per seed | on request |

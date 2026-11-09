@@ -3042,54 +3042,6 @@
    ]
   },
   {
-   "id": "N23",
-   "sample": "berichte26",
-   "lang": "en",
-   "kind": "multi",
-   "format": null,
-   "question": "Give the timeline of the recovery of the casualty from migrant boat 512: when the first line was passed to the boat, when the casualty was spotted face down in the boat, when the rescue helicopter and the inshore lifeboat arrived on scene, how long she had been submerged at each of those two arrivals, how long after submersion CPR began, and when life extinct was recognised.",
-   "facts": [
-    [
-     "1108",
-     "11:08"
-    ],
-    [
-     "1119",
-     "11:19"
-    ],
-    [
-     "1137",
-     "11:37"
-    ],
-    [
-     "1145",
-     "11:45"
-    ],
-    [
-     "26 min",
-     "26-min",
-     "twenty-six min"
-    ],
-    [
-     "35 min",
-     "35-min",
-     "thirty-five min",
-     "34 min",
-     "34-min",
-     "thirty-four min"
-    ],
-    [
-     "39 min",
-     "39-min",
-     "thirty-nine min"
-    ],
-    [
-     "1253",
-     "12:53"
-    ]
-   ]
-  },
-  {
    "id": "N24",
    "sample": "berichte26",
    "lang": "en",
@@ -4484,49 +4436,6 @@
      "245,00",
      "245.00",
      "eur 245"
-    ]
-   ]
-  },
-  {
-   "id": "D9",
-   "sample": "berichte26",
-   "lang": "en",
-   "kind": "reason-3",
-   "format": null,
-   "question": "Of the four accident investigation reports in the collection (the NTSB report on the Lake Erie collision, the two MAIB reports and the RAIB report on Sheffield Park), which accidents resulted in a death? For each person who died, give their role or circumstances (not the name) and their age. How many days lay between the two fatal accidents, and how many days between the two accidents without a fatality?",
-   "facts": [
-    [
-     "47 days",
-     "47-day",
-     "forty-seven days",
-     "6 weeks and 5 days",
-     "six weeks and five days"
-    ],
-    [
-     "364 days",
-     "364-day",
-     "one day short of a year",
-     "a day short of a year",
-     "one day less than a year",
-     "1 day short of a year"
-    ],
-    [
-     "35-year-old",
-     "35-year old",
-     "35 years old",
-     "aged 35",
-     "age 35",
-     "(35)",
-     "35, filipino"
-    ],
-    [
-     "36-year-old",
-     "36-year old",
-     "36 years old",
-     "aged 36",
-     "age 36",
-     "(36)",
-     "36, indian"
     ]
    ]
   },

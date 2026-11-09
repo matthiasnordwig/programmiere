@@ -7,7 +7,7 @@ Contents of this folder:
 - `*.csv`: one file per run, one row per question (facts found, searches, hits per search, largest prompt, time, stop reason). `per-run-csv.zip` bundles further per-run CSVs.
 - `*.jsonl`: example traces (one line per question: search rounds, tool calls with arguments, returned section ids with their headings, and the answer).
 - Column values in the CSVs: `mode` is `no_search`, `one_shot` (one search up front) or `agentic` (the model searches in a loop); `trap_automatic` is `refused` or `not_refused` (did the answer say the information is not in the documents), `trap_cross_checked` is `correct` or `incorrect` (second check of the same trap answer).
-- Questions D7 and N13 are removed from all downloads (`questions.json`, all CSVs, traces), because their details point to identifiable persons. The numbers in the article include them, so sums over the published CSVs are slightly smaller.
+- Questions D7, D9, N13 and N23 are removed from all downloads (`questions.json`, all CSVs, traces), because their details point to identifiable persons or accident victims. The numbers in the article include them, so sums over the published CSVs are slightly smaller.
 
 Traces: only traces that contain no personal names are published. The other traces quote names of private persons, victims or named officials from the reports and are available on request.
 
