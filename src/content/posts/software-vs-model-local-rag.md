@@ -368,7 +368,7 @@ Note: RH 2026/34 is stored on the server as `2026_24_Aufbauplan-2032.pdf`. Open 
 
 ### D.2 Questions
 
-All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions of sets N and D, and German also for the English questions D3, D4, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Ten questions (D5, D7, D9, N13, N21, N22, N23, N27, N34 and N38) are withheld from the downloads and from this list because their details point to identifiable individuals or to victims of accidents, or to their health, family or training record. For publication, personal names were replaced by roles in the published questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
+All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions of sets N and D, and German also for the English questions D3, D4, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Eleven questions (D5, D7, D9, N13, N21, N22, N23, N27, N34, N35 and N38) are withheld from the downloads and from this list because their details point to identifiable individuals or to victims of accidents, or to their health, family or training record. For publication, personal names were replaced by roles in the published questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
 
 #### Set R - Challenger, first set (20 questions)
 
@@ -724,7 +724,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set N - Reports 2026 (39 questions)
 
-*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34, N35 and N38, so sums from the CSVs differ slightly.*
 
 **Purpose:** Hard set over the 14 official reports of October-November 2026 (published after the training cut-off of the compared models). N1-N29 first; N30-N39 appended later and harder (enumerations and sums over five to ten reports). Traps (N25–N29, N36, N39) are false-premise questions. German questions for German reports, English for English ones.
 
@@ -896,12 +896,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (8):** statt 7,50 | 3,50 mio | 3,00 mio | 11,50 | in summe 10 mio | gesellschaftsvermögen | 28,86 | 14,50
 **Location:** RH 2026/36 (line 4088, 1376, 1384, 4101, 4090, 4092, 4086, 1401)
 
-##### N35 (en, multi)
-**Question:** Which earlier accidents do the MAIB report on Arvia, the MAIB report on migrant boat 512 and the RAIB report on Sheffield Park each describe in their sections on previous or similar accidents (vessel or location, and year)? How many such earlier accidents are described across the three reports in total, and how many people died in them altogether, taking 'at least' figures as given?
-**Gold:** MAIB (Arvia) describes three similar lift accidents: British Mallard (27 January 2007, an electrical technician killed), MSC Colombia (8 August 2007, an electrical cadet killed) and Carnival Ecstasy (27 December 2015, the chief electrician killed). MAIB (migrant boat 512) describes two earlier migrant boat accidents in the Dover Strait: 24 November 2021, with at least 27 fatalities, and 14 December 2022, with at least eight fatalities. RAIB describes three previous occurrences: Loughborough Central in February 2006 (Great Central Railway, two staff with minor injuries, nobody died), Bronwydd Arms on the Gwili Railway in July 2006 (the guard later died) and Grosmont on the North Yorkshire Moors Railway in May 2012 (a guard fatally injured). That is eight earlier accidents in total, in which at least 40 people died (1 + 1 + 1 + 27 + 8 + 0 + 1 + 1).
-**Key facts (10):** british mallard | msc colombia | carnival ecstasy | at least 27 | at least eight | loughborough | bronwydd | grosmont | eight earlier | at least 40
-**Location:** MAIB 20/2026 (line 1030, 1041, 1047); MAIB 21/2026 (line 1107, 1141); RAIB 11/2026 (line 1213, 1221, 1229)
-
 ##### N36 (en, trap)
 **Question:** Why did the MAIB address its safety recommendation on the Arvia accident to Carnival UK Ltd, a different company from Arvia's registered owner and manager, Carnival plc?
 **Gold:** The premise is wrong: Carnival UK Ltd is not a different company. The vessel particulars list Carnival plc as Arvia's registered owner and manager, but a footnote states that Carnival plc changed its name to Carnival UK Ltd on 21 May 2026. The recommendation 2026/159 therefore goes to the same company under its new name; it asks it to review the use of self-resetting lift door interlocks as a safety barrier to prevent activation of lifts during maintenance or inspection.
@@ -922,7 +916,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set D - Reports 2026, reasoning / fairness test (11 questions)
 
-*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34, N35 and N38, so sums from the CSVs differ slightly.*
 
 **Purpose:** Reasoning set over the same 14 reports, used as the fairness test for the claim that a dense model beats an MoE model where several reasoning steps are needed on easily found text. reason-1: one step; reason-2: two to three steps in one report; reason-3: many steps across several reports.
 
@@ -978,18 +972,18 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 All files are under `/software-vs-model/`. The CSV files have one row per question with the facts found (automatic and from the second review), searches, `top_k` per search, the largest prompt, time, stop reason and context.
 
-Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.
+Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34, N35 and N38, so sums from the CSVs differ slightly.
 
 | File | Content | Traces |
 |---|---|---|
-| [questions.json](/software-vs-model/questions.json) | 99 of the 109 questions (D5, D7, D9, N13, N21, N22, N23, N27, N34 and N38 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
+| [questions.json](/software-vs-model/questions.json) | 98 of the 109 questions (D5, D7, D9, N13, N21, N22, N23, N27, N34, N35 and N38 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
 | [berichte26.csv](/software-vs-model/berichte26.csv), [challenger.csv](/software-vs-model/challenger.csv) | documents: title, publisher, date, original URL, licence, SHA256 of the text | – |
 | [runs7_A-moe-N-ag-s1337.csv](/software-vs-model/runs7_A-moe-N-ag-s1337.csv), [runs7_A-moe-N-ag-s2.csv](/software-vs-model/runs7_A-moe-N-ag-s2.csv) | unknown reports, agentic, MoE, per seed | on request |
 | [runs7_A-d27-N-ag-s1337.csv](/software-vs-model/runs7_A-d27-N-ag-s1337.csv), [runs7_A-d27-N-ag-s2.csv](/software-vs-model/runs7_A-d27-N-ag-s2.csv) | unknown reports, agentic, 27B, per seed | on request |
 | [runs8_A-d9-N-ag-s1337.csv](/software-vs-model/runs8_A-d9-N-ag-s1337.csv) | unknown reports, agentic, 9B | on request |
 | [runs7_B-moe-N-noret-s1337.csv](/software-vs-model/runs7_B-moe-N-noret-s1337.csv), [runs7_B-d27-N-noret-s1337.csv](/software-vs-model/runs7_B-d27-N-noret-s1337.csv) | unknown reports, without search, MoE and 27B | – |
 | [runs7_K-moe-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-N-classic-rr-s1337.csv), [runs7_K-d9-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-N-classic-rr-s1337.csv), [runs7_K-d4-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-N-classic-rr-s1337.csv) | unknown reports, one-shot retrieval, MoE, 9B, 4B | – |
-| [hosted_berichte26_direct.csv](/software-vs-model/hosted_berichte26_direct.csv), [hosted_berichte26_N30-direct.csv](/software-vs-model/hosted_berichte26_N30-direct.csv), [hosted_berichte26_tools.csv](/software-vs-model/hosted_berichte26_tools.csv), [hosted_berichte26_N30-tools.csv](/software-vs-model/hosted_berichte26_N30-tools.csv) | unknown reports, Claude Opus 5.5, without search and agentic (N1–N29 and N30–N39) | [N30–N39](/software-vs-model/hosted_berichte26_N30-tools.jsonl) |
+| [hosted_berichte26_direct.csv](/software-vs-model/hosted_berichte26_direct.csv), [hosted_berichte26_N30-direct.csv](/software-vs-model/hosted_berichte26_N30-direct.csv), [hosted_berichte26_tools.csv](/software-vs-model/hosted_berichte26_tools.csv), [hosted_berichte26_N30-tools.csv](/software-vs-model/hosted_berichte26_N30-tools.csv) | unknown reports, Claude Opus 5.5, without search and agentic (N1–N29 and N30–N39) | – |
 | [runs9_A-moe-N-ag-s1337.csv](/software-vs-model/runs9_A-moe-N-ag-s1337.csv), [runs9_A-d27-N-ag-s1337.csv](/software-vs-model/runs9_A-d27-N-ag-s1337.csv) | re-run after the fix, MoE and 27B | on request |
 | [runs10_K-moe-Nodd-top10-s1337.csv](/software-vs-model/runs10_K-moe-Nodd-top10-s1337.csv), [runs10_K-d27-Nodd-top10-s1337.csv](/software-vs-model/runs10_K-d27-Nodd-top10-s1337.csv) | control run, exactly 10 hits, 20 questions | on request |
 | [runs10_M-moe-N-mac-s1337.csv](/software-vs-model/runs10_M-moe-N-mac-s1337.csv), [runs10_M-moe-H-mac-s1337.csv](/software-vs-model/runs10_M-moe-H-mac-s1337.csv), [runs10_M-d27-N-mac-s1337.csv](/software-vs-model/runs10_M-d27-N-mac-s1337.csv), [runs10_M-d27-H-mac-s1337.csv](/software-vs-model/runs10_M-d27-H-mac-s1337.csv) | Mac windows replayed on the PC, 15 questions | on request |

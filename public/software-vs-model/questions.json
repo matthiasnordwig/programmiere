@@ -1,5 +1,5 @@
 {
- "description": "Public question sets of the MoE vs dense measurement: R (20) and H (29) and F (10) over the Rogers Commission report on the Challenger accident (Volume 1 and Volume 2 Appendix F), N (32) and D (8) over 14 official reports published 2026-10-02 to 2026-11-06. 'sample' is the corpus key (challenger, berichte26). 'kind': single, number, multi, trap, reason-1..3. 'facts': every inner list is one key fact, satisfied when the answer contains any of its spellings (lower-case, whitespace-insensitive substring); trap rows without facts: the right answer says the information is not in the documents; trap rows with facts: the right answer names the error and gives these facts. Personal names are replaced by roles (except the author of Appendix F). Withheld for privacy: D5, D7, D9, N13, N21, N22, N23, N27, N34, N38.",
+ "description": "Public question sets of the MoE vs dense measurement: R (20) and H (29) and F (10) over the Rogers Commission report on the Challenger accident (Volume 1 and Volume 2 Appendix F), N (31) and D (8) over 14 official reports published 2026-10-02 to 2026-11-06. 'sample' is the corpus key (challenger, berichte26). 'kind': single, number, multi, trap, reason-1..3. 'facts': every inner list is one key fact, satisfied when the answer contains any of its spellings (lower-case, whitespace-insensitive substring); trap rows without facts: the right answer says the information is not in the documents; trap rows with facts: the right answer names the error and gives these facts. Personal names are replaced by roles (except the author of Appendix F). Withheld for privacy: D5, D7, D9, N13, N21, N22, N23, N27, N34, N38.",
  "format_hint": "Formatting: short paragraphs; a list for steps; a Markdown table when comparing several items across several attributes.",
  "questions": [
   {
@@ -3468,97 +3468,6 @@
      "14.50",
      "14.5 mio",
      "14,5 millionen"
-    ]
-   ]
-  },
-  {
-   "id": "N35",
-   "sample": "berichte26",
-   "lang": "en",
-   "kind": "multi",
-   "format": null,
-   "question": "Which earlier accidents do the MAIB report on Arvia, the MAIB report on migrant boat 512 and the RAIB report on Sheffield Park each describe in their sections on previous or similar accidents (vessel or location, and year)? How many such earlier accidents are described across the three reports in total, and how many people died in them altogether, taking 'at least' figures as given?",
-   "facts": [
-    [
-     "british mallard"
-    ],
-    [
-     "msc colombia"
-    ],
-    [
-     "carnival ecstasy"
-    ],
-    [
-     "at least 27",
-     "27 fatalities",
-     "27 lives",
-     "27 deaths",
-     "27 people",
-     "27 dead",
-     "27 died"
-    ],
-    [
-     "at least eight",
-     "at least 8",
-     "eight fatalities",
-     "8 fatalities",
-     "eight lives",
-     "8 lives",
-     "eight deaths",
-     "8 deaths",
-     "eight people",
-     "8 people",
-     "eight dead",
-     "8 dead"
-    ],
-    [
-     "loughborough"
-    ],
-    [
-     "bronwydd",
-     "gwili"
-    ],
-    [
-     "grosmont",
-     "north yorkshire moors"
-    ],
-    [
-     "eight earlier",
-     "8 earlier",
-     "eight previous",
-     "8 previous",
-     "eight accidents",
-     "8 accidents",
-     "eight cited",
-     "8 cited",
-     "eight in total",
-     "8 in total",
-     "total of eight",
-     "total of 8",
-     "eight occurrences",
-     "8 occurrences",
-     "eight prior",
-     "8 prior",
-     "eight such",
-     "8 such",
-     "eight in all",
-     "8 in all",
-     "total: 8",
-     "total: eight"
-    ],
-    [
-     "at least 40",
-     "40 deaths",
-     "40 fatalities",
-     "40 lives",
-     "40 people",
-     "40 dead",
-     "40 died",
-     "40 in total",
-     "total: 40",
-     "total of 40",
-     "≥ 40",
-     "≥40"
     ]
    ]
   },
