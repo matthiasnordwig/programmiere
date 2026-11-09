@@ -72,3 +72,6 @@ blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--
 /* header/footer span the wide layout; text pages keep the reading measure */
 header.site .wrap, footer.site .wrap { max-width: 72rem; }
 main.wide { padding: 0 0 2rem; }
+
+/* Tabellen in Beiträgen: breiter als der Text → in sich scrollbar statt die ganze Seite zu verbreitern */
+article table { display: block; max-width: 100%; overflow-x: auto; }
