@@ -5,7 +5,7 @@ date: 2026-11-09
 type: deep-dive
 project: matrix
 tags: [matrix, local-llm, moe, rag, agentic-search, llama.cpp, qwen, benchmark]
-draft: true
+draft: false
 ---
 
 Everyone compares models. For questions on your own documents, my gut tells me the software around the model matters at least as much. The engine may be strong, but what reaches the road also depends on the gearbox. So how much of an agent's performance comes from the model, and how much from the software around it? I sat down and measured my gut feeling.
