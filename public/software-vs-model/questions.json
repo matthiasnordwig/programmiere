@@ -1,5 +1,5 @@
 {
- "description": "Public question sets of the MoE vs dense measurement: R (20) and H (29) and F (10) over the Rogers Commission report on the Challenger accident (Volume 1 and Volume 2 Appendix F), N (39) and D (11) over 14 official reports published 2026-10-02 to 2026-11-06. 'sample' is the corpus key (challenger, berichte26). 'kind': single, number, multi, trap, reason-1..3. 'facts': every inner list is one key fact, satisfied when the answer contains any of its spellings (lower-case, whitespace-insensitive substring); trap rows without facts: the right answer says the information is not in the documents; trap rows with facts: the right answer names the error and gives these facts. Personal names are replaced by roles (except the author of Appendix F).",
+ "description": "Public question sets of the MoE vs dense measurement: R (20) and H (29) and F (10) over the Rogers Commission report on the Challenger accident (Volume 1 and Volume 2 Appendix F), N (38) and D (10) over 14 official reports published 2026-10-02 to 2026-11-06. 'sample' is the corpus key (challenger, berichte26). 'kind': single, number, multi, trap, reason-1..3. 'facts': every inner list is one key fact, satisfied when the answer contains any of its spellings (lower-case, whitespace-insensitive substring); trap rows without facts: the right answer says the information is not in the documents; trap rows with facts: the right answer names the error and gives these facts. Personal names are replaced by roles (except the author of Appendix F).",
  "format_hint": "Formatting: short paragraphs; a list for steps; a Markdown table when comparing several items across several attributes.",
  "questions": [
   {
@@ -2488,54 +2488,6 @@
    ]
   },
   {
-   "id": "N13",
-   "sample": "berichte26",
-   "lang": "de",
-   "kind": "multi",
-   "format": null,
-   "question": "Ein ehemaliger Vorsitzender einer politischen Partei erbrachte Beratungsleistungen für Bundesministerien. Wie viel erhielt er insgesamt, auf welchen Betrag (inkl. USt) stiegen die Aufwendungen des Bildungsministeriums, welchen Tagsatz verrechnete er gegenüber dem Satz, den das Bildungsministerium selbst als üblich nannte, und was hatte eine parlamentarische Anfragebeantwortung zu Zahl und Volumen der Aufträge angegeben?",
-   "facts": [
-    [
-     "211.607",
-     "211,607",
-     "211607",
-     "211 607"
-    ],
-    [
-     "164.862",
-     "164,862",
-     "164862",
-     "164 862"
-    ],
-    [
-     "5.280",
-     "5,280",
-     "5280",
-     "5 280"
-    ],
-    [
-     "1.840",
-     "1,840",
-     "1840",
-     "1 840"
-    ],
-    [
-     "120.000",
-     "120,000",
-     "120000",
-     "120 000"
-    ],
-    [
-     "zwei aufträge",
-     "2 aufträge",
-     "zwei aufträgen",
-     "2 aufträgen",
-     "two contracts",
-     "two orders"
-    ]
-   ]
-  },
-  {
    "id": "N14",
    "sample": "berichte26",
    "lang": "de",
@@ -4474,34 +4426,6 @@
      "bis 2027",
      "ab 2027",
      "in 2027"
-    ]
-   ]
-  },
-  {
-   "id": "D7",
-   "sample": "berichte26",
-   "lang": "de",
-   "kind": "reason-2",
-   "format": null,
-   "question": "Der RH schreibt, die Leitung des Projekts „Jailshop“ des Justizministeriums habe ein Mitglied des Bundesrats (DIE GRÜNEN) innegehabt; das Justizministerium hält in seiner Stellungnahme entgegen, zum Zeitpunkt der Beauftragung sei der Projektleiter kein Mitglied des Bundesrates gewesen. Wie lassen sich beide Aussagen vereinbaren? Wann endete sein Bundesratsmandat vor der Beauftragung, seit welchem Tag war er wieder Mitglied des Bundesrats, und seit welchem Tag war er Projektleiter und zugleich Bundesrat für DIE GRÜNEN?",
-   "facts": [
-    [
-     "23. oktober 2019",
-     "23.10.2019",
-     "23. okt. 2019",
-     "23 october 2019"
-    ],
-    [
-     "20. dezember 2019",
-     "20.12.2019",
-     "20. dez. 2019",
-     "20 december 2019"
-    ],
-    [
-     "23. november 2015",
-     "23.11.2015",
-     "23. nov. 2015",
-     "23 november 2015"
     ]
    ]
   },

@@ -1,6 +1,6 @@
 ---
 title: "A 9B with an agentic search loop beat a 35B MoE with one-shot retrieval"
-description: "The software around the model mattered more than its size: a dense 9B searching on its own beat a 35B MoE with one search up front. Second finding: a 3B-active MoE kept up with a dense 27B."
+description: "The software around the model mattered more than its size: a dense 9B with agentic search beat a 35B MoE with one-shot retrieval. Second finding: a 3B-active MoE kept up with a dense 27B."
 date: 2026-11-09
 type: deep-dive
 project: matrix
@@ -10,13 +10,13 @@ draft: true
 
 Everyone compares models. For questions on your own documents, my gut tells me the software around the model matters at least as much. The engine may be strong, but what reaches the road also depends on the gearbox. So how much of an agent's performance comes from the model, and how much from the software around it? I sat down and measured my gut feeling.
 
-I asked questions about 14 official reports that no model could know. I let each model answer twice: once with one search up front, once searching on its own. A second question came along: same size, mixture-of-experts (MoE) vs dense, what would you still pick the dense model for today? In many company RAG setups I come across, a dense model of around 30B still does the work.
+I asked questions about 14 official reports. The reports are newer than the models; none of the models could know them. I let each model answer in two ways. In one-shot retrieval (one search up front), the app searches once and hands the model the hits. In the other mode, the model searches itself, in a loop: it writes a search query, reads the hits, searches specifically for what is still missing, and only answers once it has enough. This is called agentic search. A second question came along: same size, mixture-of-experts (MoE) vs dense, what would you still pick the dense model for today? In many company RAG setups I come across, a dense model of around 30B still does the work.
 
-**Short version.** Without search, no model found more than 5 of 233 facts (2 %). The software mattered most, not the model. One model, the MoE Qwen3.6-35B-A3B, uses about 3B of its 35B parameters per token. With one-shot retrieval (one search up front) it found 48 % of the facts; searching on its own it found 77 %. A dense 9B that searched on its own found 65 % (one run) and beat the MoE with one search up front. With one search up front, the 4B, 9B and MoE were only 11 points apart. My second finding follows from that: with good search software, a MoE with 3B active parameters is enough. Searching on its own, the MoE is level with the dense Qwen3.6-27B (78 %) and about 3 times as fast. Three attempts to favour the dense model, plus a check with the 9B, left the two level.
+**Short version.** Without search, no model found more than 5 of 233 facts (2 %). The software mattered most, not the model. One model, the MoE Qwen3.6-35B-A3B, uses about 3B of its 35B parameters per token. With one-shot retrieval it found 48 % of the facts; with agentic search it found 77 %. A dense 9B with agentic search found 65 % (one run) and beat the MoE with one-shot retrieval. With one-shot retrieval, the 4B, 9B and MoE were only 11 points apart. My second finding follows from that: with good search software, a MoE with 3B active parameters is enough. With agentic search, the MoE is level with the dense Qwen3.6-27B, a model of similar size (27B against 35B) that also used agentic search: 77 % against 78 %. The MoE is about 3 times as fast. Three attempts to favour the dense model, plus a check with the 9B, left the two level.
 
 **In one sentence:** before you put money into a bigger model or more GPUs, look at the software around it; and if your machine can hold the MoE, there is little reason to pick a dense model for RAG. Two conditions: the MoE needs about 13 GB of memory plus the context, and I only measured one model family, Qwen3.6.
 
-| Unknown reports, share of facts | One search up front | Agentic search | Without search | Time per question (agentic) |
+| Unknown reports, share of facts | One-shot retrieval | Agentic search | Without search | Time per question (agentic search) |
 |---|---|---|---|---|
 | Qwen3.6-35B-A3B (MoE, 3B active) | 48 % | 77 % | 0 % | 22 s |
 | Qwen3.5-9B (dense) | 40 % | 65 % | – | – |
@@ -27,7 +27,7 @@ I asked questions about 14 official reports that no model could know. I let each
 
 Disclosure: I build Matrix, the app I measured in. I did not ask which model is cleverer. In my experience, people mostly use models of this size locally for RAG (retrieval-augmented generation: the model answers from passages a search hands it). Many organisations cannot send their documents to a cloud model.
 
-I measured in [Matrix](/projects/matrix/), my app for asking questions about your own documents. Matrix searches agentically: the model decides what to search for, reads the results, searches again if it needs to, and stops when it is done. The app does the fixed part (splitting, hybrid search, checking every quote against its source) and keeps a full trace of every answer. Matrix runs on macOS, iOS and Windows. The obvious objection is that it all comes down to my app. But both modes ran in the same app, one search up front and the agentic loop. So the finding is the loop against one search up front, not my app against others; it can be rebuilt with any agent framework, and appendix A describes the loop step by step.
+I measured in [Matrix](/projects/matrix/), my app for asking questions about your own documents. Matrix offers both modes, one-shot retrieval and agentic search. The app does the fixed part (splitting, hybrid search, checking every quote against its source) and keeps a full trace of every answer. Matrix runs on macOS, iOS and Windows. The obvious objection is that it all comes down to my app. But both modes ran in the same app. So the finding is agentic search against one-shot retrieval, not my app against others; it can be rebuilt with any agent framework, and appendix A describes agentic search step by step.
 
 The main set is 14 official reports from audit offices and accident investigation boards, in German and English. For the cross-check I used the Rogers Commission report on the Challenger accident, which is surely in every training set. MoE and 27B both ran as UD-IQ3_XXS (roughly 3 bits per weight) on llama.cpp, GPU only, thinking off. I scored every answer automatically; then model agents checked every answer again in a blind second review.
 
@@ -40,28 +40,28 @@ The main set is 14 official reports from audit offices and accident investigatio
 > Without search, MoE: "90–95 % of recipients; 40–50 % of financing, €15–17 billion" · Claude Opus 5.5: "cannot give exact figures"
 > With agentic search, MoE: every figure of the correct answer, e.g. "47 % of recipients, 14 % of financing".
 
-Everything below refers to the unknown reports; Challenger is in appendix B.
+Everything below refers to the unknown reports. Where I give Challenger numbers, I say so; Challenger without search is in appendix B.1.
 
 ## 2. The software around the model is the biggest lever
 
-**Letting the MoE search on its own adds 29 points over one search up front, more than the gap between any two models that search the same way.**
+**Agentic search adds 29 points for the MoE over one-shot retrieval, more than the gap between any two models that search the same way.**
 
-One search up front is the classic setup: hybrid search, a reranker, the top 5 passages, one answer. With it the MoE found 48 %, the 9B 40 % and the 4B 37 %. With the same software, a 4B and a 35B were 11 points apart. Searching on its own, even the dense 9B found 65 % (one run). On Challenger the 9B searching on its own found 68 %, the MoE with one search up front 45 %. On Challenger the MoE itself rose from 45 % with one search up front to 86 % searching on its own.
+One-shot retrieval is the classic setup: hybrid search, a reranker, the top 5 passages, one answer. With one-shot retrieval the MoE found 48 %, the 9B 40 % and the 4B 37 %. With the same software, a 4B and a 35B were 11 points apart. With agentic search, even the dense 9B found 65 % (one run). On Challenger the 9B with agentic search found 68 %, the MoE with one-shot retrieval 45 %. On Challenger the MoE itself rose from 45 % with one-shot retrieval to 86 % with agentic search.
 
 > **Example.** How high were the commitment credit for the programme renewal ZEMIS and its two tranches, by how much and when did the Federal Council cut the funds, and how high are the reserves against one project's extra need?
 > Correct answer: CHF 50.66 million; second tranche 28.66 million, first 22.00 million; cut of CHF 17.9 million on 28 January 2026; reserves 15.5 million against an extra need of 6.2 million.
-> MoE, one search up front: "The documents do not give the credit, tranches, date or reserves; they only mention a cut of 17.9 million."
+> MoE, one-shot retrieval: "The documents do not give the credit, tranches, date or reserves; they only mention a cut of 17.9 million."
 > MoE, agentic search: every figure of the correct answer, e.g. "cut 17.9 million on 28 January 2026; reserves 15.5 against 6.2 extra need".
 
 Small settings count too. A single default of the app, the number of hits per search, decided whether the 27B got all passages it needed for 77 % or for 89 % of the facts (seed 1337, section 4). The score did not show that. I only saw it in the trace Matrix keeps for every answer: over both seeds the 27B left the number at the default of 6 in 110 of 154 search calls, while the MoE asked for 10 in 115 of 147. Without the trace I would have compared search and reading as one number.
 
 ## 3. With good software, a 3B-active MoE is enough
 
-**With agentic search the MoE found 77 % and the dense 27B 78 %, and the MoE needed 22 seconds per question against 65.**
+**Both models used agentic search. The MoE (35B) found 77 % and the dense 27B, a model of similar size, 78 %; the MoE needed 22 seconds per question against 65.**
 
-On the 12 questions where neither model got full marks in any seed, the MoE found 47 % and the 27B 50 %. On Challenger they found 447 and 446 of 522 facts. An old rule of thumb from r/LocalLLaMA (2024) puts a MoE near a dense model with √(total × active) parameters, about 10B here. Qwen's model card puts the 35B-A3B close to their older dense Qwen3.5-27B on coding and agent benchmarks. A MoE at the level of the 27B does not behave like a 10B. The real difference is speed. The MoE reads the prompt about three times as fast and writes 131 against 44 tokens per second. An agentic loop rereads a growing prompt in every round, so that speed adds up.
+On the 12 questions where neither model got full marks in any seed, the MoE found 47 % and the 27B 50 %. On Challenger they found 447 and 446 of 522 facts. An old rule of thumb from r/LocalLLaMA (2024) puts a MoE near a dense model with √(total × active) parameters, about 10B here. Qwen's model card puts the 35B-A3B close to their older dense Qwen3.5-27B on coding and agent benchmarks. A MoE at the level of the 27B does not behave like a 10B. The real difference is speed. The MoE reads the prompt about three times as fast and writes 131 against 44 tokens per second. Agentic search rereads a growing prompt in every round, so that speed adds up.
 
-Dense models are far from gone. On Hugging Face, the most downloaded model of this class right now is a dense 27B (Qwen3.8), and across GGUF builds of 20–40B models dense and MoE are roughly level (last 30 days, 9 November 2026). For RAG on your own documents, I would still test the MoE with good search software first.
+Dense models are far from gone. On Hugging Face, the most downloaded model of this class right now is a dense 27B (Qwen3.8), (Hugging Face, last 30 days, 9 November 2026). For RAG on your own documents, I would still test the MoE with good search software first.
 
 ## 4. Three attempts to give the dense model a better chance, and one check
 
@@ -75,7 +75,7 @@ Dense models are far from gone. On Hugging Face, the most downloaded model of th
 
 **The reading edge.** Given the same passages, the 27B found 27 facts the MoE missed, and the MoE found 7 the 27B missed (unknown reports, p = 0.013; on Challenger 20 against 15, p = 0.27). The control run with 10 hits pointed the same way, 7 against 2, but within the noise. So the 27B reads slightly more precisely; the overall result does not change (appendix B.6).
 
-**Check: the 9B.** With the same agentic setup the dense 9B (Qwen3.5, one seed) falls clearly behind, 65 % against 77 %. So the task does separate models, and MoE and 27B are not level because the task is easy.
+**Check: the 9B.** With the same agentic search the dense 9B (Qwen3.5, one seed) falls clearly behind, 65 % against 77 %. So the task does separate models, and MoE and 27B are not level because the task is easy.
 
 ## 5. The frontier model is only a reference line
 
@@ -85,7 +85,7 @@ Dense models are far from gone. On Hugging Face, the most downloaded model of th
 
 My guess is that the benchmarks people look at mostly reward knowledge the model already has. On your own documents only searching and reading are left, and there the software decides.
 
-Everyone compares models, but here the software around them did much of the work. The MoE gained 29 points by searching on its own, and a dense 9B that searched on its own beat the MoE with one search up front. I suspect it is no different with coding agents. The engine roars and it is strong, but the gearbox decides just as much what gets onto the road, and so do the axle, the wheels and the rest.
+Everyone compares models, but here the software around them did much of the work. The MoE gained 29 points through agentic search, and a dense 9B with agentic search beat the MoE with one-shot retrieval. I suspect it is no different with coding agents. The engine roars and it is strong, but the gearbox decides just as much what gets onto the road, and so do the axle, the wheels and the rest.
 
 So, back to the start: how much of your agent's performance comes from the model, and how much from the software around it? And same size, MoE vs dense: what would you still pick the dense model for today? (A dense model with the full 35B would be slower still; whether it would also be better, I have not measured.)
 
@@ -109,7 +109,7 @@ There is no dense Qwen3.6 below 27B, so the 9B and 4B come from Qwen3.5, with a 
 
 ### A.2 Hardware
 
-The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan), AMD Ryzen 7 7800X3D, 95.1 GiB RAM, Windows 11 Pro (build 26200), graphics driver 32.0.32015.7029. The Mac mini M4 Pro with 24 GB I used for the hosted reference runs, building the index, the second review, a spot check of the app and the measurements of how much context the app picks (appendix C); none of the model comparisons ran on it.
+The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan), AMD Ryzen 7 7800X3D, 95.1 GiB RAM, Windows 11 Pro (build 26200), graphics driver 32.0.32015.7029. The Mac mini M4 Pro with 24 GB I used for the hosted reference runs, building the index, the second review, a spot check of the app and the measurements of how much context the app picks (appendix C). All scored model comparisons ran on the PC; on the Mac only the spot check in appendix C ran (five questions, scored automatically).
 
 ### A.3 Settings
 
@@ -119,15 +119,15 @@ The scored local runs ran on a PC with an AMD Radeon RX 7900 XTX (24 GB, Vulkan)
 | Reserve for the answer | 2,048 tokens |
 | KV cache | f16, flash attention on |
 | Sampling | temperature 0.7, top_p 0.9, top_k 40, repetition penalty 1.1 over the last 64 tokens; thinking off |
-| Seeds | 1337, 2 and 3 on Challenger; 1337 and 2 on the unknown reports and the reasoning questions; 1337 only for the 9B, the re-run and the control run |
+| Seeds | Challenger: 1337, 2 and 3 for MoE and 27B with agentic search and without search, 1337 for all other Challenger runs. Unknown reports: 1337 and 2 for MoE and 27B with agentic search, 1337 for without search, one-shot retrieval and the `auto` runs. Reasoning questions: 1337 and 2. 1337 only for the 9B with agentic search, the re-run, the control run and the Mac replay |
 | GPU | all layers on the card (`--gpu-only`); Vulkan integer dot product off (`GGML_VK_DISABLE_INTEGER_DOT_PRODUCT=1`), which the app does not set |
 | Search model | EmbeddingGemma 2, ONNX, 768 dimensions |
-| Reranker (one search up front only) | bge-reranker-v2-m3, ONNX on the CPU |
+| Reranker (one-shot retrieval only) | bge-reranker-v2-m3, ONNX on the CPU |
 
 ### A.4 Modes
 
 - **Without search:** the model only gets the question.
-- **One search up front:** one hybrid search with the question as written, a reranker picks 5 passages, the model answers from those. No tools.
+- **One-shot retrieval:** one hybrid search with the question as written, a reranker picks 5 passages, the model answers from those. No tools.
 - **Agentic search:** the model gets search tools and decides itself when and what to search, see A.5.
 - **Re-run after the fix** (attempt 2 in section 4): agentic, but the default number of hits is derived from the context window. Only MoE and 27B, unknown reports, seed 1337. Plus a control run with exactly 10 hits per search on 20 of the 39 questions.
 
@@ -145,9 +145,9 @@ The obvious objection is that the problem lies in my app, not in the model. I ex
 
 **How many hits.** If the model gives no `top_k`, the build used for the runs returns 6 hits (maximum 20). After the fix described in attempt 2 (section 4) the default is derived from the context window. How often each model sets the number itself is in section 4.
 
-**When the loop ends.** There is no limit on searches or rounds. The loop ends when the model answers without a tool call, or when the rest of the window is smaller than the largest result so far; then the model is told to answer. A round that brings no new section gets a stop hint telling the model to answer now. If the next round again brings nothing new, the loop ends.
+**When agentic search ends.** There is no limit on searches or rounds. Agentic search ends when the model answers without a tool call, or when the rest of the window is smaller than the largest result so far; then the model is told to answer. A round that brings no new section gets a stop hint telling the model to answer now. If the next round again brings nothing new, agentic search ends.
 
-**The comparison mode.** "One search up front" has no tools. One hybrid search runs with the question as written, the reranker (bge-reranker-v2-m3) picks 5 sections, and the model answers from those.
+**The comparison mode.** One-shot retrieval has no tools. One hybrid search runs with the question as written, the reranker (bge-reranker-v2-m3) picks 5 sections, and the model answers from those.
 
 **Trace, question N24** (unknown reports; the safety recommendations in the NTSB, MAIB and RAIB reports; original search setting, seed 1337):
 
@@ -183,7 +183,7 @@ One question is still an anecdote. Over all 39 questions the 27B finds slightly 
 
 ### A.6 Scoring
 
-Claude Opus 5.5 wrote the questions and gold facts from the documents. A separate check compared them with the documents again, and I froze them before the first local run. Part of the hosted reference ran on the checked but not yet committed sets; the number of facts per question in those runs matches the commit, so nothing that affects the scoring changed afterwards. Every gold fact carries a verbatim quote, and a script found all of them in the documents. I scored each answer per fact twice. First a script matched each fact with its spelling variants. Then model agents read all 1,439 different answers in a blind second review, one reviewer per answer. Each reviewer saw the question, the gold facts with their quotes and the answers, but not the model or the run. The reviewers were model agents, one per bundle of answers, 18 bundles. All scores in this post are from the second review, except the five questions on the busy Mac in appendix C, which only the script scored. With search, the two scores differed little (on Challenger by at most 11 facts per run); without search the automatic check counted far too many (54 against 18 for the MoE on Challenger), because right numbers turned up in the wrong context.
+Claude Opus 5.5 wrote the questions and gold facts from the documents. A separate check compared them with the documents again, and I froze them before the first local run. Part of the hosted reference ran on the checked but not yet committed sets; the number of facts per question in those runs matches the commit, so nothing that affects the scoring changed afterwards. Every gold fact carries a verbatim quote, and a script found all of them in the documents. I scored each answer per fact twice. First a script matched each fact with its spelling variants. Then model agents read all 1,439 different answers in a blind second review: one agent per bundle of answers, 18 bundles, so each answer had one reviewer. Each reviewer saw the question, the gold facts with their quotes and the answers, but not the model or the run. All scores in this post are from the second review, except the five questions on the busy Mac in appendix C, which only the script scored. With search, the two scores differed little for MoE and 27B (on Challenger by at most 11 facts per run); for the 9B on Challenger the automatic check counted 14 facts more (13 key facts); without search the automatic check counted far too many (54 against 18 for the MoE on Challenger), because right numbers turned up in the wrong context.
 
 The second review has its own limits. With one reviewer per answer, the spread between reviewers is not measured. It was not completely blind either: local answers often show traces of reasoning and the hosted ones an evidence list, which gives away the style, if not the model. And the reviewer checked against the gold and its quotes, not against the whole document; wherever an answer contradicted the gold, I checked the gold against the source text, and the gold was right in every case.
 
@@ -191,8 +191,10 @@ The second review has its own limits. With one reviewer per answer, the spread b
 
 | Numbers | App build | Search setting |
 |---|---|---|
-| Main table, sections 1 to 5 except the re-run and control run, appendix B | e728647a (Challenger), 9c065f9d (unknown reports) | original: default of 6 hits |
-| Reference line (Claude Opus 5.5) | c2bd30df and e728647a | original |
+| Challenger, MoE and 27B with agentic search and without search | e728647a | original: default of 6 hits |
+| Challenger with one-shot retrieval; 9B with agentic search (both sets); unknown reports (main table, sections 1 to 5 except the re-run and control run); reasoning questions | 9c065f9d | original: default of 6 hits |
+| Reference line (Claude Opus 5.5) | c2bd30df (Challenger H1–H19) and e728647a (Challenger H20–H29, unknown reports) | original |
+| Reference runs on sets R and F (in the zip, appendix E) | 3c2436a2 without search, c2bd30df with search | original |
 | Re-run (attempt 2) | 41b05c59 | hits derived from the context window; the same build also softened the stop hint and changed the hit headers |
 | Control run with 10 hits (attempt 2), Mac windows replayed (appendix C) | 2c5e0869 | exactly 10 hits / derived from the window |
 
@@ -208,11 +210,11 @@ The second review has its own limits. With one reviewer per answer, the spread b
 | Qwen3.5-4B | – | 0 % |
 | Claude Opus 5.5 (reference) | 2 % | 47 % |
 
-### B.2 One search up front against agentic search
+### B.2 One-shot retrieval against agentic search
 
-The reranker is bge-reranker-v2-m3. The agentic loop has none, so if anything the comparison favours the single search.
+The reranker is bge-reranker-v2-m3. Agentic search has none, so if anything the comparison favours one-shot retrieval.
 
-| Unknown reports | One search up front | Agentic |
+| Unknown reports | One-shot retrieval | Agentic |
 |---|---|---|
 | Qwen3.6-35B-A3B | 48 % | 77 % |
 | Qwen3.5-9B | 40 % | 65 % |
@@ -251,7 +253,7 @@ The levels have 15, 17 and 11 facts. On level 1 the two seeds of the MoE alone d
 
 > **A calculation question (attempt 3).** How many marine special areas of conservation and special protection areas are there, with their areas, and by how many sites and how many km² does their simple sum exceed the marine Natura 2000 network?
 > Correct answer: sums of 4,078 sites and 741,193 km², which exceed the network of 3,648 sites and 525,853 km² by 430 sites and 215,340 km².
-> MoE and 27B, agentic, both seeds: "exceeds the network by 430 sites and 215,340 km²" · 9B, one search up front: "These figures do not exceed the network; they are components of it." · Claude Opus 5.5: the same figures as MoE and 27B
+> MoE and 27B, agentic, both seeds: "exceeds the network by 430 sites and 215,340 km²" · 9B, one-shot retrieval: "These figures do not exceed the network; they are components of it." · Claude Opus 5.5: the same figures as MoE and 27B
 
 ### B.6 Where the two differ
 
@@ -365,7 +367,7 @@ Note: RH 2026/34 is stored on the server as `2026_24_Aufbauplan-2032.pdf`. Open 
 
 ### D.2 Questions
 
-All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from (German notes for the German questions). Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). For publication, personal names were replaced by roles in 23 questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
+All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions, and German also for the English questions D3, D4, D5, D9, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Two questions (D7, N13) are withheld from the downloads because their details point to identifiable individuals. For publication, personal names were replaced by roles in 23 questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
 
 #### Set R - Challenger, first set (20 questions)
 
@@ -795,12 +797,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (7):** 43 gebarungsfälle | 2,68 | elf gebarungsfälle | 32 mangelhaft | 15 der 32 | 17 der 32 | 730.000
 **Location:** RH 2026/31 (line 434, 445, 5051, 5053)
 
-##### N13 (de, multi)
-**Question:** Ein ehemaliger Vorsitzender einer politischen Partei erbrachte Beratungsleistungen für Bundesministerien. Wie viel erhielt er insgesamt, auf welchen Betrag (inkl. USt) stiegen die Aufwendungen des Bildungsministeriums, welchen Tagsatz verrechnete er gegenüber dem Satz, den das Bildungsministerium selbst als üblich nannte, und was hatte eine parlamentarische Anfragebeantwortung zu Zahl und Volumen der Aufträge angegeben?
-**Gold:** Insgesamt erhielt er von drei Bundesministerien 211.607 EUR. Die Aufwendungen des Bildungsministeriums stiegen auf 164.862 EUR inkl. USt (137.385 EUR exkl. USt). Er verrechnete einen Tagsatz von 5.280 EUR, während laut Bildungsministerium für Organisationsentwicklung üblicherweise 1.840 EUR (inkl. USt) anfielen. Die Anfragebeantwortung (6902/AB vom 16. August 2021) nannte zwei Aufträge mit insgesamt rd. 120.000 EUR; laut RH bestand allein die Projektbegleitung „Lehrpläne NEU“ aus drei Einzelaufträgen (164.862 EUR inkl. USt), dazu kamen zwei Vorträge.
-**Key facts (6):** 211.607 | 164.862 | 5.280 | 1.840 | 120.000 | zwei aufträge
-**Location:** RH 2026/31 (line 5080, 5180, 5236, 5173, 5077, 5076)
-
 ##### N14 (de, number)
 **Question:** Wie hoch war der Verpflichtungskredit für das Programm Erneuerung ZEMIS, wie viel betrug die zweite Tranche und – rechnerisch – die erste? Um wie viel kürzte der Bundesrat die Mittel im Entwicklungsrahmen 2027–2028 und an welchem Tag? Wie hoch sind die Reserven in der Kostenplanung von 2024, und welcher Mehrbedarf eines einzelnen Projekts stand ihnen zum Prüfungszeitpunkt gegenüber?
 **Gold:** Der Bundesrat bewilligte 2022 einen Verpflichtungskredit von 50,66 Mio. Franken; die zweite und letzte Tranche (Dezember 2024) betrug 28,66 Mio., die erste somit 22,00 Mio. Franken. Am 28. Januar 2026 (Entlastungspaket 2027) kürzte der Bundesrat die Zuweisung von 69,7 auf 51,8 Mio. Franken, also um 17,9 Mio. Die Gesamtkosten von 193 Mio. Franken enthalten Reserven von 15,5 Mio.; allein das Projekt Digital@AIG wies einen Mehrbedarf von 6,2 Mio. Franken aus.
@@ -997,12 +993,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (5):** 40.500 | 14.500 | 82.313 | zweites halbjahr 2026 | inbetriebnahme 2027
 **Location:** RH 2026/34 line 3813–3817, 3833, 3851
 
-##### D7 (de, reason-2)
-**Question:** Der RH schreibt, die Leitung des Projekts „Jailshop“ des Justizministeriums habe ein Mitglied des Bundesrats (DIE GRÜNEN) innegehabt; das Justizministerium hält in seiner Stellungnahme entgegen, zum Zeitpunkt der Beauftragung sei der Projektleiter kein Mitglied des Bundesrates gewesen. Wie lassen sich beide Aussagen vereinbaren? Wann endete sein Bundesratsmandat vor der Beauftragung, seit welchem Tag war er wieder Mitglied des Bundesrats, und seit welchem Tag war er Projektleiter und zugleich Bundesrat für DIE GRÜNEN?
-**Gold:** Beides stimmt: Mandat endete 23.11.2015, Beauftragung Ende 2017 fiel in die Lücke; ab 23.10.2019 wieder Bundesrat (ohne Fraktion), ab 20.12.2019 für DIE GRÜNEN, bis zum Ende der Projektleitung im April 2024 gleichzeitig.
-**Key facts (3):** 23. oktober 2019 | 20. dezember 2019 | 23. november 2015
-**Location:** RH 2026/31 line 5379 (RH), line 5508 (Stellungnahme)
-
 ##### D8 (de, reason-2)
 **Question:** Laut RH-Bericht zum Ausgleichstaxfonds legte das Sozialministerium die Höhe des jährlichen Mobilitätszuschusses für Menschen mit Behinderungen jedes Jahr neu fest. Wie hoch war der Zuschuss im Jahr 2022, rechnerisch aus den Angaben des Berichts hergeleitet? Um wie viel EUR und um wie viel Prozent wurde er im Juli 2025 gegenüber 2024 gekürzt, und um wie viel EUR lag er danach unter dem Betrag von 2022?
 **Gold:** 638 / 1,10 = 580 EUR (2022); Kürzung 697 → 335 = 362 EUR = 51,9 %; 580 − 335 = 245 EUR unter 2022.
@@ -1039,16 +1029,16 @@ All files are under `/software-vs-model/`. The CSV files have one row per questi
 | [runs7_A-d27-N-ag-s1337.csv](/software-vs-model/runs7_A-d27-N-ag-s1337.csv), [runs7_A-d27-N-ag-s2.csv](/software-vs-model/runs7_A-d27-N-ag-s2.csv) | unknown reports, agentic, 27B, per seed | on request |
 | [runs8_A-d9-N-ag-s1337.csv](/software-vs-model/runs8_A-d9-N-ag-s1337.csv) | unknown reports, agentic, 9B | on request |
 | [runs7_B-moe-N-noret-s1337.csv](/software-vs-model/runs7_B-moe-N-noret-s1337.csv), [runs7_B-d27-N-noret-s1337.csv](/software-vs-model/runs7_B-d27-N-noret-s1337.csv) | unknown reports, without search, MoE and 27B | – |
-| [runs7_K-moe-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-N-classic-rr-s1337.csv), [runs7_K-d9-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-N-classic-rr-s1337.csv), [runs7_K-d4-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-N-classic-rr-s1337.csv) | unknown reports, one search up front, MoE, 9B, 4B | – |
+| [runs7_K-moe-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-N-classic-rr-s1337.csv), [runs7_K-d9-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-N-classic-rr-s1337.csv), [runs7_K-d4-N-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-N-classic-rr-s1337.csv) | unknown reports, one-shot retrieval, MoE, 9B, 4B | – |
 | [hosted_berichte26_direct.csv](/software-vs-model/hosted_berichte26_direct.csv), [hosted_berichte26_N30-direct.csv](/software-vs-model/hosted_berichte26_N30-direct.csv), [hosted_berichte26_tools.csv](/software-vs-model/hosted_berichte26_tools.csv), [hosted_berichte26_N30-tools.csv](/software-vs-model/hosted_berichte26_N30-tools.csv) | unknown reports, Claude Opus 5.5, without search and agentic (N1–N29 and N30–N39) | [N30–N39](/software-vs-model/hosted_berichte26_N30-tools.jsonl) |
 | [runs9_A-moe-N-ag-s1337.csv](/software-vs-model/runs9_A-moe-N-ag-s1337.csv), [runs9_A-d27-N-ag-s1337.csv](/software-vs-model/runs9_A-d27-N-ag-s1337.csv) | re-run after the fix, MoE and 27B | on request |
 | [runs10_K-moe-Nodd-top10-s1337.csv](/software-vs-model/runs10_K-moe-Nodd-top10-s1337.csv), [runs10_K-d27-Nodd-top10-s1337.csv](/software-vs-model/runs10_K-d27-Nodd-top10-s1337.csv) | control run, exactly 10 hits, 20 questions | on request |
 | [runs10_M-moe-N-mac-s1337.csv](/software-vs-model/runs10_M-moe-N-mac-s1337.csv), [runs10_M-moe-H-mac-s1337.csv](/software-vs-model/runs10_M-moe-H-mac-s1337.csv), [runs10_M-d27-N-mac-s1337.csv](/software-vs-model/runs10_M-d27-N-mac-s1337.csv), [runs10_M-d27-H-mac-s1337.csv](/software-vs-model/runs10_M-d27-H-mac-s1337.csv) | Mac windows replayed on the PC, 15 questions | on request |
 | [runs8_A-moe-D-ag-s1337.csv](/software-vs-model/runs8_A-moe-D-ag-s1337.csv), [runs8_A-moe-D-ag-s2.csv](/software-vs-model/runs8_A-moe-D-ag-s2.csv), [runs8_A-d27-D-ag-s1337.csv](/software-vs-model/runs8_A-d27-D-ag-s1337.csv), [runs8_A-d27-D-ag-s2.csv](/software-vs-model/runs8_A-d27-D-ag-s2.csv) | reasoning questions, per model and seed | on request |
 | [runs6_A-moe-H-ag-s1337.csv](/software-vs-model/runs6_A-moe-H-ag-s1337.csv), [runs6_A-moe-H-ag-s2.csv](/software-vs-model/runs6_A-moe-H-ag-s2.csv), [runs6_A-moe-H-ag-s3.csv](/software-vs-model/runs6_A-moe-H-ag-s3.csv), [runs6_A-d27-H-ag-s1337.csv](/software-vs-model/runs6_A-d27-H-ag-s1337.csv), [runs6_A-d27-H-ag-s2.csv](/software-vs-model/runs6_A-d27-H-ag-s2.csv), [runs6_A-d27-H-ag-s3.csv](/software-vs-model/runs6_A-d27-H-ag-s3.csv), [runs8_A-d9-H-ag-s1337.csv](/software-vs-model/runs8_A-d9-H-ag-s1337.csv) | Challenger, agentic, per model and seed | on request |
-| [per-run-csv.zip](/software-vs-model/per-run-csv.zip) | 17 further per-run CSVs: sets R and F (MoE and 27B), the Challenger runs with traps and other Claude Opus 5.5 variants, the runs with the context window chosen by the app (`auto`; answers byte-identical to the fixed-context run with the same seed), one search up front on set R | – |
+| [per-run-csv.zip](/software-vs-model/per-run-csv.zip) | 17 further per-run CSVs: sets R and F (MoE and 27B), the Challenger runs with traps and other Claude Opus 5.5 variants, the runs with the context window chosen by the app (`auto`; answers byte-identical to the fixed-context run with the same seed), one-shot retrieval on set R | – |
 | [hosted_berichte26_N30-direct.jsonl](/software-vs-model/hosted_berichte26_N30-direct.jsonl), [runs7_G-moe-N-ag-auto-s1337.jsonl](/software-vs-model/runs7_G-moe-N-ag-auto-s1337.jsonl) | traces: Claude Opus 5.5 without search (N30–N39), MoE with the context window chosen by the app | – |
-| [runs7_K-moe-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-H-classic-rr-s1337.csv), [runs7_K-d9-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-H-classic-rr-s1337.csv), [runs7_K-d4-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-H-classic-rr-s1337.csv) | Challenger, one search up front, MoE, 9B, 4B | – |
+| [runs7_K-moe-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-H-classic-rr-s1337.csv), [runs7_K-d9-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-H-classic-rr-s1337.csv), [runs7_K-d4-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-H-classic-rr-s1337.csv) | Challenger, one-shot retrieval, MoE, 9B, 4B | – |
 | [runs6_B-moe-H-noret-s1337.csv](/software-vs-model/runs6_B-moe-H-noret-s1337.csv), [runs6_B-moe-H-noret-s2.csv](/software-vs-model/runs6_B-moe-H-noret-s2.csv), [runs6_B-moe-H-noret-s3.csv](/software-vs-model/runs6_B-moe-H-noret-s3.csv), [runs6_B-d27-H-noret-s1337.csv](/software-vs-model/runs6_B-d27-H-noret-s1337.csv), [runs6_B-d27-H-noret-s2.csv](/software-vs-model/runs6_B-d27-H-noret-s2.csv), [runs6_B-d27-H-noret-s3.csv](/software-vs-model/runs6_B-d27-H-noret-s3.csv), [runs6_E-d9-H-noret-s1337.csv](/software-vs-model/runs6_E-d9-H-noret-s1337.csv), [runs6_E-d4-H-noret-s1337.csv](/software-vs-model/runs6_E-d4-H-noret-s1337.csv) | Challenger, without search, per model | – |
 | [hosted_challenger_H-direct.csv](/software-vs-model/hosted_challenger_H-direct.csv), [hosted_challenger_H20-direct-v3.csv](/software-vs-model/hosted_challenger_H20-direct-v3.csv), [hosted_challenger_H-tools.csv](/software-vs-model/hosted_challenger_H-tools.csv), [hosted_challenger_H20-tools-v3.csv](/software-vs-model/hosted_challenger_H20-tools-v3.csv) | Challenger, Claude Opus 5.5, without search and agentic (H1–H19 and H20–H29) | on request |
 
@@ -1060,11 +1050,11 @@ Traces for the remaining runs contain personal names quoted from the source docu
 
 - Rule of thumb √(total × active): first seen in a r/LocalLLaMA post from 28 March 2024, [Geometric Mean Prediction of MoE performance seems to hold up consistently](https://www.reddit.com/r/LocalLLaMA/comments/1bqa96t/geometric_mean_prediction_of_moe_performance/).
 - Qwen's benchmark comparison of Qwen3.6-35B-A3B with the dense Qwen3.5-27B: [model card](https://huggingface.co/Qwen/Qwen3.6-35B-A3B).
-- Downloads of 20–40B models, last 30 days, queried through the Hugging Face API on 9 November 2026: the most downloaded model is a dense 27B (Qwen3.8); across GGUF builds dense and MoE are roughly level.
+- Downloads of 20–40B models, last 30 days, queried through the Hugging Face API on 9 November 2026: the most downloaded model is a dense 27B (Qwen3.8).
 - The view that the dense 27B is better and the 35B-A3B faster: e.g. the discussion on [Qwen 3.6 27B is the sweet spot for local development](https://news.ycombinator.com/item?id=48721903).
 
 Default number of hits in other frameworks, read from the source code on 9 November 2026:
-- LangChain: `similarity_search(query, k=4)`, and `create_retriever_tool` only offers the query to the model ([vectorstores/base.py](https://github.com/langchain-ai/langchain/blob/a063ec26dd21678069d3b3d44770dffcff2b60f0/libs/core/langchain_core/vectorstores/base.py#L362), [tools/retriever.py](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/tools/retriever.py#L25)).
-- LlamaIndex: `DEFAULT_SIMILARITY_TOP_K = 2`, and `QueryEngineTool` takes a single input string ([constants.py](https://github.com/run-llama/llama_index/blob/b517486f24c2d9a23a62d53a6c33e8888db0a37b/llama-index-core/llama_index/core/constants.py#L12), [tools/types.py](https://github.com/run-llama/llama_index/blob/main/llama-index-core/llama_index/core/tools/types.py#L17)).
+- LangChain: `similarity_search(query, k=4)`, and `create_retriever_tool` only offers the query to the model ([vectorstores/base.py](https://github.com/langchain-ai/langchain/blob/a063ec26dd21678069d3b3d44770dffcff2b60f0/libs/core/langchain_core/vectorstores/base.py#L362), [tools/retriever.py](https://github.com/langchain-ai/langchain/blob/19af93964f4efff09a5bfa467deba76227ea9fa0/libs/core/langchain_core/tools/retriever.py#L25)).
+- LlamaIndex: `DEFAULT_SIMILARITY_TOP_K = 2`, and `QueryEngineTool` takes a single input string ([constants.py](https://github.com/run-llama/llama_index/blob/b517486f24c2d9a23a62d53a6c33e8888db0a37b/llama-index-core/llama_index/core/constants.py#L12), [tools/types.py](https://github.com/run-llama/llama_index/blob/fe107aab65e46d1d07c80663182691970417bbd9/llama-index-core/llama_index/core/tools/types.py#L17)).
 - Haystack: `top_k=10` in the in-memory embedding retriever; `run()` accepts `top_k`, but I did not check whether a tool built from it passes that on to the model ([embedding_retriever.py](https://github.com/deepset-ai/haystack/blob/b3d1fbdca2a0bc849271ed1104b543c511472eb9/haystack/components/retrievers/in_memory/embedding_retriever.py#L55)).
-- Open WebUI: `RAG_TOP_K` 10; the built-in tool `query_knowledge_files(query, knowledge_ids=None, count=5)` lets the model set `count`, capped by that setting ([config.py](https://github.com/open-webui/open-webui/blob/97ca2144be4ff5509e9f985a39fbccdf7319bf35/backend/open_webui/config.py#L957), [tools/builtin.py](https://github.com/open-webui/open-webui/blob/main/backend/open_webui/tools/builtin.py#L3346)).
+- Open WebUI: `RAG_TOP_K` 10; the built-in tool `query_knowledge_files(query, knowledge_ids=None, count=5)` lets the model set `count`, capped by that setting ([config.py](https://github.com/open-webui/open-webui/blob/97ca2144be4ff5509e9f985a39fbccdf7319bf35/backend/open_webui/config.py#L957), [tools/builtin.py](https://github.com/open-webui/open-webui/blob/b0e6098e940942281d9c83f3529ea117287a3a22/backend/open_webui/tools/builtin.py#L3346)).
