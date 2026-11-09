@@ -1,4 +1,4 @@
-lauf,modell,bestand,betriebsart,seed,app_stand,frage_id,fakten_gesamt,fakten_automatisch,fakten_gegengelesen,falle_automatisch,falle_gegengelesen,suchaufrufe,top_k_je_suche,hoechster_prompt_tokens,zeit_s,stop_reason,kontext_tokens,feste_trefferzahl
+run,model,corpus,mode,seed,app_version,question_id,facts_total,facts_automatic,facts_cross_checked,trap_automatic,trap_cross_checked,search_calls,top_k_per_search,max_prompt_tokens,time_s,stop_reason,context_tokens,fixed_hit_count
 runs6/A-d27-H-ag-s2,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentisch,2,app e728647a / core 3475bae,H1,4,4,4,,,2,-;-,18218,46.017,model_done,159744,
 runs6/A-d27-H-ag-s2,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentisch,2,app e728647a / core 3475bae,H2,7,7,7,,,1,10,16723,58.425,model_done,159744,
 runs6/A-d27-H-ag-s2,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentisch,2,app e728647a / core 3475bae,H3,6,6,6,,,1,10,16449,32.138,model_done,159744,

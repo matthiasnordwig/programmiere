@@ -1,4 +1,4 @@
-lauf,modell,bestand,betriebsart,seed,app_stand,frage_id,fakten_gesamt,fakten_automatisch,fakten_gegengelesen,falle_automatisch,falle_gegengelesen,suchaufrufe,top_k_je_suche,hoechster_prompt_tokens,zeit_s,stop_reason,kontext_tokens,feste_trefferzahl
+run,model,corpus,mode,seed,app_version,question_id,facts_total,facts_automatic,facts_cross_checked,trap_automatic,trap_cross_checked,search_calls,top_k_per_search,max_prompt_tokens,time_s,stop_reason,context_tokens,fixed_hit_count
 berichte26/hosted-N30-direct,"Claude (gehostet über Proxy, Antworten von einem Claude-Agenten)",berichte26,ohne Suche,,app e728647a,N30,9,0,0,,,0,,,13.339,,,
 berichte26/hosted-N30-direct,"Claude (gehostet über Proxy, Antworten von einem Claude-Agenten)",berichte26,ohne Suche,,app e728647a,N31,6,0,0,,,0,,,538.775,,,
 berichte26/hosted-N30-direct,"Claude (gehostet über Proxy, Antworten von einem Claude-Agenten)",berichte26,ohne Suche,,app e728647a,N32,10,1,0,,,0,,,15.603,,,
