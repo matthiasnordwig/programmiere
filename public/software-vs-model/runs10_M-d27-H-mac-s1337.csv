@@ -1,0 +1,6 @@
+run,model,corpus,mode,seed,app_version,question_id,facts_total,facts_automatic,facts_cross_checked,trap_automatic,trap_cross_checked,search_calls,top_k_per_search,max_prompt_tokens,time_s,stop_reason,context_tokens,fixed_hit_count
+runs10/M-d27-H-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentic,1337,app 2c5e0869 / core ae48c23,H6,5,5,5,,,1,-,9796,26.624,model_done,40960,
+runs10/M-d27-H-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentic,1337,app 2c5e0869 / core ae48c23,H10,6,6,6,,,3,5;5;5,15278,43.541,model_done,40960,
+runs10/M-d27-H-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentic,1337,app 2c5e0869 / core ae48c23,H20,6,2,2,,,1,5,7452,34.506,model_done,40960,
+runs10/M-d27-H-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentic,1337,app 2c5e0869 / core ae48c23,H23,6,5,5,,,2,5;5,10927,50.094,model_done,40960,
+runs10/M-d27-H-mac-s1337,Qwen3.6-27B-UD-IQ3_XXS,challenger,agentic,1337,app 2c5e0869 / core ae48c23,H27,8,8,8,,,4,3;3;3;3,12660,37.99,model_done,40960,

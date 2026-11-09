@@ -1,0 +1,11 @@
+run,model,corpus,mode,seed,app_version,question_id,facts_total,facts_automatic,facts_cross_checked,trap_automatic,trap_cross_checked,search_calls,top_k_per_search,max_prompt_tokens,time_s,stop_reason,context_tokens,fixed_hit_count
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H20,6,6,6,,,1,10,16305,53.804,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H21,8,8,8,,,1,10,17530,49.252,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H22,6,6,6,,,1,10,16113,42.15,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H23,6,6,6,,,1,10,17068,66.496,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H24,8,8,8,,,1,10,15914,52.835,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H25,8,7,8,,,1,12,16780,50.312,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H26,9,9,9,,,1,12,16864,47.81,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H27,8,8,8,,,1,12,16967,62.917,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H28,7,7,7,not_refused,correct,2,10;5,20218,64.045,model_done,,
+hosted-H20-tools-v3,"Claude (hosted via proxy, answers written by a Claude agent)",challenger,agentic,,app e728647a,H29,7,7,7,not_refused,correct,1,10,16038,48.723,model_done,,
