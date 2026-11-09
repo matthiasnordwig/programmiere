@@ -69,7 +69,7 @@ Dense models are far from gone. On Hugging Face, the most downloaded of the 20�
 
 **1. Questions that need reasoning.** I had Claude Opus 5.5 write 11 new questions around the hypothesis that the dense model reasons better. The MoE found 81 % and the 27B 83 %, and the dense model's lead did not grow with the number of reasoning steps (2 seeds; levels in appendix B.4). With 11 questions this rules out a large gap, not a small one.
 
-**2. A wider search for the 27B.** The 27B took the default of 6 hits, so it got all passages needed for fewer facts than the MoE (77 % against 88 %, seed 1337). So I made the default follow the context window. Now the 27B got all passages for 89 % of the facts instead of 77 % (same seed). The scores barely moved: the MoE went from 179 to 190, the 27B from 180 to 189 of 233 (one seed, within the noise; that build also changed the stop hint and the hit headers). For the 27B the wider default doubled the run time and raised the answers with invented details from 4 to 16. In a control run I gave both models exactly 10 hits on 20 questions. The MoE found 91 and the 27B 93 of 114 facts. So 10 hits are enough, and with the same search the two are level.
+**2. A wider search for the 27B.** The 27B took the default of 6 hits, so it got all passages needed for fewer facts than the MoE (77 % against 88 %, seed 1337). So I made the default follow the context window. Now the 27B got all passages for 89 % of the facts instead of 77 % (same seed). The scores barely moved: the MoE went from 179 to 190, the 27B from 180 to 189 of 233 (one seed, within the noise; five of the 27B's answers ran into the 2,048-token answer reserve and were cut off, the MoE had one; that build also changed the stop hint and the hit headers). For the 27B the wider default doubled the run time and raised the answers with invented details from 4 to 16. In a control run I gave both models exactly 10 hits on 20 questions. The MoE found 91 and the 27B 93 of 114 facts. So 10 hits are enough, and with the same search the two are level.
 
 **3. Question types.** On the unknown reports the 27B tends to do better on calculated or counted facts (23.0 against 20.0 of 41), the MoE on facts from one section (143.0 against 141.0 of 161). Both differences lie within the noise. In total the 27B found 182.5 and the MoE 178.5 of 233 facts, averaged over two seeds.
 
@@ -79,7 +79,7 @@ Dense models are far from gone. On Hugging Face, the most downloaded of the 20�
 
 ## 5. The frontier model is only a reference line
 
-**Claude Opus 5.5 found 90 % with the same tools, 13.5 points above the MoE.** Claude Opus 5.5 also wrote the questions and gold answers, so this line shares their blind spots and is no neutral benchmark. Its window held only 32,768 tokens, so its score, if anything, comes out too low. Only errors in the gold can affect the comparison of MoE and 27B, and those errors hit both models in the same way.
+**Claude Opus 5.5 found 90 % with the same tools, 13.5 points above the MoE.** Claude Opus 5.5 also wrote the questions and gold answers, so this line shares their blind spots and is no neutral benchmark. Its window held only 32,768 tokens, so its score, if anything, comes out too low. Only errors in the gold can affect the comparison of MoE and 27B; they should hit both models alike, and the recheck in A.6 found no gold errors.
 
 ## What this means
 
@@ -368,7 +368,7 @@ Note: RH 2026/34 is stored on the server as `2026_24_Aufbauplan-2032.pdf`. Open 
 
 ### D.2 Questions
 
-All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions of sets N and D, and German also for the English questions D3, D4, D5, D9, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Four questions (D7, D9, N13 and N23) are withheld from the downloads and from this list because their details point to identifiable individuals or to victims of accidents. For publication, personal names were replaced by roles in 23 questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
+All questions with gold answer (or key facts), and where the answer is found. Key facts are the lexically scored facts; each fact has several accepted spellings, listed in full in [questions.json](/software-vs-model/questions.json) (scoring: lower-case, whitespace collapsed, substring match; key facts of the traps are listed where the right answer names the correct facts). Gold answers and locations are given in the language of the notes they come from: German for the German questions of sets N and D, and German also for the English questions D3, D4, D10 and D11 of set D. Locations: page numbers are those of the original report, `line` is the line number in the extracted text file of that document (reports 2026: no page numbers are used). Ten questions (D5, D7, D9, N13, N21, N22, N23, N27, N34 and N38) are withheld from the downloads and from this list because their details point to identifiable individuals or to victims of accidents, or to their health, family or training record. For publication, personal names were replaced by roles in the published questions (except the author of Appendix F); the runs used the original wording, which scores the same facts.
 
 #### Set R - Challenger, first set (20 questions)
 
@@ -724,7 +724,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set N - Reports 2026 (39 questions)
 
-*Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.*
 
 **Purpose:** Hard set over the 14 official reports of October-November 2026 (published after the training cut-off of the compared models). N1-N29 first; N30-N39 appended later and harder (enumerations and sums over five to ten reports). Traps (N25–N29, N36, N39) are false-premise questions. German questions for German reports, English for English ones.
 
@@ -842,18 +842,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (8):** 36 of the 38 | 31 of the 38 | sectoral | 29 of these 31 | 18 of 31 | 11 out of 31 | none of the sub-csrs are fully | belgium
 **Location:** ECA SR 29/2026 (line 846, 857, 900, 901, 903, 992)
 
-##### N21 (en, number)
-**Question:** In the NTSB report on the collision on Lake Erie, at what time did the collision occur, when did the USV pilot first learn of it and how many minutes later was that, when was sunset that day, and what were the damage estimates for each vessel and in total?
-**Gold:** The collision occurred about 1912 local time. The USV pilot (GLERL lead engineer) learned of it about 1946, when Coast Guard Sector Detroit called him – 34 minutes later (the report: over 30 minutes). Sunset was at 2039. Damage: about $186,000 to the uncrewed surface vessel (constructive total loss) and $100,000 to the recreational vessel Prestige 450, $286,000 in total.
-**Key facts (7):** 1912 | 1946 | 34 min | 2039 | 186,000 | 100,000 | 286,000
-**Location:** NTSB MIR-26/32 (line 537, 588, 2231, 1361, 2574)
-
-##### N22 (en, multi)
-**Question:** On Arvia during the night of 25 to 26 October 2025: when was the second permit to work for troubleshooting lift PL14 authorised, when did the transport team start work, and how long was the gap? At what time did the lift begin to move with the electro-technician in the shaft, when was he pronounced deceased and how many minutes later was that? What change was made to ship's time that night, and at what time?
-**Gold:** The new PTW was raised at 1850 and authorised by the 1ETO at 1855 on 25 October; the transport team started work at about 2220 – a gap of 3 hours 25 minutes. At 0552 the deck 11 doors closed and the lift began to move up; at 0607 the ET was pronounced deceased by the ship's doctor, 15 minutes later. At 0200 on 26 October the ship's clocks were retarded by one hour, from UTC+1 to UTC.
-**Key facts (8):** 1855 | 2220 | 3 hours 25 | 0552 | 0607 | 15 min | retarded | 0200
-**Location:** MAIB 20/2026 (line 574, 575, 627, 635, 582)
-
 ##### N24 (en, multi)
 **Question:** Across the four accident investigation reports in the collection (the NTSB report on Lake Erie, the two MAIB reports and the RAIB report), how many new safety recommendations are made in total, and to which organisations are they addressed, with how many each?
 **Gold:** Ten in total. NTSB: six – two to the US Coast Guard (M-26-03, M-26-04), three to NOAA (M-26-05 to M-26-07) and one to SeaTrac Systems, Inc. (M-26-08). MAIB 20/2026 (Arvia): one to Carnival UK Ltd (2026/159). MAIB 21/2026: two to Border Security Command (2026/160, 2026/161). RAIB 11/2026: one to the Bluebell Railway.
@@ -871,12 +859,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Gold:** Die Voraussetzung stimmt nicht: Statt acht erschienen neun Ausgaben (vier 2017, fünf weitere zwischen 2018 und 2021), und entgegen dem Werkvertrag (20.000 Stück) lag die Druckauflage der beiden letzten Ausgaben bei jeweils nur 1.000 Stück. Trotzdem zahlte das Ministerium das ursprünglich vereinbarte Entgelt von insgesamt 599.360 EUR; die letzte Zahlung erfolgte Ende 2020.
 **Key facts (3):** neun ausgaben | 1.000 stück | 599.360
 **Location:** RH 2026/31 (line 5648, 5606, 5639)
-
-##### N27 (en, trap)
-**Question:** Why did the third electro-technical officer hold the lift doors open on deck 11 while the electro-technician entered the lift shaft from deck 13?
-**Gold:** The premise is wrong twice. It was the staff electro-technical officer (SETO) who remained in the lift car holding the doors open; the 3ETO and the AET had gone back to their workshop. And there was no deck 13 on Arvia: the ET went up the stairs to deck 12, could not open the deck 12 landing doors, and then went to deck 14, where he opened the landing doors with his release key.
-**Key facts (3):** seto | no deck 13 | deck 14
-**Location:** MAIB 20/2026 (line 611, 513, 621)
 
 ##### N28 (en, trap)
 **Question:** Of the four member states the ECA visited on the spot for its special report on RRF support in public administration – Czechia, Germany, Greece and Italy – which achieved significant results for the largest share of its audited measures, and how many?
@@ -914,12 +896,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (8):** statt 7,50 | 3,50 mio | 3,00 mio | 11,50 | in summe 10 mio | gesellschaftsvermögen | 28,86 | 14,50
 **Location:** RH 2026/36 (line 4088, 1376, 1384, 4101, 4090, 4092, 4086, 1401)
 
-##### N34 (en, number)
-**Question:** Across the three marine casualty reports in the collection (the NTSB report on the Lake Erie collision, the MAIB report on Arvia and the MAIB report on migrant boat 512), how many persons were on board each vessel involved in the casualty according to the reports' casualty data, with Arvia split into passengers and crew? What is the total? By how many passengers was Arvia below the number of passengers she was authorised to carry? How many fatalities and injuries do the three reports record altogether?
-**Gold:** According to the casualty data, Arvia had 6,980 persons on board – 5,299 passengers and 1,681 crew – while she was authorised to carry 6,600 passengers, so she was 1,301 passengers below that number. Migrant boat 512 had 74 people on board. In the Lake Erie collision the USV was uncrewed (none on board) and the recreational vessel had 2 persons on board (the owner/operator and his nephew). In total that is 6,980 + 74 + 2 = 7,056 persons. The three reports record two fatalities in total (the electro-technician on Arvia and one occupant of migrant boat 512) and one minor injury (the recreational vessel's operator, foot).
-**Key facts (10):** 6,980 | 5,299 | 1,681 | 74 people | 2 (recreational | 7,056 | 6,600 | 1,301 | two fatalities | one minor injury
-**Location:** MAIB 20/2026 (line 455, 425, 411, 450); MAIB 21/2026 (line 538, 598, 518); NTSB MIR-26/32 (line 2581, 521, 2568, 266)
-
 ##### N35 (en, multi)
 **Question:** Which earlier accidents do the MAIB report on Arvia, the MAIB report on migrant boat 512 and the RAIB report on Sheffield Park each describe in their sections on previous or similar accidents (vessel or location, and year)? How many such earlier accidents are described across the three reports in total, and how many people died in them altogether, taking 'at least' figures as given?
 **Gold:** MAIB (Arvia) describes three similar lift accidents: British Mallard (27 January 2007, an electrical technician killed), MSC Colombia (8 August 2007, an electrical cadet killed) and Carnival Ecstasy (27 December 2015, the chief electrician killed). MAIB (migrant boat 512) describes two earlier migrant boat accidents in the Dover Strait: 24 November 2021, with at least 27 fatalities, and 14 December 2022, with at least eight fatalities. RAIB describes three previous occurrences: Loughborough Central in February 2006 (Great Central Railway, two staff with minor injuries, nobody died), Bronwydd Arms on the Gwili Railway in July 2006 (the guard later died) and Grosmont on the North Yorkshire Moors Railway in May 2012 (a guard fatally injured). That is eight earlier accidents in total, in which at least 40 people died (1 + 1 + 1 + 27 + 8 + 0 + 1 + 1).
@@ -938,12 +914,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Key facts (5):** 158 | 7 neue | 13 empfehlungen | 178 | alle sieben
 **Location:** RH 2026/31 (line 6614); RH 2026/32 (line 6025); RH 2026/33 (line 2851); RH 2026/34 (line 4479); RH 2026/36 (line 5462); EFK-25121 (line 636, 699, 731, 770, 898, 643, 705, 741, 781, 907); EFK-26272 (line 705, 867, 714, 875); ECA SR 24/2026 (line 417); ECA SR 25/2026 (line 303); ECA SR 29/2026 (line 492)
 
-##### N38 (en, number)
-**Question:** The three marine casualty reports state their times in different time standards. For the NTSB report on the Lake Erie collision, the MAIB report on Arvia and the MAIB report on migrant boat 512: which time standard does each report use, and what was the time of the casualty in UTC (for Arvia: when the lift began to move with the electro-technician in the shaft)? On Arvia, what was the authorisation time of the second permit to work on lift PL14 in UTC, and how much real time elapsed between that authorisation and the lift beginning to move?
-**Gold:** NTSB (Lake Erie): all times are eastern daylight time, which the casualty summary gives as coordinated universal time –4 hours; the collision at about 1912 EDT on 10 August 2024 was therefore at about 2312 UTC. MAIB Arvia: times are ship's time, which was UTC+1 until 0200 on 26 October 2025, when ship's time was retarded to UTC; the lift began to move at 0552 ship's time, i.e. 0552 UTC. MAIB migrant boat 512: all times are UTC, so the casualty on 9 September 2025 at about 1110 was at 1110 UTC. On Arvia the second permit to work was authorised at 1855 ship's time on 25 October, still UTC+1, i.e. 1755 UTC. From 1755 UTC to 0552 UTC the next morning is 11 hours 57 minutes – one hour more than the 10 hours 57 minutes the ship's clock times suggest, because the clocks went back at 0200.
-**Key facts (6):** 2312 utc | coordinated universal time –4 | 0552 utc | 1110 utc | 1755 utc | 11 hours 57
-**Location:** NTSB MIR-26/32 (line 2566, 357); MAIB 20/2026 (line 345, 627, 573, 574, 582); MAIB 21/2026 (line 371, 504)
-
 ##### N39 (de, trap)
 **Question:** Warum prüfte der Rechnungshof für seine Berichte zum Ausgleichstaxfonds und zum Gratis-Impfprogramm zwei verschiedene Bundesministerien, das Sozialministerium und das Gesundheitsministerium, und in welchem Monat nahm jedes der beiden Ministerien zum jeweiligen Prüfungsergebnis Stellung?
 **Gold:** Die Voraussetzung stimmt nicht: Es handelt sich um dasselbe Ministerium. Beide Berichte prüften beim Bundesministerium für Arbeit, Soziales, Gesundheit, Pflege und Konsumentenschutz; der RH nennt es im Bericht zum Ausgleichstaxfonds „Sozialministerium“, im Bericht zum Gratis-Impfprogramm „Gesundheitsministerium“. Bis 31. März 2025 hieß es Bundesministerium für Soziales, Gesundheit, Pflege und Konsumentenschutz. Zum im Februar 2026 übermittelten Prüfungsergebnis zum Ausgleichstaxfonds nahm es im Mai 2026 Stellung, zum im Juli 2026 übermittelten Ergebnis zum Impfprogramm im September 2026.
@@ -952,7 +922,7 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 #### Set D - Reports 2026, reasoning / fairness test (11 questions)
 
-*Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.*
+*Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.*
 
 **Purpose:** Reasoning set over the same 14 reports, used as the fairness test for the claim that a dense model beats an MoE model where several reasoning steps are needed on easily found text. reason-1: one step; reason-2: two to three steps in one report; reason-3: many steps across several reports.
 
@@ -979,12 +949,6 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 **Gold:** 12 = Wahrscheinlichkeit 3 × Schwere 4; GI028 verlangt Zusatzmaßnahmen, wenn der Score über 6 bleibt; 12 liegt 6 Punkte darüber (doppelt); Restrisiko nicht festgehalten.
 **Key facts (4):** as 12 | above 6 | by 6 | not recorded
 **Location:** RAIB 11/2026 line 949, 1032, 1077
-
-##### D5 (en, reason-2)
-**Question:** After the Arvia accident, Carnival UK introduced an interim requirement on lift safety training for personnel involved in lift maintenance. Measured on the day of the accident, which members of Arvia's electro-technical team named in the MAIB report would demonstrably have met it, judging by the training dates the report gives? How many days old was the relevant training of the AET and of the ET (the electro-technician who died), and how old was the SETO's? What about the 3ETO?
-**Gold:** Interimsregel: Grundschulung durch OEM oder Drittanbieter innerhalb der letzten 6 Monate. Am 26.10.2025 erfüllt nur der AET (3.8.2025 → 84 Tage); ET 12.4.2025 → 197 Tage (6 Monate 14 Tage); SETO 22.10.2023 → 735 Tage; 3ETO ohne Schulung; 1ETO ohne Datum.
-**Key facts (5):** only the aet | 84 days | 197 days | 2 years | had not completed any
-**Location:** MAIB 20/2026 line 445, 697, 700, 705, 712, 1337
 
 ##### D6 (de, reason-2)
 **Question:** Im RH-Bericht zur Umsetzbarkeit des Aufbauplans 2032+ ermittelte die Direktion 4 Logistik zusätzlichen Lagerraumbedarf an Palettenplätzen. Wie viele Palettenplätze Zusatzbedarf ergeben ihre beiden Angaben zusammen, wie viele davon blieben selbst nach Inbetriebnahme des Lagerprojekts mit dem frühesten geplanten Fertigstellungstermin offen, und wie viele Palettenplätze fehlten danach noch bis zu der Gesamtkapazität, die die Direktion 4 Logistik für die Verdoppelung der Lagerkapazität nannte? Wann sollten laut dem Zeitplan vom Jänner 2023 die Einlagerungen beginnen, und wann war die Inbetriebnahme dieses Projekts vorgesehen?
@@ -1014,11 +978,11 @@ All questions with gold answer (or key facts), and where the answer is found. Ke
 
 All files are under `/software-vs-model/`. The CSV files have one row per question with the facts found (automatic and from the second review), searches, `top_k` per search, the largest prompt, time, stop reason and context.
 
-Scores in this post include all questions; the downloads omit D7, D9, N13 and N23, so sums from the CSVs differ slightly.
+Scores in this post include all questions; the downloads omit D7, D9, D5, N13, N21, N22, N23, N27, N34 and N38, so sums from the CSVs differ slightly.
 
 | File | Content | Traces |
 |---|---|---|
-| [questions.json](/software-vs-model/questions.json) | 105 of the 109 questions (D7, D9, N13 and N23 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
+| [questions.json](/software-vs-model/questions.json) | 99 of the 109 questions (D5, D7, D9, N13, N21, N22, N23, N27, N34 and N38 withheld, see D.2; sets R, H, F, N and D) with gold facts and all accepted spellings (minus those that contained personal names); personal names replaced by roles | – |
 | [berichte26.csv](/software-vs-model/berichte26.csv), [challenger.csv](/software-vs-model/challenger.csv) | documents: title, publisher, date, original URL, licence, SHA256 of the text | – |
 | [runs7_A-moe-N-ag-s1337.csv](/software-vs-model/runs7_A-moe-N-ag-s1337.csv), [runs7_A-moe-N-ag-s2.csv](/software-vs-model/runs7_A-moe-N-ag-s2.csv) | unknown reports, agentic, MoE, per seed | on request |
 | [runs7_A-d27-N-ag-s1337.csv](/software-vs-model/runs7_A-d27-N-ag-s1337.csv), [runs7_A-d27-N-ag-s2.csv](/software-vs-model/runs7_A-d27-N-ag-s2.csv) | unknown reports, agentic, 27B, per seed | on request |
@@ -1032,7 +996,7 @@ Scores in this post include all questions; the downloads omit D7, D9, N13 and N2
 | [runs8_A-moe-D-ag-s1337.csv](/software-vs-model/runs8_A-moe-D-ag-s1337.csv), [runs8_A-moe-D-ag-s2.csv](/software-vs-model/runs8_A-moe-D-ag-s2.csv), [runs8_A-d27-D-ag-s1337.csv](/software-vs-model/runs8_A-d27-D-ag-s1337.csv), [runs8_A-d27-D-ag-s2.csv](/software-vs-model/runs8_A-d27-D-ag-s2.csv) | reasoning questions, per model and seed | on request |
 | [runs6_A-moe-H-ag-s1337.csv](/software-vs-model/runs6_A-moe-H-ag-s1337.csv), [runs6_A-moe-H-ag-s2.csv](/software-vs-model/runs6_A-moe-H-ag-s2.csv), [runs6_A-moe-H-ag-s3.csv](/software-vs-model/runs6_A-moe-H-ag-s3.csv), [runs6_A-d27-H-ag-s1337.csv](/software-vs-model/runs6_A-d27-H-ag-s1337.csv), [runs6_A-d27-H-ag-s2.csv](/software-vs-model/runs6_A-d27-H-ag-s2.csv), [runs6_A-d27-H-ag-s3.csv](/software-vs-model/runs6_A-d27-H-ag-s3.csv), [runs8_A-d9-H-ag-s1337.csv](/software-vs-model/runs8_A-d9-H-ag-s1337.csv) | Challenger, agentic, per model and seed | on request |
 | [per-run-csv.zip](/software-vs-model/per-run-csv.zip) | 17 further per-run CSVs: sets R and F (MoE and 27B), the Challenger runs with traps and other Claude Opus 5.5 variants, the runs with the context window chosen by the app (`auto`; answers byte-identical to the fixed-context run with the same seed), one-shot retrieval on set R | – |
-| [hosted_berichte26_N30-direct.jsonl](/software-vs-model/hosted_berichte26_N30-direct.jsonl), [runs7_G-moe-N-ag-auto-s1337.jsonl](/software-vs-model/runs7_G-moe-N-ag-auto-s1337.jsonl) | traces: Claude Opus 5.5 without search (N30–N39), MoE with the context window chosen by the app | – |
+| [hosted_berichte26_N30-direct.jsonl](/software-vs-model/hosted_berichte26_N30-direct.jsonl), [runs7_G-moe-N-ag-auto-s1337.jsonl](/software-vs-model/runs7_G-moe-N-ag-auto-s1337.jsonl) | traces: Claude Opus 5.5 without search (N30–N39, minus the withheld ones), MoE with the context window chosen by the app (4 questions) | – |
 | [runs7_K-moe-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-moe-H-classic-rr-s1337.csv), [runs7_K-d9-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d9-H-classic-rr-s1337.csv), [runs7_K-d4-H-classic-rr-s1337.csv](/software-vs-model/runs7_K-d4-H-classic-rr-s1337.csv) | Challenger, one-shot retrieval, MoE, 9B, 4B | – |
 | [runs6_B-moe-H-noret-s1337.csv](/software-vs-model/runs6_B-moe-H-noret-s1337.csv), [runs6_B-moe-H-noret-s2.csv](/software-vs-model/runs6_B-moe-H-noret-s2.csv), [runs6_B-moe-H-noret-s3.csv](/software-vs-model/runs6_B-moe-H-noret-s3.csv), [runs6_B-d27-H-noret-s1337.csv](/software-vs-model/runs6_B-d27-H-noret-s1337.csv), [runs6_B-d27-H-noret-s2.csv](/software-vs-model/runs6_B-d27-H-noret-s2.csv), [runs6_B-d27-H-noret-s3.csv](/software-vs-model/runs6_B-d27-H-noret-s3.csv), [runs6_E-d9-H-noret-s1337.csv](/software-vs-model/runs6_E-d9-H-noret-s1337.csv), [runs6_E-d4-H-noret-s1337.csv](/software-vs-model/runs6_E-d4-H-noret-s1337.csv) | Challenger, without search, per model | – |
 | [hosted_challenger_H-direct.csv](/software-vs-model/hosted_challenger_H-direct.csv), [hosted_challenger_H20-direct-v3.csv](/software-vs-model/hosted_challenger_H20-direct-v3.csv), [hosted_challenger_H-tools.csv](/software-vs-model/hosted_challenger_H-tools.csv), [hosted_challenger_H20-tools-v3.csv](/software-vs-model/hosted_challenger_H20-tools-v3.csv) | Challenger, Claude Opus 5.5, without search and agentic (H1–H19 and H20–H29) | on request |
