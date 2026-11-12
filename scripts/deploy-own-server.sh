@@ -32,7 +32,7 @@ node scripts/php-index.mjs dist
 chmod -R u=rwX,go=rX dist
 
 # Seiten-eigene Verzeichnisse: exakt spiegeln (inkl. Löschen entfernter Beiträge)
-for d in _astro writing projects cv null-device about badges software-vs-model; do
+for d in _astro writing projects cv null-device about badges software-vs-model video; do
   [ -d "dist/$d" ] || continue
   rsync -az $DRY --delete -e "$SSH" "dist/$d/" "$TARGET:$DOCROOT/$d/"
 done
