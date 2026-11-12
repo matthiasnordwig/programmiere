@@ -4,8 +4,10 @@
 .story .beat.alt { background: var(--surface); }
 .story .in { max-width: var(--w); margin: 0 auto; }
 .story .in.read { max-width: 46rem; }
-.story .split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+.story .split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; align-items: start; }
 @media (min-width: 920px) { .story .split { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.story .split > * { min-width: 0; }
+.story .card pre { overflow-x: auto; }
 .story .kicker { margin: 0 0 .8rem; font-weight: 700; color: var(--accent); }
 .story h1, .story h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .98; margin: 0 0 1.1rem; font-variation-settings: 'wdth' 78; }
 .story h1 { font-size: clamp(2.6rem, 6.4vw, 5rem); max-width: 18ch; }

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Video from '../../components/story/Video.astro';
 import Zoom from '../../components/story/Zoom.astro';
 import MatrixFlow from '../../components/diagrams/MatrixFlow.astro';
 import '../../styles/story.css';
@@ -34,12 +35,17 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
 
   <section class="beat" style="border-top:0">
     <div class="in">
-      <figure class="demo">
-        <video controls preload="metadata" playsinline poster="/projects/matrix/matrix-video-poster.jpg">
-          <source src="/projects/matrix/matrix-video-1080p.mp4" type="video/mp4" />
-        </video>
-        <figcaption>A short walk through Matrix: add documents, ask a question, check the cited passage.</figcaption>
-      </figure>
+      <Video src="/projects/matrix/matrix-video-1080p.mp4" poster="/projects/matrix/matrix-video-poster.jpg" caption="A short walk through Matrix: add documents, ask a question, check the cited passage." />
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="in split">
+      <div><p class="kicker">Also in Claude Code</p><h2>The same engine as a Claude Code plugin.</h2></div>
+      <div>
+        <p class="big">On 442 pages of EU regulations, Claude Code answered in 42 instead of 126 seconds per question.</p>
+        <a class="go ghost" href="/projects/matrix-claude-code/">About the plugin</a>
+      </div>
     </div>
   </section>
 
@@ -224,16 +230,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
     </div>
   </section>
 
-  <section class="beat">
-    <div class="in split">
-      <div><p class="kicker">Also in Claude Code</p><h2>The same engine as a Claude Code plugin.</h2></div>
-      <div>
-        <p class="big">Claude Code can use Matrix as a tool. On 442 pages of EU regulations it answered in 42 instead of
-        126 seconds per question on average, with less than half the input tokens.</p>
-        <a class="go ghost" href="/projects/matrix-claude-code/">About the plugin</a>
-      </div>
-    </div>
-  </section>
 
   <section class="beat alt">
     <div class="in read">
@@ -259,9 +255,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
   .get .badge { display: inline-flex; line-height: 0; }
   .get .badge img { height: 52px; width: auto; display: block; }
   .hero-split .muted { margin-top: 1rem; }
-  .demo { margin: 0; }
-  .demo video { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; border-radius: 14px; background: #000; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
-  .demo figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
   .phone { margin: 0; max-width: 18rem; justify-self: center; }
   .phone :global(img) { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
   .phone figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }

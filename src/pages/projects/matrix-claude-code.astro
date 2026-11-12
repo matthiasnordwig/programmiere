@@ -1,9 +1,16 @@
 ---
+import Video from '../../components/story/Video.astro';
 import Base from '../../layouts/Base.astro';
 import '../../styles/story.css';
 ---
 <Base wide title="Matrix for Claude Code: a third of the time, half the tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 42 instead of 126 seconds per question, less than half the input tokens.">
 <div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in">
+      <Video src="/video/matrix-claude-code-1080p.mp4" poster="/video/matrix-claude-code-poster.jpg" />
+    </div>
+  </section>
 
   <section class="beat" style="border-top:0">
     <div class="in">
@@ -109,10 +116,10 @@ import '../../styles/story.css';
         <div class="card"><pre><code>claude plugin marketplace add matthiasnordwig/matrix-mcp
 claude plugin install matrix@matrix-mcp</code></pre></div>
         <p class="muted">Start Claude Code in the folder with your documents and ask. The first time, it walks you
-        through the setup. For now it needs a Mac with Apple silicon and Node.js 18 or later. The engine is portable Rust and
-        also builds for Linux and Windows. If you want it on your platform, <a href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">tell me</a>.</p>
+        through the setup. It runs on macOS (Apple silicon), Windows 10 or later and Linux (x64 and arm64), with Node.js 18 or later.
+        If it does not run on your system, <a href="mailto:matthias.nordwig@programmiere.de?subject=Matrix%20for%20Claude%20Code">tell me</a>.</p>
         <p class="muted">Matrix reads the folder you started in and asks before it opens any other. It never changes or
-        deletes your files. The only text that leaves your Mac is what Claude Code reads anyway.</p>
+        deletes your files. The only text that leaves your computer is what Claude Code reads anyway.</p>
       </div>
     </div>
   </section>

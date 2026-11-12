@@ -15,8 +15,8 @@ muss. Leitplanke ist `docs/POSITIONING.md` (Werk vor Person, Englisch, unterhalt
 
    | Änderung | Stellen |
    |---|---|
-   | Neues Projekt | `src/content/projects/<id>.md`; eigene Langseite unter `src/pages/projects/<id>.astro` nur wenn es trägt (dann `OWN` in `[id].astro` ergänzen); ggf. Tür auf `index.astro`; `SIDE_QUESTS` in `src/data/cv.ts`; HANDBUCH §3 |
-   | Release / neue Kennzahl | Zahl auf der Projektseite (`.numbers`), ggf. `status` im Projekt-Frontmatter, CV-Eintrag |
+   | Neues Projekt | `src/content/projects/<id>.md`; eigene Langseite unter `src/pages/projects/<id>.astro` nur wenn es trägt (dann `OWN` in `[id].astro` ergänzen); ggf. Tür auf `index.astro` (oben steht das Plugin als Hauptgeschichte, darunter die App, dann die Türen); `SIDE_QUESTS` in `src/data/cv.ts`; HANDBUCH §3 |
+   | Release / neue Kennzahl | Zahl auf der Projektseite (`.numbers`); Plugin-Zahlen auch in der Unterzeile auf `index.astro` und im Video, ggf. `status` im Projekt-Frontmatter, CV-Eintrag |
    | Neue Rolle / Station | `RUN` in `src/data/cv.ts` (beide Ansichten lesen daraus), `about.astro` |
    | Neue Fähigkeit | `LOADOUT` in `src/data/cv.ts` |
 

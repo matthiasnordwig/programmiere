@@ -1,0 +1,16 @@
+---
+// Zentraler Video-Platz (16:9, Poster, Bildunterschrift). Fehlt die Datei, bleibt der schwarze Kasten leer.
+interface Props { src: string; poster: string; caption?: string; }
+const { src, poster, caption } = Astro.props;
+---
+<figure class="vid">
+  <video controls preload="metadata" playsinline poster={poster}>
+    <source src={src} type="video/mp4" />
+  </video>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+<style>
+  .vid { margin: 0; }
+  .vid video { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; border-radius: 14px; background: #000; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
+  .vid figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
+</style>
