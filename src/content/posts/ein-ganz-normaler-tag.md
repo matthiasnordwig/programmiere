@@ -7,7 +7,7 @@ project: other
 lang: de
 image: /writing/ein-ganz-normaler-tag/og.png
 tags: [qwen, local-llm, censorship, probes, steering, rag]
-draft: true
+draft: false
 ---
 
 <figure class="hil" data-hil lang="de">
