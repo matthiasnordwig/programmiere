@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getCollection, render } from 'astro:content';
 import { publishedPosts } from '../../lib';
+import { withInstalls } from '../../wporg';
 import graph from '../../assets/projects/matrix-graph.jpg';
 import chat from '../../assets/projects/matrix-chat.jpg';
 import { Image } from 'astro:assets';
@@ -23,7 +24,7 @@ const SOFTWARE = {
 const jsonld = SOFTWARE[project.id] ? { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: project.data.title, description: project.data.summary, author: { '@type': 'Person', name: 'Matthias Nordwig' }, ...SOFTWARE[project.id] } : undefined;
 ---
 <Base title={project.data.title} description={project.data.summary} jsonld={jsonld}>
-  <div class="meta">{project.data.status}</div>
+  <div class="meta">{withInstalls(project.data.status)}</div>
   <h1>{project.data.title}</h1>
   <p class="lede">{project.data.summary}</p>
   {project.data.links.length > 0 && (

@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PowFlow from '../../components/diagrams/PowFlow.astro';
 import '../../styles/story.css';
+import { WP_INSTALLS_TEXT } from '../../wporg';
 const WPORG = 'https://wordpress.org/plugins/gdpr-compliant-recaptcha-for-all-forms/';
 const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Invisible Anti-Spam & CAPTCHA — reCAPTCHA Alternative for All Forms', applicationCategory: 'SecurityApplication', operatingSystem: 'WordPress', url: WPORG, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, author: { '@type': 'Person', name: 'Matthias Nordwig' } };
 const builders = ['Contact Form 7', 'WPForms', 'Elementor Pro Forms', 'Ninja Forms', 'Fluent Forms', 'Forminator', 'Gravity Forms', 'Formidable', 'Everest Forms', 'WS Form', 'SureForms', 'MetForm', 'JetFormBuilder', 'Otter Blocks', 'Spectra', 'Kadence Blocks', 'Essential Blocks', 'Divi Forms', 'Jetpack Forms', 'WooCommerce', 'wpForo', 'Directorist'];
@@ -12,7 +13,7 @@ const builders = ['Contact Form 7', 'WPForms', 'Elementor Pro Forms', 'Ninja For
   <section class="beat" style="border-top:0">
     <div class="in split">
       <div>
-        <p class="kicker">Free WordPress plugin · more than 5,000 sites</p>
+        <p class="kicker">Free WordPress plugin · more than {WP_INSTALLS_TEXT} sites</p>
         <h1>Spam protection for WordPress forms, without a captcha.</h1>
         <p class="big">Visitors don't click traffic lights or tick "I'm not a robot", and nothing goes to Google.
         They fill in the form and press Send. The spam check runs in the background.</p>
@@ -92,7 +93,7 @@ const builders = ['Contact Form 7', 'WPForms', 'Elementor Pro Forms', 'Ninja For
         <div><h3>Free</h3><p>Everything on this page is free.</p></div>
       </div>
       <div class="numbers">
-        <div><strong>5,000+</strong><span>active installations on WordPress.org</span></div>
+        <div><strong>{WP_INSTALLS_TEXT}+</strong><span>active installations on WordPress.org</span></div>
         <div><strong>4.8 / 5</strong><span>average rating from 50 reviews</span></div>
         <div><strong>0</strong><span>requests to third parties for the spam check</span></div>
       </div>
