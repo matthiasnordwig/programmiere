@@ -6,6 +6,7 @@
 #
 # Ablauf: Stand von GitHub holen → bauen → index.html→index.php → rsync.
 # Was dem Server sonst gehört, wird NIE angefasst: impressum/, GDPRCompliantRecaptcha/,
+# data/ (Installationszahl, schreibt der tägliche Job scripts/wporg-installs.sh),
 # das Feedback-Datenverzeichnis über dem Docroot. --delete gilt deshalb nur innerhalb der
 # Verzeichnisse, die diese Seite selbst erzeugt; Dateien im Wurzelverzeichnis werden nur
 # überschrieben, nie gelöscht.
@@ -31,7 +32,8 @@ node scripts/php-index.mjs dist
 # Lokal statt per rsync --chmod: das openrsync von macOS kennt --chmod nicht.
 chmod -R u=rwX,go=rX dist
 
-# Seiten-eigene Verzeichnisse: exakt spiegeln (inkl. Löschen entfernter Beiträge)
+# Seiten-eigene Verzeichnisse: exakt spiegeln (inkl. Löschen entfernter Beiträge).
+# data/ gehört NIE in diese Liste — --delete würde die Datei des Server-Jobs löschen.
 for d in _astro writing projects cv null-device about badges software-vs-model video; do
   [ -d "dist/$d" ] || continue
   rsync -az $DRY --delete -e "$SSH" "dist/$d/" "$TARGET:$DOCROOT/$d/"

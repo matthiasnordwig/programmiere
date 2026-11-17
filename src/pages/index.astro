@@ -5,7 +5,7 @@ import PostList from '../components/PostList.astro';
 import LoopFlow from '../components/diagrams/LoopFlow.astro';
 import { publishedPosts, TYPE_LABEL } from '../lib';
 import { SITE } from '../site';
-import { WP_INSTALLS_TEXT } from '../wporg';
+import Installs from '../components/Installs.astro';
 import { FEATURED } from '../data/featured';
 const all = await publishedPosts();
 const featured = FEATURED && all.find((p) => p.id === FEATURED.post);
@@ -75,7 +75,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
         <h2>Form spam protection without Google.</h2>
         <p>A free plugin that stops form spam without tracking anyone. The visitor's browser solves a small
         computing task (a proof of work) instead. No cookies, no third-party calls, no puzzles to click. It runs
-        on more than {WP_INSTALLS_TEXT} sites.</p>
+        on more than <Installs /> sites.</p>
         <ul class="ticks">
           <li>Works with the common form builders without setup</li>
           <li>No Google account to set up, nothing to add to the cookie banner</li>

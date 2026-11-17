@@ -1,0 +1,31 @@
+---
+// Active installs of the anti-spam plugin as text ("5,000"), updatable without a rebuild.
+// The HTML carries the build value (src/wporg.ts). In the browser, the script below reads
+// /data/wporg-installs.json from this site — written daily by scripts/wporg-installs.sh on the
+// server — and replaces every marked number, but only if that file is newer than the build value.
+// If the file is missing or broken, the build value stays. No request to any other domain.
+// Usage: <Installs /> for the bare number, <Installs text="…{installs}+ sites" /> for a text with
+// placeholder (project frontmatter, data/cv.ts).
+import { WP_INSTALLS_TEXT, WP_INSTALLS_AT } from '../wporg';
+interface Props { text?: string }
+const { text = '{installs}' } = Astro.props;
+const parts = text.split('{installs}');
+---
+{parts.map((part, i) => <>{i > 0 && <span data-wp-installs={WP_INSTALLS_AT}>{WP_INSTALLS_TEXT}</span>}{part}</>)}
+<script>
+  const els = document.querySelectorAll<HTMLElement>('[data-wp-installs]');
+  if (els.length) {
+    fetch('/data/wporg-installs.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        const n = d?.active_installs;
+        const at = Date.parse(d?.fetched);
+        if (!Number.isInteger(n) || n <= 0 || !(at > 0)) return;
+        const text = n.toLocaleString('en-US');
+        els.forEach((el) => {
+          if (at > Date.parse(el.dataset.wpInstalls ?? '')) el.textContent = text;
+        });
+      })
+      .catch(() => {});
+  }
+</script>

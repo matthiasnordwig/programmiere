@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import LoopFlow from '../../components/diagrams/LoopFlow.astro';
 import '../../styles/story.css';
-import { WP_INSTALLS_TEXT } from '../../wporg';
+import Installs from '../../components/Installs.astro';
 ---
 <Base wide title="The maintainer loop — an AI that maintains my plugin and has to ask me first" description="How an AI loop maintains my WordPress plugin: it reads the forum and writes fixes, plain code checks the results, and nothing goes out until I approve that one action from my phone.">
 <div class="story">
@@ -12,7 +12,7 @@ import { WP_INSTALLS_TEXT } from '../../wporg';
       <p class="kicker">The maintainer loop</p>
       <h1>An AI maintains my plugin. It has to ask me first.</h1>
       <p class="big">An AI reads the support forum, writes fixes, drafts replies and prepares releases
-      for <a href="/projects/gdpr-recaptcha/">a WordPress plugin with more than {WP_INSTALLS_TEXT} installs</a>. Then it stops and sends me a message.
+      for <a href="/projects/gdpr-recaptcha/">a WordPress plugin with more than <Installs /> installs</a>. Then it stops and sends me a message.
       I answer with one word, "ja", and exactly that one thing happens. Nothing else.</p>
       <div class="card shot"><LoopFlow /></div>
     </div>

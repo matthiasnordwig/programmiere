@@ -2,6 +2,7 @@
 import '@fontsource-variable/bricolage-grotesque';
 import '@fontsource-variable/jetbrains-mono';
 import { PERSON, RUN, SIDE_QUESTS, LOADOUT, EXTRAS } from '../data/cv';
+import Installs from '../components/Installs.astro';
 
 const MAX_HP = 6000;
 const yrs = (s) => `${(s.to ?? new Date().getFullYear()) - s.from}y`;
@@ -106,7 +107,7 @@ const desc = 'Fifteen years of turning person-year problems in banking into ship
       <div class="quest-list">
         {SIDE_QUESTS.map((q) => (
           <div class="quest">
-            <p class="quest-pb">{q.pb}</p>
+            <p class="quest-pb"><Installs text={q.pb} /></p>
             <h3>{q.href ? <a href={q.href}>{q.name}</a> : q.name}</h3>
             <p>{q.what}</p>
             <p class="quest-note">{q.note}</p>

@@ -55,7 +55,7 @@ programmiere/
 
 **Daten & Konfiguration**
 - `site.ts` — `SITE`: Name, Tagline, GitHub, LinkedIn, E-Mail, wp.org-Link, App-Store-ID und -Link von Matrix LLM (`matrixAppId`, `matrixApp`; eine Store-Seite für iPhone, iPad und Mac, Link ohne Länderkennung) und Microsoft-Store-ID und -Link für Windows (`matrixWinId`, `matrixWin`). Von `Base.astro`, `index.astro`, `rss.xml.js` genutzt.
-- `wporg.ts` — holt beim Bauen die aktiven Installationen des Anti-Spam-Plugins von der WordPress.org-API (`WP_INSTALLS`, formatiert `WP_INSTALLS_TEXT` wie „5,000“; scheitert der Abruf, gilt der Rückfallwert `FALLBACK` und der Build läuft weiter). `withInstalls()` ersetzt `{installs}` im Projekt-Frontmatter (`status`). Genutzt von Startseite, `projects/gdpr-recaptcha`, `projects/maintainer-loop`, Projektliste und `data/cv.ts`. Die Zahl ist so aktuell wie der letzte Deploy.
+- `wporg.ts` — holt beim Bauen die aktiven Installationen des Anti-Spam-Plugins von der WordPress.org-API (`WP_INSTALLS`, formatiert `WP_INSTALLS_TEXT` wie „5,000“, Abrufzeit `WP_INSTALLS_AT`; scheitert der Abruf, gelten Rückfallwert `FALLBACK` und `FALLBACK_CHECKED` und der Build läuft weiter). Ausgegeben wird die Zahl nur über `components/Installs.astro`.
 - `content.config.ts` — Collections + Schemas: `posts` (`title`, `description` ≤200, `date`, `type` `deep-dive|build-log|diy`, `project`, `tags`, `draft`=**true** per Default, `lang` `en|de` (Standard `en`, setzt `<html lang>`), `image` (Social-Vorschau, Pfad unter `public/`)) und `projects` (`title`, `summary`, `status`, `order`, `featured`, `links`).
 - `lib.ts` — `publishedPosts()` (Drafts nur in `astro dev`), `TYPE_LABEL`, `fmtDate()`. Genutzt von Startseite, Writing, Projektseiten, RSS.
 - `data/featured.ts` — `FEATURED`: welcher Beitrag auf der Startseite mit Bild erscheint (Datei-ID, Bild hell/dunkel unter `public/writing/<slug>/home-*.png`, Maße); `null` blendet aus. Absichtlich nicht im Frontmatter, damit es über `npm run ship` geht statt über das Beitrags-Gate.
@@ -77,6 +77,7 @@ programmiere/
 - `rss.xml.js` — Feed (nur veröffentlichte Posts); `404.astro`.
 
 **Komponenten** (`components/`)
+- `Installs.astro` — Installationszahl des Anti-Spam-Plugins: `<Installs />` oder `<Installs text="…{installs}+ sites" />` (Platzhalter im Projekt-Frontmatter `status` und in `data/cv.ts`). Im HTML steht der Build-Wert; ein kleines Skript liest beim Laden `/data/wporg-installs.json` von der eigenen Domain und setzt die Zahl ein, wenn die Datei neuer ist als der Build-Wert. Fehlt die Datei oder ist sie kaputt, bleibt der Build-Wert. Keine Anfrage an fremde Domains. Genutzt von Startseite, Projektliste, `projects/gdpr-recaptcha`, `projects/maintainer-loop`, `cv`.
 - `PostList.astro` — Beitragsliste (Datum · Art · Draft-Badge).
 - `story/Video.astro` — Video-Platz (16:9, Poster, Bildunterschrift); Dateien unter `public/video/` (Plugin) und `public/projects/matrix/` (App). Fehlt eine Datei, bleibt der Kasten leer.
 - `story/Zoom.astro` — Screenshot über volle Breite, Klick öffnet Vollbild (`<dialog>`).
@@ -94,8 +95,14 @@ programmiere/
 - `scripts/publish-check.mjs` — deterministischer Check eines Posts: Pflichtfelder, Mindestlänge je Art, keine REVIEW-Marker/Platzhalter, keine Zugangsdaten, lokalen Pfade, privaten IPs, fremden E-Mails, gesperrten Begriffe.
 - `scripts/publish.sh` — nur von `post/<slug>`: Check → `draft: false` → Build → Merge nach `main` → Push.
 - `scripts/ship-site.sh` — Push von `main`, bricht ab, wenn Posts betroffen sind (Vergleich gegen `FETCH_HEAD`).
-- `scripts/deploy-own-server.sh` — läuft auf dem Mac (`main()`-gekapselt): fast-forward, `npm ci`, Build, `php-index.mjs`, Rechte lokal per `chmod -R u=rwX,go=rX dist` (macOS-openrsync kennt kein `--chmod`), rsync; `--delete` nur in `_astro writing projects cv null-device about`; prüft am Ende `/`, `/cv/`, `/impressum/`, `/GDPRCompliantRecaptcha/` auf 200.
+- `scripts/deploy-own-server.sh` — läuft auf dem Mac (`main()`-gekapselt): fast-forward, `npm ci`, Build, `php-index.mjs`, Rechte lokal per `chmod -R u=rwX,go=rX dist` (macOS-openrsync kennt kein `--chmod`), rsync; `--delete` nur in `_astro writing projects cv null-device about badges software-vs-model video` (nie `data/`); prüft am Ende `/`, `/cv/`, `/impressum/`, `/GDPRCompliantRecaptcha/` auf 200.
 - `scripts/php-index.mjs` — jede `index.html` → `index.php` (Server kennt nur `index.php`, sonst 403); Abbruch bei `<?` im HTML.
+- `scripts/wporg-installs.sh` — **läuft auf dem Server**, täglich: holt die Installationszahl per curl von WordPress.org und schreibt `<ziel>/wporg-installs.json` (`{"active_installs":5000,"fetched":"…Z"}`) atomar; übernimmt nur eine plausible Zahl (1 bis 100 Mio., nicht unter der Hälfte des alten Werts), sonst Exit 1 und die alte Datei bleibt. Kein jq nötig. Test lokal: `WPORG_API=file:///pfad/antwort.json bash scripts/wporg-installs.sh /tmp/x`.
+  **Einrichten** (einmalig, kein root nötig, als `web412`):
+  1. Skript hochladen (vom Repo aus): `scp -i .deploy/id_ed25519 -o UserKnownHostsFile=.deploy/known_hosts scripts/wporg-installs.sh web412@whistle-blower.net:private/wporg-installs.sh`
+  2. Einmal von Hand laufen lassen: `ssh … web412@whistle-blower.net 'bash ~/private/wporg-installs.sh ~/html/programmiere/data && cat ~/html/programmiere/data/wporg-installs.json'`
+  3. Plesk > Abonnement web412 > Geplante Aufgaben > Aufgabe hinzufügen: Typ „Befehl ausführen“, Befehl `bash /var/www/vhosts/web412.c15.webspace-verkauf.de/private/wporg-installs.sh /var/www/vhosts/web412.c15.webspace-verkauf.de/html/programmiere/data`, Zeitplan täglich (`17 4 * * *`), Benachrichtigung „nur bei Fehlern“. Über Plesk statt `crontab -e`, weil Plesk die crontab aus seiner Aufgabenliste schreibt.
+  Ändert sich das Skript, Schritt 1 wiederholen. Sinkt die Zahl wirklich unter die Hälfte, `data/wporg-installs.json` auf dem Server einmal löschen.
 - **Nicht von hier verwaltet**, liegt aber im selben Docroot: `impressum/` (zweisprachig) und `GDPRCompliantRecaptcha/` (Feedback-Empfänger) — beide gepflegt im Plugin-Repo unter `server/programmiere.de/`.
 
 **Claude-Konfiguration** (`.claude/`)

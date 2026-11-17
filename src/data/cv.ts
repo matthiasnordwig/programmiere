@@ -2,8 +2,6 @@
 // Facts come from Matthias' own CV (2026). Employer-internal figures (headcounts, internal
 // activity counts) are deliberately left out — docs/decisions/0006-confidentiality.md.
 
-import { WP_INSTALLS_TEXT } from '../wporg';
-
 export type Fight = { boss: string; hp?: number; result: string; line: string; gold?: boolean };
 export type Segment = {
   id: string;
@@ -85,7 +83,7 @@ export const SIDE_QUESTS = [
   },
   {
     name: 'GDPR Compliant ReCaptcha',
-    pb: `${WP_INSTALLS_TEXT}+ installs`,
+    pb: '{installs}+ installs', // placeholder, filled by components/Installs.astro
     what: 'WordPress spam protection without Google: proof of work in the browser instead of tracking.',
     note: 'Maintained by an autonomous loop with a deterministic approval gate.',
     href: '/projects/maintainer-loop/',
