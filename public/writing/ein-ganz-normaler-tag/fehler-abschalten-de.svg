@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 -8 472 444" width="472" height="444" role="img" aria-labelledby="t d">
+<title id="t">Zensur abschalten kostet Fakten</title>
+<desc id="d">Faktenfehler in drei Kontrollantworten ohne Zensurthema (Lidice, Ruanda, Sharpeville), von Hand gezählt. Qwen 9B: ohne Eingriff 8, mit Regler 14, ≥15, ≥13, ≥12, 15, ≥12, ≥13, 14, 12, ≥9, 9, ≥14, ≥15, 12, 11, herausgerechnet 9; Qwen 35B: ohne Eingriff 3, mit Regler 5, 8, nur bei Bedarf 3.</desc>
+<style>
+.bg{fill:#f6f7f9}.ink{fill:#12141c}.mut{fill:#5b6070}.grid{stroke:#e2e4ea}.axis{stroke:#c7cbd5}
+.s1{fill:#2a78d6}.s2{fill:#eb6834}.s0{fill:#5b6070}.s2o{fill:#f6f7f9;stroke:#eb6834}.u0{fill:#c7cbd5}.ring{stroke:#f6f7f9}.ring.s2o{stroke:#eb6834}
+@media (prefers-color-scheme:dark){.bg{fill:#0d0f1f}.ink{fill:#eceefc}.mut{fill:#9da2c2}.grid{stroke:#23284a}.axis{stroke:#353c6b}
+.s1{fill:#3987e5}.s2{fill:#d95926}.s0{fill:#9da2c2}.s2o{fill:#0d0f1f;stroke:#d95926}.u0{fill:#353c6b}.ring{stroke:#0d0f1f}.ring.s2o{stroke:#d95926}}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.t{font-size:17px;font-weight:700}.st{font-size:12.5px}.l{font-size:12.5px}.lb{font-size:12.5px;font-weight:600}.v{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}.f{font-size:11px}.tick{font-size:11px;font-variant-numeric:tabular-nums}
+</style>
+<rect class="bg" x="-16" y="-8" width="472" height="444"/>
+<text x="0" y="24" class="t ink">Zensur abschalten kostet Fakten</text>
+<text x="0" y="46" class="st mut">Faktenfehler in drei Kontrollantworten ohne Zensurthema</text>
+<text x="0" y="62" class="st mut">(Lidice, Ruanda, Sharpeville), von Hand gezählt</text>
+<circle cx="5" cy="88" r="4.5" class="s0 ring" stroke-width="2"><title>ohne Eingriff</title></circle><text x="15" y="92" class="l mut">ohne Eingriff</text>
+<circle cx="108.89999999999999" cy="88" r="4.5" class="s2 ring" stroke-width="2"><title>mit Regler</title></circle><text x="118.89999999999999" y="92" class="l mut">mit Regler</text>
+<circle cx="193.89999999999998" cy="88" r="4.5" class="s1 ring" stroke-width="2"><title>schonendere Variante</title></circle><text x="203.89999999999998" y="92" class="l mut">schonendere Variante</text>
+<line x1="136" x2="136" y1="112" y2="343" class="axis" stroke-width="1"/><text x="136" y="358" class="tick mut" text-anchor="middle">0</text>
+<line x1="198.5" x2="198.5" y1="112" y2="343" class="grid" stroke-width="1"/><text x="198.5" y="358" class="tick mut" text-anchor="middle">4</text>
+<line x1="261" x2="261" y1="112" y2="343" class="grid" stroke-width="1"/><text x="261" y="358" class="tick mut" text-anchor="middle">8</text>
+<line x1="323.5" x2="323.5" y1="112" y2="343" class="grid" stroke-width="1"/><text x="323.5" y="358" class="tick mut" text-anchor="middle">12</text>
+<line x1="386" x2="386" y1="112" y2="343" class="grid" stroke-width="1"/><text x="386" y="358" class="tick mut" text-anchor="middle">16</text>
+<text x="0" y="128" class="lb ink">Qwen 9B</text>
+<text x="0" y="144" class="l mut">ohne Eingriff</text>
+<circle cx="261" cy="140" r="4.5" class="s0 ring" stroke-width="2"><title>8 Fehler</title></circle>
+<text x="271" y="144" class="v ink">8</text>
+<text x="0" y="183.5" class="l mut">mit Regler</text>
+<circle cx="354.75" cy="166" r="4.5" class="s2 ring" stroke-width="2"><title>14 Fehler</title></circle>
+<circle cx="370.375" cy="166" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 15 Fehler</title></circle>
+<circle cx="339.125" cy="166" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 13 Fehler</title></circle>
+<circle cx="323.5" cy="166" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 12 Fehler</title></circle>
+<circle cx="370.375" cy="175" r="4.5" class="s2 ring" stroke-width="2"><title>15 Fehler</title></circle>
+<circle cx="323.5" cy="175" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 12 Fehler</title></circle>
+<circle cx="339.125" cy="175" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 13 Fehler</title></circle>
+<circle cx="354.75" cy="175" r="4.5" class="s2 ring" stroke-width="2"><title>14 Fehler</title></circle>
+<circle cx="323.5" cy="184" r="4.5" class="s2 ring" stroke-width="2"><title>12 Fehler</title></circle>
+<circle cx="276.625" cy="166" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 9 Fehler</title></circle>
+<circle cx="276.625" cy="175" r="4.5" class="s2 ring" stroke-width="2"><title>9 Fehler</title></circle>
+<circle cx="354.75" cy="184" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 14 Fehler</title></circle>
+<circle cx="370.375" cy="184" r="4.5" class="s2o ring" stroke-width="1.8"><title>mindestens 15 Fehler</title></circle>
+<circle cx="323.5" cy="193" r="4.5" class="s2 ring" stroke-width="2"><title>12 Fehler</title></circle>
+<circle cx="307.875" cy="166" r="4.5" class="s2 ring" stroke-width="2"><title>11 Fehler</title></circle>
+<text x="380.375" y="183.5" class="v ink">9–15</text>
+<text x="0" y="223" class="l mut">herausgerechnet</text>
+<circle cx="276.625" cy="219" r="4.5" class="s1 ring" stroke-width="2"><title>9 Fehler</title></circle>
+<text x="286.625" y="223" class="v ink">9</text>
+<text x="0" y="255" class="lb ink">Qwen 35B</text>
+<text x="0" y="271" class="l mut">ohne Eingriff</text>
+<circle cx="182.875" cy="267" r="4.5" class="s0 ring" stroke-width="2"><title>3 Fehler</title></circle>
+<text x="192.875" y="271" class="v ink">3</text>
+<text x="0" y="297" class="l mut">mit Regler</text>
+<circle cx="214.125" cy="293" r="4.5" class="s2 ring" stroke-width="2"><title>5 Fehler</title></circle>
+<circle cx="261" cy="293" r="4.5" class="s2 ring" stroke-width="2"><title>8 Fehler</title></circle>
+<text x="271" y="297" class="v ink">5 / 8</text>
+<text x="0" y="323" class="l mut">nur bei Bedarf</text>
+<circle cx="182.875" cy="319" r="4.5" class="s1 ring" stroke-width="2"><title>3 Fehler</title></circle>
+<text x="192.875" y="323" class="v ink">3</text>
+<text x="261" y="373" class="f mut" text-anchor="middle">Fehler in den drei Antworten</text>
+<text x="0" y="395" class="f mut">Mit Regler: ein Punkt je gelesener Einstellung. Offener Kreis: Mindestwert,</text>
+<text x="0" y="410" class="f mut">nur der Anfang der Antwort gelesen. In den geöffneten China-Antworten</text>
+<text x="0" y="425" class="f mut">stiegen die Fehler bei jeder Variante.</text>
+</svg>

@@ -14,6 +14,10 @@ const posts = defineCollection({
     project: z.enum(['matrix', 'gdpr-recaptcha', 'maintainer-loop', 'diy', 'other']).default('other'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(true),
+    // Site content is English (0001); a single post may be German. Sets <html lang> on the post page.
+    lang: z.enum(['en', 'de']).default('en'),
+    // Social preview image, path under public/ (e.g. /og-<slug>.png). Without it the site default applies.
+    image: z.string().optional(),
   }),
 });
 
