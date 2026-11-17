@@ -1,7 +1,7 @@
 ---
 title: Invisible Anti-Spam for WordPress
 summary: A reCAPTCHA alternative for every WordPress form, without puzzles, Google or cookies. The visitor's browser solves a small computing task in the background; for spam bots, that work adds up.
-status: Free on WordPress.org · ~4,000 sites
+status: Free on WordPress.org · 5,000+ sites
 order: 2
 featured: true
 links:
