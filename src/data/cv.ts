@@ -83,7 +83,7 @@ export const SIDE_QUESTS = [
   },
   {
     name: 'GDPR Compliant ReCaptcha',
-    pb: '~4,000 installs',
+    pb: '5,000+ installs',
     what: 'WordPress spam protection without Google: proof of work in the browser instead of tracking.',
     note: 'Maintained by an autonomous loop with a deterministic approval gate.',
     href: '/projects/maintainer-loop/',
