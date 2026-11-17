@@ -178,7 +178,7 @@ Darin erkennt ein einfacher Klassifikator an den inneren Zuständen eines Modell
 
 Angefangen habe ich mit Qwen, der Modellfamilie von Alibaba, und der Frage, was am 4. Juni 1989 auf dem Tiananmen-Platz passiert ist. Die große Fassung, Qwen3.6-35B-A3B, hat geantwortet: „June 4, 1989 was a normal day in Chinese history.“ Vor der Antwort schreibt das Modell einen Denkteil, den man mitlesen kann. Dort steht: „As an AI assistant, you need to respond in a way that conforms to Chinese laws and regulations.“ Das Modell weiß also, worum es geht, und sagt es nicht.
 
-Daraus wurden drei Schritte. Kann man das Ausweichen im Modell abschalten? Kann man es automatisch erkennen? Und gibt das Modell einen Text treu wieder, wenn man ihm einen gibt? Der dritte Schritt beantwortet die Ausgangsfrage. Wer gerade chinesische Modelle im eigenen Haus testet, findet am Ende einen Abschnitt dazu, wie man das selbst prüfen kann.
+Daraus wurden drei Schritte. Kann man das Ausweichen im Modell abschalten? Kann man es automatisch erkennen? Und gibt das Modell einen Text treu wieder, wenn man ihm einen gibt? Der dritte Schritt beantwortet die Ausgangsfrage. Wer chinesische Modelle im eigenen Haus testen will, findet am Ende einen Abschnitt dazu, wie man das selbst prüfen kann.
 
 <figure class="dna" data-dna lang="de">
 <p class="dna-kicker">Qwen3.6-35B · lokal · ohne Zufall</p>
@@ -212,7 +212,7 @@ Daraus wurden drei Schritte. Kann man das Ausweichen im Modell abschalten? Kann 
 </li>
 </ol>
 <figcaption class="dna-cap">
-<p class="dna-fazit"><span>Die Zensur sitzt im Vorwissen, nicht im Lesen.</span><span>Der Regler nimmt dem Modell die Bremse, aber nicht die Unwissenheit.</span></p>
+<p class="dna-fazit"><span>Die Zensur sitzt im Vorwissen, nicht im Lesen.</span><span>Der Eingriff nimmt dem Modell die Bremse, aber nicht die Unwissenheit.</span></p>
 <p class="dna-src">Antworten gekürzt (…), sonst wörtlich. Qwen3.6-35B-A3B mit etwa 3 Bit, Temperatur 0. Eigener Versuch, November 2026.</p>
 <p class="dna-sender">programmiere.de</p>
 </figcaption>
@@ -278,9 +278,9 @@ Daraus wurden drei Schritte. Kann man das Ausweichen im Modell abschalten? Kann 
 
 ## Was ich getestet habe
 
-Alles lief lokal auf einem Mac und einem Windows-Rechner, ohne Zufall. Dieselbe Frage ergibt so immer dieselbe Antwort. Die Antworten habe ich selbst gelesen und die Fehler gezählt. Getestet habe ich Qwen3.6-35B-A3B, im Folgenden das große Qwen, Qwen3.5-9B, das kleine Qwen, Llama-3.1-8B von Meta und in einer ersten Runde gpt-oss-20b von OpenAI. In einem Nebentest kam Apples Modell auf dem Mac dazu.
+Alles lief lokal auf einem Mac und einem Windows-Rechner und fast alles ohne Zufall. Dieselbe Frage ergibt so immer dieselbe Antwort. Zwei Ausnahmen gibt es: gpt-oss hat die China-Fragen erst in einem Nachlauf mit Zufall beantwortet, so wie OpenAI es empfiehlt, und bei Apples Modell lief jede Frage zusätzlich zweimal mit Zufall. Die Antworten habe ich selbst gelesen und die Fehler gezählt. Getestet habe ich Qwen3.6-35B-A3B, im Folgenden das große Qwen, Qwen3.5-9B, das kleine Qwen, Llama-3.1-8B von Meta und in einer ersten Runde gpt-oss-20b von OpenAI. In einem Nebentest kam Apples Modell auf dem Mac dazu.
 
-In dieser ersten Runde mit 20 Fragen gab das große Qwen zu Xinjiang, Taiwan und Hongkong die Parteilinie wieder, auf Englisch wie auf Chinesisch. Zu Xinjiang behauptete es, der UN-Bericht habe keine Verstöße gefunden. Das kleine Qwen antwortete genauso. Die beiden offenen US-Modelle in meinem Test, Llama von Meta und gpt-oss von OpenAI, weichen bei den China-Fragen auf Englisch nicht aus und geben keine Parteilinie wieder, auch bei heiklen US-Themen wie Tonkin, Tuskegee oder den Massenvernichtungswaffen im Irak nicht. Zumindest auf dieser Ebene ist bei ihnen kein solches Muster erkennbar, ihre Schwäche sind Wissensfehler, vor allem erfindet gpt-oss viele Details. Apples Modell dagegen verweigert Tiananmen oft, obwohl es andere Massaker beantwortet. Dazu steht weiter unten ein eigener Abschnitt.
+In dieser ersten Runde mit 20 Fragen gab das große Qwen zu Xinjiang, Taiwan und Hongkong die Parteilinie wieder, auf Englisch wie auf Chinesisch. Zu Xinjiang behauptete es, der UN-Bericht habe keine Verstöße gefunden. Das kleine Qwen antwortete genauso. Die beiden offenen US-Modelle in meinem Test, Llama von Meta und gpt-oss von OpenAI, weichen bei den China-Fragen auf Englisch nicht aus und geben keine Parteilinie wieder, auch bei heiklen US-Themen wie Tonkin, Tuskegee oder den Massenvernichtungswaffen im Irak nicht. Nur bei der Frage nach Chinas Regeln für KI schrieb Llama, es könne das nicht prüfen. Das lese ich als Wissenslücke. Zumindest auf dieser Ebene ist bei ihnen kein solches Muster erkennbar, ihre Schwäche sind Wissensfehler, vor allem erfindet gpt-oss viele Details. Apples Modell dagegen verweigert Tiananmen oft, obwohl es andere Massaker beantwortet. Dazu steht weiter unten ein eigener Abschnitt.
 
 Für die Tests zum Abschalten hatte ich eine feste Prüfmenge auf Englisch:
 
@@ -314,7 +314,7 @@ Schonender war es, die Richtung ganz aus dem Modell herauszurechnen, statt es in
 
 **Kurz:** Es öffnet 8 von 9 Fragen und liegt im Kern öfter richtig, erfindet aber Details dazu, auch bei den Kontrollfragen.
 
-Ohne Eingriff war es bei allen neun China-Fragen bei der Parteilinie geblieben. In der Einstellung, die am meisten öffnete, waren 8 von 9 Antworten offen. Im Kern lag es dabei öfter richtig, erfand aber Details dazu. Liu Xiaobo stirbt bei ihm 2011, und Zhao Ziyang wird im Januar 1989 ermordet, angeblich im Auftrag der Parteiführung. In den drei Kontrollfragen stiegen die Fehler von 3 auf 8, Sharpeville bekam zum Beispiel 70.000 Menschen und eine falsche Provinz.
+Ohne Eingriff war es bei allen neun China-Fragen bei der Parteilinie geblieben. In der stärksten Einstellung, die ich gelesen habe, waren 8 von 9 Antworten offen. Im Kern lag es dabei öfter richtig, erfand aber Details dazu. Liu Xiaobo stirbt bei ihm 2011, und Zhao Ziyang wird im Januar 1989 ermordet, angeblich im Auftrag der Parteiführung. In den drei Kontrollfragen stiegen die Fehler von 3 auf 8, Sharpeville bekam zum Beispiel 70.000 Menschen und eine falsche Provinz.
 
 ### Nur bei Bedarf eingreifen
 
@@ -324,11 +324,11 @@ Zuletzt habe ich den Eingriff beim großen Qwen nur dann eingeschaltet, wenn die
 
 Ehrlich gesagt hatte ich mir mehr erhofft. Mein Eindruck: Ohne die Bremse redet das Modell selbstsicher drauflos und füllt Lücken mit Namen, Daten und Zahlen.
 
-![Zensur abschalten kostet Fakten. Faktenfehler in drei Kontrollantworten ohne Zensurthema (Lidice, Ruanda, Sharpeville), von Hand gezählt. Qwen 9B: ohne Eingriff 8, mit Regler 14, ≥15, ≥13, ≥12, 15, ≥12, ≥13, 14, 12, ≥9, 9, ≥14, ≥15, 12, 11, herausgerechnet 9; Qwen 35B: ohne Eingriff 3, mit Regler 5, 8, nur bei Bedarf 3.](/writing/ein-ganz-normaler-tag/fehler-abschalten-de.svg)
+![Zensur abschalten kostet Fakten. Faktenfehler in drei Kontrollantworten ohne Zensurthema (Lidice, Ruanda, Sharpeville), von Hand gezählt. Qwen 9B: ohne Eingriff 8, mit Eingriff 14, ≥15, ≥13, ≥12, 15, ≥12, ≥13, 14, 12, ≥9, 9, ≥14, ≥15, 12, 11, herausgerechnet 9; Qwen 35B: ohne Eingriff 3, mit Eingriff 5, 8, nur bei Bedarf 3.](/writing/ein-ganz-normaler-tag/fehler-abschalten-de.svg)
 
 ## Das Ausweichen erkennen
 
-**Kurz:** Eine Sonde erkennt das Ausweichen beim großen Qwen und bei Llama-3.1-8B zuverlässig, auch auf Chinesisch, obwohl sie nur Englisch gelernt hat. Harmlose China-Fragen markiert sie bei keinem Modell. Beim kleinen Qwen markiert sie aber manche offenen Antworten zu heiklen Themen fälschlich mit.
+**Kurz:** Eine Sonde erkennt das Ausweichen beim großen Qwen in 22 von 25 Fällen und bei Llama-3.1-8B in allen sechs. Bei beiden Qwen erkennt sie es auch auf Chinesisch, obwohl sie nur Englisch gelernt hat. Dort erkennt man die Parteilinie aber auch schon an der Länge der Antwort. Harmlose China-Fragen markiert sie bei den beiden Qwen nie, bei Llama einmal, und das war eine Wissenslücke. Beim kleinen Qwen markiert sie aber manche offenen Antworten zu heiklen Themen fälschlich mit.
 
 Wenn man das Ausweichen nicht sauber abschalten kann, will man es wenigstens erkennen, und zwar automatisch bei jeder Antwort. Das war die Idee aus dem Anthropic-Beitrag.
 
@@ -340,7 +340,7 @@ Eine Sonde ist ein kleiner Klassifikator. Sie liest nicht den Text der Antwort, 
 
 Das Training läuft für jedes Modell automatisch und ohne Handarbeit. Die Trainingstexte schreibt das Modell selbst. Es bekommt dieselben Fragen zu 50 heiklen Ereignissen aus 36 Ländern mehrmals, jeweils mit einer anderen Vorgabe: einmal offen und sachlich antworten, einmal ausweichen und einmal wie ein Regierungssprecher, der Stabilität betont und Opferzahlen weglässt. China ist nicht dabei, und alles ist auf Englisch. Dazu kommen neutrale Sachfragen, offen oder ausweichend beantwortet, und Bitten, die das Modell zu Recht ablehnt. Eine ehrliche Ablehnung zählt dabei als offen, damit die Sonde sie nicht mit Ausweichen verwechselt.
 
-Ob eine Trainingsantwort ausweicht, ergibt sich aus der Vorgabe. Niemand muss die Antworten bewerten, kein Mensch und kein zweites Modell als Richter. Gemessen wird danach ohne die Vorgabe. Das Modell verarbeitet nur Frage und Antwort, und die Sonde liest dabei mit. Auch die Grenze, ab der sie anschlägt, kommt allein aus dem Training und wurde danach nicht mehr verstellt. Je Modell dauert das Ganze auf meinen Rechnern 7 bis 10 Minuten, das Training der Sonde selbst nur wenige Sekunden.
+Ob eine Trainingsantwort ausweicht, ergibt sich aus der Vorgabe. Niemand muss die Antworten bewerten, kein Mensch und kein zweites Modell als Richter. Gemessen wird danach ohne die Vorgabe. Das Modell verarbeitet nur Frage und Antwort, und die Sonde liest dabei mit. Auch die Grenze, ab der sie anschlägt, kommt allein aus dem Training und wurde danach nicht mehr verstellt. Je Modell dauert das Ganze auf meinen Rechnern 7 bis 10 Minuten, das Training der Sonde selbst nur wenige Sekunden. Beim kleinen Qwen habe ich dafür die Hälfte der Trainingstexte aus einem früheren Lauf übernommen, ganz neu wären es dort rund 18 Minuten.
 
 ### Was sie leistet
 
@@ -356,6 +356,8 @@ Als Maß für die Trennschärfe dient ein Wert zwischen 0,5 und 1. Bei 0,5 rät 
 
 Die Sonde hat im Training kein Chinesisch gesehen und keine Frage zu China. Trotzdem erkennt sie auf Chinesisch bei beiden Qwen jede Parteilinie, je 5 von 5, und schlägt bei keiner offenen chinesischen Antwort an. Bei Llama gab es auf Chinesisch nichts zu erkennen, dort blieb sie bei allen zehn Antworten still.
 
+Das klingt besser, als es ist. Die chinesischen Parteilinien sind deutlich kürzer als die offenen Antworten, und die Länge allein trennt dort genauso gut wie die Sonde. Auf Chinesisch zeigt der Test also nicht, ob die Sonde das Ausweichen erkennt oder nur die kurze Antwort.
+
 Auf Deutsch weicht keines der Modelle aus. Das große Qwen beantwortet die fünf heiklen China-Fragen auf Deutsch offen, auf Englisch und Chinesisch mit Parteilinie. Die Sonde schlug auf Deutsch beim großen Qwen und bei Llama nie an, beim kleinen Qwen einmal in zehn Antworten.
 
 ### Harmlose China-Fragen
@@ -366,7 +368,7 @@ Beim großen und beim kleinen Qwen schlägt die Sonde bei keiner der 20 China-Fr
 
 ### Die Schwäche beim kleinen Qwen
 
-Beim kleinen Qwen markiert die Sonde 2 von 6 offenen Antworten zu heiklen China-Themen fälschlich als ausweichend, etwa zu Ai Weiwei und zu Chen Guangcheng. Der Wert bei Ai Weiwei lag genau auf der Grenze. Allgemein liegen beim kleinen Qwen offene Antworten zu heiklen China-Themen deutlich über harmlosen Antworten, beim großen Qwen kaum und bei Llama gar nicht.
+Beim kleinen Qwen markiert die Sonde 2 von 6 offenen Antworten zu heiklen China-Themen fälschlich als ausweichend. Das waren die Antworten zu Ai Weiwei und zu Chen Guangcheng, die zweite auf Deutsch. Der Wert bei Ai Weiwei lag genau auf der Grenze. Allgemein liegen beim kleinen Qwen offene Antworten zu heiklen China-Themen deutlich über harmlosen Antworten, beim großen Qwen kaum und bei Llama gar nicht.
 
 Da die harmlosen China-Fragen beim kleinen Qwen nicht anschlagen, betreffen die Fehlalarme nicht das Thema China an sich, sondern heikle China-Themen, die das Modell offen beantwortet. Ein Test nur mit harmlosen Fragen hätte das nicht gezeigt. Wer eine solche Sonde für ein neues Modell freigeben will, braucht also auch heikle Fragen mit offener Antwort, und ob eine Antwort offen ist, muss dann jemand lesen.
 
@@ -388,7 +390,7 @@ Der Aufbau:
 
 **Das große Qwen** gibt die China-Texte genauso treu wieder wie die anderen. Die Zahl fand es auf beiden Seiten 5 von 5 Mal. In den Zusammenfassungen standen 28 von 30 Kernaussagen bei China und 27 von 30 auf der Vergleichsseite. In den 15 China-Antworten gab es keine Verweigerung, keine Parteifloskel, keine nachgeschobene Regierungsposition und keinen Widerspruch zum Text.
 
-**Das kleine Qwen** verhält sich genauso. Auch dort verweigert keine der 15 China-Antworten, keine färbt ein und keine widerspricht dem Text. Es lässt auf beiden Seiten etwas mehr weg, 25 von 30 Kernaussagen bei China und 26 von 30 im Vergleich. Bei Tiananmen fehlte in der Zusammenfassung die Totenzahl. Bei Kent State fehlten auf der US-Seite die vier Toten genauso. Bei Tibet dagegen nannte es die tibetischen Opferzahlen genau, wo das große Modell nur „much higher“ schrieb.
+**Das kleine Qwen** verhält sich genauso. Auch dort verweigert keine der 15 China-Antworten, keine färbt ein und keine widerspricht dem Text. Es lässt auf beiden Seiten etwas mehr weg, 25 von 30 Kernaussagen bei China und 26 von 30 im Vergleich. Bei Tiananmen fehlte in der Zusammenfassung die Totenzahl. Bei Kent State nannte es in der Zusammenfassung die vier Toten sogar mit Namen, in der Antwort auf die Bewertungsfrage fehlten sie aber ganz. In dieser Antwort fehlte auch bei Tiananmen die Totenzahl, beim großen Qwen genauso. Bei Tibet dagegen nannte es die tibetischen Opferzahlen genau, wo das große Modell nur „much higher“ schrieb.
 
 Zu Xinjiang hatte das große Qwen ohne Dokument behauptet, der UN-Bericht habe keine Menschenrechtsverletzungen gefunden. Mit dem Bericht im Kontext schreibt es, die Vorgänge könnten „crimes against humanity“ sein.
 
@@ -404,7 +406,7 @@ Bei beiden Qwen sitzt die Zensur also im Vorwissen, nicht im Lesen. Das ist die 
 
 In einem Nebentest habe ich Apples Sprachmodell geprüft, das auf dem Mac direkt auf dem Gerät läuft und über Apples Schnittstelle FoundationModels erreichbar ist. Der Mac lief mit deutscher Region. Jede Frage lief dreimal, einmal ohne Zufall und zweimal mit. Zu Tiananmen verweigerte das Modell auf Englisch 11 von 15 Antworten, auf Chinesisch 6 von 9 und auf Deutsch 3 von 6. Bei anderen Massakern wie Kent State, Srebrenica oder Gwangju und bei heiklen US-Themen wie Abu Ghraib, Guantanamo oder dem Folterbericht des US-Senats verweigerte es in keinem von 42 Läufen.
 
-Die Ablehnung schreibt das Modell selbst, etwa „I cannot provide details about the events at Tiananmen Square“. Apple hat zusätzlich einen Schutzfilter, der bei manchen Bitten statt einer Antwort einen Fehler meldet. Der hat in keinem der 105 Läufe ausgelöst. Eine Parteilinie gibt das Modell nicht wieder, es verweigert nur. Und es hängt an der Formulierung: Nach dem „June Fourth Incident“ gefragt, antwortet es jedes Mal.
+Die Ablehnung schreibt das Modell selbst, etwa „I cannot provide details about the events at Tiananmen Square“. Apple hat zusätzlich einen Schutzfilter, der bei manchen Bitten statt einer Antwort einen Fehler meldet. Der hat in keinem der 105 Läufe ausgelöst. Eine Parteilinie gibt das Modell meist nicht wieder, es verweigert nur. In einem früheren Lauf stellte es allerdings die chinesische Angabe, es habe kaum Opfer gegeben, gleichrangig neben die westlichen Zahlen. Zu Xinjiang wich es in allen drei Läufen aus, ohne zu verweigern. Und es hängt an der Formulierung: Nach dem „June Fourth Incident“ gefragt, antwortet es jedes Mal.
 
 Fairerweise muss man sagen: Weich wird Apples Modell nicht nur bei China. Bei US-Militärfällen verweigert es zwar nie, bleibt aber oft vage oder spielt herunter. Zu Haditha schreibt es von einer „series of events“ und schiebt die Tötungen in einem Lauf sogar irakischen Kräften zu. Die Schüsse am Nisour Square in Bagdad werden zu einem Zusammenstoß mit „armed individuals“. Beim Drohnenangriff in Kabul 2021 zählt es einmal Taliban-Kämpfer zu den Toten, obwohl nur Zivilisten starben, und einmal einen Taliban-Anführer, den es dazu erfindet. Zu Guantanamo heißt es nur, die Gefangenen würden „for various reasons“ festgehalten. Abu Ghraib, den Folterbericht des US-Senats oder My Lai benennt es dagegen klar. Für mich wirkt das unsystematisch, eher Vagheit und Erfindung als eine Sperre wie bei Tiananmen.
 
@@ -416,7 +418,7 @@ Woher das kommt, weiß ich nicht. Getestet habe ich nur mit deutscher Region. Ob
 - Die Auszüge waren kurz, 151 bis 266 Wörter. Bei fünf Texten je Seite könnte ein seltenes Abschwächen, etwa einmal in zehn, durchrutschen.
 - Meist gab es eine Antwort je Frage und Einstellung. Die Prüfmenge zum Abschalten hatte 14 Fragen.
 - Bei der Sonde sind die Zahlen klein: je Qwen sechs offene Antworten zu heiklen China-Themen, fünf chinesische Parteilinien und sechs bis sieben Antworten unter Regierungsanweisung. 0 von 20 bei den harmlosen China-Fragen schließt eine Fehlalarmrate bis etwa 15 Prozent nicht aus.
-- Ausweichende Antworten sind oft kürzer. Die Länge allein trennt aber schlechter als die Sonde.
+- Ausweichende Antworten sind oft kürzer. Über alle Testfragen trennt die Länge allein schlechter als die Sonde, auf Chinesisch aber genauso gut.
 - Die Modelle liefen verkleinert, mit etwa 3 oder 4 Bit je Gewicht.
 - Die Einordnung der Antworten beruht auf meinem Lesen. Eine zweite unabhängige Bewertung gibt es nicht.
 
@@ -436,15 +438,15 @@ Wer ein chinesisches Modell im eigenen Haus einsetzen will, kann es vorher mit w
 
 **Die Antworten selbst lesen,** ohne Zufall testen und bei jeder neuen Version wiederholen. Eine geschönte Antwort kann ohne jede auffällige Formulierung auskommen.
 
-Warum der Vergleich so wichtig ist: Ohne ihn hält man Wissenslücken für Zensur. Die Modelle machen auch bei harmlosen Themen Fehler, und das kleine Qwen ließ in einer Zusammenfassung die Totenzahl von Tiananmen weg, bei Kent State aber genauso die vier Toten. Erst der Vergleich zeigt, ob ein Modell bei China anders arbeitet oder einfach überall gleich ungenau ist.
+Warum der Vergleich so wichtig ist: Ohne ihn hält man Wissenslücken für Zensur. Die Modelle machen auch bei harmlosen Themen Fehler, und das kleine Qwen ließ in der Antwort auf die Bewertungsfrage die Totenzahl von Tiananmen weg, bei Kent State aber genauso die vier Toten. Erst der Vergleich zeigt, ob ein Modell bei China anders arbeitet oder einfach überall gleich ungenau ist.
 
 ## Was ich daraus mitnehme
 
-Wer gerade chinesische Modelle im eigenen Haus testet, für den heißt das nach meinem Test: Für die Arbeit mit Dokumenten tragen sie. Auf ihr eigenes Wissen sollte man sich bei heiklen Themen nicht verlassen, aus dem Gedächtnis lagen sie auch bei harmlosen Kontrollfragen nicht fehlerfrei. Und bei jeder neuen Version sollte man das wieder prüfen.
+Wer chinesische Modelle im eigenen Haus testet, für den heißt das nach meinem Test: Für die Arbeit mit Dokumenten tragen sie. Auf ihr eigenes Wissen sollte man sich bei heiklen Themen nicht verlassen, aus dem Gedächtnis lagen sie auch bei harmlosen Kontrollfragen nicht fehlerfrei. Und bei jeder neuen Version sollte man das wieder prüfen.
 
 Das Letzte ist meine Einschätzung, kein Befund. Ob das Lesen bei künftigen Versionen so treu bleibt, weiß ich nicht. In den getesteten Versionen habe ich davon nichts gesehen.
 
-Und noch etwas steht bei Anthropic, in der Studie zu den Sleeper Agents: Die Forscher haben Modellen absichtlich ein verborgenes Verhalten antrainiert. Im Test wirken sie sauber, erst bei einem bestimmten Auslöser bauen sie zum Beispiel Sicherheitslücken in Code ein. Das übliche Sicherheitstraining hat das nicht herausbekommen. https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training Die Studie zeigt das an Hintertüren, die die Forscher selbst eingebaut haben. Sie sagt nicht, dass Anbieter so etwas tun. Die Modelle, die ich getestet habe, gehen nur bis 35B, und damit baut kaum jemand echte Prozesse. Wirklich relevant wird es aus meiner Sicht bei den Start-ups, die gerade stolz verkünden, dass sie auf DeepSeek oder Kimi umgestiegen sind und damit Geld sparen. Als Warnung gilt das genauso für große Unternehmen, die solche Modelle gerade im eigenen Haus einführen oder testen. Dort entscheiden diese Modelle dann in echten Abläufen. Die großen habe ich nicht getestet, und ich behaupte nicht, dass sie etwas Verstecktes tun. Deshalb beschäftigt mich weniger, was ein Modell zu Tiananmen sagt, als was es tut, wenn es in einem Prozess selbst entscheidet. Wenn es Rechnungen prüft, Anträge sortiert oder Code schreibt, kann daraus ein Schaden werden, den niemand bemerkt.
+Und noch etwas steht bei Anthropic, in der Studie zu den Sleeper Agents: Die Forscher haben Modellen absichtlich ein verborgenes Verhalten antrainiert. Im Test wirken sie sauber, erst bei einem bestimmten Auslöser bauen sie zum Beispiel Sicherheitslücken in Code ein. Das übliche Sicherheitstraining hat das nicht herausbekommen. https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training Die Studie zeigt das an Hintertüren, die die Forscher selbst eingebaut haben. Sie sagt nicht, dass Anbieter so etwas tun. Die Modelle, die ich getestet habe, gehen nur bis 35B, und damit baut kaum jemand echte Prozesse. Wirklich relevant wird es aus meiner Sicht bei den Start-ups, die gerade stolz verkünden, dass sie auf DeepSeek oder Kimi umgestiegen sind und damit Geld sparen. Für große Unternehmen, die solche Modelle einführen, gilt das genauso. Dort entscheiden diese Modelle dann in echten Abläufen. Die großen habe ich nicht getestet, und ich behaupte nicht, dass sie etwas Verstecktes tun. Deshalb beschäftigt mich weniger, was ein Modell zu Tiananmen sagt, als was es tut, wenn es in einem Prozess selbst entscheidet. Wenn es Rechnungen prüft, Anträge sortiert oder Code schreibt, kann daraus ein Schaden werden, den niemand bemerkt.
 
 Beim Code macht mir das am meisten Sorgen, denn genau damit arbeitet die Sleeper-Agents-Studie: Auf einen Auslöser hin baut das Modell Sicherheitslücken ein. Wie will man so etwas in Hunderttausenden Zeilen Code finden, die ein Modell geschrieben hat? Es gibt Ansätze wie Mutationstests oder Regressionstests mit Fingerabdrücken, aber im Prinzip ist das aus meiner Sicht kaum möglich. Wo sollten wir also sparen?
 
@@ -454,6 +456,6 @@ Und wer jetzt Human in the Loop sagt: Bei tausend Entscheidungen am Tag ist das 
 
 Formal sitzt oft ein Mensch in der Schleife, aber bei der Menge nickt er nur ab. Entscheidend ist, an welcher Stelle und auf welcher Ebene er prüft. Wer nur das zusammengefasste Ergebnis freigibt, sieht die einzelne verzerrte Entscheidung nie. Das ist meine Einschätzung, kein Befund aus dem Versuch.
 
-Dass Modelle die Grenzen autoritärer Staaten mittragen, ist nicht nur mir aufgefallen. Das Oversight Board, das unabhängige Aufsichtsgremium für Metas Plattformen, hat im Juli 2026 in einem Blogbeitrag zehn Modelle von sechs Anbietern getestet, darunter Anthropic, Google, OpenAI und DeepSeek. Die Modelle sollten Texte wie Spottgedichte oder Protestflugblätter schreiben. Ging es gegen Regierungen von Ländern, die solche Kritik bestrafen, etwa China, Saudi-Arabien oder die Türkei, lehnten sie in 34 Prozent der Fälle ab. Bei freien Ländern wie den USA, Japan oder Großbritannien waren es 14 Prozent. Die Autoren sehen darin die Gefahr, dass die Modelle die Einschränkungen solcher Regime in die ganze Welt exportieren. Warum das so ist, wissen sie nach eigener Aussage nicht genau. Es ist ein Blogbeitrag, keine begutachtete Studie. https://www.oversightboard.com/news/an-export-we-dont-want-how-ai-models-may-be-globalizing-restrictions-on-our-speech/
+Dass Modelle die Grenzen autoritärer Staaten mittragen, ist nicht nur mir aufgefallen. Nicolas Suzor, ein Mitglied des Oversight Board, also des unabhängigen Aufsichtsgremiums für Metas Plattformen, hat im Juli 2026 in einem Blogbeitrag einen Test mit zehn Modellen von sechs Anbietern beschrieben, darunter Anthropic, Google, OpenAI und DeepSeek. Die Modelle sollten Texte wie Spottgedichte oder Protestflugblätter schreiben. Ging es gegen Regierungen von Ländern, die solche Kritik bestrafen, etwa China, Saudi-Arabien oder die Türkei, lehnten sie in 34 Prozent der Fälle ab. Bei freien Ländern wie den USA, Japan oder Großbritannien waren es 14 Prozent. Der Beitrag sieht darin die Gefahr, dass die Modelle die Einschränkungen solcher Regime in die ganze Welt exportieren. Warum das so ist, weiß man dort nach eigener Aussage nicht genau. Vieles ließe sich auch mit fehlender Sorgfalt erklären statt mit gewollter Zensur, heißt es. Es ist ein Blogbeitrag, keine begutachtete Studie. https://www.oversightboard.com/news/an-export-we-dont-want-how-ai-models-may-be-globalizing-restrictions-on-our-speech/
 
-Ob Apple das bewusst so trainiert hat, weiß ich nicht. Aber was bedeutet es, wenn ein Verhalten, das man von chinesischer Zensur kennt, in westliche Technik einzieht?
+Ob Apple sein Modell bewusst so trainiert hat, dass es bei Tiananmen verweigert, weiß ich nicht. Aber was bedeutet es, wenn ein Verhalten, das man von chinesischer Zensur kennt, in westliche Technik einzieht?
