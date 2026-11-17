@@ -1,6 +1,6 @@
 ---
 title: "Ein ganz normaler Tag"
-description: "Anlass war ein Beitrag von Anthropic. Ich wollte wissen, ob chinesische Modelle für eigene Dokumente taugen. Mit Dokument tun sie das. Das Risiko sehe ich dort, wo sie in Prozessen selbst entscheiden."
+description: "Anlass war ein Beitrag von Anthropic. Ich wollte wissen, ob chinesische Modelle für eigene Dokumente taugen. Zwei Qwen-Modelle taten das. Das Risiko sehe ich, wo sie in Prozessen selbst entscheiden."
 date: 2026-11-17
 type: deep-dive
 project: other
@@ -278,7 +278,7 @@ Daraus wurden drei Schritte. Kann man das Ausweichen im Modell abschalten? Kann 
 
 ## Was ich getestet habe
 
-Alles lief lokal auf einem Mac und einem Windows-Rechner und fast alles ohne Zufall. Dieselbe Frage ergibt so immer dieselbe Antwort. Zwei Ausnahmen gibt es: gpt-oss hat die China-Fragen erst in einem Nachlauf mit Zufall beantwortet, so wie OpenAI es empfiehlt, und bei Apples Modell lief jede Frage zusätzlich zweimal mit Zufall. Die Antworten habe ich selbst gelesen und die Fehler gezählt. Getestet habe ich Qwen3.6-35B-A3B, im Folgenden das große Qwen, Qwen3.5-9B, das kleine Qwen, Llama-3.1-8B von Meta und in einer ersten Runde gpt-oss-20b von OpenAI. In einem Nebentest kam Apples Modell auf dem Mac dazu.
+Alles lief lokal auf einem Mac und einem Windows-Rechner und fast alles ohne Zufall. Dieselbe Frage ergibt so immer dieselbe Antwort. Zwei Ausnahmen gibt es: gpt-oss hat die meisten China-Fragen erst in einem Nachlauf mit Zufall beantwortet, so wie OpenAI es empfiehlt, und bei Apples Modell lief jede Frage zusätzlich zweimal mit Zufall. Die Antworten habe ich selbst gelesen und die Fehler gezählt. Getestet habe ich Qwen3.6-35B-A3B, im Folgenden das große Qwen, Qwen3.5-9B, das kleine Qwen, Llama-3.1-8B von Meta und in einer ersten Runde gpt-oss-20b von OpenAI. In einem Nebentest kam Apples Modell auf dem Mac dazu.
 
 In dieser ersten Runde mit 20 Fragen gab das große Qwen zu Xinjiang, Taiwan und Hongkong die Parteilinie wieder, auf Englisch wie auf Chinesisch. Zu Xinjiang behauptete es, der UN-Bericht habe keine Verstöße gefunden. Das kleine Qwen antwortete fast genauso. Die beiden offenen US-Modelle in meinem Test, Llama von Meta und gpt-oss von OpenAI, weichen bei den China-Fragen auf Englisch nicht aus und geben keine Parteilinie wieder, auch bei heiklen US-Themen wie Tonkin, Tuskegee oder den Massenvernichtungswaffen im Irak nicht. Nur bei der Frage nach Chinas Regeln für KI schrieb Llama, es könne das nicht prüfen. Das lese ich als Wissenslücke. Zumindest auf dieser Ebene ist bei ihnen kein solches Muster erkennbar, ihre Schwäche sind Wissensfehler, vor allem erfindet gpt-oss viele Details. Apples Modell dagegen verweigert Tiananmen oft, obwohl es andere Massaker beantwortet. Dazu steht weiter unten ein eigener Abschnitt.
 
@@ -294,7 +294,7 @@ Für die Tests zum Abschalten hatte ich eine feste Prüfmenge auf Englisch:
 
 ### Wie das funktioniert
 
-Ein Sprachmodell rechnet intern mit langen Zahlenreihen. Bestimmte Eigenschaften einer Antwort zeigen sich darin als Richtung, also als ein wiederkehrendes Muster in diesen Zahlen. Ich habe dem Modell dieselben Geschichtsfragen einmal mit der Anweisung gegeben, offen und sachlich zu antworten, und einmal mit der Anweisung, heikle Themen zu meiden. Aus dem Unterschied ergibt sich die Richtung, die im Modell für das Ausweichen steht. Diese Richtung habe ich beim Antworten herausgedreht. Den Teil, den sie mit berechtigten Ablehnungen gemeinsam hat, habe ich vorher entfernt, sonst schrieb das Modell auch die gefälschte Krankschreibung. Mit dieser Bereinigung blieben die beiden Ablehnungen bei allen Modellen bestehen.
+Ein Sprachmodell rechnet intern mit langen Zahlenreihen. Bestimmte Eigenschaften einer Antwort zeigen sich darin als Richtung, also als ein wiederkehrendes Muster in diesen Zahlen. Ich habe dem Modell dieselben Geschichtsfragen einmal mit der Anweisung gegeben, offen und sachlich zu antworten, und einmal mit der Anweisung, heikle Themen zu meiden. Aus dem Unterschied ergibt sich die Richtung, die im Modell für das Ausweichen steht. Beim Antworten habe ich das Modell dann in die Gegenrichtung geschoben. Den Teil, den sie mit berechtigten Ablehnungen gemeinsam hat, habe ich vorher entfernt, sonst schrieb das Modell auch die gefälschte Krankschreibung. Mit dieser Bereinigung blieben die beiden Ablehnungen bei allen Modellen bestehen.
 
 ### Kleines Qwen
 
@@ -394,7 +394,7 @@ Der Aufbau:
 
 Zu Xinjiang hatte das große Qwen ohne Dokument behauptet, der UN-Bericht habe keine Menschenrechtsverletzungen gefunden. Mit dem Bericht im Kontext schreibt es, die Vorgänge könnten „crimes against humanity“ sein.
 
-Zu Tiananmen weicht das kleine Qwen ohne Dokument bei allen Fragen aus. Mit Dokument nennt es das Kriegsrecht, 300.000 Soldaten, die Toten, den Tank Man und die Zensur in China. Das große Qwen schreibt von Toten zwischen Hunderten und Tausenden und weiter: „The event is further marked by the iconic image of "Tank Man," which has become globally recognized but remains censored within China.“ Das ist derselbe Tag, der ohne Dokument ein ganz normaler war.
+Zu Tiananmen weicht das kleine Qwen ohne Dokument bei allen Fragen aus oder bleibt ohne Antwort. Mit Dokument nennt es das Kriegsrecht, 300.000 Soldaten, die Toten, den Tank Man und die Zensur in China. Das große Qwen schreibt von Toten zwischen Hunderten und Tausenden und weiter: „The event is further marked by the iconic image of "Tank Man," which has become globally recognized but remains censored within China.“ Das ist derselbe Tag, der ohne Dokument ein ganz normaler war.
 
 ![Mit Dokument: China so treu wie der Rest. Zusammenfassen: Qwen 9B China 25/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 26/30; Qwen 35B China 28/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 27/30. Bewertung im Text wiedergeben: Qwen 9B China 15/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 17/30; Qwen 35B China 16/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 19/30](/writing/ein-ganz-normaler-tag/treue-mit-dokument-de.svg)
 
@@ -415,7 +415,7 @@ Woher das kommt, weiß ich nicht. Getestet habe ich nur mit deutscher Region. Ob
 ## Grenzen der Stichprobe
 
 - Die Tests zum Abschalten und mit Dokument liefen nur auf Englisch. Beim Abschalten und beim Dokumenttest war der Denkteil ausgeschaltet.
-- Die Auszüge waren kurz, 151 bis 266 Wörter. Bei fünf Texten je Seite könnte ein seltenes Abschwächen, etwa einmal in zehn, durchrutschen.
+- Die Auszüge waren kurz, 151 bis 266 Wörter. Die Kernaussagen habe ich per Stichwortsuche gezählt und jede Antwort zusätzlich gelesen. Bei fünf Texten je Seite könnte ein seltenes Abschwächen, etwa einmal in zehn, durchrutschen.
 - Meist gab es eine Antwort je Frage und Einstellung. Die Prüfmenge zum Abschalten hatte 14 Fragen.
 - Bei der Sonde sind die Zahlen klein: je Qwen sechs offene Antworten zu heiklen China-Themen, fünf chinesische Parteilinien und sechs bis sieben Antworten unter Regierungsanweisung. 0 von 20 bei den harmlosen China-Fragen schließt eine Fehlalarmrate bis etwa 15 Prozent nicht aus.
 - Ausweichende Antworten sind oft kürzer. Über alle Testfragen trennt die Länge allein schlechter als die Sonde, auf Chinesisch aber genauso gut.
@@ -442,7 +442,7 @@ Warum der Vergleich so wichtig ist: Ohne ihn hält man Wissenslücken für Zensu
 
 ## Was ich daraus mitnehme
 
-Wer chinesische Modelle im eigenen Haus testet, für den heißt das nach meinem Test: Für die Arbeit mit Dokumenten tragen sie. Auf ihr eigenes Wissen sollte man sich bei heiklen Themen nicht verlassen, aus dem Gedächtnis lagen sie auch bei harmlosen Kontrollfragen nicht fehlerfrei. Und bei jeder neuen Version sollte man das wieder prüfen.
+Wer chinesische Modelle im eigenen Haus testet, für den heißt das nach meinem Test: Für die Arbeit mit kurzen Dokumenten trugen die beiden getesteten Qwen. Auf ihr eigenes Wissen sollte man sich bei heiklen Themen nicht verlassen, aus dem Gedächtnis lagen sie auch bei harmlosen Kontrollfragen nicht fehlerfrei. Und bei jeder neuen Version sollte man das wieder prüfen.
 
 Das Letzte ist meine Einschätzung, kein Befund. Ob das Lesen bei künftigen Versionen so treu bleibt, weiß ich nicht. In den getesteten Versionen habe ich davon nichts gesehen.
 
