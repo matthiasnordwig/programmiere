@@ -3,9 +3,12 @@ import Video from '../components/story/Video.astro';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import LoopFlow from '../components/diagrams/LoopFlow.astro';
-import { publishedPosts } from '../lib';
+import { publishedPosts, TYPE_LABEL } from '../lib';
 import { SITE } from '../site';
-const posts = (await publishedPosts()).filter((p) => p.data.type !== 'build-log').slice(0, 4);
+import { FEATURED } from '../data/featured';
+const all = await publishedPosts();
+const featured = FEATURED && all.find((p) => p.id === FEATURED.post);
+const posts = all.filter((p) => p.data.type !== 'build-log' && p !== featured).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
 <Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that gives Claude Code a local index of your documents. 42 instead of 126 seconds per question, about half the input tokens, measured on 442 pages. Also Matrix LLM, an app for iPhone, iPad, Mac and Windows, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
@@ -36,6 +39,25 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
       <p class="free">Free to download for iPhone, iPad, Mac and Windows.</p>
     </div>
   </section>
+
+  {FEATURED && featured && (
+    <section class="feature">
+      <div class="in feature-grid">
+        <a class="pic" href={`/writing/${featured.id}/`} tabindex="-1" aria-hidden="true">
+          <picture>
+            {FEATURED.imageDark && <source srcset={FEATURED.imageDark} media="(prefers-color-scheme: dark)" />}
+            <img src={FEATURED.image} width={FEATURED.width} height={FEATURED.height} alt="" loading="lazy" decoding="async" />
+          </picture>
+        </a>
+        <div>
+          <p class="project">Writing · {TYPE_LABEL[featured.data.type]}{featured.data.lang === 'de' && ' · in German'}</p>
+          <h2 lang={featured.data.lang !== 'en' ? featured.data.lang : undefined}>{featured.data.title}</h2>
+          <p class="sub" lang={featured.data.lang !== 'en' ? featured.data.lang : undefined}>{featured.data.description}</p>
+          <div class="actions"><a class="go ghost" href={`/writing/${featured.id}/`}>Read the post</a></div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="more">
     <div class="more-inner">
@@ -96,6 +118,13 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   .actions .badge img { height: 52px; width: auto; display: block; }
   .actions .go { box-sizing: border-box; height: 52px; display: inline-flex; align-items: center; }
   .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .feature { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
+  .feature-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem 3rem; align-items: center; }
+  @media (min-width: 800px) { .feature-grid { grid-template-columns: 1.15fr 1fr; } }
+  .feature h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .feature .sub { font-size: 1.08rem; }
+  .pic { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(.75rem, 2vw, 1.25rem); }
+  .pic img { display: block; width: 100%; height: auto; }
   .more { border-top: 1px solid var(--line); background: var(--surface); }
   .more-inner { max-width: 76rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5rem) 16px; display: grid; grid-template-columns: 1fr; gap: 3.5rem 4rem; }
   @media (min-width: 1000px) { .more-inner { grid-template-columns: repeat(2, 1fr); } }
