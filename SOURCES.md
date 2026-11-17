@@ -45,3 +45,5 @@ Bilder (verkleinert) nach `src/assets/posts/<slug>/`.
 ## Andere Projekte unter `~/projects/`
 
 Nur, wenn ich sie ausdrücklich nenne — dann hier eine Zeile ergänzen.
+
+- `~/projects/qwen-sonde` (kein Git-Repo, genannt 2026-11-17): Versuch zum Ausweichen lokaler Sprachmodelle. Quelle für „Ein ganz normaler Tag“ ist `artikel/webseite-normaler-tag.md`, Grafiken in `artikel/grafiken/`; Fakten gegen `rag/`, `phase2/allgemein/`, `phase3-cvec/`, `stufe1/`, `apple/` prüfen, Wegweiser ist der Belegteil der Quelle. **Tabu:** den Belegteil selbst veröffentlichen.

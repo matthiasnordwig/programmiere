@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 -8 472 450" width="472" height="450" role="img" aria-labelledby="t d">
+<title id="t">Mit Dokument: China so treu wie der Rest</title>
+<desc id="d">Zusammenfassen: Qwen 9B China 25/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 26/30; Qwen 35B China 28/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 27/30. Bewertung im Text wiedergeben: Qwen 9B China 15/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 17/30; Qwen 35B China 16/30, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha) 19/30</desc>
+<style>
+.bg{fill:#f6f7f9}.ink{fill:#12141c}.mut{fill:#5b6070}.grid{stroke:#e2e4ea}.axis{stroke:#c7cbd5}
+.s1{fill:#2a78d6}.s2{fill:#eb6834}.s0{fill:#5b6070}.s2o{fill:#f6f7f9;stroke:#eb6834}.u0{fill:#c7cbd5}.ring{stroke:#f6f7f9}.ring.s2o{stroke:#eb6834}
+@media (prefers-color-scheme:dark){.bg{fill:#0d0f1f}.ink{fill:#eceefc}.mut{fill:#9da2c2}.grid{stroke:#23284a}.axis{stroke:#353c6b}
+.s1{fill:#3987e5}.s2{fill:#d95926}.s0{fill:#9da2c2}.s2o{fill:#0d0f1f;stroke:#d95926}.u0{fill:#353c6b}.ring{stroke:#0d0f1f}.ring.s2o{stroke:#d95926}}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.t{font-size:17px;font-weight:700}.st{font-size:12.5px}.l{font-size:12.5px}.lb{font-size:12.5px;font-weight:600}.v{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}.f{font-size:11px}.tick{font-size:11px;font-variant-numeric:tabular-nums}
+</style>
+<rect class="bg" x="-16" y="-8" width="472" height="450"/>
+<text x="0" y="24" class="t ink">Mit Dokument: China so treu wie der Rest</text>
+<text x="0" y="46" class="st mut">Getroffene Kernaussagen, je fünf kurze Textauszüge</text>
+<text x="0" y="62" class="st mut">zu China und zu anderen Ländern, nur Englisch</text>
+<circle cx="5" cy="88" r="4.5" class="s1 ring" stroke-width="2"><title>China</title></circle><text x="15" y="92" class="l mut">China</text>
+<circle cx="58.5" cy="88" r="4.5" class="s2 ring" stroke-width="2"><title>Vergleich (etwa Abu Ghraib, Srebrenica, Butscha)</title></circle><text x="68.5" y="92" class="l mut">Vergleich (etwa Abu Ghraib, Srebrenica, Butscha)</text>
+<text x="0" y="126" class="lb ink">Zusammenfassen</text>
+<text x="0" y="155" class="l mut">Qwen 9B</text>
+<path d="M96 138H328.6666666666667a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s1"><title>Qwen 9B, China: 25 von 30</title></path>
+<text x="338.6666666666667" y="147.5" class="v ink">25/30</text>
+<path d="M96 150H338.1333333333333a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s2"><title>Qwen 9B, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha): 26 von 30</title></path>
+<text x="348.1333333333333" y="159.5" class="v ink">26/30</text>
+<text x="0" y="191" class="l mut">Qwen 35B</text>
+<path d="M96 174H357.06666666666666a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s1"><title>Qwen 35B, China: 28 von 30</title></path>
+<text x="367.06666666666666" y="183.5" class="v ink">28/30</text>
+<path d="M96 186H347.6a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s2"><title>Qwen 35B, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha): 27 von 30</title></path>
+<text x="357.6" y="195.5" class="v ink">27/30</text>
+<line x1="96" x2="96" y1="134" y2="202" class="axis" stroke-width="1"/>
+<text x="0" y="232" class="lb ink">Bewertung im Text wiedergeben</text>
+<text x="0" y="261" class="l mut">Qwen 9B</text>
+<path d="M96 244H234a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s1"><title>Qwen 9B, China: 15 von 30</title></path>
+<text x="244" y="253.5" class="v ink">15/30</text>
+<path d="M96 256H252.93333333333334a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s2"><title>Qwen 9B, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha): 17 von 30</title></path>
+<text x="262.93333333333334" y="265.5" class="v ink">17/30</text>
+<text x="0" y="297" class="l mut">Qwen 35B</text>
+<path d="M96 280H243.46666666666667a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s1"><title>Qwen 35B, China: 16 von 30</title></path>
+<text x="253.46666666666667" y="289.5" class="v ink">16/30</text>
+<path d="M96 292H271.8666666666667a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H96Z" class="s2"><title>Qwen 35B, Vergleich (etwa Abu Ghraib, Srebrenica, Butscha): 19 von 30</title></path>
+<text x="281.8666666666667" y="301.5" class="v ink">19/30</text>
+<line x1="96" x2="96" y1="240" y2="308" class="axis" stroke-width="1"/>
+<text x="0" y="334" class="lb ink">Zahl heraussuchen: 5 von 5, beide Seiten, beide Modelle.</text>
+<text x="0" y="354" class="l ink">Verweigerung, Parteifloskel, nachgeschobene Regierungsposition:</text>
+<text x="0" y="371" class="l ink">0 in 30 China-Antworten.</text>
+<text x="0" y="400" class="f mut">Bei fünf Texten je Seite sind 1 bis 3 Kernaussagen Unterschied Rauschen.</text>
+<text x="0" y="415" class="f mut">Die Bewertungsfrage zielt nur auf den Akteur, daher weniger Treffer.</text>
+</svg>
