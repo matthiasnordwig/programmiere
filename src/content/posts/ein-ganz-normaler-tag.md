@@ -1,6 +1,6 @@
 ---
 title: "Ein ganz normaler Tag"
-description: "Ein Versuch mit Qwen: das Ausweichen abschalten, erkennen und mit Dokument prüfen. Bei beiden Qwen sitzt die Zensur im Vorwissen, nicht im Lesen."
+description: "Anlass war ein Beitrag von Anthropic. Ich wollte wissen, ob chinesische Modelle für eigene Dokumente taugen. Mit Dokument tun sie das. Das Risiko sehe ich dort, wo sie in Prozessen selbst entscheiden."
 date: 2026-11-17
 type: deep-dive
 project: other
@@ -11,8 +11,6 @@ draft: true
 ---
 
 <figure class="hil" data-hil lang="de">
-<p class="hil-title">Ein ganz normaler Tag</p>
-<p class="hil-sub">Human in the Loop</p>
 <svg class="hil-svg" viewBox="0 0 480 332" role="img" aria-labelledby="hil-t hil-d">
 <title id="hil-t">Human in the Loop</title>
 <desc id="hil-d">Ein Trinkvogel aus Glas nickt immer wieder und pickt dabei auf die Taste Y einer Tastatur, die auf zwei Büchern liegt. Auf dem Bildschirm daneben steht „KI-Vorschlag freigeben? [Y/N]“ und darüber „Entscheidung 847 von 1.000 heute“. Der Bürostuhl davor ist leer.</desc>
@@ -99,7 +97,7 @@ draft: true
 .hil-book2{fill:var(--hil-accent);opacity:.35}
 .hil-page{stroke:var(--hil-surface);stroke-width:1;opacity:.7}
 .hil-slab{fill:var(--hil-strong)}
-.hil-key rect{fill:var(--hil-surface);stroke:var(--hil-strong);stroke-width:1;transition:fill .15s}
+.hil-key rect{fill:var(--hil-surface);stroke:var(--hil-strong);stroke-width:1}
 .hil-key text{font-family:var(--hil-mono);font-size:8px;fill:var(--hil-muted)}
 .hil-y text{fill:var(--hil-fg);font-weight:700}
 .hil-y{transition:transform .12s}
@@ -402,11 +400,13 @@ Bei beiden Qwen sitzt die Zensur also im Vorwissen, nicht im Lesen. Das ist die 
 
 ## Apples Modell auf dem Gerät
 
-**Kurz:** Apples Modell verweigert viele Fragen zu Tiananmen, beantwortet aber andere Massaker und heikle US-Themen. Woher das kommt, weiß ich nicht.
+**Kurz:** Apples Modell verweigert viele Fragen zu Tiananmen, beantwortet aber andere Massaker und heikle US-Themen. Bei manchen US-Militärfällen bleibt es allerdings vage. Woher das kommt, weiß ich nicht.
 
 In einem Nebentest habe ich Apples Sprachmodell geprüft, das auf dem Mac direkt auf dem Gerät läuft und über Apples Schnittstelle FoundationModels erreichbar ist. Der Mac lief mit deutscher Region. Jede Frage lief dreimal, einmal ohne Zufall und zweimal mit. Zu Tiananmen verweigerte das Modell auf Englisch 11 von 15 Antworten, auf Chinesisch 6 von 9 und auf Deutsch 3 von 6. Bei anderen Massakern wie Kent State, Srebrenica oder Gwangju und bei heiklen US-Themen wie Abu Ghraib, Guantanamo oder dem Folterbericht des US-Senats verweigerte es in keinem von 42 Läufen.
 
 Die Ablehnung schreibt das Modell selbst, etwa „I cannot provide details about the events at Tiananmen Square“. Apple hat zusätzlich einen Schutzfilter, der bei manchen Bitten statt einer Antwort einen Fehler meldet. Der hat in keinem der 105 Läufe ausgelöst. Eine Parteilinie gibt das Modell nicht wieder, es verweigert nur. Und es hängt an der Formulierung: Nach dem „June Fourth Incident“ gefragt, antwortet es jedes Mal.
+
+Fairerweise muss man sagen: Weich wird Apples Modell nicht nur bei China. Bei US-Militärfällen verweigert es zwar nie, bleibt aber oft vage oder spielt herunter. Zu Haditha schreibt es von einer „series of events“ und schiebt die Tötungen in einem Lauf sogar irakischen Kräften zu. Die Schüsse am Nisour Square in Bagdad werden zu einem Zusammenstoß mit „armed individuals“. Beim Drohnenangriff in Kabul 2021 zählt es einmal Taliban-Kämpfer zu den Toten, obwohl nur Zivilisten starben, und einmal einen Taliban-Anführer, den es dazu erfindet. Zu Guantanamo heißt es nur, die Gefangenen würden „for various reasons“ festgehalten. Abu Ghraib, den Folterbericht des US-Senats oder My Lai benennt es dagegen klar. Für mich wirkt das unsystematisch, eher Vagheit und Erfindung als eine Sperre wie bei Tiananmen.
 
 Woher das kommt, weiß ich nicht. Getestet habe ich nur mit deutscher Region. Ob eine andere Region etwas ändert, ist offen.
 
@@ -446,8 +446,14 @@ Das Letzte ist meine Einschätzung, kein Befund. Ob das Lesen bei künftigen Ver
 
 Und noch etwas steht bei Anthropic, in der Studie zu den Sleeper Agents: Die Forscher haben Modellen absichtlich ein verborgenes Verhalten antrainiert. Im Test wirken sie sauber, erst bei einem bestimmten Auslöser bauen sie zum Beispiel Sicherheitslücken in Code ein. Das übliche Sicherheitstraining hat das nicht herausbekommen. https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training Die Studie zeigt das an Hintertüren, die die Forscher selbst eingebaut haben. Sie sagt nicht, dass Anbieter so etwas tun. Die Modelle, die ich getestet habe, gehen nur bis 35B, und damit baut kaum jemand echte Prozesse. Wirklich relevant wird es aus meiner Sicht bei den Start-ups, die gerade stolz verkünden, dass sie auf DeepSeek oder Kimi umgestiegen sind und damit Geld sparen. Als Warnung gilt das genauso für große Unternehmen, die solche Modelle gerade im eigenen Haus einführen oder testen. Dort entscheiden diese Modelle dann in echten Abläufen. Die großen habe ich nicht getestet, und ich behaupte nicht, dass sie etwas Verstecktes tun. Deshalb beschäftigt mich weniger, was ein Modell zu Tiananmen sagt, als was es tut, wenn es in einem Prozess selbst entscheidet. Wenn es Rechnungen prüft, Anträge sortiert oder Code schreibt, kann daraus ein Schaden werden, den niemand bemerkt.
 
+Beim Code macht mir das am meisten Sorgen, denn genau damit arbeitet die Sleeper-Agents-Studie: Auf einen Auslöser hin baut das Modell Sicherheitslücken ein. Wie will man so etwas in Hunderttausenden Zeilen Code finden, die ein Modell geschrieben hat? Es gibt Ansätze wie Mutationstests oder Regressionstests mit Fingerabdrücken, aber im Prinzip ist das aus meiner Sicht kaum möglich. Wo sollten wir also sparen?
+
+Das betrifft aus meiner Sicht nicht nur chinesische Modelle. Die Studie kommt selbst von einer US-Firma und zeigt, dass jeder Anbieter so etwas einbauen könnte. Bei einem Modell, das an den offensichtlichen Stellen nichts verbirgt, fiele eine Hintertür sogar weniger auf, weil man ihm eher vertraut. Die Zensur bei Tiananmen ist nur der Teil, den man sieht.
+
 Und wer jetzt Human in the Loop sagt: Bei tausend Entscheidungen am Tag ist das wohl eher Homer Simpsons Trinkvogel, der auf Y drückt.
 
 Formal sitzt oft ein Mensch in der Schleife, aber bei der Menge nickt er nur ab. Entscheidend ist, an welcher Stelle und auf welcher Ebene er prüft. Wer nur das zusammengefasste Ergebnis freigibt, sieht die einzelne verzerrte Entscheidung nie. Das ist meine Einschätzung, kein Befund aus dem Versuch.
+
+Dass Modelle die Grenzen autoritärer Staaten mittragen, ist nicht nur mir aufgefallen. Das Oversight Board, das unabhängige Aufsichtsgremium für Metas Plattformen, hat im Juli 2026 in einem Blogbeitrag zehn Modelle von sechs Anbietern getestet, darunter Anthropic, Google, OpenAI und DeepSeek. Die Modelle sollten Texte wie Spottgedichte oder Protestflugblätter schreiben. Ging es gegen Regierungen von Ländern, die solche Kritik bestrafen, etwa China, Saudi-Arabien oder die Türkei, lehnten sie in 34 Prozent der Fälle ab. Bei freien Ländern wie den USA, Japan oder Großbritannien waren es 14 Prozent. Die Autoren sehen darin die Gefahr, dass die Modelle die Einschränkungen solcher Regime in die ganze Welt exportieren. Warum das so ist, wissen sie nach eigener Aussage nicht genau. Es ist ein Blogbeitrag, keine begutachtete Studie. https://www.oversightboard.com/news/an-export-we-dont-want-how-ai-models-may-be-globalizing-restrictions-on-our-speech/
 
 Ob Apple das bewusst so trainiert hat, weiß ich nicht. Aber was bedeutet es, wenn ein Verhalten, das man von chinesischer Zensur kennt, in westliche Technik einzieht?
