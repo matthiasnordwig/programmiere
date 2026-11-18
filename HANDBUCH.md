@@ -59,6 +59,7 @@ programmiere/
 - `content.config.ts` — Collections + Schemas: `posts` (`title`, `description` ≤200, `date`, `type` `deep-dive|build-log|diy`, `project`, `tags`, `draft`=**true** per Default, `lang` `en|de` (Standard `en`, setzt `<html lang>`), `image` (Social-Vorschau, Pfad unter `public/`)) und `projects` (`title`, `summary`, `status`, `order`, `featured`, `links`).
 - `lib.ts` — `publishedPosts()` (Drafts nur in `astro dev`), `TYPE_LABEL`, `fmtDate()`. Genutzt von Startseite, Writing, Projektseiten, RSS.
 - `data/featured.ts` — `FEATURED`: welcher Beitrag auf der Startseite mit Bild erscheint (Datei-ID, Bild hell/dunkel unter `public/writing/<slug>/home-*.png`, Maße); `null` blendet aus. Absichtlich nicht im Frontmatter, damit es über `npm run ship` geht statt über das Beitrags-Gate.
+- `data/matrix-video.ts` — `MATRIX_VIDEO_TRACKS`: Untertitelspuren (WebVTT, 9 Sprachen) des Matrix-App-Videos unter `public/projects/matrix/matrix-video.<sprache>.vtt`; die Dateien entstehen im Videoprojekt aus den Tafeln der Fassung.
 - `data/cv.ts` — einzige Quelle des Lebenslaufs: `PERSON`, `RUN` (Stationen mit `fights`: `boss`/`hp`/`result`/`line`), `SIDE_QUESTS`, `LOADOUT`, `EXTRAS`. Fakten nur aus dem eigenen CV; Arbeitgeber-interne Zahlen bleiben draußen.
 
 **Layout & Stil**
@@ -79,7 +80,7 @@ programmiere/
 **Komponenten** (`components/`)
 - `Installs.astro` — Installationszahl des Anti-Spam-Plugins: `<Installs />` oder `<Installs text="…{installs}+ sites" />` (Platzhalter im Projekt-Frontmatter `status` und in `data/cv.ts`). Im HTML steht der Build-Wert; ein kleines Skript liest beim Laden `/data/wporg-installs.json` von der eigenen Domain und setzt die Zahl ein, wenn die Datei neuer ist als der Build-Wert. Fehlt die Datei oder ist sie kaputt, bleibt der Build-Wert. Keine Anfrage an fremde Domains. Genutzt von Startseite, Projektliste, `projects/gdpr-recaptcha`, `projects/maintainer-loop`, `cv`.
 - `PostList.astro` — Beitragsliste (Datum · Art · Draft-Badge).
-- `story/Video.astro` — Video-Platz (16:9, Poster, Bildunterschrift); Dateien unter `public/video/` (Plugin) und `public/projects/matrix/` (App). Fehlt eine Datei, bleibt der Kasten leer.
+- `story/Video.astro` — Video-Platz (16:9, Poster, Bildunterschrift, optional Untertitelspuren `tracks`, nie voreingestellt); Dateien unter `public/video/` (Plugin) und `public/projects/matrix/` (App). Fehlt eine Datei, bleibt der Kasten leer.
 - `story/Zoom.astro` — Screenshot über volle Breite, Klick öffnet Vollbild (`<dialog>`).
 - `diagrams/MatrixFlow.astro`, `LoopFlow.astro`, `PowFlow.astro` — schematische SVGs, nutzen die Farb-Tokens; keine erfundenen Inhalte.
 

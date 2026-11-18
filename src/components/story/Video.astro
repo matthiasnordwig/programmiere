@@ -1,11 +1,14 @@
 ---
-// Zentraler Video-Platz (16:9, Poster, Bildunterschrift). Fehlt die Datei, bleibt der schwarze Kasten leer.
-interface Props { src: string; poster: string; caption?: string; }
-const { src, poster, caption } = Astro.props;
+// Zentraler Video-Platz (16:9, Poster, Bildunterschrift, optional Untertitel als WebVTT je Sprache). Fehlt die Datei, bleibt der
+// schwarze Kasten leer. Untertitel sind nie voreingestellt: die Tafeln stehen englisch im Bild, die Spuren sind Übersetzungen zum Wählen.
+interface Track { src: string; lang: string; label: string; }
+interface Props { src: string; poster: string; caption?: string; tracks?: Track[]; }
+const { src, poster, caption, tracks = [] } = Astro.props;
 ---
 <figure class="vid">
   <video controls preload="metadata" playsinline poster={poster}>
     <source src={src} type="video/mp4" />
+    {tracks.map((t) => <track kind="subtitles" src={t.src} srclang={t.lang} label={t.label} />)}
   </video>
   {caption && <figcaption>{caption}</figcaption>}
 </figure>

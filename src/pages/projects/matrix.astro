@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Video from '../../components/story/Video.astro';
+import { MATRIX_VIDEO_TRACKS } from '../../data/matrix-video';
 import Zoom from '../../components/story/Zoom.astro';
 import MatrixFlow from '../../components/diagrams/MatrixFlow.astro';
 import '../../styles/story.css';
@@ -35,7 +36,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'SoftwareApplication
 
   <section class="beat" style="border-top:0">
     <div class="in">
-      <Video src="/projects/matrix/matrix-video-1080p.mp4" poster="/projects/matrix/matrix-video-poster.jpg" caption="A short walk through Matrix: add documents, ask a question, check the cited passage." />
+      <Video src="/projects/matrix/matrix-video-1080p.mp4" poster="/projects/matrix/matrix-video-poster.jpg" tracks={MATRIX_VIDEO_TRACKS} caption="A short walk through Matrix: add documents, ask a question, check the cited passage." />
     </div>
   </section>
 
