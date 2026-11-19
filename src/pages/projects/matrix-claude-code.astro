@@ -4,6 +4,9 @@ import Zoom from '../../components/story/Zoom.astro';
 import tokensChart from '../../assets/projects/matrix-claude-code-tokens-0.2.9.png';
 import Base from '../../layouts/Base.astro';
 import '../../styles/story.css';
+
+// Snapshot of the public test set (github.com/matthiasnordwig/matrix-mcp, folder benchmark/), without the PDFs.
+const ZIP = '/projects/matrix-claude-code/matrix-claude-code-benchmark-2026-11-19.zip';
 ---
 <Base wide title="Matrix for Claude Code: 5.6× fewer input tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 5.6× fewer input tokens, 2.5× fewer output tokens, 20 instead of 48 s.">
 <div class="story">
@@ -81,8 +84,9 @@ import '../../styles/story.css';
         </table>
       </div>
       <p class="muted" style="margin-top:1.5rem">Averages per run, Claude Code 2.1.309 with Sonnet and plugin 0.2.9, November 2026.
-      Two runs per question on both sides. Input tokens add up what the model processes over all turns; output tokens are what it writes, its tool calls and the answer. Cache reads, the same conversation sent again with each turn, make up 93 % of them without the plugin and 86 % with it; without cache reads it is 76k against 25k tokens. With the plugin all 8 answers were right; without it 7 of 8, because Claude Code once read a value from the wrong chart. The second run without the plugin ran while another build used the Mac, so its times may be slightly high; the tokens are unaffected. The questions, the right answers
-      and the script to run it again are in <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
+      Two runs per question on both sides. Input tokens add up what the model processes over all turns; output tokens are what it writes, its tool calls and the answer. Cache reads, the same conversation sent again with each turn, make up 93 % of them without the plugin and 86 % with it; without cache reads it is 76k against 25k tokens. With the plugin all 8 answers were right; without it 7 of 8, because Claude Code once read a value from the wrong chart. The second run without the plugin ran while another build used the Mac, so its times may be slightly high; the tokens are unaffected. The questions, the right answers,
+      the raw data and the script to run it again are in the <a href="#method">test set below</a>; the full write-up is in
+      <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
       <p class="muted">A second, larger test set was measured in October with plugin version 0.2.3, one run per question:
       on 1,592 pages in 14 documents and four languages, the plugin used 34 % fewer input tokens and 35 % less time.</p>
       <p class="muted">The first run of this test, in October with Claude Code 2.1.222 and an earlier plugin version, gave 303k
@@ -92,7 +96,120 @@ import '../../styles/story.css';
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat" id="method">
+    <div class="in read">
+      <p class="kicker">How it was measured</p>
+      <h2>Check it yourself: the test set is public.</h2>
+      <p class="big">Anyone can download the documents. The questions, the right answers, the script and the raw results
+      of all 16 runs are in the test set, so anyone can check the numbers above or run the test again.</p>
+      <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp/tree/main/benchmark">Test set on GitHub</a>
+      <a class="go ghost" href={ZIP} download>Download ZIP (23 KB)</a>
+      <p class="muted">The ZIP holds the five files of the measurement of 19 November 2026: <code>README.md</code> (method
+      and limits), <code>questions.json</code> (document sources, questions, right answers, pages),
+      <code>results-2026-11-19.jsonl</code> (one line per run, with the full answer),
+      <code>probe-2026-11-19.json</code> (search hits without Claude) and <code>bench_claude_plugin.py</code> (the script).
+      The PDFs are not in it; the script downloads them.</p>
+
+      <h3>The documents</h3>
+      <p class="muted">442 pages in four PDFs: three EU regulations in German from the EU Publications Office, and one
+      English report whose numbers sit in charts. The script downloads them and compares each file with the one measured
+      (by its SHA-256 checksum), because a new rendering of a PDF can shift its pages.</p>
+      <div class="table-wrap">
+        <table class="demo">
+          <thead><tr><th>File</th><th>Document</th><th>Pages</th></tr></thead>
+          <tbody>
+            <tr><td><code>dora.pdf</code></td><td>DORA, Regulation (EU) 2022/2554, German</td><td>79</td></tr>
+            <tr><td><code>ai-act.pdf</code></td><td>AI Act, Regulation (EU) 2024/1689, German</td><td>144</td></tr>
+            <tr><td><code>dsgvo.pdf</code></td><td>GDPR, Regulation (EU) 2016/679, German</td><td>88</td></tr>
+            <tr><td><code>enisa-tl-2024.pdf</code></td><td>ENISA Threat Landscape 2024, English, CC BY 4.0</td><td>131</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The questions and the right answers</h3>
+      <p class="muted">Written down with their pages before the first run. Pages are PDF pages, 1 is the first page of
+      the file.</p>
+      <ol class="qs">
+        <li><p><strong>Q1</strong> “Under the EU rules on digital operational resilience of the financial sector, how often do the larger financial entities have to run advanced testing that simulates real attackers?”</p>
+          <p class="muted">English paraphrase of German text. Right answer: at least every three years (threat-led
+          penetration testing, TLPT); the authority may ask for a lower or higher frequency. <span class="src">dora.pdf p. 46, Art. 26(1)</span></p></li>
+        <li><p><strong>Q2</strong> “In ENISA's threat landscape report for 2024, which share of the analysed incidents concerned threats against data (breaches, leaks)?”</p>
+          <p class="muted">A value that exists only in a chart. Right answer: 19.01 % (about 1.91 K incidents), third after
+          DoS/DDoS/RDoS (41.1 %) and ransomware (25.79 %). <span class="src">enisa-tl-2024.pdf p. 10 (printed 9), Figure 2</span></p></li>
+        <li><p><strong>Q3</strong> “An incident at a bank affects personal data, a high-risk AI system and the bank's ICT at the same time. What deadlines for reporting to the authorities do the GDPR, the AI Act and DORA each set?”</p>
+          <p class="muted">One answer spread over three regulations. Right answer: GDPR without undue delay, where
+          feasible within 72 hours. AI Act at the latest 15 days, 2 days for a widespread infringement or critical
+          infrastructure, 10 days in case of death. DORA sets no hours itself: initial, intermediate and final report
+          within limits set by technical standards. <span class="src">dsgvo.pdf p. 52, Art. 33(1); ai-act.pdf p. 101–102, Art. 73(2)–(4); dora.pdf p. 42–43, Art. 19(4), 20(a)(ii)</span></p></li>
+        <li><p><strong>Q4</strong> “For how long must the provider of a high-risk AI system keep its technical documentation available for the national authorities?”</p>
+          <p class="muted">English paraphrase, single regulation. Right answer: ten years after the system was placed on
+          the market or put into service. <span class="src">ai-act.pdf p. 63, Art. 18(1)</span></p></li>
+      </ol>
+
+      <h3>The runs</h3>
+      <ul class="facts">
+        <li>Claude Code 2.1.309 without its interactive interface (<code>claude -p</code>), model Sonnet, plugin 0.2.9.</li>
+        <li><strong>A, Claude Code alone:</strong> the tools Read, Grep and Glob, and Bash only for <code>pdftotext</code>.</li>
+        <li><strong>B, with the plugin:</strong> the same tools plus the plugin (<code>--plugin-dir</code>), with its
+        read tools approved, plus the built-in tools ToolSearch and Skill.</li>
+        <li>The same prompt for both, apart from where to look (B names the Matrix collection): the question, then “Give
+        a short answer and, for every fact, its source as file name and PDF page number (1 = first page of the file).
+        Do not answer from memory.”</li>
+        <li>Every run starts in an empty folder, with the PDF folder added (<code>--add-dir</code>) and only project
+        settings, so my own settings, plugins and CLAUDE.md stay out. No session is saved.</li>
+        <li>Two runs per question and configuration, 16 runs, one configuration after the other. A first attempt that ran
+        them in parallel was discarded, because times on a shared machine are not comparable.</li>
+        <li>Indexing ran once before the B runs and is not in the numbers per question: 1,745 passages in 277 s on an
+        Apple-silicon Mac, with no Claude tokens.</li>
+      </ul>
+
+      <h3>What is counted</h3>
+      <p class="muted">Everything comes from the result Claude Code prints at the end of each run.</p>
+      <ul class="facts">
+        <li><strong>Input tokens:</strong> <code>input_tokens</code> + <code>cache_creation_input_tokens</code> +
+        <code>cache_read_input_tokens</code>, over all turns. Cache reads are most of them (A 93 %, B 86 %) and are kept
+        as their own field in the raw data.</li>
+        <li><strong>Output tokens:</strong> <code>output_tokens</code>.</li>
+        <li><strong>Time:</strong> <code>duration_ms</code>, Claude Code's own measure.</li>
+        <li><strong>Tool calls:</strong> the <code>tool_use</code> blocks in the stream (<code>--output-format stream-json</code>).</li>
+        <li>The raw data also hold the cost Claude Code reports at API prices. It is not used on this page.</li>
+      </ul>
+
+      <h3>How the answers were scored</h3>
+      <p class="muted">The script scores first: an answer counts as right if it contains every key term of the right
+      answer (patterns in <code>questions.json</code>, such as “72 hours” or “15 days”), and as cited if it names the right
+      file with one of the right pages. Then every answer was checked by hand, and the figures on this page are the
+      checked ones.</p>
+      <p class="muted">The two differ in one place. The script marks both answers to Q3 with the plugin as wrong. They came
+      in German, and the script's pattern for DORA's technical standards only knows the English words, so it missed
+      “technische (Regulierungs-)Standards”. The other four key terms matched. Their content is right: 72 hours, 15 days,
+      2 and 10 days, DORA without fixed hours, the right pages. The first answer to Q2 without the plugin is wrong in both: 15.87 % from
+      another chart instead of 19.01 %.</p>
+
+      <h3>What it does not show</h3>
+      <ul class="facts">
+        <li>Two runs per question and configuration. Two runs of the same question can differ a lot (see the limits below).</li>
+        <li>One model (Sonnet), one Claude Code version, one machine, one set of documents. Claude Code alone got much
+        faster between October and November, so the gap depends on the version.</li>
+        <li>The four questions are known: after a miss on Q2 in October, the plugin's <code>ask</code> skill was changed.</li>
+        <li>The raw data of the October measurement were not kept. Its numbers on this page come from DEMO.md.</li>
+      </ul>
+
+      <h3>Run it yourself</h3>
+      <p class="muted">You need Python 3.9 or later, Node.js 18 or later, Claude Code logged in, and
+      <code>pdftotext</code> (poppler). The script expects the plugin in the folder above it, so run it from the
+      <code>benchmark</code> folder of the repository:</p>
+      <div class="card"><pre><code>python3 bench_claude_plugin.py fetch --corpus ~/matrix-bench/corpus
+python3 bench_claude_plugin.py index --corpus ~/matrix-bench/corpus --bench ~/matrix-bench/run
+python3 bench_claude_plugin.py run   --bench ~/matrix-bench/run</code></pre></div>
+      <p class="muted"><code>fetch</code> needs a new, empty folder. <code>index</code> downloads the plugin's search
+      model once, about 1.2 GB, and keeps its data apart from your own Matrix data. <code>run</code> makes the 16 runs in
+      about 10 minutes and counts against your Claude usage. Then <code>report --bench ~/matrix-bench/run</code> prints
+      the table per question.</p>
+    </div>
+  </section>
+
+  <section class="beat alt">
     <div class="in">
       <p class="kicker">The limits</p>
       <h2>It saves tokens and time. Better answers are not proven.</h2>
@@ -108,7 +225,7 @@ import '../../styles/story.css';
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in">
       <p class="kicker">How it works</p>
       <h2>Code finds the passages. Claude reads them.</h2>
@@ -122,7 +239,7 @@ import '../../styles/story.css';
     </div>
   </section>
 
-  <section class="beat">
+  <section class="beat alt">
     <div class="in split">
       <div><p class="kicker">Installation</p><h2>Two commands, then ask.</h2></div>
       <div>
@@ -137,7 +254,7 @@ claude plugin install matrix@matrix-mcp</code></pre></div>
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat">
     <div class="in read">
       <p class="kicker">Where it comes from</p>
       <h2>It started as an app.</h2>
@@ -156,4 +273,15 @@ claude plugin install matrix@matrix-mcp</code></pre></div>
   /* Comparisons like "5.6× fewer" are longer than a plain number: keep them on one line in a four-tile row. */
   .story .numbers strong { font-size: clamp(2.2rem, 3.4vw, 2.9rem); }
   .chart + .table-wrap { margin-top: clamp(2rem, 5vw, 3rem); }
+  /* Test set section: long reading text with subheadings, question list and plain fact lists. */
+  #method h3 { margin-top: 2.6rem; }
+  #method .go { margin-right: .5rem; }
+  #method .qs, #method .facts { padding: 0; margin: 1rem 0 0; display: grid; gap: 1.1rem; max-width: 40rem; }
+  #method .qs { list-style: none; }
+  #method .qs p { margin: 0; }
+  #method .qs p + p { margin-top: .35rem; }
+  #method .facts { padding-left: 1.2rem; gap: .6rem; color: var(--muted); }
+  #method .facts strong { color: var(--fg); }
+  #method .src { display: block; margin-top: .25rem; font-size: .9rem; color: var(--fg); }
+  #method .card { margin-top: 1rem; }
 </style>
