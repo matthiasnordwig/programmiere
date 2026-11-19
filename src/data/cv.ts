@@ -76,9 +76,9 @@ export const SIDE_QUESTS = [
   },
   {
     name: 'Matrix for Claude Code',
-    pb: '3× faster',
+    pb: '2× faster',
     what: 'Free Claude Code plugin: local semantic index over document folders, citations to file, page and passage, tables across documents.',
-    note: 'Measured on 442 pages: on average 42 instead of 126 s per question, less than half the input tokens.',
+    note: 'Measured on 442 pages: on average 20 instead of 43 s per question, a fifth of the input tokens.',
     href: '/projects/matrix-claude-code/',
   },
   {
