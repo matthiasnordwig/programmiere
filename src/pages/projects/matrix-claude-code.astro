@@ -29,7 +29,8 @@ const ZIP = '/projects/matrix-claude-code/matrix-claude-code-benchmark-2026-11-1
       <p class="muted">The plugin gives Claude Code a local index of your PDFs, Word files, scans and charts. Every answer
       comes with file, page and passage. Claude Code is the language model, so you need no extra model and no API key.</p>
       <p class="muted">It is made for work with documents, for example a lawyer with questions about contracts, regulations
-      or case files. For code it is the wrong tool: there Claude Code does better with its own search.</p>
+      or case files. It does not get in the way when you code: Claude picks it for questions about documents and
+      searches source files with its own tools.</p>
       <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
     </div>
   </section>
@@ -217,7 +218,7 @@ python3 bench_claude_plugin.py run   --bench ~/matrix-bench/run</code></pre></di
       <h2>It saves tokens and time. Better answers are not proven.</h2>
       <p class="big">Claude Code alone got 7 of 8 answers right. One wrong answer in eight runs is not an error rate.</p>
       <div class="grid3">
-        <div><h3>Documents, not code</h3><p>The plugin is built for questions about documents. When coding, Claude Code works better without it, with its own search through the source files.</p></div>
+        <div><h3>Made for documents</h3><p>The gain comes from questions about documents. For code, Claude leaves the plugin aside and searches the source files with its own tools, so installing it costs nothing there.</p></div>
         <div><h3>More documents, more gain</h3><p>Here the paraphrased question on one regulation saved the largest share (920k → 102k tokens), the one spread over three regulations the most tokens (1,415k → 223k). For one short document the gain is small.</p></div>
         <div><h3>Spread-out questions: mixed</h3><p>On the larger set, in October with version 0.2.3, a question across three acts saved almost nothing, because Claude still searches once per act. On the 442 pages in November it was the other way round: 1,415k → 223k tokens, 71 → 27 s.</p></div>
         <div><h3>Indexing takes minutes</h3><p>Once per folder: 16 minutes for 1,592 pages, with no Claude tokens. It pays off if you ask more than once.</p></div>
