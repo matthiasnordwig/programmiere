@@ -5,25 +5,24 @@ import tokensChart from '../../assets/projects/matrix-claude-code-tokens-0.2.9.p
 import Base from '../../layouts/Base.astro';
 import '../../styles/story.css';
 ---
-<Base wide title="Matrix for Claude Code: under a fifth of the tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: under a fifth of the input tokens per question, and 20 instead of 48 seconds.">
+<Base wide title="Matrix for Claude Code: 5.6× fewer input tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 5.6× fewer input tokens, 2.4× fewer output tokens, 20 instead of 48 s.">
 <div class="story">
 
   <section class="beat" style="border-top:0">
     <div class="in">
-      <Video src="/video/matrix-claude-code-1080p.mp4" poster="/video/matrix-claude-code-poster.jpg" />
+      <Video src="/video/matrix-claude-code-1080p.mp4" poster="/video/matrix-claude-code-poster.jpg" caption="Recorded in October with an earlier plugin version; the numbers in the video are out of date. The current ones are from November 2026, version 0.2.9." />
     </div>
   </section>
 
   <section class="beat" style="border-top:0">
     <div class="in">
       <p class="kicker">Matrix for Claude Code</p>
-      <h1>Claude Code needed under a fifth of the tokens.</h1>
-      <p class="big">I measured Claude Code with and without this free plugin on 442 pages of EU regulations and a report. With it, a
-      question took 182k instead of 1,025k input tokens on average, mostly cache reads (the conversation sent again with each turn). It also wrote less: 1.6k
-      instead of 3.9k output tokens. With the plugin all 8 answers were right, without it 7 of 8. One miss in eight runs does not show that the plugin answers better.</p>
-      <p class="muted">On a subscription, tokens decide how long your usage limit lasts; through the API, they are what
-      you pay for; and what Claude reads takes up room in its context window. The plugin also made it faster, 20
-      instead of 48 seconds per question, but that is a side effect.</p>
+      <h1>Claude Code needed 5.6× fewer input tokens.</h1>
+      <p class="big">With this free plugin, Claude Code used 182k instead of 1,025k input tokens per question on 442 pages
+      of EU regulations and a report, and it wrote 2.4× fewer output tokens. No loss in quality: all 8 answers were
+      right, against 7 of 8 without it.</p>
+      <p class="muted">Fewer tokens mean your subscription limit lasts longer, the API bill is smaller, and Claude's
+      context window keeps room for your work. It was also faster: 20 instead of 48 seconds per question.</p>
       <p class="muted">The plugin gives Claude Code a local index of your PDFs, Word files, scans and charts. Every answer
       comes with file, page and passage. Claude Code is the language model, so you need no extra model and no API key.</p>
       <a class="go" href="https://github.com/matthiasnordwig/matrix-mcp">Get it on GitHub</a>
@@ -60,17 +59,16 @@ import '../../styles/story.css';
   <section class="beat alt">
     <div class="in">
       <p class="kicker">The measurement</p>
-      <h2>Two test sets, all public.</h2>
-      <p class="big">Claude Code alone against Claude Code with the plugin, on public EU regulations and reports.
-      Same questions, same prompt. I wrote down the right answers before the first run.</p>
+      <h2>Same questions, with and without the plugin.</h2>
+      <p class="big">Claude Code alone against Claude Code with the plugin, on 442 pages of public EU regulations and a
+      report. Same questions, same prompt, two runs each. I wrote down the right answers before the first run.</p>
       <div class="numbers">
-        <div><strong>182k</strong><span>average input tokens per question on 442 pages, instead of 1,025k without the plugin</span></div>
-        <div><strong>1.6k</strong><span>average output tokens per question, instead of 3.9k</span></div>
-        <div><strong>7.9</strong><span>average tool calls per question, instead of 14.4</span></div>
-        <div><strong>20 s</strong><span>average time per question, instead of 48 s: a side effect of reading less</span></div>
-        <div><strong>−34 %</strong><span>input tokens on 1,592 pages in 14 documents and four languages; 35 % less time. Measured in October with version 0.2.3</span></div>
+        <div><strong>5.6× fewer</strong><span>input tokens per question: 182k instead of 1,025k</span></div>
+        <div><strong>2.4× fewer</strong><span>output tokens: 1.6k instead of 3.9k</span></div>
+        <div><strong>45 % fewer</strong><span>tool calls: 7.9 instead of 14.4</span></div>
+        <div><strong>2.4× faster</strong><span>20 s instead of 48 s per question, a side effect of reading less</span></div>
       </div>
-      <div class="chart shot"><Zoom id="z-tokens" src={tokensChart} alt="Bar chart, 442 pages, average per question, Claude Code alone against Claude Code with the Matrix plugin. Input tokens: English question on German legal text 851k to 172k, value only in a chart 913k to 232k, answer spread over three regulations 1,415k to 223k, paraphrased question on one regulation 920k to 102k, average 1,025k to 182k. Time, shown as a side effect, same order: 38 to 21 s, 43 to 21 s, 71 to 27 s, 38 to 12 s, average 48 to 20 s." caption="Input tokens on top, time below. Each bar is the average of two runs per question." /></div>
+      <div class="chart shot"><Zoom id="z-tokens" src={tokensChart} alt="Bar chart titled: Claude Code on 442 pages of PDFs, 5.6× fewer input tokens. Average per question, Sonnet, plugin 0.2.9, November 2026, two runs per question each; Claude Code alone against Claude Code with the Matrix plugin. Input tokens: English question on German legal text 851k to 172k, value only in a chart 913k to 232k, answer spread over three regulations 1,415k to 223k, paraphrased question on one regulation 920k to 102k, average 1,025k to 182k. Output tokens, 2.4× fewer, same order: 3.1k to 1.1k, 3.3k to 1.5k, 6.4k to 3.0k, 2.9k to 0.8k, average 3.9k to 1.6k. Time, shown as a side effect, same order: 38 to 21 s, 43 to 21 s, 71 to 27 s, 38 to 12 s, average 48 to 20 s. Footnote: same documents, questions and answers as in October, when it was 651k input tokens alone and 303k with the plugin." caption="Input tokens, output tokens and time. Each bar is the average of two runs per question." /></div>
       <div class="table-wrap">
         <table class="demo">
           <thead><tr><th>Question (442 pages)</th><th>Alone</th><th>With Matrix</th></tr></thead>
@@ -83,11 +81,13 @@ import '../../styles/story.css';
         </table>
       </div>
       <p class="muted" style="margin-top:1.5rem">Averages per run, Claude Code 2.1.309 with Sonnet and plugin 0.2.9, November 2026.
-      Two runs per question on both sides. Input tokens add up what the model processes over all turns; output tokens are what it writes, its tool calls and the answer. Cache reads, the same conversation sent again with each turn, make up 93 % of them without the plugin and 86 % with it; without cache reads it is 76k against 25k tokens. The second run without the plugin ran while another build used the Mac, so its times may be slightly high; the tokens are unaffected. The questions, the right answers
+      Two runs per question on both sides. Input tokens add up what the model processes over all turns; output tokens are what it writes, its tool calls and the answer. Cache reads, the same conversation sent again with each turn, make up 93 % of them without the plugin and 86 % with it; without cache reads it is 76k against 25k tokens. With the plugin all 8 answers were right; without it 7 of 8, because Claude Code once read a value from the wrong chart. The second run without the plugin ran while another build used the Mac, so its times may be slightly high; the tokens are unaffected. The questions, the right answers
       and the script to run it again are in <a href="https://github.com/matthiasnordwig/matrix-mcp/blob/main/DEMO.md">DEMO.md</a>.</p>
+      <p class="muted">A second, larger test set was measured in October with plugin version 0.2.3, one run per question:
+      on 1,592 pages in 14 documents and four languages, the plugin used 34 % fewer input tokens and 35 % less time.</p>
       <p class="muted">The first run of this test, in October with Claude Code 2.1.222 and an earlier plugin version, gave 303k
       instead of 651k tokens and 42 instead of 126 seconds. Without the plugin, Claude Code now needs more input tokens,
-      1,025k instead of 651k, but much less time, 48 instead of 126 seconds. So the plugin now saves more than four fifths of the
+      1,025k instead of 651k, but much less time, 48 instead of 126 seconds. So the plugin now saves more than four fifths of the input
       tokens instead of about half, and a bit more than half the time instead of two thirds.</p>
     </div>
   </section>
@@ -153,5 +153,7 @@ claude plugin install matrix@matrix-mcp</code></pre></div>
 
 <style>
   .chart { max-width: 40rem; }
+  /* Comparisons like "5.6× fewer" are longer than a plain number: keep them on one line in a four-tile row. */
+  .story .numbers strong { font-size: clamp(2.2rem, 3.4vw, 2.9rem); }
   .chart + .table-wrap { margin-top: clamp(2rem, 5vw, 3rem); }
 </style>
