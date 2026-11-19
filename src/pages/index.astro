@@ -13,13 +13,13 @@ const featured = FEATURED && all.find((p) => p.id === FEATURED.post);
 const posts = all.filter((p) => p.data.type !== 'build-log' && p !== featured).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
-<Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that gives Claude Code a local index of your documents. A fifth of the input tokens per question and 20 instead of 43 seconds, measured on 442 pages. Also Matrix LLM, an app for iPhone, iPad, Mac and Windows, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
+<Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that gives Claude Code a local index of your documents. Under a fifth of the input tokens per question and 20 instead of 48 seconds, measured on 442 pages. Also Matrix LLM, an app for iPhone, iPad, Mac and Windows, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
   <section class="hero">
     <div class="in">
       <p class="project">Matrix for Claude Code · free plugin</p>
-      <h1>Claude Code on your documents: a fifth of the tokens.</h1>
-      <p class="sub">182k input tokens per question instead of 922k, measured on 442 pages of EU regulations and a
-      report. It is also faster, 20 seconds instead of 43. Every answer comes with file, page and passage.</p>
+      <h1>Claude Code on your documents: under a fifth of the tokens.</h1>
+      <p class="sub">182k input tokens per question instead of 1,025k, measured on 442 pages of EU regulations and a
+      report. It is also faster, 20 seconds instead of 48. Every answer comes with file, page and passage.</p>
       <div class="vid"><Video src="/video/matrix-claude-code-1080p.mp4" poster="/video/matrix-claude-code-poster.jpg" /></div>
       <pre class="install"><code>claude plugin marketplace add matthiasnordwig/matrix-mcp && claude plugin install matrix@matrix-mcp</code></pre>
       <div class="actions"><a class="go" href="/projects/matrix-claude-code/">About the plugin</a></div>
