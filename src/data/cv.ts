@@ -78,7 +78,7 @@ export const SIDE_QUESTS = [
     name: 'Matrix for Claude Code',
     pb: '5.6× fewer input tokens',
     what: 'Free Claude Code plugin: local semantic index over document folders, citations to file, page and passage, tables across documents.',
-    note: 'Measured on 442 pages: 5.6× fewer input tokens and 2.4× fewer output tokens per question, and 20 instead of 48 s.',
+    note: 'Measured on 442 pages: 5.6× fewer input tokens and 2.5× fewer output tokens per question, and 20 instead of 48 s.',
     href: '/projects/matrix-claude-code/',
   },
   {

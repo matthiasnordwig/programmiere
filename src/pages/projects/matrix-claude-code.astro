@@ -5,7 +5,7 @@ import tokensChart from '../../assets/projects/matrix-claude-code-tokens-0.2.9.p
 import Base from '../../layouts/Base.astro';
 import '../../styles/story.css';
 ---
-<Base wide title="Matrix for Claude Code: 5.6× fewer input tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 5.6× fewer input tokens, 2.4× fewer output tokens, 20 instead of 48 s.">
+<Base wide title="Matrix for Claude Code: 5.6× fewer input tokens" image="/og-matrix-claude-code.png" description="A free plugin that gives Claude Code a local, searchable index of PDFs, Word files, scans and charts. Measured on 442 pages: 5.6× fewer input tokens, 2.5× fewer output tokens, 20 instead of 48 s.">
 <div class="story">
 
   <section class="beat" style="border-top:0">
@@ -19,9 +19,9 @@ import '../../styles/story.css';
       <p class="kicker">Matrix for Claude Code</p>
       <h1>Claude Code needed 5.6× fewer input tokens.</h1>
       <p class="big">With this free plugin, Claude Code used 182k instead of 1,025k input tokens per question on 442 pages
-      of EU regulations and a report, and it wrote 2.4× fewer output tokens. No loss in quality: all 8 answers were
+      of EU regulations and a report, and it wrote 2.5× fewer output tokens. No loss in quality: all 8 answers were
       right, against 7 of 8 without it.</p>
-      <p class="muted">Fewer tokens mean your subscription limit lasts longer, the API bill is smaller, and Claude's
+      <p class="muted">Fewer tokens mean your subscription limit lasts longer and Claude's
       context window keeps room for your work. It was also faster: 20 instead of 48 seconds per question.</p>
       <p class="muted">The plugin gives Claude Code a local index of your PDFs, Word files, scans and charts. Every answer
       comes with file, page and passage. Claude Code is the language model, so you need no extra model and no API key.</p>
@@ -64,11 +64,11 @@ import '../../styles/story.css';
       report. Same questions, same prompt, two runs each. I wrote down the right answers before the first run.</p>
       <div class="numbers">
         <div><strong>5.6× fewer</strong><span>input tokens per question: 182k instead of 1,025k</span></div>
-        <div><strong>2.4× fewer</strong><span>output tokens: 1.6k instead of 3.9k</span></div>
+        <div><strong>2.5× fewer</strong><span>output tokens: 1.6k instead of 3.9k</span></div>
         <div><strong>45 % fewer</strong><span>tool calls: 7.9 instead of 14.4</span></div>
         <div><strong>2.4× faster</strong><span>20 s instead of 48 s per question, a side effect of reading less</span></div>
       </div>
-      <div class="chart shot"><Zoom id="z-tokens" src={tokensChart} alt="Bar chart titled: Claude Code on 442 pages of PDFs, 5.6× fewer input tokens. Average per question, Sonnet, plugin 0.2.9, November 2026, two runs per question each; Claude Code alone against Claude Code with the Matrix plugin. Input tokens: English question on German legal text 851k to 172k, value only in a chart 913k to 232k, answer spread over three regulations 1,415k to 223k, paraphrased question on one regulation 920k to 102k, average 1,025k to 182k. Output tokens, 2.4× fewer, same order: 3.1k to 1.1k, 3.3k to 1.5k, 6.4k to 3.0k, 2.9k to 0.8k, average 3.9k to 1.6k. Time, shown as a side effect, same order: 38 to 21 s, 43 to 21 s, 71 to 27 s, 38 to 12 s, average 48 to 20 s. Footnote: same documents, questions and answers as in October, when it was 651k input tokens alone and 303k with the plugin." caption="Input tokens, output tokens and time. Each bar is the average of two runs per question." /></div>
+      <div class="chart shot"><Zoom id="z-tokens" src={tokensChart} alt="Bar chart titled: Claude Code on 442 pages of PDFs, 5.6× fewer input tokens. Average per question, Sonnet, plugin 0.2.9, November 2026, two runs per question each; Claude Code alone against Claude Code with the Matrix plugin. Input tokens: English question on German legal text 851k to 172k, value only in a chart 913k to 232k, answer spread over three regulations 1,415k to 223k, paraphrased question on one regulation 920k to 102k, average 1,025k to 182k. Output tokens, 2.5× fewer, same order: 3.1k to 1.1k, 3.3k to 1.5k, 6.4k to 3.0k, 2.9k to 0.8k, average 3.9k to 1.6k. Time, shown as a side effect, same order: 38 to 21 s, 43 to 21 s, 71 to 27 s, 38 to 12 s, average 48 to 20 s. Footnote: same documents, questions and answers as in October, when it was 651k input tokens alone and 303k with the plugin." caption="Input tokens, output tokens and time. Each bar is the average of two runs per question." /></div>
       <div class="table-wrap">
         <table class="demo">
           <thead><tr><th>Question (442 pages)</th><th>Alone</th><th>With Matrix</th></tr></thead>
