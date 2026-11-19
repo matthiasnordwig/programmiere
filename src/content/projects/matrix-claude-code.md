@@ -1,6 +1,6 @@
 ---
 title: Matrix for Claude Code
-summary: "A free plugin that gives Claude Code a local, searchable index of your PDFs, Word files, scans and charts. Measured on 442 pages: on average 20 instead of 43 seconds per question, a fifth of the input tokens."
+summary: "A free plugin that gives Claude Code a local, searchable index of your PDFs, Word files, scans and charts. Measured on 442 pages: a fifth of the input tokens per question, and 20 instead of 43 seconds."
 status: Public · v0.2.9
 order: 1.5
 featured: true

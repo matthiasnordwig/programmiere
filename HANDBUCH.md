@@ -87,7 +87,7 @@ programmiere/
 **Inhalte** (`content/`)
 - `projects/*.md` — Projekt-Stammdaten; Dateiname = `id` = `project`-Wert der Posts. Für Projekte mit eigener Seite dient nur das Frontmatter (Übersicht, Verknüpfung der Posts).
 - `posts/*.md` — Beiträge; Bilder unter `assets/posts/<slug>/`, oder als feste Dateien unter `public/writing/<slug>/` (z. B. SVG-Datengrafiken, Social-Vorschau; wird mit `writing/` ausgeliefert).
-- `assets/projects/` — Screenshots (Matrix: Graph, Graph-Ausschnitt, alter Chat; aus den App-Store-Aufnahmen 2026-10-28 `matrix-iphone-ask.png`, `matrix-mac-ask.png`, `matrix-mac-tables.png`, Quelle `~/Desktop/AppStoreScreenshots/2026-10-28-ios-1.0.2-mac-0.2.5/`, nur Mustervertrag zu sehen).
+- `assets/projects/` — Screenshots (Matrix: Graph, Graph-Ausschnitt, alter Chat; aus den App-Store-Aufnahmen 2026-10-28 `matrix-iphone-ask.png`, `matrix-mac-ask.png`, `matrix-mac-tables.png`, Quelle `~/Desktop/AppStoreScreenshots/2026-10-28-ios-1.0.2-mac-0.2.5/`, nur Mustervertrag zu sehen). Plugin-Seite: `matrix-claude-code-tokens-0.2.9.png` (Messgrafik Plugin 0.2.9, Tokens oben, Zeit unten; Quelle `~/matrix/linkedin/plugin-0.2.9-messung.png`).
 
 ---
 
