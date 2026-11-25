@@ -1,0 +1,267 @@
+---
+// „How Matrix was built“: wie Matrix mit Claude Code als Orchestrierung vieler Agenten entstand, mit Regeln, Episoden aus dem
+// Git-Log und Messungen. Jede Zahl ist belegt; die Fundstellen stehen in den Kommentaren je Abschnitt (Stand 2026-11-25).
+// Umfangszahlen per Zählskript aus den getrackten Dateien von ~/matrix, ~/matrix/app, ~/matrix/core (ohne vendorten Code).
+import Base from '../../../layouts/Base.astro';
+import MatrixArchitecture from '../../../components/diagrams/MatrixArchitecture.astro';
+import '../../../styles/story.css';
+import { SITE } from '../../../site';
+const NPM = 'https://www.npmjs.com/package/@matthiasnordwig/matrix-mcp';
+const REPO = 'https://github.com/matthiasnordwig/matrix-mcp';
+// Video-Plätze: nur in `astro dev` sichtbar, bis die Videos gebaut sind (Skill `videos`). Danach durch <Video> ersetzen.
+const SHOW_VIDEO_SLOTS = import.meta.env.DEV;
+---
+<Base wide title="How Matrix was built" description="How I built Matrix, a local document app, with Claude Code agents: the rules, where they came from, the checks before anything reaches me, and what I measured.">
+<div class="story">
+
+  <section class="beat" style="border-top:0">
+    <div class="in read">
+      <p class="kicker">Matrix LLM · how it was built</p>
+      <h1>How I built Matrix with Claude Code.</h1>
+      <p class="big">Almost all of Matrix was written by Claude Code, in many sessions and agents working in parallel. My part was the
+      rules they work under, the checks before anything reaches me, and the decisions. This page shows those rules, where they
+      came from, and what I measured along the way.</p>
+    </div>
+  </section>
+
+  <section class="beat alt">
+    <div class="in split">
+      <div>
+        <p class="kicker">The app</p>
+        <h2>What Matrix is.</h2>
+      </div>
+      <div>
+        <p class="big">Matrix answers questions about your own documents, recordings and videos, and every answer cites the
+        exact passage. Plain code checks each citation against the original. The models run on your devices, several of your
+        devices can share them, and Claude can use Matrix as a tool through MCP.</p>
+        <div class="get">
+          <a class="badge" href={SITE.matrixApp}><img src="/badges/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" /></a>
+          <a class="badge" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a>
+        </div>
+        <p class="muted" style="margin-top:1rem">Claude Code plugin: <a href={REPO}>matrix-mcp on GitHub</a> ·
+        <a href={NPM}>@matthiasnordwig/matrix-mcp on npm</a> · <a href="/projects/matrix/">the app</a> ·
+        <a href="/projects/matrix-claude-code/">the plugin</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Umfang: Zählskript 2026-11-25. Commits: git rev-list --count HEAD (Doku 978, app 823, core 243); Claude-Trailer:
+       app 794, core 224. Rust: core 44.035 + app 191.711 Zeilen; TS/TSX 61.914; Tests: #[test]/#[tokio::test] core 791 +
+       app 2.916, Vitest-Fälle 1.541; Handbuch 8.161 Zeilen; Oberflächensprachen 22 (23 Kataloge minus Pseudo-Sprache en-XA). -->
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Size</p>
+      <h2>Five and a half months, counted.</h2>
+      <div class="numbers">
+        <div><strong>2,044</strong><span>commits in three repositories since 6 June 2026; 1,018 of the 1,066 code commits are co-authored by Claude</span></div>
+        <div><strong>236,000</strong><span>lines of Rust, plus 62,000 lines of TypeScript for the interface</span></div>
+        <div><strong>5,248</strong><span>automated tests: 3,707 in Rust, 1,541 for the interface</span></div>
+        <div><strong>8,161</strong><span>lines of handbook that every session reads from</span></div>
+      </div>
+      <p class="muted" style="margin-top:2rem">Counted on 25 November 2026 from the files under version control, without vendored code.
+      Lines include comments and blank lines. A test is one test function or case, so the number says nothing about coverage.</p>
+    </div>
+  </section>
+
+  <!-- Quelle: ~/.claude/CLAUDE.md „Mach X heißt: orchestriere X“, „Fixes bündeln“; ~/matrix/CLAUDE.md „Tests“, „Verifikation“. -->
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">The setup</p>
+      <h2>One session talks to me. The others do the work.</h2>
+      <ol class="steps">
+        <li><div><h3>The main session coordinates</h3><p>It talks with me and stays free for that. It does small things itself, under
+        about a minute. Everything bigger goes to a worker: a separate session if I want to steer it, a background agent otherwise.</p></div></li>
+        <li><div><h3>One package, one worker</h3><p>Design, build and fixes of a package stay with the same agent, because every hand-over
+        loses knowledge. A worker splits off only what is independent, produces a lot of output (builds, logs, wide searches) or needs
+        fresh eyes (acceptance, review).</p></div></li>
+        <li><div><h3>The model is chosen, not inherited</h3><p>Sonnet for mechanical work such as running builds and collecting material,
+        Opus for building and judging. When a machine checks the result (an exit code, a count), the agent runs with low effort and only
+        reports red. It does not go looking for the cause; an Opus agent does the diagnosis.</p></div></li>
+        <li><div><h3>"Green" in a report is not enough</h3><p>The main session runs the builds and tests of an agent again itself. A commit
+        happens only after the test's own exit code is green, never after something like <code>cargo test | grep</code>.</p></div></li>
+        <li><div><h3>An acceptance agent before I see it</h3><p>Before anything goes to me for testing, a separate agent uses every changed
+        function the way I would: the real interface in the iOS Simulator or the web version, two instances when devices talk to each other.
+        Only when that is green is the build installed on my devices.</p></div></li>
+        <li><div><h3>Fixes are bundled</h3><p>While known bugs are open, each fix runs only its own tests and is committed locally. The full
+        checks, one push (one CI run) and the installation happen once at the end of the round. A red main branch on GitHub is fixed at once.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Quelle: ~/matrix/CLAUDE.md „Handbuch pflegen“, „Tests“, „Verifikation“; Hooks ~/matrix/.claude/hooks/ (rust-check, gates-check,
+       ci-check); scripts/check_file_size.py (600), check_i18n.py; gen_file_briefs.py. -->
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Memory</p>
+      <h2>The rules live in the repository, not in my head.</h2>
+      <p class="big">An agent starts with no memory of yesterday. So everything it needs is written down where it will read it, and what
+      can be enforced is enforced by a script.</p>
+      <div class="grid3">
+        <div><h3>A short rule file</h3><p>Every session loads a CLAUDE.md of under 200 lines and the handbook index, then exactly one area
+        file of the handbook, never all of them.</p></div>
+        <div><h3>Wrong facts are fixed at once</h3><p>If an agent finds the handbook contradicting the code, it fixes the handbook in the
+        same step. A wrong entry would mislead every later session.</p></div>
+        <div><h3>Find before you build</h3><p>Every source file starts with a comment on what it does. A generated index of these lets an
+        agent find existing code before it writes a second copy.</p></div>
+        <div><h3>Tests per user function</h3><p>Including whole flows across devices: device A offers, B pairs, B picks, the question runs
+        on A. A bug I find gets a test that reproduces it first.</p></div>
+        <div><h3>Hooks that block</h3><p>A session cannot end while the Rust checks, the project gates or the CI run on the main branch are
+        red. Gates also catch source files over 600 lines (except a short list, each with its own cap) and interface text missing in
+        any of the 22 languages.</p></div>
+        <div><h3>The same in every session</h3><p>When I give a rule that applies to the whole project, it goes into that file right away,
+        not into a single conversation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quellen: app da38745d (2026-11-09), 6e17a225 (11-22), abea1a8e (11-21); Doku 258d784 (11-24); Doku 6b8e56c (11-21);
+       app adeb077d, 82439df6 (11-22, Abnahme); app 3a766a6c + core 59ee0fd (Windows-Absturz); app 5b2f28cc (Nutzerbefund 11-24). -->
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Where the rules came from</p>
+      <h2>Most rules are the answer to something that went wrong.</h2>
+      <div class="grid3">
+        <div><h3>A commit took another session's work</h3><p>On 9 November an agent committed unfinished changes of a parallel session
+        along with its own; the next commit put them back. Similar slips happened twice more in the next two weeks. Rule: never <code>git add -A</code>
+        when there are changes you did not make.</p></div>
+        <div><h3>Checks that said green on an empty page</h3><p>The interface checks passed although the web version delivered no app at
+        all. Now a check is red unless every view was really measured, and an empty page counts as a finding.</p></div>
+        <div><h3>Only I saw the red CI</h3><p>A failed GitHub run used to reach me by e-mail and nobody else. Since 21 November a hook
+        reports it to the session, which has to fix it before it can stop.</p></div>
+        <div><h3>The acceptance agent found what tests did not</h3><p>Unpairing on the Mac never reached the iPhone; after the fix it
+        arrives in 0.8 seconds. "Who was Goethe? Answer in two sentences." got the app's help pages and a refusal, because everyday words
+        counted as questions about the app.</p></div>
+        <div><h3>A crash, first reproduced</h3><p>From its second start on, the Windows app crashed after 5 to 15 seconds: three threads set
+        up the graphics card at the same time. The test reproduces it. On the PC, 8 of 10 runs crashed before the fix, 15 of 15 passed after.</p></div>
+        <div><h3>My own test, then a test</h3><p>A question from my iPhone to the Mac's 35B model came back as "this device is busy",
+        although the Mac had nothing loaded. The fix came with tests for exactly that case and for the error message.</p></div>
+      </div>
+      <p class="muted" style="margin-top:2rem">Not every rule has a recorded incident. Most rule commits hold only the new text, so
+      this list has only cases where a commit names the cause.</p>
+    </div>
+  </section>
+
+  <!-- Quellen: ~/matrix/handbuch/medien-messungen.md (Alltagston, Folientitel, 2026-11-24); mcp-messungen.md (Reranker-Kandidaten
+       2026-11-04, Lizenz 2026-10-23); app 96dcab42 (2026-11-21); Doku d8e842c (2026-11-20); app 6d481e65 (2026-07-12);
+       peer-messungen.md (2026-11-21); core.md „Plätze“ (1,20× unter 1,3×). -->
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">Measure, don't guess</p>
+      <h2>A measurement decides, and often against my first idea.</h2>
+      <div class="table-wrap">
+        <table class="demo">
+          <thead><tr><th>Question</th><th>Measured</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr><td>Is Apple's built-in speech recognition good enough, or does the iPhone need Whisper?</td><td>19.6 % word errors against 18.8 % for Whisper turbo, on 95 recordings (20.6 minutes) of accents, Swiss German and street noise</td><td>Apple's text is enough on the iPhone; Whisper turbo stays the default elsewhere</td></tr>
+            <tr><td>Does skipping the silence detection help Whisper?</td><td>Worse: 220 instead of 187 wrong words, and more invented words in noisy files</td><td>Keep it</td></tr>
+            <tr><td>Should the re-ranker read the whole passage instead of the first 512 characters?</td><td>27 more hits, none fewer, across four test tables (McNemar p &lt; 0.001); 1.05 instead of 0.64 seconds per question</td><td>Whole passage</td></tr>
+            <tr><td>Do more candidates for the re-ranker find more?</td><td>120 candidates: MRR 0.645 in 6.6 s; 20 candidates: 0.680 in 1.3 s</td><td>20</td></tr>
+            <tr><td>Which re-ranker for the public plugin?</td><td>jina scored best (MRR 0.69), but its licence is non-commercial; bge int8 0.63, same as its full-size version at a quarter of the size</td><td>bge, slower but free to use</td></tr>
+            <tr><td>Is Apple's document recognition worth adding for scans?</td><td>6 questions better, 5 worse, for about 1,100 lines and a Swift bridge</td><td>Removed again</td></tr>
+            <tr><td>Do slide titles in a talk's transcript help search?</td><td>One question won, one lost. The rule written down before the run: only with at least 4 more</td><td>Without</td></tr>
+            <tr><td>Does a second device speed up tables?</td><td>Mac and PC together were only 6 % faster than the PC alone</td><td>Rebuilt the split: 16 % now; embedding on both is 41 % faster than the best single device</td></tr>
+            <tr><td>Do parallel table rows on one model help?</td><td>1.20× in the self-test, under the 1.3× threshold</td><td>One row at a time, on every device today</td></tr>
+            <tr><td>Does a fourth tool help the local model?</td><td>Its mere presence in the prompt broke a hard check; the model never called it in 9 runs</td><td>Removed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:1.5rem">MRR (mean reciprocal rank) is 1 if the right passage is always the first hit, 0.5 if it is
+      always second. All runs on a Mac M4 Pro or one PC (Ryzen 7 7800X3D, Radeon RX 7900 XTX), July to November 2026.</p>
+    </div>
+  </section>
+
+  <!-- Quelle: ~/matrix/handbuch/messen.md „Testbestände“, „Methodenprüfung vor langen Läufen“, „Vergleichen“;
+       ~/matrix/CLAUDE.md „Messläufe“. -->
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">How the measuring works</p>
+      <h2>The agents measure. The method is checked first.</h2>
+      <div class="grid3">
+        <div><h3>Answers fixed in advance</h3><p>For every test question, the passage it should find is chosen from the raw text before the
+        app has seen the question.</p></div>
+        <div><h3>A second agent checks the method</h3><p>Before any run over about 30 minutes, an agent that did not pick the candidates
+        checks a list: same model family, same settings, hidden caps in the code, a seed that really changes between repetitions.</p></div>
+        <div><h3>Why that list exists</h3><p>A hidden cap limits a result without anyone noticing. A fixed seed turns five repetitions
+        into five copies of the same run.</p></div>
+        <div><h3>Never in parallel when timing</h3><p>On Apple chips two model runs share the memory bandwidth and the times roughly double.
+        Ranks and quality stay the same, so only timed runs have to wait.</p></div>
+        <div><h3>One change per comparison</h3><p>And the noise is named: with 30 questions, one or two ranks are chance.</p></div>
+        <div><h3>The real app as a sample</h3><p>Every series of headless model runs also gets 3 to 5 of its questions through the built app,
+        because the interface shares memory and graphics card with the model.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quelle: ~/matrix/app/claude-plugin/DEMO.md (Plugin 0.2.9, 2026-11-19, 4 Fragen × 2 Läufe, 442 Seiten). -->
+  <section class="beat">
+    <div class="in">
+      <p class="kicker">One result</p>
+      <h2>Claude Code with and without Matrix.</h2>
+      <p class="big">Four questions on 442 pages of EU regulations and an ENISA report, each asked twice, with Claude Code alone and with
+      the Matrix plugin (Sonnet, 19 November 2026).</p>
+      <div class="numbers">
+        <div><strong>20 s</strong><span>per question with Matrix, 48 s without</span></div>
+        <div><strong>182k</strong><span>input tokens per question with Matrix, 1,025k without (both including cache)</span></div>
+        <div><strong>8 of 8</strong><span>answers right with Matrix, 7 of 8 without</span></div>
+      </div>
+      <p class="muted" style="margin-top:2rem">Eight runs are no proof of better answers; the gain is in time and tokens. The set and the
+      script are public: <a href={`${REPO}/tree/main/benchmark`}>benchmark on GitHub</a>.</p>
+    </div>
+  </section>
+
+  <!-- Quelle: ~/matrix/HANDBUCH.md §1.0, §2; handbuch/peer.md „Schichten“. -->
+  <section class="beat alt">
+    <div class="in">
+      <p class="kicker">Architecture</p>
+      <h2>One Rust core, three ways in.</h2>
+      <div class="card"><MatrixArchitecture /></div>
+    </div>
+  </section>
+
+  {SHOW_VIDEO_SLOTS && (
+    <section class="beat">
+      <div class="in">
+        <p class="kicker">Videos (draft slots, visible only in dev)</p>
+        <h2>Three short videos.</h2>
+        <div class="grid3">
+          <div class="slot"><h3>1 · A round of work</h3><p>Proposal: I ask the main session for a feature; it starts one worker, the
+          progress bar fills, the acceptance agent runs the iOS Simulator, the result arrives. Real screen recording, sped up, about 60 s.</p></div>
+          <div class="slot"><h3>2 · A check that fails</h3><p>Proposal: the stop hook blocks a session because the CI is red; the agent
+          fixes it and only then ends. About 30 s.</p></div>
+          <div class="slot"><h3>3 · A measurement that changed a decision</h3><p>Proposal: the re-ranker comparison (512 characters vs.
+          whole passage), from the run to the commit with the numbers. About 45 s.</p></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="beat alt">
+    <div class="in read">
+      <p class="kicker">Limits</p>
+      <h2>What this page does not show.</h2>
+      <p class="big">The numbers come from my own devices and test sets of 30 questions or a few dozen recordings, not from many users.
+      The rules grew one problem at a time, so some of them came after the damage. And a test count says how much is checked, not how
+      well.</p>
+      <a class="go ghost" href="/projects/matrix/">Back to Matrix</a>
+    </div>
+  </section>
+
+</div>
+</Base>
+
+<style>
+  .get { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; margin-top: .5rem; }
+  .get .badge { display: inline-flex; line-height: 0; }
+  .get .badge img { height: 52px; width: auto; display: block; }
+  .slot { border: 2px dashed var(--line-strong); border-radius: 14px; padding: 1rem 1.2rem; }
+  .story table.demo td:first-child { font-weight: 600; }
+  /* Schmal: jede Zeile als Block, Spaltennamen vor den Zellen statt Querscrollen. */
+  @media (max-width: 759px) {
+    .story table.demo thead { display: none; }
+    .story table.demo, .story table.demo tbody, .story table.demo tr, .story table.demo td { display: block; }
+    .story table.demo tr { border-bottom: 1px solid var(--line); padding: .6rem 0; }
+    .story table.demo td { border: 0; padding: .2rem 0; }
+    .story table.demo td:nth-child(2)::before { content: 'Measured: '; font-weight: 700; color: var(--muted); }
+    .story table.demo td:nth-child(3)::before { content: 'Decision: '; font-weight: 700; color: var(--muted); }
+  }
+</style>

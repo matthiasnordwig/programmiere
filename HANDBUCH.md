@@ -71,6 +71,7 @@ programmiere/
 - `index.astro` — Startseite: oben das Claude-Code-Plugin (Überschrift, Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`, Video, Installationszeile, Knopf zur Plugin-Seite), darunter Matrix LLM als App (Video, Store-Knöpfe), dann ein hervorgehobener Beitrag mit Bild (Auswahl in `data/featured.ts`, fehlt dann in der Liste unten), dann zwei „Türen“ (Loop für Agent-Bauer; Plugin für WordPress-Betreiber), neueste Beiträge ohne Build Logs (Filter auf `type`), kurz „wer“.
 - `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
 - `projects/matrix/privacy.astro` — Datenschutzerklärung der App Matrix LLM (alle Plattformen), URL `/projects/matrix/privacy/` steht in den Store-Einträgen: **nie verschieben**; Aussagen am Code in `~/matrix/app` geprüft, bei Änderung neu prüfen und Datum setzen. Verlinkt von `projects/matrix.astro`.
+- `projects/matrix/how-it-was-built.astro` — „How Matrix was built“: Bau mit Claude Code (Regeln, Episoden aus dem Git-Log, Messungen, Architekturbild `diagrams/MatrixArchitecture.astro`); Fundstellen je Abschnitt als Kommentar im Quelltext, Umfangszahlen per Zählung vom 2026-11-25. Video-Plätze nur in `astro dev` sichtbar. Verlinkt von `projects/matrix.astro` („By the numbers“).
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
 - `projects/index.astro` — Übersicht aller Projekte (`order`).
 - `writing/index.astro`, `writing/[...id].astro` — Beitragsliste und Beitragsseite.
@@ -82,6 +83,7 @@ programmiere/
 - `PostList.astro` — Beitragsliste (Datum · Art · Draft-Badge).
 - `story/Video.astro` — Video-Platz (16:9, Poster, Bildunterschrift, optional Untertitelspuren `tracks`, nie voreingestellt); Dateien unter `public/video/` (Plugin) und `public/projects/matrix/` (App). Fehlt eine Datei, bleibt der Kasten leer.
 - `story/Zoom.astro` — Screenshot über volle Breite, Klick öffnet Vollbild (`<dialog>`).
+- `diagrams/MatrixArchitecture.astro` — Schichtenbild von Matrix als HTML/CSS (bricht auf dem Handy um), genutzt von `projects/matrix/how-it-was-built.astro`.
 - `diagrams/MatrixFlow.astro`, `LoopFlow.astro`, `PowFlow.astro` — schematische SVGs, nutzen die Farb-Tokens; keine erfundenen Inhalte.
 
 **Inhalte** (`content/`)
