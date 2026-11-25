@@ -1,11 +1,11 @@
 ---
 // Privacy policy of the Matrix LLM app (iPhone, iPad, Mac, Windows). The URL is entered in the
 // Apple App Store and Microsoft Store listings: never move or rename this page.
-// Every statement was checked against ~/matrix/app (2026-11-06); change the text only after
+// Every statement was checked against ~/matrix/app (2026-11-06; captures, place, paired devices 2026-11-25); change the text only after
 // checking the code again, and update the date below.
 import Base from '../../../layouts/Base.astro';
 import { SITE } from '../../../site';
-const updated = '6 November 2026';
+const updated = '25 November 2026';
 ---
 <Base title="Matrix LLM: privacy policy" description="What the Matrix LLM app for iPhone, iPad, Mac and Windows stores, where, and when anything leaves your device.">
   <article class="policy">
@@ -24,7 +24,17 @@ const updated = '6 November 2026';
     <li>Your collections: the documents you add, the passages cut from them, the search index, answers, tables and
     knowledge graphs.</li>
     <li>Your settings, including the addresses and keys of model services you add yourself.</li>
-    <li>Downloaded models: the search model, optionally a language model, and on Windows the text recognition models.</li>
+    <li>Downloaded models: the search model, optionally a language model, speech models for voice and video notes, and
+    on Windows the text recognition models.</li>
+    <li>What you capture in the app (a scanned document, a photo, a voice or video note). Camera and microphone record
+    only after you tap to start, and the result is added to the collection you chose like any other file. Speech is
+    turned into text on your device, never at a service.</li>
+    <li>The place of what you capture. <em>Save the place with captures</em> (Settings → General) is on by default and
+    can be turned off at any time. Before the first capture the app explains why and then asks the system for
+    permission once; if you decline, captures are saved without a place. The position is stored with the capture,
+    together with the nearest town, which the app looks up on your device. The place stays on your devices and is
+    never sent to me. It leaves them only together with the passages it belongs to, when you use a model service you
+    added (3), Claude or another AI agent that searches your collections (5, 6), or your own paired devices (7).</li>
   </ul>
   <p>All of it stays in the app's data folder on your device. The app has no cloud sync of its own; a device backup
   you set up yourself, such as iCloud Backup or Time Machine, may include the folder.</p>
@@ -32,20 +42,24 @@ const updated = '6 November 2026';
   same folder, so this protects a copy of the database on its own, not the whole folder.</p>
 
   <h2>When data leaves your device</h2>
-  <p>Only in the cases below. Almost all of them start with something you do; the text recognition download on Windows
-  and images in answers do not ask separately.</p>
+  <p>Only in the cases below. Almost all of them start with something you do; the place list and the text recognition
+  download on Windows and images in answers do not ask separately.</p>
   <ol>
     <li><strong>Model downloads from Hugging Face.</strong> On first start the app asks before it downloads its search
     model and, if you want one, a language model from huggingface.co. If you search for other models in the app, your
     search words go to Hugging Face. No document content, account or token is sent. Hugging Face sees the request and
-    your IP address, under <a href="https://huggingface.co/privacy">its privacy policy</a>.</li>
+    your IP address, under <a href="https://huggingface.co/privacy">its privacy policy</a>. The speech models for
+    voice and video notes, downloaded when you choose to, come from huggingface.co and, for one small file, from
+    github.com, on the same terms. When the first document with a position is added, the app downloads the GeoNames
+    place list once from download.geonames.org; only the download request is sent, no position.</li>
     <li><strong>Text recognition models on Windows.</strong> The first time the Windows app reads text from an image or
     a scanned page, it downloads three small text recognition files (about 13 MB) from huggingface.co, without asking
     separately. Only the download request is sent. On iPhone, iPad and Mac the app uses Apple's built-in text recognition
     and downloads nothing for it.</li>
     <li><strong>Model services you add.</strong> If you connect a service such as OpenAI, Azure OpenAI, Anthropic,
     Google Gemini, another OpenAI-compatible service, Ollama or a server of your own, the app sends that service what
-    the task needs: your question and the passages found for it; for tables, summaries and the knowledge graph, the text
+    the task needs: your question and the passages found for it, each with when, where and with what device it was
+    recorded, where known; for tables, summaries and the knowledge graph, the text
     of the passages being processed; page images if you use a model that reads images. A search model or reranker that
     runs at a service receives the text it has to process, for a search model all text of the documents you index. Each
     key is sent only to the service you entered it for. What happens there is governed by that service's privacy policy.</li>
@@ -53,12 +67,16 @@ const updated = '6 November 2026';
     and you choose that option, requests are processed on Apple's servers under Apple's terms.</li>
     <li><strong>Access for AI agents (Mac and Windows, off by default).</strong> If you turn it on, programs on the same
     computer that have its access key can use your collections: by default they can search and read them; adding files
-    or changing graphs and tables needs further switches. It listens only on your own computer. An extra option, also
+    or changing graphs and tables needs further switches. The passages they find carry when, where and with what
+    device they were recorded, where known. It listens only on your own computer. An extra option, also
     off by default, opens it to devices on your local network: only private network addresses are accepted and the
     access key is still required, but the connection is not encrypted, so use it only on a network you trust.</li>
     <li><strong>Claude Code as the app's model.</strong> If you connect Claude Code (or another agent) as a model, the
     app's model requests, with their passages, go to that agent and from there to the model service it uses, under your
     own account with that service.</li>
+    <li><strong>Your own devices (off by default).</strong> If you pair your devices in the app, they exchange the
+    collections you make available to them, questions and the passages for them, and model requests, directly over your
+    own network and encrypted. Nothing goes through a server of mine.</li>
     <li><strong>Links and images.</strong> Links in the app, including links in a model's answer, open in your browser.
     If a model writes an image address from the web into an answer, the app may load that image when it shows the
     answer.</li>
