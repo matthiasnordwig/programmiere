@@ -6,6 +6,11 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Inhalte
 
+- **„How Matrix was built“ nachziehen** (`src/pages/projects/matrix/how-it-was-built.astro`, online seit
+  2026-11-25): (1) Abschnitt zur Testübersicht je Unit und zu Mutationstests, sobald die Methode in `~/matrix`
+  steht und belegte Zahlen hat (Session „Matrix: Regressionsübersicht je Unit und Mutationstests“, Quelle und
+  Datum je Zahl). (2) Drei Video-Plätze sind nur in `astro dev` sichtbar (Vorschläge im Quelltext); Videos nach
+  Skill `videos` bauen, dann durch `<Video>` ersetzen. Umfangszahlen (Commits, Zeilen, Tests) dabei neu zählen.
 - **Matrix für Claude Code: Aufnahme in Anthropics Plugin-Liste** (eingereicht, Owner
   2026-10-29). Sobald aufgenommen: auf `projects/matrix-claude-code.astro` und im
   Installationsabschnitt nennen (ggf. Installation aus der offiziellen Liste statt eigenem
