@@ -88,9 +88,9 @@ Daraus ist bei mir eine klare Rolle geworden. Mutationen laufen nur noch vor ein
 
 ## Das lokale Modell
 
-Nebenbei habe ich ausprobiert, ob ein lokales Modell auf meinem Spiele-PC zusätzliche Fehler findet. Der Agent lief dafür gegen zwei offene Modelle mit 24 und 30 Milliarden Parametern, die ohne Netz auf der Grafikkarte rechneten. Es sollte Tests gegen die Beschreibungen im Code schreiben. In einem Durchgang sah es nur die Beschreibungen, nicht den Code selbst.
+Nebenbei habe ich ausprobiert, ob ein lokales Modell auf meinem Spiele-PC zusätzliche Fehler findet. Der Agent lief dafür nicht mit Claude, sondern mit zwei offenen Modellen mit 24 und 30 Milliarden Parametern, die ohne Netz auf der Grafikkarte rechneten. Es sollte Tests gegen die Beschreibungen im Code schreiben. In einem Durchgang sah es nur die Beschreibungen, nicht den Code selbst.
 
-In drei Durchgängen über 19 Dateien entstanden 46 Tests, die fehlschlugen. 3 davon zeigten echte Fehler, darunter der mit dem chinesischen Satzende, alle vom kleineren Modell. Der Rest waren Missverständnisse oder kaputte Tests, und jeden davon musste Claude einordnen. Die drei Durchgänge liefen zusammen rund viereinhalb Stunden. Als gelegentliche Ergänzung vor einem Release halte ich das für sinnvoll, als feste Teststufe nicht.
+In drei Durchgängen über 19 Dateien entstanden 46 Tests, die fehlschlugen. 3 davon zeigten echte Fehler, darunter der mit dem chinesischen Satzende, alle vom kleineren Modell. Der Rest waren Missverständnisse oder kaputte Tests, und jeden davon musste anschließend wieder Claude einordnen. Die drei Durchgänge liefen zusammen rund viereinhalb Stunden. Als gelegentliche Ergänzung vor einem Release halte ich das für sinnvoll, als feste Teststufe nicht.
 
 ## Das Setup dahinter
 
