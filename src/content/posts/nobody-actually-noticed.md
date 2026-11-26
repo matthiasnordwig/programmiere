@@ -7,7 +7,7 @@ project: matrix
 lang: de
 image: /writing/nobody-actually-noticed/og.png
 tags: [testing, property-based-testing, claude-code, agents, rust, telemetry]
-draft: false
+draft: true
 ---
 
 <!--
@@ -106,7 +106,7 @@ Das Wichtigste ist für mich aber die Übersicht. Ich habe mir ein Dashboard geb
 
 Das ist meine eigentliche These. Agenten schreiben inzwischen mehr Code, als ich lesen kann. Ganz ohne Code-Review traue ich mich noch nicht. Ich kann mir aber Messwerte bauen, die mir sagen, wann ich dem Code trauen kann: Wie viele Tests schlagen an, wie viele davon finden etwas, und wo schaut niemand hin. Das ist aus meiner Sicht der Weg dahin, irgendwann nicht mehr jede Zeile lesen zu müssen.
 
-Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit Claude Code, Tests und Prüfungen. Seit Monaten ist es weitgehend fehlerfrei: Früher kam etwa ein Fehler pro Woche, heute vielleicht einer im Monat, und an Funktionen fehlt nichts Wesentliches mehr. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
+Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit Claude Code, Tests und Prüfungen. Seit Monaten ist es weitgehend fehlerfrei: Früher kam etwa ein Fehler pro Woche, heute vielleicht einer im Monat, und an Funktionen fehlt nichts Wesentliches mehr. Früher hat der Fix eines Fehlers oft eine ganze Reihe neuer Fehler nach sich gezogen, die ich kurzfristig nachbessern musste. Das passiert heute praktisch nicht mehr. Früher wurde es mit jeder Funktion schwerer: mehr Komplexität, mehr Fehler, schwierigere Fixes. Heute ist es umgekehrt. Das Netz aus Regressionstests wird mit jedem Fix dichter, und der Agent kennt die Anwendung. Dadurch werden Änderungen mit der Zeit sicherer statt riskanter. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
 
 ## Wo es nicht passt
 
