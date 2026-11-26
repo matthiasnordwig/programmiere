@@ -20,7 +20,7 @@ Gliederung (abgestimmt 2026-11-26):
 6. Grenzen, offene Frage
 -->
 
-![Ein Siegertreppchen. Auf Platz 1 steht NaN mit Sonnenbrille und Goldmedaille. Die Zahl 0,93 auf Platz 2 ruft: „Der ist doch nicht mal eine Zahl!“, die 0,91 auf Platz 3 will den Schiedsrichter sprechen. Darunter: NaN = Nobody Actually Noticed.](/writing/nobody-actually-noticed/treppchen-1600x900.png)
+![Ein Siegertreppchen. Auf Platz 1 steht NaN mit Sonnenbrille und Goldmedaille. Die Zahl 0,93 auf Platz 2 ruft: „Ich hab nachgemessen: 0,93!“, die 0,91 auf Platz 3 will den Schiedsrichter sprechen. Darunter: NaN = Nobody Actually Noticed.](/writing/nobody-actually-noticed/treppchen-1600x900.png)
 
 Beim Testen der hybriden Vektorsuche in meiner RAG-App Matrix stand auf Platz 1 ein Treffer mit dem Wert NaN. Matrix beantwortet Fragen aus eigenen Dokumenten und nennt die Fundstelle dazu. Die Suche verbindet Vektorsuche nach Bedeutung mit einer Suche nach Stichworten, am Ende sortiert ein Reranker die Treffer nach einem Wert zwischen 0 und 1. Wer oben steht, passt am besten. NaN heißt „Not a Number“, also keine Zahl. Die Sortierung kam mit diesem Wert nicht zurecht, und er rutschte nach ganz oben.
 
