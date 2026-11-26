@@ -9,8 +9,11 @@ import Installs from '../components/Installs.astro';
 import { FEATURED } from '../data/featured';
 import { MATRIX_VIDEO_TRACKS } from '../data/matrix-video';
 const all = await publishedPosts();
-const featured = FEATURED && all.find((p) => p.id === FEATURED.post);
-const posts = all.filter((p) => p.data.type !== 'build-log' && p !== featured).slice(0, 4);
+const featured = FEATURED.flatMap((f) => {
+  const post = all.find((p) => p.id === f.post);
+  return post ? [{ ...f, post }] : [];
+});
+const posts = all.filter((p) => p.data.type !== 'build-log' && !featured.some((f) => f.post === p)).slice(0, 4);
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'programmiere.de', url: 'https://programmiere.de/', author: { '@type': 'Person', name: SITE.author } };
 ---
 <Base wide jsonld={jsonld} description="Matrix for Claude Code: a free plugin that gives Claude Code a local index of your documents. 5.6× fewer input tokens per question, 2.5× fewer output tokens and 20 instead of 48 seconds, measured on 442 pages. Also Matrix LLM, an app for iPhone, iPad, Mac and Windows, a GDPR-friendly WordPress spam filter and the AI loop that maintains it.">
@@ -42,24 +45,24 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
     </div>
   </section>
 
-  {FEATURED && featured && (
+  {featured.map(({ post, image, imageDark, width, height }) => (
     <section class="feature">
       <div class="in feature-grid">
-        <a class="pic" href={`/writing/${featured.id}/`} tabindex="-1" aria-hidden="true">
+        <a class="pic" href={`/writing/${post.id}/`} tabindex="-1" aria-hidden="true">
           <picture>
-            {FEATURED.imageDark && <source srcset={FEATURED.imageDark} media="(prefers-color-scheme: dark)" />}
-            <img src={FEATURED.image} width={FEATURED.width} height={FEATURED.height} alt="" loading="lazy" decoding="async" />
+            {imageDark && <source srcset={imageDark} media="(prefers-color-scheme: dark)" />}
+            <img src={image} width={width} height={height} alt="" loading="lazy" decoding="async" />
           </picture>
         </a>
         <div>
-          <p class="project">Writing · {TYPE_LABEL[featured.data.type]}{featured.data.lang === 'de' && ' · in German'}</p>
-          <h2 lang={featured.data.lang !== 'en' ? featured.data.lang : undefined}>{featured.data.title}</h2>
-          <p class="sub" lang={featured.data.lang !== 'en' ? featured.data.lang : undefined}>{featured.data.description}</p>
-          <div class="actions"><a class="go ghost" href={`/writing/${featured.id}/`}>Read the post</a></div>
+          <p class="project">Writing · {TYPE_LABEL[post.data.type]}{post.data.lang === 'de' && ' · in German'}</p>
+          <h2 lang={post.data.lang !== 'en' ? post.data.lang : undefined}>{post.data.title}</h2>
+          <p class="sub" lang={post.data.lang !== 'en' ? post.data.lang : undefined}>{post.data.description}</p>
+          <div class="actions"><a class="go ghost" href={`/writing/${post.id}/`}>Read the post</a></div>
         </div>
       </div>
     </section>
-  )}
+  ))}
 
   <section class="more">
     <div class="more-inner">
@@ -122,7 +125,11 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
   .feature { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
   .feature-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem 3rem; align-items: center; }
-  @media (min-width: 800px) { .feature-grid { grid-template-columns: 1.15fr 1fr; } }
+  @media (min-width: 800px) {
+    .feature-grid { grid-template-columns: 1.15fr 1fr; }
+    .feature + .feature .feature-grid { grid-template-columns: 1fr 1.15fr; }
+    .feature + .feature .pic { order: 2; }
+  }
   .feature h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
   .feature .sub { font-size: 1.08rem; }
   .pic { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(.75rem, 2vw, 1.25rem); }
