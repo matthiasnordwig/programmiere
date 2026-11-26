@@ -13,9 +13,8 @@ export type Featured = {
 };
 
 export const FEATURED: Featured | null = {
-  post: 'ein-ganz-normaler-tag',
-  image: '/writing/ein-ganz-normaler-tag/home-light.png',
-  imageDark: '/writing/ein-ganz-normaler-tag/home-dark.png',
-  width: 1200,
-  height: 669,
+  post: 'nobody-actually-noticed',
+  image: '/writing/nobody-actually-noticed/treppchen-1600x900.png',
+  width: 1600,
+  height: 900,
 };
