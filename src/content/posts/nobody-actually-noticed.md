@@ -46,9 +46,9 @@ Ein Eigenschaftstest prüft eine Regel, die immer gelten muss. Für eine Sortier
 
 In Matrix heißt so eine Regel zum Beispiel: Wenn man ein Dokument in Abschnitte zerlegt und die Abschnitte wieder zusammensetzt, kommt genau der Originaltext heraus. Kein Zeichen geht verloren.
 
-Die Idee ist nicht neu. QuickCheck für Haskell gibt es seit 2000, heute gibt es so etwas für fast jede Sprache, in Rust heißt die Bibliothek proptest. Verbreitet ist es trotzdem kaum. Der Grund ist aus meiner Sicht der Aufwand. Man muss Regeln finden, realistische Eingaben erzeugen und Gegenbeispiele verstehen. Das kostet Zeit, und die hatte kaum ein Team übrig.
+Die Idee ist nicht neu. QuickCheck für Haskell gibt es seit 2000, heute gibt es so etwas für fast jede Sprache, in Rust heißt die Bibliothek proptest. In Bibliotheken und Infrastruktur ist es verbreitet, im Code der meisten Anwendungen kaum. Der Grund ist aus meiner Sicht der Aufwand. Man muss Regeln finden, realistische Eingaben erzeugen und Gegenbeispiele verstehen. Das kostet Zeit, und die hatte kaum ein Team übrig.
 
-Genau diesen Teil macht jetzt der Agent. Ich arbeite an Matrix mit Claude Code. Der Agent schlägt die Regeln vor, schreibt die Würfelanweisungen, liest die Gegenbeispiele und baut den Regressionstest. Bei mir bleibt nur das Lesen der Regeln, und das sind kurze Sätze wie „es geht kein Text verloren“. Was jahrzehntelang zu teuer war, kostet auf einmal fast nichts.
+Genau diesen Teil macht jetzt der Agent. Er schlägt die Regeln vor, schreibt die Würfelanweisungen, liest die Gegenbeispiele und baut den Regressionstest. Bei mir bleibt nur das Lesen der Regeln, und das sind kurze Sätze wie „es geht kein Text verloren“. Was jahrzehntelang zu teuer war, kostet auf einmal fast nichts.
 
 Und noch etwas ist wichtig. Ein Agent schreibt Tests gern so, dass sie zu seinem Code passen. Ein Eigenschaftstest lässt sich nicht so leicht zurechtbiegen, weil der Agent die gewürfelten Eingaben nicht kennt. Der Agent prüft seinen eigenen Code also mit Fällen, an die er selbst nicht gedacht hat.
 
@@ -88,9 +88,9 @@ Daraus ist bei mir eine klare Rolle geworden. Mutationen laufen nur noch vor ein
 
 ## Das lokale Modell
 
-Nebenbei habe ich ausprobiert, ob ein lokales Modell auf meinem Spiele-PC zusätzliche Fehler findet. Claude Code lief dafür gegen zwei offene Modelle mit 24 und 30 Milliarden Parametern, die ohne Netz auf der Grafikkarte rechneten. Es sollte Tests gegen die Beschreibungen im Code schreiben. In einem Durchgang sah es nur die Beschreibungen, nicht den Code selbst.
+Nebenbei habe ich ausprobiert, ob ein lokales Modell auf meinem Spiele-PC zusätzliche Fehler findet. Der Agent lief dafür nicht mit Claude, sondern mit zwei offenen Modellen mit 24 und 30 Milliarden Parametern, die ohne Netz auf der Grafikkarte rechneten. Er sollte Tests gegen die Beschreibungen im Code schreiben. In einem Durchgang sah er nur die Beschreibungen, nicht den Code selbst.
 
-In drei Durchgängen über 19 Dateien entstanden 46 Tests, die fehlschlugen. 3 davon zeigten echte Fehler, darunter der mit dem chinesischen Satzende, alle vom kleineren Modell. Der Rest waren Missverständnisse oder kaputte Tests, und jeden davon musste Claude einordnen. Die drei Durchgänge liefen zusammen rund viereinhalb Stunden. Als gelegentliche Ergänzung vor einem Release halte ich das für sinnvoll, als feste Teststufe nicht.
+In drei Durchgängen über 19 Dateien entstanden 46 Tests, die fehlschlugen. 3 davon zeigten echte Fehler, darunter der mit dem chinesischen Satzende, alle vom kleineren Modell. Der Rest waren Missverständnisse oder kaputte Tests, und jeden davon musste anschließend wieder Claude einordnen. Die drei Durchgänge liefen zusammen rund viereinhalb Stunden. Als gelegentliche Ergänzung vor einem Release halte ich das für sinnvoll, als feste Teststufe nicht.
 
 ## Das Setup dahinter
 
@@ -106,7 +106,7 @@ Das Wichtigste ist für mich aber die Übersicht. Ich habe mir ein Dashboard geb
 
 Das ist meine eigentliche These. Agenten schreiben inzwischen mehr Code, als ich lesen kann. Ganz ohne Code-Review traue ich mich noch nicht. Ich kann mir aber Messwerte bauen, die mir sagen, wann ich dem Code trauen kann: Wie viele Tests schlagen an, wie viele davon finden etwas, und wo schaut niemand hin. Das ist aus meiner Sicht der Weg dahin, irgendwann nicht mehr jede Zeile lesen zu müssen.
 
-Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit Claude Code, Tests und Prüfungen. Seit Monaten ist es weitgehend fehlerfrei: Früher kam etwa ein Fehler pro Woche, heute vielleicht einer im Monat, und an Funktionen fehlt nichts Wesentliches mehr. Früher hat der Fix eines Fehlers oft eine ganze Reihe neuer Fehler nach sich gezogen, die ich kurzfristig nachbessern musste. Das passiert heute praktisch nicht mehr. Früher wurde es mit jeder Funktion schwerer: mehr Komplexität, mehr Fehler, schwierigere Fixes. Heute ist es umgekehrt. Das Netz aus Regressionstests wird mit jedem Fix dichter, und der Agent kennt die Anwendung. Dadurch werden Änderungen mit der Zeit sicherer statt riskanter. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
+Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit dem Agenten, Tests und Prüfungen. Seit Monaten ist es weitgehend fehlerfrei: Früher kam etwa ein Fehler pro Woche, heute vielleicht einer im Monat, und an Funktionen fehlt nichts Wesentliches mehr. Früher hat der Fix eines Fehlers oft eine ganze Reihe neuer Fehler nach sich gezogen, die ich kurzfristig nachbessern musste. Das passiert heute praktisch nicht mehr. Früher wurde es mit jeder Funktion schwerer: mehr Komplexität, mehr Fehler, schwierigere Fixes. Heute ist es umgekehrt. Das Netz aus Regressionstests wird mit jedem Fix dichter, und der Agent kennt die Anwendung. Dadurch werden Änderungen mit der Zeit sicherer statt riskanter. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
 
 ## Wo es nicht passt
 
