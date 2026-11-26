@@ -21,6 +21,13 @@ const ZIP = '/projects/matrix-claude-code/matrix-claude-code-benchmark-2026-11-1
     <div class="in">
       <p class="kicker">Matrix for Claude Code</p>
       <h1>Claude Code needed 5.6× fewer input tokens.</h1>
+      <div class="kpis">
+        <div><strong>5.6× fewer</strong><span>input tokens per question: 182k instead of 1,025k</span></div>
+        <div><strong>20 s</strong><span>per question instead of 48 s</span></div>
+        <div><strong>8 of 8</strong><span>answers right with the plugin, 7 of 8 without it</span></div>
+      </div>
+      <p class="kpi-note">442 pages, 4 questions, 2 runs each, November 2026. <a href="#method">How it was measured</a> ·
+      <a href="#limits">The limits</a></p>
       <p class="big">With this free plugin, Claude Code used 182k instead of 1,025k input tokens per question on 442 pages
       of EU regulations and a report, and it wrote 2.5× fewer output tokens. No loss in quality: all 8 answers were
       right, against 7 of 8 without it.</p>
@@ -115,6 +122,9 @@ const ZIP = '/projects/matrix-claude-code/matrix-claude-code-benchmark-2026-11-1
       <code>results-2026-11-19.jsonl</code> (one line per run, with the full answer),
       <code>probe-2026-11-19.json</code> (search hits without Claude) and <code>bench_claude_plugin.py</code> (the script).
       The PDFs are not in it; the script downloads them.</p>
+
+      <details class="method-more">
+      <summary>The full method: documents, questions, runs, what is counted, scoring, limits, running it yourself</summary>
 
       <h3>The documents</h3>
       <p class="muted">442 pages in four PDFs: three EU regulations in German from the EU Publications Office, and one
@@ -212,10 +222,11 @@ python3 bench_claude_plugin.py run   --bench ~/matrix-bench/run</code></pre></di
       model once, about 1.2 GB, and keeps its data apart from your own Matrix data. <code>run</code> makes the 16 runs in
       about 10 minutes and counts against your Claude usage. Then <code>report --bench ~/matrix-bench/run</code> prints
       the table per question.</p>
+      </details>
     </div>
   </section>
 
-  <section class="beat alt">
+  <section class="beat alt" id="limits">
     <div class="in">
       <p class="kicker">The limits</p>
       <h2>It saves tokens and time. Better answers are not proven.</h2>
@@ -291,4 +302,21 @@ claude plugin install matrix@matrix-mcp</code></pre></div>
   #method .facts strong { color: var(--fg); }
   #method .src { display: block; margin-top: .25rem; font-size: .9rem; color: var(--fg); }
   #method .card { margin-top: 1rem; }
+  /* Three key figures right under the headline; the full method stays further down, folded. */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; margin: 1.75rem 0 .9rem; }
+  .kpis > div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.25rem 1.2rem; }
+  .kpis strong { display: block; font: 800 clamp(2rem, 3.6vw, 2.7rem)/1 var(--display); letter-spacing: -.03em; font-variation-settings: 'wdth' 78; color: var(--accent); margin-bottom: .45rem; }
+  .kpis span { color: var(--muted); }
+  .kpi-note { color: var(--muted); font-size: .95rem; margin: 0 0 2rem; }
+  @media (max-width: 640px) {
+    /* On the phone: one line per figure, so the three cards don't push the text far down. */
+    .kpis { gap: .6rem; }
+    .kpis > div { display: grid; grid-template-columns: 8.3rem 1fr; gap: .7rem; align-items: center; padding: .8rem 1rem; }
+    .kpis strong { font-size: 1.65rem; margin: 0; white-space: nowrap; }
+    .kpis span { font-size: .95rem; line-height: 1.4; }
+  }
+  .method-more { margin-top: 2.2rem; border-top: 1px solid var(--line); }
+  .method-more summary { cursor: pointer; padding: 1.1rem 0 0; font-weight: 700; color: var(--accent); max-width: 40rem; }
+  .method-more summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .method-more > h3:first-of-type { margin-top: 1.8rem; }
 </style>

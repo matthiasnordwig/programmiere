@@ -7,7 +7,9 @@ import { publishedPosts, TYPE_LABEL } from '../lib';
 import { SITE } from '../site';
 import Installs from '../components/Installs.astro';
 import { FEATURED } from '../data/featured';
-import { MATRIX_VIDEO_TRACKS } from '../data/matrix-video';
+import { Image } from 'astro:assets';
+import macAsk from '../assets/projects/matrix-mac-ask.png';
+import iphoneAsk from '../assets/projects/matrix-iphone-ask.png';
 const all = await publishedPosts();
 const featured = FEATURED.flatMap((f) => {
   const post = all.find((p) => p.id === f.post);
@@ -35,7 +37,17 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
       <h2>Also as an app for iPhone, iPad, Mac and Windows.</h2>
       <p class="sub">Ask questions about your documents, offline. Every answer shows the exact passage it is based on.
       The models can run entirely on your device: small ones on the iPhone, large ones on a Mac or PC.</p>
-      <div class="vid"><Video src="/projects/matrix/matrix-video-1080p.mp4" poster="/projects/matrix/matrix-video-poster.jpg" tracks={MATRIX_VIDEO_TRACKS} /></div>
+      <p class="rel">Matrix LLM and Matrix for Claude Code share one core, which splits, indexes and searches the
+      documents. They differ in who reads the passages and writes the answer: Claude Code in the plugin, a model of
+      your choice in the app.</p>
+      <figure class="shots">
+        <div class="shots-row">
+          <Image class="mac" src={macAsk} widths={[700, 1100, 1600]} sizes="(min-width: 900px) 660px, 75vw" alt="Matrix LLM on a Mac: a question about a sample contract, a two-sentence answer with quotes, and six source passages, the cited one marked." />
+          <Image class="phone" src={iphoneAsk} widths={[300, 500]} sizes="(min-width: 900px) 200px, 22vw" alt="Matrix LLM on an iPhone: the same question, answered by Apple Intelligence on the device, with the cited passage marked." />
+        </div>
+        <figcaption>The same question about a sample contract on a Mac and on an iPhone, both answered on the device,
+        with the cited passage marked.</figcaption>
+      </figure>
       <div class="actions">
         <a class="badge" href={SITE.matrixApp}><img src="/badges/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" /></a>
         <a class="badge" href={SITE.matrixWin}><img src="/badges/get-it-from-microsoft.svg" width="161" height="44" alt="Get it from Microsoft" /></a>
@@ -123,6 +135,14 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'pr
   .actions .badge img { height: 52px; width: auto; display: block; }
   .actions .go { box-sizing: border-box; height: 52px; display: inline-flex; align-items: center; }
   .free { margin: .8rem 0 0; color: var(--muted); font-size: .95rem; }
+  .rel { color: var(--muted); max-width: 40rem; line-height: 1.55; margin: -.5rem 0 1.75rem; }
+  .shots { margin: 0 0 1.5rem; }
+  /* Mac and iPhone side by side; the column ratio keeps both pictures about the same height. */
+  .shots-row { display: grid; grid-template-columns: 3.4fr 1fr; gap: clamp(.6rem, 2vw, 1.25rem); align-items: end; }
+  .shots-row :global(img) { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--surface); }
+  .shots-row :global(img.mac) { border-radius: 10px; box-shadow: 0 30px 60px -30px rgba(18, 20, 40, .45); }
+  .shots-row :global(img.phone) { border-radius: 14px; }
+  .shots figcaption { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
   .feature { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
   .feature-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem 3rem; align-items: center; }
   @media (min-width: 800px) {

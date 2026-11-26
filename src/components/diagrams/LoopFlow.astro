@@ -1,27 +1,127 @@
 ---
+// The maintainer loop as a static picture: scout → worker → checks without a model → "ja" from my phone → gate.
+// Two drawings of the same content: across for wide containers, top to bottom for narrow ones (phone, the
+// half-width "door" on the start page), so the labels stay readable. Which one shows is decided by the
+// width of the container, not the window. Facts from the page text in projects/maintainer-loop.astro.
+const W = 164, H = 140, Y = 24, STEP = 200;
+const xs = [0, 1, 2, 3, 4].map((i) => 16 + i * STEP);
+const RH = 72, RSTEP = 96, RW = 328;
+const ys = [0, 1, 2, 3, 4].map((i) => 16 + i * RSTEP);
 ---
-<svg class="diagram loop" viewBox="0 0 640 220" role="img" aria-labelledby="lp-t lp-d">
-  <title id="lp-t">How the maintainer loop works</title>
-  <desc id="lp-d">A scout reads forums and reviews, a worker writes a fix on its own branch, deterministic checks verify it, and nothing is released, merged or posted until the owner approves that single action from his phone.</desc>
-  <g class="l-box"><rect x="10" y="40" width="130" height="78" rx="10" /><text x="75" y="74" text-anchor="middle">Scout</text><text x="75" y="96" text-anchor="middle" class="l-small">reads the forums</text></g>
-  <path class="l-arr" d="M146 79 H170 M164 73 L172 79 L164 85" />
-  <g class="l-box"><rect x="176" y="40" width="130" height="78" rx="10" /><text x="241" y="74" text-anchor="middle">Worker</text><text x="241" y="96" text-anchor="middle" class="l-small">writes the fix</text></g>
-  <path class="l-arr" d="M312 79 H336 M330 73 L338 79 L330 85" />
-  <g class="l-box"><rect x="342" y="40" width="130" height="78" rx="10" /><text x="407" y="74" text-anchor="middle">Checks</text><text x="407" y="96" text-anchor="middle" class="l-small">no model involved</text></g>
-  <path class="l-arr" d="M478 79 H502 M496 73 L504 79 L496 85" />
-  <g class="l-gate"><rect x="508" y="22" width="122" height="114" rx="16" /><text x="569" y="66" text-anchor="middle" class="g-t">Gate</text><rect x="532" y="80" width="74" height="34" rx="17" class="bubble" /><text x="569" y="102" text-anchor="middle" class="b-t">„ja“</text></g>
-  <text x="569" y="168" text-anchor="middle" class="l-small">one word per action,</text>
-  <text x="569" y="186" text-anchor="middle" class="l-small">from my phone</text>
-  <text x="241" y="168" text-anchor="middle" class="l-small">the model only ever proposes —</text>
-  <text x="241" y="186" text-anchor="middle" class="l-small">it never ships anything itself</text>
-</svg>
+<div class="loopflow">
+  <svg class="lf wide" viewBox="0 0 996 262" role="img" aria-labelledby="lfw-t lfw-d">
+    <title id="lfw-t">How the maintainer loop works</title>
+    <desc id="lfw-d">A scout made of plain rules reads the forum, reviews and changelogs. An AI worker writes the fix on its own branch. Checks in plain code, with no model involved, decide whether it may be proposed. I answer one question on my phone with "ja". Only then does the gate, again plain code, release, merge or post a forum reply, one action per approval.</desc>
+    <g class="node">
+      <rect x={xs[0]} y={Y} width={W} height={H} rx="12" />
+      <rect class="chip rules" x={xs[0] + 56} y={Y + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x={xs[0] + 82} y={Y + 29.5}>rules</text>
+      <text class="t" x={xs[0] + 82} y={Y + 68}>Scout</text>
+      <text class="s" x={xs[0] + 82} y={Y + 94}>reads the forum,</text>
+      <text class="s" x={xs[0] + 82} y={Y + 114}>reviews, changelogs</text>
+    </g>
+    <g class="node">
+      <rect x={xs[1]} y={Y} width={W} height={H} rx="12" />
+      <rect class="chip ai" x={xs[1] + 64} y={Y + 14} width="36" height="22" rx="11" /><text class="chip-t ai" x={xs[1] + 82} y={Y + 29.5}>AI</text>
+      <text class="t" x={xs[1] + 82} y={Y + 68}>Worker</text>
+      <text class="s" x={xs[1] + 82} y={Y + 94}>writes the fix on</text>
+      <text class="s" x={xs[1] + 82} y={Y + 114}>its own branch</text>
+    </g>
+    <g class="node">
+      <rect x={xs[2]} y={Y} width={W} height={H} rx="12" />
+      <rect class="chip rules" x={xs[2] + 56} y={Y + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x={xs[2] + 82} y={Y + 29.5}>rules</text>
+      <text class="t" x={xs[2] + 82} y={Y + 68}>Checks</text>
+      <text class="s" x={xs[2] + 82} y={Y + 94}>plain code,</text>
+      <text class="s" x={xs[2] + 82} y={Y + 114}>no model involved</text>
+    </g>
+    <g class="node">
+      <rect x={xs[3]} y={Y} width={W} height={H} rx="12" />
+      <rect class="chip me" x={xs[3] + 63} y={Y + 14} width="38" height="22" rx="11" /><text class="chip-t me" x={xs[3] + 82} y={Y + 29.5}>me</text>
+      <text class="t" x={xs[3] + 82} y={Y + 68}>My phone</text>
+      <rect class="bubble" x={xs[3] + 47} y={Y + 84} width="70" height="32" rx="16" /><text class="b" x={xs[3] + 82} y={Y + 105.5}>„ja“</text>
+    </g>
+    <g class="node gate">
+      <rect x={xs[4]} y={Y} width={W} height={H} rx="12" />
+      <rect class="chip rules" x={xs[4] + 56} y={Y + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x={xs[4] + 82} y={Y + 29.5}>rules</text>
+      <text class="t" x={xs[4] + 82} y={Y + 68}>Gate</text>
+      <text class="s" x={xs[4] + 82} y={Y + 94}>release, merge or</text>
+      <text class="s" x={xs[4] + 82} y={Y + 114}>forum reply</text>
+    </g>
+    {xs.slice(0, 4).map((x) => (
+      <path class="arr" d={`M${x + W + 8} ${Y + H / 2} H${x + STEP - 8} M${x + STEP - 15} ${Y + H / 2 - 6} L${x + STEP - 8} ${Y + H / 2} L${x + STEP - 15} ${Y + H / 2 + 6}`} />
+    ))}
+    <text class="s" x="398" y="206">the model only ever proposes —</text>
+    <text class="s" x="398" y="228">it never ships anything itself</text>
+    <text class="s" x="798" y="206">one word per action,</text>
+    <text class="s" x="798" y="228">from my phone</text>
+  </svg>
+
+  <svg class="lf tall" viewBox="0 0 360 548" role="img" aria-labelledby="lft-t lft-d">
+    <title id="lft-t">How the maintainer loop works</title>
+    <desc id="lft-d">A scout made of plain rules reads the forum, reviews and changelogs. An AI worker writes the fix on its own branch. Checks in plain code, with no model involved, decide whether it may be proposed. I answer one question on my phone with "ja". Only then does the gate, again plain code, release, merge or post a forum reply, one action per approval.</desc>
+    <g class="node">
+      <rect x="16" y={ys[0]} width={RW} height={RH} rx="12" />
+      <text class="t l" x="32" y={ys[0] + 31}>Scout</text>
+      <rect class="chip rules" x="276" y={ys[0] + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x="302" y={ys[0] + 29.5}>rules</text>
+      <text class="s l" x="32" y={ys[0] + 56}>reads the forum, reviews, changelogs</text>
+    </g>
+    <g class="node">
+      <rect x="16" y={ys[1]} width={RW} height={RH} rx="12" />
+      <text class="t l" x="32" y={ys[1] + 31}>Worker</text>
+      <rect class="chip ai" x="292" y={ys[1] + 14} width="36" height="22" rx="11" /><text class="chip-t ai" x="310" y={ys[1] + 29.5}>AI</text>
+      <text class="s l" x="32" y={ys[1] + 56}>writes the fix on its own branch</text>
+    </g>
+    <g class="node">
+      <rect x="16" y={ys[2]} width={RW} height={RH} rx="12" />
+      <text class="t l" x="32" y={ys[2] + 31}>Checks</text>
+      <rect class="chip rules" x="276" y={ys[2] + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x="302" y={ys[2] + 29.5}>rules</text>
+      <text class="s l" x="32" y={ys[2] + 56}>plain code, no model involved</text>
+    </g>
+    <g class="node">
+      <rect x="16" y={ys[3]} width={RW} height={RH} rx="12" />
+      <text class="t l" x="32" y={ys[3] + 31}>My phone</text>
+      <rect class="chip me" x="290" y={ys[3] + 14} width="38" height="22" rx="11" /><text class="chip-t me" x="309" y={ys[3] + 29.5}>me</text>
+      <rect class="bubble" x="32" y={ys[3] + 40} width="58" height="24" rx="12" /><text class="b" x="61" y={ys[3] + 57}>„ja“</text>
+      <text class="s l" x="102" y={ys[3] + 57}>one word per action</text>
+    </g>
+    <g class="node gate">
+      <rect x="16" y={ys[4]} width={RW} height={RH} rx="12" />
+      <text class="t l" x="32" y={ys[4] + 31}>Gate</text>
+      <rect class="chip rules" x="276" y={ys[4] + 14} width="52" height="22" rx="11" /><text class="chip-t rules" x="302" y={ys[4] + 29.5}>rules</text>
+      <text class="s l" x="32" y={ys[4] + 56}>release, merge or forum reply</text>
+    </g>
+    {ys.slice(0, 4).map((y) => (
+      <path class="arr" d={`M180 ${y + RH + 5} V${y + RSTEP - 5} M174 ${y + RSTEP - 12} L180 ${y + RSTEP - 5} L186 ${y + RSTEP - 12}`} />
+    ))}
+    <text class="s" x="180" y="512">the model only ever proposes —</text>
+    <text class="s" x="180" y="532">it never ships anything itself</text>
+  </svg>
+</div>
 <style>
-  .loop text { fill: var(--fg); font-size: 16px; font-weight: 700; font-family: var(--display); }
-  .loop .l-small { fill: var(--muted); font-size: 12.5px; font-weight: 500; }
-  .l-box rect { fill: var(--surface); stroke: var(--line-strong); stroke-width: 2; }
-  .l-arr { stroke: var(--muted); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .l-gate > rect:first-child { fill: var(--accent); }
-  .l-gate .g-t { fill: var(--on-accent); font-size: 18px; }
-  .l-gate .bubble { fill: var(--bg); }
-  .l-gate .b-t { fill: var(--fg); font-size: 15px; }
+  .loopflow { container-type: inline-size; }
+  .lf { display: block; width: 100%; height: auto; font-family: var(--display); }
+  .lf.tall { max-width: 400px; margin: 0 auto; }
+  .lf.wide { display: none; }
+  @container (min-width: 760px) {
+    .lf.wide { display: block; }
+    .lf.tall { display: none; }
+  }
+  .lf text { text-anchor: middle; }
+  .lf text.l { text-anchor: start; }
+  .lf .t { fill: var(--fg); font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .lf .s { fill: var(--muted); font-size: 14px; font-weight: 500; }
+  .lf .node > rect:first-child { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+  .lf .gate > rect:first-child { fill: var(--accent); stroke: var(--accent); }
+  .lf .gate .t, .lf .gate .s { fill: var(--on-accent); }
+  .lf .arr { stroke: var(--muted); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .lf .bubble { fill: var(--accent); }
+  .lf .b { fill: var(--on-accent); font-size: 15px; font-weight: 700; }
+  .lf .chip-t { font: 700 12px var(--sans); }
+  /* Same colours as the "AI" and "rules" labels in story.css. */
+  .lf .chip.ai { fill: #e9e5ff; } .lf .chip-t.ai { fill: #4b2fd6; }
+  .lf .chip.rules { fill: #ddf5ea; } .lf .chip-t.rules { fill: #0f6b45; }
+  .lf .chip.me { fill: var(--bg); stroke: var(--line-strong); } .lf .chip-t.me { fill: var(--fg); }
+  @media (prefers-color-scheme: dark) {
+    .lf .chip.ai { fill: #2c2560; } .lf .chip-t.ai { fill: #c9bfff; }
+    .lf .chip.rules { fill: #133a2a; } .lf .chip-t.rules { fill: #8fe3bd; }
+  }
 </style>

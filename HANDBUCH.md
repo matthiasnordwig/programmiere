@@ -37,13 +37,13 @@ programmiere/
 ├── docs/
 │   ├── POSITIONING.md        Wofür die Seite steht, für wen, Ton — Leitplanke für jeden Text
 │   └── decisions/NNNN-*.md   Grundsatzentscheidungen (Kontext → Entscheidung → Konsequenzen)
-├── astro.config.mjs          site=https://programmiere.de, Sitemap, Shiki-Themes
+├── astro.config.mjs          site=https://programmiere.de, Sitemap, Shiki-Themes, `compressHTML: true` (Astro 7 würde sonst das Leerzeichen am Zeilenumbruch vor Link/`<code>` verschlucken)
 ├── package.json              Skripte: dev, build, preview, publish, publish-check, ship
 ├── config/confidential-terms.txt   Begriffe, die nie in einen Beitrag dürfen (publish-check)
 ├── inbox/diy/                lokales Rohmaterial für DIY-Posts (gitignored außer README)
 ├── .deploy/                  Deploy-Schlüssel + gepinnter Host-Key — nur auf dem Mac, gitignored
 ├── .github/workflows/build.yml  Build-Prüfung bei jedem Push (keine Auslieferung)
-├── public/                   1:1 ausgeliefert: favicon.svg, og-matrix.jpg (Social-Vorschau, Standard, auch Startseite), og-matrix-claude-code.png (Vorschau Plugin-Seite), badges/ (offizielle Store-Abzeichen, unverändert: get-it-from-microsoft.svg von get.microsoft.com, download-on-the-app-store.svg von developer.apple.com; nur als Link zum Store, nicht umfärben oder verzerren, Abstand mindestens ein Viertel der Höhe), projects/ (App-Video unter `matrix/`; unter `matrix-claude-code/` das Testset der Plugin-Messung als ZIP, Abzug der fünf Dateien aus `~/matrix/app/claude-plugin/benchmark/` ohne PDFs, verlinkt im Abschnitt `#method` der Plugin-Seite; liegt unter `projects/`, weil das Deploy-Skript nur die dort gelisteten Ordner überträgt), null-device/
+├── public/                   1:1 ausgeliefert: favicon.svg, robots.txt (alles erlaubt, verweist auf `sitemap-index.xml`), og-matrix.jpg (Social-Vorschau, Standard, auch Startseite), og-matrix-claude-code.png (Vorschau Plugin-Seite), badges/ (offizielle Store-Abzeichen, unverändert: get-it-from-microsoft.svg von get.microsoft.com, download-on-the-app-store.svg von developer.apple.com; nur als Link zum Store, nicht umfärben oder verzerren, Abstand mindestens ein Viertel der Höhe), projects/ (App-Video unter `matrix/`; unter `matrix-claude-code/` das Testset der Plugin-Messung als ZIP, Abzug der fünf Dateien aus `~/matrix/app/claude-plugin/benchmark/` ohne PDFs, verlinkt im Abschnitt `#method` der Plugin-Seite; liegt unter `projects/`, weil das Deploy-Skript nur die dort gelisteten Ordner überträgt), null-device/
 ├── scripts/                  s. §1 und §4
 ├── terminal-cv/              Quelle der Terminal-Parodie (Vite + TS, eigenes package.json); gebaut nach public/null-device/
 └── src/                      s. §3
@@ -68,8 +68,8 @@ programmiere/
 - `styles/story.css` — Bausteine der langen Projektseiten: `.beat`, `.split`, `.grid3`, `.steps` (nummeriert), `.who.ai`/`.who.rules`, `.numbers`, `.card`, `table.demo`, `.go`.
 
 **Seiten** (`pages/`)
-- `index.astro` — Startseite: oben das Claude-Code-Plugin (Überschrift, Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`, Video, Installationszeile, Knopf zur Plugin-Seite), darunter Matrix LLM als App (Video, Store-Knöpfe), dann die hervorgehobenen Beiträge mit Bild (Liste in `data/featured.ts`, fehlen dann in der Liste unten), dann zwei „Türen“ (Loop für Agent-Bauer; Plugin für WordPress-Betreiber), neueste Beiträge ohne Build Logs (Filter auf `type`), kurz „wer“.
-- `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`).
+- `index.astro` — Startseite: oben das Claude-Code-Plugin (Überschrift, Zahlen aus `~/matrix/app/claude-plugin/DEMO.md`, Video, Installationszeile, Knopf zur Plugin-Seite), darunter Matrix LLM als App (ein Satz zum Verhältnis App/Plugin: gleicher Kern, anderes Sprachmodell; Screenshots Mac + iPhone aus `assets/projects/`, Store-Knöpfe; das App-Video steht nur auf `/projects/matrix/`), dann die hervorgehobenen Beiträge mit Bild (Liste in `data/featured.ts`, fehlen dann in der Liste unten), dann zwei „Türen“ (Loop für Agent-Bauer; Plugin für WordPress-Betreiber), neueste Beiträge ohne Build Logs (Filter auf `type`), kurz „wer“.
+- `projects/matrix.astro`, `projects/matrix-claude-code.astro`, `projects/gdpr-recaptcha.astro`, `projects/maintainer-loop.astro` — handgebaute Langseiten aus „Beats“; Fakten aus den Projekt-Repos (s. `SOURCES.md`). Plugin-Seite: oben drei Kennzahl-Karten (Werte aus DEMO.md), im Abschnitt `#method` steht die volle Methodik wörtlich in einem eingeklappten `<details>`; die Grenzen (`#limits`) bleiben offen sichtbar.
 - `projects/matrix/privacy.astro` — Datenschutzerklärung der App Matrix LLM (alle Plattformen), URL `/projects/matrix/privacy/` steht in den Store-Einträgen: **nie verschieben**; Aussagen am Code in `~/matrix/app` geprüft, bei Änderung neu prüfen und Datum setzen. Verlinkt von `projects/matrix.astro`.
 - `projects/matrix/how-it-was-built.astro` — „How Matrix was built“: Bau mit Claude Code (Regeln, Episoden aus dem Git-Log, Messungen, Architekturbild `diagrams/MatrixArchitecture.astro`); Fundstellen je Abschnitt als Kommentar im Quelltext, Umfangszahlen per Zählung vom 2026-11-25. Video-Plätze nur in `astro dev` sichtbar. Verlinkt von `projects/matrix.astro` („By the numbers“).
 - `projects/[id].astro` — generische Projektseite für alle Projekte **ohne** eigene Seite (Liste `OWN` darin pflegen!), mit JSON-LD.
@@ -84,7 +84,7 @@ programmiere/
 - `story/Video.astro` — Video-Platz (16:9, Poster, Bildunterschrift, optional Untertitelspuren `tracks`, nie voreingestellt); Dateien unter `public/video/` (Plugin) und `public/projects/matrix/` (App). Fehlt eine Datei, bleibt der Kasten leer.
 - `story/Zoom.astro` — Screenshot über volle Breite, Klick öffnet Vollbild (`<dialog>`).
 - `diagrams/MatrixArchitecture.astro` — Schichtenbild von Matrix als HTML/CSS (bricht auf dem Handy um), genutzt von `projects/matrix/how-it-was-built.astro`.
-- `diagrams/MatrixFlow.astro`, `LoopFlow.astro`, `PowFlow.astro` — schematische SVGs, nutzen die Farb-Tokens; keine erfundenen Inhalte.
+- `diagrams/MatrixFlow.astro`, `LoopFlow.astro`, `PowFlow.astro` — schematische SVGs, nutzen die Farb-Tokens; keine erfundenen Inhalte. `LoopFlow` (Startseite, Loop-Seite) hat zwei Zeichnungen, quer ab 760 px Containerbreite, sonst hochkant (Container-Query), damit die Schrift am Handy lesbar bleibt.
 
 **Inhalte** (`content/`)
 - `projects/*.md` — Projekt-Stammdaten; Dateiname = `id` = `project`-Wert der Posts. Für Projekte mit eigener Seite dient nur das Frontmatter (Übersicht, Verknüpfung der Posts).
