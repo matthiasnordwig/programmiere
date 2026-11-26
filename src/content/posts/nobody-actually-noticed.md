@@ -7,7 +7,7 @@ project: matrix
 lang: de
 image: /writing/nobody-actually-noticed/og.png
 tags: [testing, property-based-testing, claude-code, agents, rust, telemetry]
-draft: false
+draft: true
 ---
 
 <!--
@@ -26,7 +26,7 @@ Beim Testen der hybriden Vektorsuche in meiner RAG-App Matrix stand auf Platz 1 
 
 Gemerkt hat das niemand. Kein Nutzer, kein Test, ich auch nicht. Darum lese ich NaN seitdem anders: **Nobody Actually Noticed.**
 
-Gefunden hat den Fehler ein Eigenschaftstest. Er war einer von 53 Fehlern, die in zwei Tagen zusammenkamen, in einer Codebasis mit rund 210.000 Zeilen Code, 94.000 Zeilen Testcode und rund 5.700 automatischen Tests. Darum geht es in diesem Beitrag: um eine alte Testart, die mit Agenten auf einmal fast nichts mehr kostet, und darum, was das für die Frage bedeutet, wie viel Code man noch selbst lesen muss.
+Gefunden hat den Fehler ein Eigenschaftstest. Er war einer von 53 Fehlern, die in kurzer Zeit zusammenkamen, in einer Codebasis mit rund 210.000 Zeilen Code, 94.000 Zeilen Testcode und rund 5.700 automatischen Tests. Darum geht es in diesem Beitrag: um eine alte Testart, die mit Agenten auf einmal fast nichts mehr kostet, und darum, was das für die Frage bedeutet, wie viel Code man noch selbst lesen muss.
 
 ## Das glofiish
 
@@ -54,7 +54,7 @@ Und noch etwas ist wichtig. Ein Agent schreibt Tests gern so, dass sie zu seinem
 
 ## Was dabei herauskam
 
-In zwei Tagen fanden sich 53 echte Fehler, jeder mit einem Gegenbeispiel belegt, behoben und mit einem Regressionstest abgesichert:
+In kurzer Zeit fanden sich 53 echte Fehler, jeder mit einem Gegenbeispiel belegt, behoben und mit einem Regressionstest abgesichert:
 
 - 41 direkt aus Eigenschaftstests, in sechs Runden über die Teile der App
 - 4 über Mutationstests (dazu unten mehr)
