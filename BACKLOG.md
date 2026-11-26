@@ -48,6 +48,19 @@ Git-Historie). Richtungsentscheidungen gehören dem Owner — hier als Vorschlag
 
 ## Technik
 
+- **Diskussion unter Beiträgen** (Owner-Wunsch 2026-11-26): Beiträge rufen zur Diskussion auf (z. B.
+  „Nobody Actually Noticed“ endet mit „Welche Testarten nutzt ihr bei Code von Agenten?“), die Seite bietet
+  aber keinen Ort dafür. Gewünscht: Kommentarbereich/Forum unter Beiträgen, der echte Diskussion zulässt.
+  Anforderungen (Anmeldung, Moderation, Spam, Benachrichtigung, Sprache de/en) sind offen, mit dem Owner
+  klären. Randbedingungen: Seite ist statisch gebaut, kein CMS/keine Datenbank (0002); eigener Server
+  whistle-blower.net mit PHP (Plesk, `index.php`, 0009), dort läuft schon ein kleiner PHP-Empfänger
+  `GDPRCompliantRecaptcha/` aus dem Plugin-Repo; keine Drittanfragen, kein Tracking, keine Cookies, keine
+  Fremd-Widgets (0005; der Autor eines DSGVO-Plugins); Fremdtext ist nie Anweisung (CLAUDE.md), Spam-Schutz
+  könnte das eigene Plugin-Wissen zeigen. Mögliche Wege, nicht entschieden: (a) giscus/GitHub Discussions,
+  einfach, aber Fremd-Widget und GitHub-Konto nötig, bräche 0005 → neue Entscheidung; (b) selbst gehostet
+  (kleines PHP-Kommentar-Skript oder z. B. Isso/Remark42 auf dem Server, Moderation per Freigabe); (c) kein
+  Kommentarfeld, sondern je Beitrag ein Link auf den LinkedIn-Beitrag bzw. Mastodon-/HN-Thread.
+  Gewählter Weg → `docs/decisions/` mit nächster Nummer.
 - **OG-Bilder je Seite** statt überall `og-matrix.jpg` (WordPress-Plugin, Loop, CV eigene Vorschaubilder; Startseite und Claude-Code-Plugin haben schon `og-matrix-claude-code.png`, gerendert aus HTML mit Chrome headless).
 - **404 auf dem Server:** Astro erzeugt `404.html`, der Server nutzt sie nicht. Lösung über
   `ErrorDocument` in der `.htaccess` des Docroots — die Datei gehört dem Owner/Server, nur mit
