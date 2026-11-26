@@ -22,11 +22,11 @@ Gliederung (abgestimmt 2026-11-26):
 
 ![Ein Siegertreppchen. Auf Platz 1 steht NaN mit Sonnenbrille und Goldmedaille. Die Zahl 0,93 auf Platz 2 ruft: „Ich hab nachgemessen: 0,93!“, die 0,91 auf Platz 3 will den Schiedsrichter sprechen. Darunter: NaN = Nobody Actually Noticed.](/writing/nobody-actually-noticed/treppchen-1600x900.png)
 
-Beim Testen der hybriden Vektorsuche in meiner RAG-App Matrix stand auf Platz 1 ein Treffer mit dem Wert NaN. Matrix beantwortet Fragen aus eigenen Dokumenten und nennt die Fundstelle dazu. Die Suche verbindet Vektorsuche nach Bedeutung mit einer Suche nach Stichworten, am Ende sortiert ein Reranker die Treffer nach einem Wert zwischen 0 und 1. Wer oben steht, passt am besten. NaN heißt „Not a Number“, also keine Zahl. Die Sortierung kam mit diesem Wert nicht zurecht, und er rutschte nach ganz oben.
+Beim Testen der hybriden Vektorsuche in meiner RAG-App Matrix stand auf Platz 1 ein Treffer mit dem Wert NaN. RAG heißt hier: eine App, die Fragen aus eigenen Dokumenten beantwortet und die Fundstelle dazu nennt. Die Suche verbindet Vektorsuche nach Bedeutung mit einer Suche nach Stichworten, am Ende sortiert ein Reranker die Treffer nach einem Relevanzwert. Wer oben steht, passt am besten. NaN heißt „Not a Number“, also keine Zahl. Die Sortierung kam mit diesem Wert nicht zurecht, und er rutschte nach ganz oben.
 
 Gemerkt hat das niemand. Kein Nutzer, kein Test, ich auch nicht. Darum lese ich NaN seitdem anders: **Nobody Actually Noticed.**
 
-Gefunden hat den Fehler ein Eigenschaftstest. In den zwei Tagen danach kamen 52 weitere dazu, in einer Codebasis mit rund 210.000 Zeilen Code, 94.000 Zeilen Testcode und rund 5.700 automatischen Tests. Darum geht es in diesem Beitrag: um eine alte Testart, die mit Agenten auf einmal fast nichts mehr kostet, und darum, was das für die Frage bedeutet, wie viel Code man noch selbst lesen muss.
+Gefunden hat den Fehler ein Eigenschaftstest. Er war einer von 53 Fehlern, die in zwei Tagen zusammenkamen, in einer Codebasis mit rund 210.000 Zeilen Code, 94.000 Zeilen Testcode und rund 5.700 automatischen Tests. Darum geht es in diesem Beitrag: um eine alte Testart, die mit Agenten auf einmal fast nichts mehr kostet, und darum, was das für die Frage bedeutet, wie viel Code man noch selbst lesen muss.
 
 ## Das glofiish
 
@@ -65,7 +65,7 @@ Dazu ein paar Beispiele, alle aus dieser Runde:
 
 - **NaN auf Platz 1** in der Suche, siehe oben
 - **Nordpol:** Bei 84,5° nördlicher Breite fand die Zeitleiste als nächstgelegenen Ort einen, der 400 km entfernt lag, statt den in 126 km
-- **80 % als 90 %:** Eine Prüfung, ob ein Text plausibel ist, hat eine Schwelle falsch gezählt
+- **80 % als 90 %:** Eine Prüfung, ob die Abschnitte nach dem Zerlegen den ganzen Text abdecken, zählte Leerzeichen nur bei den Abschnitten mit, beim Text nicht. So galt ein Ergebnis mit nur etwa 80 % des Texts schon als zu 90 % abgedeckt
 - **Pfadschutz:** Er verriet, ob eine Datei existiert, auch wenn man sie nicht lesen durfte
 - **Versteckte Dateien:** Ein Link auf eine versteckte Datei wurde beim Einlesen mitgelesen
 - **Beschädigte PDF- und Excel-Dateien** brachten das Einlesen zum Absturz
@@ -106,13 +106,13 @@ Das Wichtigste ist für mich aber die Übersicht. Ich habe mir ein Dashboard geb
 
 Das ist meine eigentliche These. Agenten schreiben inzwischen mehr Code, als ich lesen kann. Ganz ohne Code-Review traue ich mich noch nicht. Ich kann mir aber Messwerte bauen, die mir sagen, wann ich dem Code trauen kann: Wie viele Tests schlagen an, wie viele davon finden etwas, und wo schaut niemand hin. Das ist aus meiner Sicht der Weg dahin, irgendwann nicht mehr jede Zeile lesen zu müssen.
 
-Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit Claude Code, Tests und Prüfungen. Seit Monaten ist es im Prinzip fehlerfrei, und an Funktionen fehlt nichts Wesentliches mehr. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
+Wer kritisch ist, wird jetzt sagen: Wer den Code nicht liest, weiß gar nicht, ob die App überhaupt etwas taugt. Den Einwand verstehe ich. Ich habe aber eine Erfahrung, die mich ruhiger macht. Mein WordPress-Plugin gegen Spam läuft auf über 5.000 Seiten und entsteht auf dieselbe Art, mit Claude Code, Tests und Prüfungen. Seit Monaten ist es im Prinzip fehlerfrei: Früher kam etwa ein Fehler pro Woche, heute vielleicht einer im Monat, und an Funktionen fehlt nichts Wesentliches mehr. Ehrlich gesagt wusste ich nicht, dass es so einen Zustand bei Software überhaupt gibt.
 
 ## Wo es nicht passt
 
 Eigenschaftstests sind kein Allheilmittel. Für Oberflächen, für Abläufe über mehrere Geräte oder für fachliche Vorgaben wie „Kunde X bekommt Rabatt Y“ gibt es oft keine allgemeine Regel, nur Einzelfälle. Dort bleiben normale Tests und Ablauftests richtig.
 
-Auch die Würfelanweisungen können falsch sein. Drei meiner Tests haben den Großteil ihrer Eingaben verworfen und dadurch kaum etwas geprüft. Aufgefallen ist das erst im Release-Lauf. Nach dem Umbau fanden sie sofort zwei weitere Fehler.
+Auch die Würfelanweisungen können falsch sein. Drei meiner Tests haben den Großteil ihrer Eingaben verworfen und dadurch kaum etwas geprüft. Aufgefallen ist das erst im Release-Lauf. Nach dem Umbau fanden sie sofort einen weiteren Fehler.
 
 Und der Testcode ist Code, den jemand pflegen muss. Für das Zerlegen von Dokumenten stehen 4.367 Zeilen Code 505 Zeilen Eigenschaftstests gegenüber. Das ist nicht nichts. Aber ein Ergebnis zu prüfen ist fast immer einfacher, als es zu berechnen.
 
