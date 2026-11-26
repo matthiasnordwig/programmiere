@@ -7,7 +7,7 @@ project: matrix
 lang: de
 image: /writing/nobody-actually-noticed/og.png
 tags: [testing, property-based-testing, claude-code, agents, rust, telemetry]
-draft: true
+draft: false
 ---
 
 <!--
